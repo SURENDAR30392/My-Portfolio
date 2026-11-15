@@ -105,7 +105,11 @@ export const AuthProvider = ({ children }) => {
         }
       } catch (err) {
         console.error("Google authentication error:", err.code || err.message);
-        setAuthError(err.message || "Authentication failed. Please try again.");
+        if (err.code === 'auth/unauthorized-domain' || (err.message && err.message.includes('unauthorized-domain'))) {
+          setAuthError("Unauthorized Domain: 'marthala-surendar-reddy.web.app' is not yet added to Firebase Authentication Authorized Domains. Please add it in Firebase Console > Authentication > Settings > Authorized Domains, or sign in via msr-portfolio-5c52f.web.app/admin.");
+        } else {
+          setAuthError(err.message || "Authentication failed. Please try again.");
+        }
         return false;
       }
     } else {

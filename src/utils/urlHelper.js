@@ -40,3 +40,4 @@ export const formatExternalUrl = (url) => {
 
   return cleaned;
 };
+
