@@ -221,16 +221,19 @@ export const AdminDashboardView = ({ setActiveTab }) => {
 
               <div className="flex items-center justify-between p-3 rounded-lg bg-[#F7FAFA] border border-[#DDE7E5] text-xs">
                 <span className="text-[#4B5F5C]">Admin Identity</span>
-                <span className="font-semibold text-[#15803D]">Single Super Admin</span>
+                <div className="text-right">
+                  <span className="font-semibold text-[#102A28] block">Super Admin</span>
+                  <span className="text-[10.5px] text-[#0F766E] font-medium block">Authorized Account</span>
+                </div>
               </div>
 
               <div className="flex items-center justify-between p-3 rounded-lg bg-[#E6F4F2] border border-[#7CC7BD]/50 text-xs">
                 <div>
                   <span className="text-[#0F766E] font-medium block">Firebase Auth UID</span>
-                  <span className="text-[10px] text-[#8A9B98]">Required for firestore.rules</span>
+                  <span className="text-[10px] text-[#8A9B98]">Verified Authorization Key</span>
                 </div>
                 <span className="font-mono font-semibold text-[#102A28] bg-white px-2 py-1 rounded border border-[#DDE7E5] select-all">
-                  {currentUser?.uid || "Sign in with Google to view"}
+                  {currentUser?.uid || "HOHTgjkAZlTPOO7bH98ukkw2vip1"}
                 </span>
               </div>
 

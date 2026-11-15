@@ -3,26 +3,19 @@ service cloud.firestore {
   match /databases/{database}/documents {
 
     // =========================================================================
-    // SUPER ADMIN IDENTITY RESTRICTION
+    // EXACT SINGLE SUPER ADMIN IDENTITY
+    // Authorized strictly using the verified Firebase Authentication UID.
+    // No hardcoded Gmail address or email comparison in security rules.
     // =========================================================================
-    // CRITICAL: Replace 'PLACEHOLDER_SUPER_ADMIN_UID_HERE' with your real 
-    // Firebase Authentication UID after signing in with your Google account.
-    // DO NOT DEPLOY this file until the placeholder is replaced with your real UID!
-    // =========================================================================
-    function isAuthenticated() {
-      return request.auth != null;
-    }
-
     function isSuperAdmin() {
-      return isAuthenticated() &&
-        request.auth.uid == 'PLACEHOLDER_SUPER_ADMIN_UID_HERE' &&
-        request.auth.token.email.lower() == 'marthalasurendarreddy@gmail.com' &&
+      return request.auth != null &&
+        request.auth.uid == 'HOHTgjkAZlTPOO7bH98ukkw2vip1' &&
         request.auth.token.email_verified == true;
     }
 
     // =========================================================================
     // 1. PROFILE
-    // Public can read; only Super Admin can create, update, or delete
+    // Public can read published data; only Super Admin can write
     // =========================================================================
     match /profile/{docId} {
       allow read: if true;
@@ -31,7 +24,7 @@ service cloud.firestore {
 
     // =========================================================================
     // 2. SKILLS
-    // Public can read; only Super Admin can create, update, or delete
+    // Public can read published data; only Super Admin can write
     // =========================================================================
     match /skills/{skillId} {
       allow read: if true;
@@ -49,7 +42,7 @@ service cloud.firestore {
 
     // =========================================================================
     // 4. EDUCATION
-    // Public can read; only Super Admin can create, update, or delete
+    // Public can read; only Super Admin can write
     // =========================================================================
     match /education/{educationId} {
       allow read: if true;
@@ -58,7 +51,7 @@ service cloud.firestore {
 
     // =========================================================================
     // 5. EXPERIENCE
-    // Public can read; only Super Admin can create, update, or delete
+    // Public can read; only Super Admin can write
     // =========================================================================
     match /experience/{experienceId} {
       allow read: if true;
@@ -76,7 +69,7 @@ service cloud.firestore {
 
     // =========================================================================
     // 7. ACHIEVEMENTS
-    // Public can read; only Super Admin can create, update, or delete
+    // Public can read; only Super Admin can write
     // =========================================================================
     match /achievements/{achievementId} {
       allow read: if true;
@@ -85,7 +78,7 @@ service cloud.firestore {
 
     // =========================================================================
     // 8. SOCIAL LINKS
-    // Public can read; only Super Admin can create, update, or delete
+    // Public can read; only Super Admin can write
     // =========================================================================
     match /socialLinks/{socialLinkId} {
       allow read: if true;
@@ -101,7 +94,7 @@ service cloud.firestore {
       allow write: if isSuperAdmin();
     }
 
-    // Aggregate portfolio data document for fallback/cache sync
+    // Portfolio aggregate content document
     match /content/{docId} {
       allow read: if true;
       allow write: if isSuperAdmin();
@@ -109,9 +102,10 @@ service cloud.firestore {
 
     // =========================================================================
     // 10. CONTACT MESSAGES (Strictly Private & Validated)
-    // - Normal visitors CANNOT read, update, or delete any messages.
-    // - Normal visitors can ONLY create messages with strict validation.
-    // - Only the authorized Super Admin can read, update (mark read), or delete.
+    // - Public visitors CANNOT read, update, or delete any messages.
+    // - Public visitors can ONLY create messages matching strict schema limits.
+    // - Rejects unexpected fields to prevent payload tampering.
+    // - Super Admin can read, update (mark read), or delete.
     // =========================================================================
     match /messages/{messageId} {
       allow create: if isValidMessage();
@@ -121,6 +115,7 @@ service cloud.firestore {
     function isValidMessage() {
       let data = request.resource.data;
       return data.keys().hasAll(['name', 'email', 'subject', 'message']) &&
+             data.keys().hasOnly(['name', 'email', 'subject', 'message', 'read', 'timestamp', 'createdAt', 'id', 'hp_check']) &&
              data.name is string &&
              data.name.size() >= 2 &&
              data.name.size() <= 100 &&
@@ -138,7 +133,7 @@ service cloud.firestore {
 
     // =========================================================================
     // DEFAULT DENY
-    // Block any unspecified paths, collections, or subcollections
+    // Block any unspecified collections, subcollections, or paths
     // =========================================================================
     match /{document=**} {
       allow read, write: if false;

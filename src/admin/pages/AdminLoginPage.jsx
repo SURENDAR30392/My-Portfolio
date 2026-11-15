@@ -4,7 +4,7 @@ import { ShieldCheck, LogIn, ArrowLeft, AlertCircle, Lock } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
 export const AdminLoginPage = () => {
-  const { loginWithGoogle, isAdmin, authError, superAdminEmail } = useAuth();
+  const { loginWithGoogle, isAdmin, authError } = useAuth();
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -48,14 +48,14 @@ export const AdminLoginPage = () => {
             <Lock size={13} className="text-[#0F766E]" />
             <span>Sole Authorized Administrator</span>
           </div>
-          <p>
-            This dashboard is strictly private. Exactly one administrator account is authorized to sign in:
-          </p>
-          <div className="font-mono text-[11.5px] font-semibold text-[#0F766E] bg-white px-2.5 py-1.5 rounded border border-[#DDE7E5]">
-            {superAdminEmail}
+          <div className="p-3 rounded-lg bg-white border border-[#DDE7E5] flex items-center justify-between">
+            <span className="font-semibold text-[#102A28] text-sm">Super Admin</span>
+            <span className="text-[10.5px] text-[#0F766E] font-medium bg-[#E6F4F2] px-2.5 py-1 rounded-full border border-[#7CC7BD]/40">
+              Authorized Account
+            </span>
           </div>
           <p className="text-[11px] text-[#8A9B98]">
-            Any other Google account will be automatically denied and immediately signed out.
+            Restricted single-owner dashboard. Any unauthorized Google account will be automatically denied and signed out.
           </p>
         </div>
 

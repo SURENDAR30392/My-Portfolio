@@ -42,3 +42,4 @@ export const initAppCheck = (app) => {
     return null;
   }
 };
+

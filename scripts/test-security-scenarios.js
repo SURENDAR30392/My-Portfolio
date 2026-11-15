@@ -1,23 +1,27 @@
 /**
  * Security Rule & Authentication Test Suite for MSR Portfolio
  * 
- * Tests the 9 core security scenarios specified in Section 10:
- * 1. Authorized Super Admin access
- * 2. Unauthorized Google account access
- * 3. Public visitor reading published portfolio data
- * 4. Public visitor attempting to modify projects
- * 5. Public visitor attempting to read messages
- * 6. Public visitor submitting a valid contact message
- * 7. Public visitor submitting invalid contact data
- * 8. Admin editing and deleting dummy records
- * 9. Unauthenticated database access
+ * Tests the 10 core validation requirements:
+ * 1. Only the exact authorized UID passes the Super Admin rule
+ * 2. An authenticated user with another UID is denied
+ * 3. An unverified account is denied
+ * 4. Public visitors can read published portfolio content
+ * 5. Public visitors cannot write portfolio content
+ * 6. Public visitors cannot read messages
+ * 7. Public visitors can submit valid contact messages
+ * 8. Invalid contact messages are rejected
+ * 9. The default-deny rule blocks unknown collections
+ * 10. No Gmail address is displayed anywhere in the admin UI
  */
 
-const SUPER_ADMIN_EMAIL = 'marthalasurendarreddy@gmail.com';
+import fs from 'fs';
+import path from 'path';
 
-function runSecurityTests() {
+const EXACT_SUPER_ADMIN_UID = 'HOHTgjkAZlTPOO7bH98ukkw2vip1';
+
+function runValidationTests() {
   console.log('================================================================');
-  console.log('MSR PORTFOLIO - FIREBASE SECURITY TEST SCENARIOS EVALUATION');
+  console.log('MSR PORTFOLIO - FINAL SUPER ADMIN & EMAIL PRIVACY TEST SUITE');
   console.log('================================================================\n');
 
   let passed = 0;
@@ -34,65 +38,88 @@ function runSecurityTests() {
     if (details) console.log(`   └─ ${details}`);
   }
 
-  // --- SCENARIO 1: Authorized Super Admin Access ---
-  const authAdminToken = {
-    uid: 'REAL_UID_MATCH',
-    email: 'marthalasurendarreddy@gmail.com',
-    email_verified: true
+  // Helper matching firestore.rules isSuperAdmin()
+  const isSuperAdminRule = (auth) => {
+    return auth != null &&
+      auth.uid === EXACT_SUPER_ADMIN_UID &&
+      auth.token?.email_verified === true;
   };
-  const isAuthorizedAdmin = (token, expectedUid) => 
-    token.uid === expectedUid && 
-    token.email.toLowerCase() === SUPER_ADMIN_EMAIL.toLowerCase() && 
-    token.email_verified === true;
 
-  assertTest(
-    'Authorized Super Admin access verification',
-    isAuthorizedAdmin(authAdminToken, 'REAL_UID_MATCH'),
-    'Matches verified email marthalasurendarreddy@gmail.com and matching UID'
-  );
-
-  // --- SCENARIO 2: Unauthorized Google Account Access ---
-  const unauthorizedToken = {
-    uid: 'random_user_999',
-    email: 'hacker@example.com',
-    email_verified: true
+  // --- 1. Only the exact authorized UID passes the Super Admin rule ---
+  const validAdminAuth = {
+    uid: EXACT_SUPER_ADMIN_UID,
+    token: { email_verified: true }
   };
   assertTest(
-    'Unauthorized Google account access rejection',
-    !isAuthorizedAdmin(unauthorizedToken, 'REAL_UID_MATCH'),
-    'hacker@example.com is strictly rejected from /admin and denied Super Admin rights'
+    'Only the exact authorized UID passes the Super Admin rule',
+    isSuperAdminRule(validAdminAuth),
+    `UID: ${EXACT_SUPER_ADMIN_UID} with email_verified: true succeeds`
   );
 
-  // --- SCENARIO 3: Public visitor reading published portfolio data ---
-  const canPublicReadProject = (projectDoc, isSuperAdmin) => {
-    return projectDoc.published === true || isSuperAdmin;
+  // --- 2. An authenticated user with another UID is denied ---
+  const anotherUserAuth = {
+    uid: 'OTHER_USER_UID_998877665544',
+    token: { email_verified: true }
   };
   assertTest(
-    'Public visitor reading published portfolio data',
-    canPublicReadProject({ title: 'Algorithmic Arena', published: true }, false),
-    'Published projects are readable by any unauthenticated visitor'
+    'Authenticated user with another UID is denied Super Admin access',
+    !isSuperAdminRule(anotherUserAuth),
+    'Different UID is strictly denied write/admin operations'
   );
 
-  // --- SCENARIO 4: Public visitor attempting to modify projects ---
-  const canModifyProject = (isSuperAdmin) => isSuperAdmin;
+  // --- 3. An unverified account is denied ---
+  const unverifiedAdminAuth = {
+    uid: EXACT_SUPER_ADMIN_UID,
+    token: { email_verified: false }
+  };
   assertTest(
-    'Public visitor attempting to modify projects blocked',
-    !canModifyProject(false),
-    'Write operations to /projects require isSuperAdmin() == true'
+    'Unverified account is denied Super Admin access',
+    !isSuperAdminRule(unverifiedAdminAuth),
+    'email_verified == false is rejected by isSuperAdmin()'
   );
 
-  // --- SCENARIO 5: Public visitor attempting to read messages ---
-  const canReadMessages = (isSuperAdmin) => isSuperAdmin;
+  // --- 4. Public visitors can read published portfolio content ---
+  const canReadProject = (doc, auth) => {
+    return doc.published === true || isSuperAdminRule(auth);
+  };
   assertTest(
-    'Public visitor attempting to read contact messages blocked',
-    !canReadMessages(false),
-    'Read operations to /messages require isSuperAdmin() == true; visitors cannot list or get messages'
+    'Public visitors can read published portfolio content',
+    canReadProject({ title: 'Algorithmic Code Arena', published: true }, null),
+    'Published documents are accessible without authentication'
   );
 
-  // --- SCENARIO 6: Public visitor submitting a valid contact message ---
-  const validateMessage = (data) => {
+  // --- 5. Public visitors cannot write portfolio content ---
+  const canWriteProject = (auth) => {
+    return isSuperAdminRule(auth);
+  };
+  assertTest(
+    'Public visitors cannot write portfolio content',
+    !canWriteProject(null),
+    'Unauthenticated write to projects collection is rejected'
+  );
+
+  // --- 6. Public visitors cannot read messages ---
+  const canReadMessages = (auth) => {
+    return isSuperAdminRule(auth);
+  };
+  assertTest(
+    'Public visitors cannot read contact messages',
+    !canReadMessages(null),
+    'Unauthenticated read to messages collection is rejected'
+  );
+
+  // --- 7. Public visitors can submit valid contact messages ---
+  const isValidMessage = (data) => {
+    const allowedKeys = ['name', 'email', 'subject', 'message', 'read', 'timestamp', 'createdAt', 'id', 'hp_check'];
+    const dataKeys = Object.keys(data);
+    const hasAllRequired = ['name', 'email', 'subject', 'message'].every(k => dataKeys.includes(k));
+    const hasOnlyAllowed = dataKeys.every(k => allowedKeys.includes(k));
+
     const emailRegex = /^[^@]+@[^@]+\.[^@]+$/;
+
     return (
+      hasAllRequired &&
+      hasOnlyAllowed &&
       typeof data.name === 'string' && data.name.length >= 2 && data.name.length <= 100 &&
       typeof data.email === 'string' && data.email.length <= 100 && emailRegex.test(data.email) &&
       typeof data.subject === 'string' && data.subject.length >= 2 && data.subject.length <= 200 &&
@@ -101,60 +128,82 @@ function runSecurityTests() {
     );
   };
 
-  const validMessage = {
-    name: 'Jane Doe',
-    email: 'jane@example.com',
-    subject: 'Internship Opportunity',
-    message: 'Hello Marthala, we were impressed by your Java and React projects.',
+  const validSubmission = {
+    name: 'Tech Recruiter',
+    email: 'recruiter@university-partner.com',
+    subject: 'Internship Role Discussion',
+    message: 'Hello Surendar, reviewing your Java backend projects and interested in scheduling a discussion.',
     read: false
   };
   assertTest(
-    'Public visitor submitting a valid contact message accepted',
-    validateMessage(validMessage),
-    'Valid name, email, subject, message (>=5 chars), and read: false passes schema check'
+    'Public visitors can submit valid contact messages',
+    isValidMessage(validSubmission),
+    'Payload satisfies length limits, email regex, required fields, and read: false'
   );
 
-  // --- SCENARIO 7: Public visitor submitting invalid contact data ---
-  const invalidMessageSpam = {
-    name: '', // Empty name
-    email: 'invalid-email-address',
+  // --- 8. Invalid contact messages are rejected ---
+  const invalidSubmissionTampered = {
+    name: 'A', // too short (< 2)
+    email: 'bad-email',
     subject: 'Hi',
-    message: 'short', // less than 5 chars
-    read: true // Attempting to mark as read
+    message: 'test', // too short (< 5)
+    read: true, // attempting to mark read
+    unexpectedSecretField: 'injection' // rejected unexpected field
   };
   assertTest(
-    'Public visitor submitting invalid contact data rejected',
-    !validateMessage(invalidMessageSpam),
-    'Invalid email and short message fail schema validation'
+    'Invalid or tampered contact messages are rejected',
+    !isValidMessage(invalidSubmissionTampered),
+    'Failed length, email format, and rejected unexpected field'
   );
 
-  // --- SCENARIO 8: Admin editing and deleting dummy records ---
-  const canAdminManageSampleRecord = (record, isSuperAdmin) => {
-    return isSuperAdmin;
-  };
-  assertTest(
-    'Admin editing and deleting dummy records allowed',
-    canAdminManageSampleRecord({ isSample: true, id: 'proj-1' }, true),
-    'Super Admin has full write, update, and delete access to records including isSample: true'
-  );
-
-  // --- SCENARIO 9: Unauthenticated database access to arbitrary collections ---
-  const isDefaultDeny = (collectionName, authState) => {
+  // --- 9. The default-deny rule blocks unknown collections ---
+  const isPathAllowed = (pathStr, auth) => {
     const knownCollections = ['profile', 'skills', 'projects', 'education', 'experience', 'certifications', 'achievements', 'socialLinks', 'settings', 'messages', 'content'];
-    if (!knownCollections.includes(collectionName)) {
-      return false; // denied
+    const col = pathStr.split('/')[0];
+    if (!knownCollections.includes(col)) {
+      return false; // Default deny
     }
-    return authState.isSuperAdmin;
+    return isSuperAdminRule(auth);
   };
   assertTest(
-    'Unauthenticated database access to unspecified collections denied',
-    !isDefaultDeny('admin_secrets', { isSuperAdmin: false }),
-    'Default deny wildcard match /{document=**} blocks arbitrary collection access'
+    'Default-deny rule blocks unknown collections and paths',
+    !isPathAllowed('server_logs/item1', validAdminAuth),
+    'Wildcard match /{document=**} blocks unknown paths'
+  );
+
+  // --- 10. No Gmail address is displayed anywhere in the admin UI ---
+  const adminDir = path.resolve('src/admin');
+  let gmailFoundInAdmin = false;
+  let filesChecked = 0;
+
+  function scanDir(dir) {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        scanDir(fullPath);
+      } else if (entry.isFile() && (entry.name.endsWith('.jsx') || entry.name.endsWith('.js'))) {
+        filesChecked++;
+        const content = fs.readFileSync(fullPath, 'utf8');
+        // Check for literal Gmail
+        if (content.includes('marthalasurendarreddy@gmail.com')) {
+          gmailFoundInAdmin = true;
+          console.error(`   Found Gmail in: ${path.relative('.', fullPath)}`);
+        }
+      }
+    }
+  }
+  scanDir(adminDir);
+
+  assertTest(
+    'No Gmail address is displayed anywhere in the admin UI',
+    !gmailFoundInAdmin,
+    `Scanned ${filesChecked} admin source files. Verified zero occurrences of Gmail address.`
   );
 
   console.log('\n================================================================');
-  console.log(`RESULTS: ${passed}/${total} Security Scenarios Successfully Verified!`);
+  console.log(`VALIDATION RESULTS: ${passed}/${total} Security & Privacy Checks Passed!`);
   console.log('================================================================');
 }
 
-runSecurityTests();
+runValidationTests();

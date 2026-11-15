@@ -10,9 +10,8 @@ import {
 
 const AuthContext = createContext(null);
 
-// EXACTLY ONE SUPER ADMIN: Strictly Marthala Surendar Reddy
-export const SUPER_ADMIN_EMAIL = "marthalasurendarreddy@gmail.com";
-export const SUPER_ADMIN_UID = import.meta.env.VITE_ADMIN_UID || "";
+// EXACTLY ONE SUPER ADMIN: Strictly authorized by Firebase Authentication UID
+export const SUPER_ADMIN_UID = import.meta.env.VITE_ADMIN_UID || "HOHTgjkAZlTPOO7bH98ukkw2vip1";
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -20,18 +19,12 @@ export const AuthProvider = ({ children }) => {
   const [authLoading, setAuthLoading] = useState(true);
   const [authError, setAuthError] = useState('');
 
-  // Validate if a user is strictly the single Super Admin
+  // Validate if a user is strictly the single Super Admin by verified UID
   const isSuperAdminUser = (user) => {
-    if (!user || !user.email) return false;
-    const emailMatch = user.email.toLowerCase() === SUPER_ADMIN_EMAIL.toLowerCase();
-    
-    // In live Firebase, verify email_verified is true
+    if (!user || !user.uid) return false;
+    const uidMatch = user.uid === SUPER_ADMIN_UID;
     const verifiedMatch = user.emailVerified !== false;
-
-    // If a specific UID is pinned in environment variables, verify it matches
-    const uidMatch = !SUPER_ADMIN_UID || user.uid === SUPER_ADMIN_UID;
-
-    return emailMatch && verifiedMatch && uidMatch;
+    return uidMatch && verifiedMatch;
   };
 
   useEffect(() => {
@@ -40,8 +33,9 @@ export const AuthProvider = ({ children }) => {
     if (savedLocalAdmin === 'true') {
       setIsAdmin(true);
       setCurrentUser({
-        email: SUPER_ADMIN_EMAIL,
-        displayName: "Marthala Surendar Reddy (Sole Owner & Super Admin)",
+        uid: SUPER_ADMIN_UID,
+        displayName: "Super Admin",
+        role: "Authorized Account",
         photoURL: "/msr-portrait.svg",
         emailVerified: true
       });
@@ -51,18 +45,22 @@ export const AuthProvider = ({ children }) => {
       const unsubscribe = onAuthStateChanged(auth, async (user) => {
         if (user) {
           if (isSuperAdminUser(user)) {
-            setCurrentUser(user);
+            setCurrentUser({
+              ...user,
+              displayName: user.displayName || "Super Admin",
+              role: "Authorized Account"
+            });
             setIsAdmin(true);
             sessionStorage.setItem('msr_single_super_admin_auth', 'true');
             setAuthError('');
           } else {
             // Unauthorized account: immediately sign out and reject
-            console.warn(`Unauthorized login attempt blocked for: ${user.email}`);
+            console.warn("Unauthorized login attempt blocked.");
             await signOut(auth);
             setCurrentUser(null);
             setIsAdmin(false);
             sessionStorage.removeItem('msr_single_super_admin_auth');
-            setAuthError(`Access Denied: ${user.email} is not authorized. Only Marthala Surendar Reddy (${SUPER_ADMIN_EMAIL}) has Super Admin access.`);
+            setAuthError("Access Denied: This Google account is not authorized. Access is strictly restricted to the Super Admin (Authorized Account only).");
           }
         } else {
           if (savedLocalAdmin !== 'true') {
@@ -87,7 +85,11 @@ export const AuthProvider = ({ children }) => {
         const user = result.user;
 
         if (isSuperAdminUser(user)) {
-          setCurrentUser(user);
+          setCurrentUser({
+            ...user,
+            displayName: user.displayName || "Super Admin",
+            role: "Authorized Account"
+          });
           setIsAdmin(true);
           sessionStorage.setItem('msr_single_super_admin_auth', 'true');
           setAuthError('');
@@ -98,19 +100,20 @@ export const AuthProvider = ({ children }) => {
           setCurrentUser(null);
           setIsAdmin(false);
           sessionStorage.removeItem('msr_single_super_admin_auth');
-          setAuthError(`Access Denied: ${user.email} is not authorized. Exactly one Super Admin (${SUPER_ADMIN_EMAIL}) can access this panel.`);
+          setAuthError("Access Denied: This Google account is not authorized. Access is strictly restricted to the Super Admin (Authorized Account only).");
           return false;
         }
       } catch (err) {
-        console.error("Google authentication error:", err);
-        setAuthError(err.message);
+        console.error("Google authentication error:", err.code || err.message);
+        setAuthError(err.message || "Authentication failed. Please try again.");
         return false;
       }
     } else {
-      // Local development evaluation for the owner
+      // Local development fallback
       setCurrentUser({
-        email: SUPER_ADMIN_EMAIL,
-        displayName: "Marthala Surendar Reddy (Sole Owner & Super Admin)",
+        uid: SUPER_ADMIN_UID,
+        displayName: "Super Admin",
+        role: "Authorized Account",
         photoURL: "/msr-portrait.svg",
         emailVerified: true
       });
@@ -141,7 +144,7 @@ export const AuthProvider = ({ children }) => {
     authError,
     loginWithGoogle,
     logout,
-    superAdminEmail: SUPER_ADMIN_EMAIL
+    superAdminUid: SUPER_ADMIN_UID
   };
 
   return (

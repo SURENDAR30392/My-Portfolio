@@ -24,7 +24,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useData } from '../../context/DataContext';
 
 export const AdminLayout = ({ activeTab, setActiveTab, children }) => {
-  const { logout, currentUser, authorizedEmail } = useAuth();
+  const { logout, currentUser } = useAuth();
   const { data, isFirebaseLive, notification } = useData();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
@@ -105,9 +105,12 @@ export const AdminLayout = ({ activeTab, setActiveTab, children }) => {
             <ExternalLink size={13} />
           </Link>
 
-          <div className="hidden md:flex items-center gap-2 pl-3 border-l border-[#DDE7E5] text-xs text-[#8A9B98]">
-            <ShieldCheck size={14} className="text-[#0F766E]" />
-            <span className="truncate max-w-[180px]">{currentUser?.email || authorizedEmail}</span>
+          <div className="hidden md:flex items-center gap-2 pl-3 border-l border-[#DDE7E5] text-xs">
+            <ShieldCheck size={16} className="text-[#0F766E]" />
+            <div className="flex flex-col text-left">
+              <span className="font-semibold text-[#102A28] leading-tight">Super Admin</span>
+              <span className="text-[10px] text-[#0F766E] font-medium leading-tight">Authorized Account</span>
+            </div>
           </div>
 
           <button
