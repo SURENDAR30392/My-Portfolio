@@ -71,12 +71,12 @@ export const Hero = () => {
             </h1>
 
             {/* Professional Role & Affiliation */}
-            <p className="text-lg sm:text-xl font-medium text-[#D98C70] leading-snug mb-4">
+            <p className="text-lg sm:text-xl font-medium text-[#613E35] leading-snug mb-4">
               {profile.title || "B.Tech Computer Science and Engineering Student"} · KL University
             </p>
 
             {/* Narrative Tagline / Summary */}
-            <p className="text-base sm:text-[17px] text-[#A27B6E] leading-relaxed max-w-[540px] mb-8">
+            <p className="text-base sm:text-[17px] text-[#613E35] leading-relaxed max-w-[540px] mb-8">
               {profile.intro || "B.Tech CSE student at KL University specializing in core Java backend systems, data structures & algorithms, and modern full-stack web platforms."}
             </p>
 
@@ -91,7 +91,7 @@ export const Hero = () => {
               </a>
               <a 
                 href="/resume" 
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-[#A27B6E] hover:text-[#D98C70] px-3 py-2 rounded-lg transition-colors"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-[#613E35] hover:text-[#D98C70] px-3 py-2 rounded-lg transition-colors"
               >
                 <Download size={15} />
                 <span>Download Resume</span>
@@ -100,7 +100,7 @@ export const Hero = () => {
 
             {/* Social & Coding Platform Links */}
             <div>
-              <div className="text-xs font-semibold uppercase tracking-wider text-[#A27B6E] mb-2.5">
+              <div className="text-xs font-semibold uppercase tracking-wider text-[#613E35] mb-2.5">
                 Connect & Verify
               </div>
               <div className="flex flex-wrap items-center gap-2">
@@ -114,7 +114,7 @@ export const Hero = () => {
                         target={isMail ? undefined : "_blank"}
                         rel={isMail ? undefined : "noopener noreferrer"}
                         aria-label={item.label}
-                        className="w-10 h-10 rounded-lg bg-white border border-[#F0DED4] shadow-xs flex items-center justify-center text-[#A27B6E] hover:text-[#D98C70] hover:bg-[#FCE9DF] hover:border-[#F4C9B5] transition-all duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D98C70]"
+                        className="w-10 h-10 rounded-lg bg-white border border-[#F0DED4] shadow-xs flex items-center justify-center text-[#613E35] hover:text-[#D98C70] hover:bg-[#FCE9DF] hover:border-[#F4C9B5] transition-all duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D98C70]"
                       >
                         <Icon size={18} />
                       </a>

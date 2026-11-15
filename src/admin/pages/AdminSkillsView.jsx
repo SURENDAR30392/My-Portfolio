@@ -58,7 +58,7 @@ export const AdminSkillsView = () => {
           <h1 className="text-2xl font-semibold text-[#613E35]">
             Skills Management
           </h1>
-          <p className="text-sm text-[#A27B6E] mt-1">
+          <p className="text-sm text-[#613E35] mt-1">
             Configure technical proficiencies, programming languages, and engineering tools.
           </p>
         </div>
@@ -74,7 +74,7 @@ export const AdminSkillsView = () => {
 
       <div className="bg-white border border-[#F0DED4] rounded-xl overflow-hidden shadow-sm">
         <table className="w-full text-left text-sm">
-          <thead className="bg-[#FFF8F3] border-b border-[#F0DED4] text-xs font-semibold text-[#A27B6E] uppercase">
+          <thead className="bg-[#FFF8F3] border-b border-[#F0DED4] text-xs font-semibold text-[#613E35] uppercase">
             <tr>
               <th className="px-6 py-4">Skill Name</th>
               <th className="px-6 py-4">Category</th>
@@ -90,7 +90,7 @@ export const AdminSkillsView = () => {
                   {s.name}
                 </td>
                 <td className="px-6 py-4">
-                  <span className="text-xs px-2.5 py-1 rounded-md bg-[#FCE9DF] text-[#D98C70] font-medium border border-[#F0DED4]">
+                  <span className="text-xs px-2.5 py-1 rounded-md bg-[#FCE9DF] text-[#613E35] font-medium border border-[#F0DED4]">
                     {s.category}
                   </span>
                 </td>
@@ -99,7 +99,7 @@ export const AdminSkillsView = () => {
                     <div className="w-20 h-1.5 bg-[#FCE9DF] rounded-full overflow-hidden">
                       <div className="h-full bg-[#D98C70]" style={{ width: `${s.proficiency || 80}%` }} />
                     </div>
-                    <span className="text-xs text-[#A27B6E]">{s.proficiency}%</span>
+                    <span className="text-xs text-[#613E35]">{s.proficiency}%</span>
                   </div>
                 </td>
                 <td className="px-6 py-4">
@@ -108,7 +108,7 @@ export const AdminSkillsView = () => {
                       Sample
                     </span>
                   ) : (
-                    <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-[#FCE9DF] text-[#D98C70]">
+                    <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-[#FCE9DF] text-[#613E35]">
                       Verified
                     </span>
                   )}
@@ -117,13 +117,13 @@ export const AdminSkillsView = () => {
                   <div className="inline-flex items-center gap-1">
                     <button
                       onClick={() => openEditModal(s)}
-                      className="p-1.5 rounded-lg text-[#A27B6E] hover:text-[#D98C70] hover:bg-[#FCE9DF]"
+                      className="p-1.5 rounded-lg text-[#613E35] hover:text-[#D98C70] hover:bg-[#FCE9DF]"
                     >
                       <Edit3 size={15} />
                     </button>
                     <button
                       onClick={() => handleDelete(s.id, s.name)}
-                      className="p-1.5 rounded-lg text-[#A27B6E] hover:text-[#DC2626] hover:bg-[#FEF2F2]"
+                      className="p-1.5 rounded-lg text-[#613E35] hover:text-[#DC2626] hover:bg-[#FEF2F2]"
                     >
                       <Trash2 size={15} />
                     </button>
@@ -142,7 +142,7 @@ export const AdminSkillsView = () => {
               <h2 className="text-base font-semibold text-[#613E35]">
                 {currentId ? 'Edit Skill' : 'Add New Skill'}
               </h2>
-              <button onClick={() => setIsEditing(false)} className="text-[#A27B6E] hover:text-[#613E35]">
+              <button onClick={() => setIsEditing(false)} className="text-[#613E35] hover:text-[#613E35]">
                 <X size={18} />
               </button>
             </div>
@@ -176,7 +176,7 @@ export const AdminSkillsView = () => {
               <div>
                 <div className="flex justify-between items-center mb-1">
                   <label className="text-xs font-semibold text-[#613E35]">Proficiency Level</label>
-                  <span className="text-xs font-medium text-[#D98C70]">{form.proficiency}%</span>
+                  <span className="text-xs font-medium text-[#613E35]">{form.proficiency}%</span>
                 </div>
                 <input
                   type="range"

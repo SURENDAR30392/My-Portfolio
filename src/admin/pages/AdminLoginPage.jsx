@@ -25,14 +25,14 @@ export const AdminLoginPage = () => {
       <div className="max-w-md w-full bg-white border border-[#F0DED4] rounded-2xl p-8 shadow-card">
 
         {/* Shield Icon */}
-        <div className="w-14 h-14 bg-[#FCE9DF] text-[#D98C70] rounded-2xl flex items-center justify-center mx-auto mb-5 border border-[#F4C9B5] shadow-xs">
+        <div className="w-14 h-14 bg-[#FCE9DF] text-[#613E35] rounded-2xl flex items-center justify-center mx-auto mb-5 border border-[#F4C9B5] shadow-xs">
           <ShieldCheck size={28} />
         </div>
 
         <h1 className="text-2xl font-bold text-center text-[#613E35] mb-1">
           Super Admin Panel
         </h1>
-        <p className="text-sm text-center text-[#A27B6E] mb-6">
+        <p className="text-sm text-center text-[#613E35] mb-6">
           Single-owner management system for Marthala Surendar Reddy (MSR).
         </p>
 
@@ -43,18 +43,18 @@ export const AdminLoginPage = () => {
           </div>
         )}
 
-        <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-xl p-4 mb-6 space-y-2 text-xs text-[#A27B6E]">
+        <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-xl p-4 mb-6 space-y-2 text-xs text-[#613E35]">
           <div className="font-semibold text-[#613E35] flex items-center gap-1.5">
-            <Lock size={13} className="text-[#D98C70]" />
+            <Lock size={13} className="text-[#613E35]" />
             <span>Sole Authorized Administrator</span>
           </div>
           <div className="p-3 rounded-lg bg-white border border-[#F0DED4] flex items-center justify-between">
             <span className="font-bold text-[#613E35] text-sm">Super Admin</span>
-            <span className="text-[10.5px] text-[#D98C70] font-semibold bg-[#FCE9DF] px-2.5 py-1 rounded-full border border-[#F4C9B5]">
+            <span className="text-[10.5px] text-[#613E35] font-semibold bg-[#FCE9DF] px-2.5 py-1 rounded-full border border-[#F4C9B5]">
               Authorized Account
             </span>
           </div>
-          <p className="text-[11px] text-[#A27B6E]">
+          <p className="text-[11px] text-[#613E35]">
             Restricted single-owner dashboard. Any unauthorized Google account will be automatically denied and signed out.
           </p>
         </div>
@@ -72,7 +72,7 @@ export const AdminLoginPage = () => {
         <div className="pt-4 border-t border-[#F0DED4] text-center">
           <Link
             to="/"
-            className="inline-flex items-center gap-1.5 text-xs text-[#A27B6E] hover:text-[#D98C70] transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs text-[#613E35] hover:text-[#D98C70] transition-colors"
           >
             <ArrowLeft size={13} />
             <span>Return to Public Portfolio</span>

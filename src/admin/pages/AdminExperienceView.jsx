@@ -62,7 +62,7 @@ export const AdminExperienceView = () => {
           <h1 className="text-2xl font-semibold text-[#613E35]">
             Experience Management
           </h1>
-          <p className="text-sm text-[#A27B6E] mt-1">
+          <p className="text-sm text-[#613E35] mt-1">
             Manage internships, software engineering roles, and student laboratory contributions.
           </p>
         </div>
@@ -80,7 +80,7 @@ export const AdminExperienceView = () => {
         {experience.map((exp) => (
           <div key={exp.id} className="bg-white border border-[#F0DED4] rounded-xl p-6 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-lg bg-[#FCE9DF] text-[#D98C70] flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 rounded-lg bg-[#FCE9DF] text-[#613E35] flex items-center justify-center shrink-0">
                 <History size={24} />
               </div>
               <div>
@@ -92,9 +92,9 @@ export const AdminExperienceView = () => {
                     </span>
                   )}
                 </div>
-                <div className="text-sm text-[#D98C70] font-medium mt-0.5">{exp.organization}</div>
-                <div className="text-xs text-[#A27B6E] mt-1">{exp.dates} · {exp.location}</div>
-                <p className="text-xs text-[#A27B6E] mt-2 leading-relaxed max-w-xl">{exp.description}</p>
+                <div className="text-sm text-[#613E35] font-medium mt-0.5">{exp.organization}</div>
+                <div className="text-xs text-[#613E35] mt-1">{exp.dates} · {exp.location}</div>
+                <p className="text-xs text-[#613E35] mt-2 leading-relaxed max-w-xl">{exp.description}</p>
               </div>
             </div>
 
@@ -124,7 +124,7 @@ export const AdminExperienceView = () => {
               <h2 className="text-base font-semibold text-[#613E35]">
                 {currentId ? 'Edit Experience' : 'Add Experience'}
               </h2>
-              <button onClick={() => setIsEditing(false)} className="text-[#A27B6E] hover:text-[#613E35]">
+              <button onClick={() => setIsEditing(false)} className="text-[#613E35] hover:text-[#613E35]">
                 <X size={18} />
               </button>
             </div>

@@ -68,7 +68,7 @@ export const ImageUrlInput = ({
               href={tempUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[11px] text-[#D98C70] hover:underline flex items-center gap-1 font-semibold"
+              className="text-[11px] text-[#613E35] hover:underline flex items-center gap-1 font-semibold"
             >
               <span>Test direct link</span>
               <ExternalLink size={11} />
@@ -94,7 +94,7 @@ export const ImageUrlInput = ({
           <button
             type="button"
             onClick={handleClear}
-            className="p-2.5 rounded-xl border border-[#F0DED4] bg-white text-[#A27B6E] hover:text-red-600 hover:bg-red-50 transition-colors shrink-0"
+            className="p-2.5 rounded-xl border border-[#F0DED4] bg-white text-[#613E35] hover:text-red-600 hover:bg-red-50 transition-colors shrink-0"
             title="Clear Image URL"
           >
             <Trash2 size={16} />
@@ -107,7 +107,7 @@ export const ImageUrlInput = ({
         <div className="p-3 bg-[#FFF8F3] border border-[#F0DED4] rounded-xl flex items-center gap-3">
           <div className={`w-20 ${aspectRatio} bg-white rounded-lg border border-[#F0DED4] overflow-hidden flex items-center justify-center shrink-0`}>
             {loadStatus === 'loading' && (
-              <RefreshCw size={16} className="text-[#D98C70] animate-spin" />
+              <RefreshCw size={16} className="text-[#613E35] animate-spin" />
             )}
             {loadStatus === 'success' && (
               <img
@@ -121,14 +121,14 @@ export const ImageUrlInput = ({
               <AlertTriangle size={16} className="text-amber-500" />
             )}
             {loadStatus === 'idle' && (
-              <Image size={16} className="text-[#A27B6E]" />
+              <Image size={16} className="text-[#613E35]" />
             )}
           </div>
 
           <div className="flex-1 min-w-0 text-xs">
             {loadStatus === 'loading' && (
-              <span className="text-[#A27B6E] flex items-center gap-1.5 font-medium">
-                <RefreshCw size={12} className="animate-spin text-[#D98C70]" />
+              <span className="text-[#613E35] flex items-center gap-1.5 font-medium">
+                <RefreshCw size={12} className="animate-spin text-[#613E35]" />
                 Validating image URL...
               </span>
             )}
@@ -144,7 +144,7 @@ export const ImageUrlInput = ({
                 Unable to load image from URL.
               </span>
             )}
-            <p className="text-[11px] text-[#A27B6E] truncate mt-1">
+            <p className="text-[11px] text-[#613E35] truncate mt-1">
               {tempUrl}
             </p>
           </div>

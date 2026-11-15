@@ -16,7 +16,7 @@ export const About = () => {
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#613E35] tracking-tight">
             Engineering Software with Precision & Discipline
           </h2>
-          <p className="text-base text-[#A27B6E] mt-2 max-w-2xl">
+          <p className="text-base text-[#613E35] mt-2 max-w-2xl">
             A closer look at my background, technical focus, and software craftsmanship principles.
           </p>
         </div>
@@ -47,8 +47,8 @@ export const About = () => {
                   key={idx} 
                   className="bg-[#FFF8F3] border border-[#F0DED4] rounded-xl p-4 shadow-subtle hover:border-[#F4C9B5] hover:shadow-xs transition-all duration-150 text-center"
                 >
-                  <div className="text-xl sm:text-2xl font-bold text-[#D98C70]">{stat.value}</div>
-                  <div className="text-xs text-[#A27B6E] font-medium mt-1">{stat.label}</div>
+                  <div className="text-xl sm:text-2xl font-bold text-[#613E35]">{stat.value}</div>
+                  <div className="text-xs text-[#613E35] font-medium mt-1">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -69,7 +69,7 @@ export const About = () => {
 
             {/* 3 Core Pillars */}
             <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-2xl p-6 space-y-4 shadow-subtle">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-[#A27B6E]">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#613E35]">
                 {profile.focusHeading || "Key Engineering Focus"}
               </h4>
 
@@ -94,12 +94,12 @@ export const About = () => {
                   const Icon = pillar.icon === 'Code2' ? Code2 : pillar.icon === 'GraduationCap' ? GraduationCap : Cpu;
                   return (
                     <div key={idx} className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-white border border-[#F0DED4] text-[#D98C70] flex items-center justify-center shrink-0 shadow-xs">
+                      <div className="w-8 h-8 rounded-lg bg-white border border-[#F0DED4] text-[#613E35] flex items-center justify-center shrink-0 shadow-xs">
                         <Icon size={16} />
                       </div>
                       <div>
                         <h5 className="text-sm font-semibold text-[#613E35]">{pillar.title}</h5>
-                        <p className="text-xs text-[#A27B6E] mt-0.5">{pillar.desc}</p>
+                        <p className="text-xs text-[#613E35] mt-0.5">{pillar.desc}</p>
                       </div>
                     </div>
                   );

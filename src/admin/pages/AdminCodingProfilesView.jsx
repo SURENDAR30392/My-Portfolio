@@ -70,7 +70,7 @@ export const AdminCodingProfilesView = () => {
           <h1 className="text-2xl font-semibold text-[#613E35]">
             Coding Profiles & Contributions Management
           </h1>
-          <p className="text-sm text-[#A27B6E] mt-1">
+          <p className="text-sm text-[#613E35] mt-1">
             Customize all cards, descriptions, and verified metric badges for GitHub, LeetCode, and CodeChef.
           </p>
         </div>
@@ -129,8 +129,8 @@ export const AdminCodingProfilesView = () => {
             onClick={() => setActivePlatform('github')}
             className={`flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-all ${
               activePlatform === 'github'
-                ? 'border-[#D98C70] text-[#D98C70]'
-                : 'border-transparent text-[#A27B6E] hover:text-[#613E35]'
+                ? 'border-[#D98C70] text-[#613E35]'
+                : 'border-transparent text-[#613E35] hover:text-[#613E35]'
             }`}
           >
             <Github size={18} />
@@ -142,8 +142,8 @@ export const AdminCodingProfilesView = () => {
             onClick={() => setActivePlatform('leetcode')}
             className={`flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-all ${
               activePlatform === 'leetcode'
-                ? 'border-[#D98C70] text-[#D98C70]'
-                : 'border-transparent text-[#A27B6E] hover:text-[#613E35]'
+                ? 'border-[#D98C70] text-[#613E35]'
+                : 'border-transparent text-[#613E35] hover:text-[#613E35]'
             }`}
           >
             <Code2 size={18} />
@@ -155,8 +155,8 @@ export const AdminCodingProfilesView = () => {
             onClick={() => setActivePlatform('codechef')}
             className={`flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-all ${
               activePlatform === 'codechef'
-                ? 'border-[#D98C70] text-[#D98C70]'
-                : 'border-transparent text-[#A27B6E] hover:text-[#613E35]'
+                ? 'border-[#D98C70] text-[#613E35]'
+                : 'border-transparent text-[#613E35] hover:text-[#613E35]'
             }`}
           >
             <CodeChefIcon size={18} />
@@ -169,7 +169,7 @@ export const AdminCodingProfilesView = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             <div className="lg:col-span-7 bg-white border border-[#F0DED4] rounded-xl p-6 shadow-sm space-y-4">
               <h3 className="text-base font-semibold text-[#613E35] border-b border-[#F0DED4] pb-2 flex items-center gap-2">
-                <Github size={18} className="text-[#D98C70]" />
+                <Github size={18} className="text-[#613E35]" />
                 <span>GitHub Card Configuration</span>
               </h3>
 
@@ -209,7 +209,7 @@ export const AdminCodingProfilesView = () => {
                 <p className="text-xs font-semibold text-[#613E35] mb-2">3 Metric Tags (Badges)</p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div className="bg-[#FFF8F3] p-3 rounded-lg border border-[#F0DED4] space-y-2">
-                    <span className="text-[11px] font-semibold text-[#A27B6E] uppercase">Metric 1</span>
+                    <span className="text-[11px] font-semibold text-[#613E35] uppercase">Metric 1</span>
                     <input
                       type="text"
                       placeholder="Value (e.g. Java)"
@@ -222,12 +222,12 @@ export const AdminCodingProfilesView = () => {
                       placeholder="Label (e.g. Primary Tech)"
                       value={form.githubStat1Label}
                       onChange={e => setForm({ ...form, githubStat1Label: e.target.value })}
-                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs text-[#A27B6E] focus:outline-none focus:border-[#D98C70]"
+                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs text-[#613E35] focus:outline-none focus:border-[#D98C70]"
                     />
                   </div>
 
                   <div className="bg-[#FFF8F3] p-3 rounded-lg border border-[#F0DED4] space-y-2">
-                    <span className="text-[11px] font-semibold text-[#A27B6E] uppercase">Metric 2</span>
+                    <span className="text-[11px] font-semibold text-[#613E35] uppercase">Metric 2</span>
                     <input
                       type="text"
                       placeholder="Value (e.g. Public)"
@@ -240,25 +240,25 @@ export const AdminCodingProfilesView = () => {
                       placeholder="Label (e.g. Repositories)"
                       value={form.githubStat2Label}
                       onChange={e => setForm({ ...form, githubStat2Label: e.target.value })}
-                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs text-[#A27B6E] focus:outline-none focus:border-[#D98C70]"
+                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs text-[#613E35] focus:outline-none focus:border-[#D98C70]"
                     />
                   </div>
 
                   <div className="bg-[#FFF8F3] p-3 rounded-lg border border-[#F0DED4] space-y-2">
-                    <span className="text-[11px] font-semibold text-[#A27B6E] uppercase">Metric 3</span>
+                    <span className="text-[11px] font-semibold text-[#613E35] uppercase">Metric 3</span>
                     <input
                       type="text"
                       placeholder="Value (e.g. Active)"
                       value={form.githubStat3Value}
                       onChange={e => setForm({ ...form, githubStat3Value: e.target.value })}
-                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs font-semibold text-[#D98C70] focus:outline-none focus:border-[#D98C70]"
+                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs font-semibold text-[#613E35] focus:outline-none focus:border-[#D98C70]"
                     />
                     <input
                       type="text"
                       placeholder="Label (e.g. Commits)"
                       value={form.githubStat3Label}
                       onChange={e => setForm({ ...form, githubStat3Label: e.target.value })}
-                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs text-[#A27B6E] focus:outline-none focus:border-[#D98C70]"
+                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs text-[#613E35] focus:outline-none focus:border-[#D98C70]"
                     />
                   </div>
                 </div>
@@ -267,20 +267,20 @@ export const AdminCodingProfilesView = () => {
 
             {/* Live Preview Card */}
             <div className="lg:col-span-5 space-y-2">
-              <div className="text-xs font-semibold text-[#A27B6E] uppercase tracking-wider flex items-center gap-1.5">
-                <Eye size={14} className="text-[#D98C70]" />
+              <div className="text-xs font-semibold text-[#613E35] uppercase tracking-wider flex items-center gap-1.5">
+                <Eye size={14} className="text-[#613E35]" />
                 <span>Live Card Preview</span>
               </div>
               <div className="bg-white border border-[#F0DED4] rounded-xl p-6 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-lg bg-[#FCE9DF] text-[#D98C70] flex items-center justify-center shrink-0">
+                      <div className="w-12 h-12 rounded-lg bg-[#FCE9DF] text-[#613E35] flex items-center justify-center shrink-0">
                         <Github size={24} />
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-[#613E35]">GitHub</h3>
-                        <p className="text-xs text-[#A27B6E]">@{form.githubUsername || 'username'}</p>
+                        <p className="text-xs text-[#613E35]">@{form.githubUsername || 'username'}</p>
                       </div>
                     </div>
                     <span className="link-accent text-sm inline-flex items-center gap-1 cursor-pointer">
@@ -289,32 +289,32 @@ export const AdminCodingProfilesView = () => {
                     </span>
                   </div>
 
-                  <p className="text-sm text-[#A27B6E] leading-relaxed mb-6 min-h-[4rem]">
+                  <p className="text-sm text-[#613E35] leading-relaxed mb-6 min-h-[4rem]">
                     {form.githubDescription || 'Card description appears here...'}
                   </p>
 
                   <div className="grid grid-cols-3 gap-2.5 pt-4 border-t border-[#F0DED4]">
                     <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-lg p-2 text-center">
                       <div className="text-sm font-semibold text-[#613E35]">{form.githubStat1Value || '-'}</div>
-                      <div className="text-[10.5px] text-[#A27B6E]">{form.githubStat1Label || '-'}</div>
+                      <div className="text-[10.5px] text-[#613E35]">{form.githubStat1Label || '-'}</div>
                     </div>
                     <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-lg p-2 text-center">
                       <div className="text-sm font-semibold text-[#613E35]">{form.githubStat2Value || '-'}</div>
-                      <div className="text-[10.5px] text-[#A27B6E]">{form.githubStat2Label || '-'}</div>
+                      <div className="text-[10.5px] text-[#613E35]">{form.githubStat2Label || '-'}</div>
                     </div>
                     <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-lg p-2 text-center">
-                      <div className="text-sm font-semibold text-[#D98C70]">{form.githubStat3Value || '-'}</div>
-                      <div className="text-[10.5px] text-[#A27B6E]">{form.githubStat3Label || '-'}</div>
+                      <div className="text-sm font-semibold text-[#613E35]">{form.githubStat3Value || '-'}</div>
+                      <div className="text-[10.5px] text-[#613E35]">{form.githubStat3Label || '-'}</div>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-6 pt-3 border-t border-[#F0DED4]/50 flex items-center justify-between text-xs text-[#A27B6E]">
+                <div className="mt-6 pt-3 border-t border-[#F0DED4]/50 flex items-center justify-between text-xs text-[#613E35]">
                   <span className="flex items-center gap-1.5 truncate">
-                    <GitBranch size={13} className="text-[#D98C70] shrink-0" />
+                    <GitBranch size={13} className="text-[#613E35] shrink-0" />
                     <span className="truncate">github.com/{form.githubUsername}</span>
                   </span>
-                  <span className="text-[#D98C70] font-medium shrink-0">Verified</span>
+                  <span className="text-[#613E35] font-medium shrink-0">Verified</span>
                 </div>
               </div>
             </div>
@@ -326,7 +326,7 @@ export const AdminCodingProfilesView = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             <div className="lg:col-span-7 bg-white border border-[#F0DED4] rounded-xl p-6 shadow-sm space-y-4">
               <h3 className="text-base font-semibold text-[#613E35] border-b border-[#F0DED4] pb-2 flex items-center gap-2">
-                <Code2 size={18} className="text-[#D98C70]" />
+                <Code2 size={18} className="text-[#613E35]" />
                 <span>LeetCode Card Configuration</span>
               </h3>
 
@@ -366,7 +366,7 @@ export const AdminCodingProfilesView = () => {
                 <p className="text-xs font-semibold text-[#613E35] mb-2">3 Metric Tags (Badges)</p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div className="bg-[#FFF8F3] p-3 rounded-lg border border-[#F0DED4] space-y-2">
-                    <span className="text-[11px] font-semibold text-[#A27B6E] uppercase">Metric 1</span>
+                    <span className="text-[11px] font-semibold text-[#613E35] uppercase">Metric 1</span>
                     <input
                       type="text"
                       placeholder="Value (e.g. 150+)"
@@ -379,12 +379,12 @@ export const AdminCodingProfilesView = () => {
                       placeholder="Label (e.g. Solved)"
                       value={form.leetcodeStat1Label}
                       onChange={e => setForm({ ...form, leetcodeStat1Label: e.target.value })}
-                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs text-[#A27B6E] focus:outline-none focus:border-[#D98C70]"
+                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs text-[#613E35] focus:outline-none focus:border-[#D98C70]"
                     />
                   </div>
 
                   <div className="bg-[#FFF8F3] p-3 rounded-lg border border-[#F0DED4] space-y-2">
-                    <span className="text-[11px] font-semibold text-[#A27B6E] uppercase">Metric 2</span>
+                    <span className="text-[11px] font-semibold text-[#613E35] uppercase">Metric 2</span>
                     <input
                       type="text"
                       placeholder="Value (e.g. DSA)"
@@ -397,25 +397,25 @@ export const AdminCodingProfilesView = () => {
                       placeholder="Label (e.g. Algorithms)"
                       value={form.leetcodeStat2Label}
                       onChange={e => setForm({ ...form, leetcodeStat2Label: e.target.value })}
-                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs text-[#A27B6E] focus:outline-none focus:border-[#D98C70]"
+                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs text-[#613E35] focus:outline-none focus:border-[#D98C70]"
                     />
                   </div>
 
                   <div className="bg-[#FFF8F3] p-3 rounded-lg border border-[#F0DED4] space-y-2">
-                    <span className="text-[11px] font-semibold text-[#A27B6E] uppercase">Metric 3</span>
+                    <span className="text-[11px] font-semibold text-[#613E35] uppercase">Metric 3</span>
                     <input
                       type="text"
                       placeholder="Value (e.g. Java)"
                       value={form.leetcodeStat3Value}
                       onChange={e => setForm({ ...form, leetcodeStat3Value: e.target.value })}
-                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs font-semibold text-[#D98C70] focus:outline-none focus:border-[#D98C70]"
+                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs font-semibold text-[#613E35] focus:outline-none focus:border-[#D98C70]"
                     />
                     <input
                       type="text"
                       placeholder="Label (e.g. Language)"
                       value={form.leetcodeStat3Label}
                       onChange={e => setForm({ ...form, leetcodeStat3Label: e.target.value })}
-                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs text-[#A27B6E] focus:outline-none focus:border-[#D98C70]"
+                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs text-[#613E35] focus:outline-none focus:border-[#D98C70]"
                     />
                   </div>
                 </div>
@@ -424,20 +424,20 @@ export const AdminCodingProfilesView = () => {
 
             {/* Live Preview Card */}
             <div className="lg:col-span-5 space-y-2">
-              <div className="text-xs font-semibold text-[#A27B6E] uppercase tracking-wider flex items-center gap-1.5">
-                <Eye size={14} className="text-[#D98C70]" />
+              <div className="text-xs font-semibold text-[#613E35] uppercase tracking-wider flex items-center gap-1.5">
+                <Eye size={14} className="text-[#613E35]" />
                 <span>Live Card Preview</span>
               </div>
               <div className="bg-white border border-[#F0DED4] rounded-xl p-6 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-lg bg-[#FCE9DF] text-[#D98C70] flex items-center justify-center shrink-0">
+                      <div className="w-12 h-12 rounded-lg bg-[#FCE9DF] text-[#613E35] flex items-center justify-center shrink-0">
                         <Code2 size={24} />
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-[#613E35]">LeetCode</h3>
-                        <p className="text-xs text-[#A27B6E]">@{form.leetcodeUsername || 'username'}</p>
+                        <p className="text-xs text-[#613E35]">@{form.leetcodeUsername || 'username'}</p>
                       </div>
                     </div>
                     <span className="link-accent text-sm inline-flex items-center gap-1 cursor-pointer">
@@ -446,32 +446,32 @@ export const AdminCodingProfilesView = () => {
                     </span>
                   </div>
 
-                  <p className="text-sm text-[#A27B6E] leading-relaxed mb-6 min-h-[4rem]">
+                  <p className="text-sm text-[#613E35] leading-relaxed mb-6 min-h-[4rem]">
                     {form.leetcodeDescription || 'Card description appears here...'}
                   </p>
 
                   <div className="grid grid-cols-3 gap-2.5 pt-4 border-t border-[#F0DED4]">
                     <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-lg p-2 text-center">
                       <div className="text-sm font-semibold text-[#15803D]">{form.leetcodeStat1Value || '-'}</div>
-                      <div className="text-[10.5px] text-[#A27B6E]">{form.leetcodeStat1Label || '-'}</div>
+                      <div className="text-[10.5px] text-[#613E35]">{form.leetcodeStat1Label || '-'}</div>
                     </div>
                     <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-lg p-2 text-center">
                       <div className="text-sm font-semibold text-[#613E35]">{form.leetcodeStat2Value || '-'}</div>
-                      <div className="text-[10.5px] text-[#A27B6E]">{form.leetcodeStat2Label || '-'}</div>
+                      <div className="text-[10.5px] text-[#613E35]">{form.leetcodeStat2Label || '-'}</div>
                     </div>
                     <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-lg p-2 text-center">
-                      <div className="text-sm font-semibold text-[#D98C70]">{form.leetcodeStat3Value || '-'}</div>
-                      <div className="text-[10.5px] text-[#A27B6E]">{form.leetcodeStat3Label || '-'}</div>
+                      <div className="text-sm font-semibold text-[#613E35]">{form.leetcodeStat3Value || '-'}</div>
+                      <div className="text-[10.5px] text-[#613E35]">{form.leetcodeStat3Label || '-'}</div>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-6 pt-3 border-t border-[#F0DED4]/50 flex items-center justify-between text-xs text-[#A27B6E]">
+                <div className="mt-6 pt-3 border-t border-[#F0DED4]/50 flex items-center justify-between text-xs text-[#613E35]">
                   <span className="flex items-center gap-1.5 truncate">
-                    <Award size={13} className="text-[#D98C70] shrink-0" />
+                    <Award size={13} className="text-[#613E35] shrink-0" />
                     <span className="truncate">leetcode.com/u/{form.leetcodeUsername}</span>
                   </span>
-                  <span className="text-[#D98C70] font-medium shrink-0">Verified</span>
+                  <span className="text-[#613E35] font-medium shrink-0">Verified</span>
                 </div>
               </div>
             </div>
@@ -483,7 +483,7 @@ export const AdminCodingProfilesView = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             <div className="lg:col-span-7 bg-white border border-[#F0DED4] rounded-xl p-6 shadow-sm space-y-4">
               <h3 className="text-base font-semibold text-[#613E35] border-b border-[#F0DED4] pb-2 flex items-center gap-2">
-                <CodeChefIcon size={18} className="text-[#D98C70]" />
+                <CodeChefIcon size={18} className="text-[#613E35]" />
                 <span>CodeChef Card Configuration</span>
               </h3>
 
@@ -523,7 +523,7 @@ export const AdminCodingProfilesView = () => {
                 <p className="text-xs font-semibold text-[#613E35] mb-2">3 Metric Tags (Badges)</p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div className="bg-[#FFF8F3] p-3 rounded-lg border border-[#F0DED4] space-y-2">
-                    <span className="text-[11px] font-semibold text-[#A27B6E] uppercase">Metric 1</span>
+                    <span className="text-[11px] font-semibold text-[#613E35] uppercase">Metric 1</span>
                     <input
                       type="text"
                       placeholder="Value (e.g. Div 4/3)"
@@ -536,12 +536,12 @@ export const AdminCodingProfilesView = () => {
                       placeholder="Label (e.g. Division)"
                       value={form.codechefStat1Label}
                       onChange={e => setForm({ ...form, codechefStat1Label: e.target.value })}
-                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs text-[#A27B6E] focus:outline-none focus:border-[#D98C70]"
+                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs text-[#613E35] focus:outline-none focus:border-[#D98C70]"
                     />
                   </div>
 
                   <div className="bg-[#FFF8F3] p-3 rounded-lg border border-[#F0DED4] space-y-2">
-                    <span className="text-[11px] font-semibold text-[#A27B6E] uppercase">Metric 2</span>
+                    <span className="text-[11px] font-semibold text-[#613E35] uppercase">Metric 2</span>
                     <input
                       type="text"
                       placeholder="Value (e.g. Contests)"
@@ -554,25 +554,25 @@ export const AdminCodingProfilesView = () => {
                       placeholder="Label (e.g. Starters)"
                       value={form.codechefStat2Label}
                       onChange={e => setForm({ ...form, codechefStat2Label: e.target.value })}
-                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs text-[#A27B6E] focus:outline-none focus:border-[#D98C70]"
+                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs text-[#613E35] focus:outline-none focus:border-[#D98C70]"
                     />
                   </div>
 
                   <div className="bg-[#FFF8F3] p-3 rounded-lg border border-[#F0DED4] space-y-2">
-                    <span className="text-[11px] font-semibold text-[#A27B6E] uppercase">Metric 3</span>
+                    <span className="text-[11px] font-semibold text-[#613E35] uppercase">Metric 3</span>
                     <input
                       type="text"
                       placeholder="Value (e.g. Active)"
                       value={form.codechefStat3Value}
                       onChange={e => setForm({ ...form, codechefStat3Value: e.target.value })}
-                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs font-semibold text-[#D98C70] focus:outline-none focus:border-[#D98C70]"
+                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs font-semibold text-[#613E35] focus:outline-none focus:border-[#D98C70]"
                     />
                     <input
                       type="text"
                       placeholder="Label (e.g. Rating)"
                       value={form.codechefStat3Label}
                       onChange={e => setForm({ ...form, codechefStat3Label: e.target.value })}
-                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs text-[#A27B6E] focus:outline-none focus:border-[#D98C70]"
+                      className="w-full px-2.5 py-1.5 rounded border border-[#F0DED4] text-xs text-[#613E35] focus:outline-none focus:border-[#D98C70]"
                     />
                   </div>
                 </div>
@@ -581,20 +581,20 @@ export const AdminCodingProfilesView = () => {
 
             {/* Live Preview Card */}
             <div className="lg:col-span-5 space-y-2">
-              <div className="text-xs font-semibold text-[#A27B6E] uppercase tracking-wider flex items-center gap-1.5">
-                <Eye size={14} className="text-[#D98C70]" />
+              <div className="text-xs font-semibold text-[#613E35] uppercase tracking-wider flex items-center gap-1.5">
+                <Eye size={14} className="text-[#613E35]" />
                 <span>Live Card Preview</span>
               </div>
               <div className="bg-white border border-[#F0DED4] rounded-xl p-6 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-lg bg-[#FCE9DF] text-[#D98C70] flex items-center justify-center shrink-0">
+                      <div className="w-12 h-12 rounded-lg bg-[#FCE9DF] text-[#613E35] flex items-center justify-center shrink-0">
                         <CodeChefIcon size={24} />
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-[#613E35]">CodeChef</h3>
-                        <p className="text-xs text-[#A27B6E]">@{form.codechefUsername || 'username'}</p>
+                        <p className="text-xs text-[#613E35]">@{form.codechefUsername || 'username'}</p>
                       </div>
                     </div>
                     <span className="link-accent text-sm inline-flex items-center gap-1 cursor-pointer">
@@ -603,32 +603,32 @@ export const AdminCodingProfilesView = () => {
                     </span>
                   </div>
 
-                  <p className="text-sm text-[#A27B6E] leading-relaxed mb-6 min-h-[4rem]">
+                  <p className="text-sm text-[#613E35] leading-relaxed mb-6 min-h-[4rem]">
                     {form.codechefDescription || 'Card description appears here...'}
                   </p>
 
                   <div className="grid grid-cols-3 gap-2.5 pt-4 border-t border-[#F0DED4]">
                     <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-lg p-2 text-center">
                       <div className="text-sm font-semibold text-[#613E35]">{form.codechefStat1Value || '-'}</div>
-                      <div className="text-[10.5px] text-[#A27B6E]">{form.codechefStat1Label || '-'}</div>
+                      <div className="text-[10.5px] text-[#613E35]">{form.codechefStat1Label || '-'}</div>
                     </div>
                     <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-lg p-2 text-center">
                       <div className="text-sm font-semibold text-[#613E35]">{form.codechefStat2Value || '-'}</div>
-                      <div className="text-[10.5px] text-[#A27B6E]">{form.codechefStat2Label || '-'}</div>
+                      <div className="text-[10.5px] text-[#613E35]">{form.codechefStat2Label || '-'}</div>
                     </div>
                     <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-lg p-2 text-center">
-                      <div className="text-sm font-semibold text-[#D98C70]">{form.codechefStat3Value || '-'}</div>
-                      <div className="text-[10.5px] text-[#A27B6E]">{form.codechefStat3Label || '-'}</div>
+                      <div className="text-sm font-semibold text-[#613E35]">{form.codechefStat3Value || '-'}</div>
+                      <div className="text-[10.5px] text-[#613E35]">{form.codechefStat3Label || '-'}</div>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-6 pt-3 border-t border-[#F0DED4]/50 flex items-center justify-between text-xs text-[#A27B6E]">
+                <div className="mt-6 pt-3 border-t border-[#F0DED4]/50 flex items-center justify-between text-xs text-[#613E35]">
                   <span className="flex items-center gap-1.5 truncate">
-                    <Trophy size={13} className="text-[#D98C70] shrink-0" />
+                    <Trophy size={13} className="text-[#613E35] shrink-0" />
                     <span className="truncate">codechef.com/users/{form.codechefUsername}</span>
                   </span>
-                  <span className="text-[#D98C70] font-medium shrink-0">Verified</span>
+                  <span className="text-[#613E35] font-medium shrink-0">Verified</span>
                 </div>
               </div>
             </div>
@@ -636,8 +636,8 @@ export const AdminCodingProfilesView = () => {
         )}
 
         <div className="pt-4 flex items-center justify-between border-t border-[#F0DED4]">
-          <div className="flex items-center gap-2 text-xs text-[#A27B6E]">
-            <HelpCircle size={14} className="text-[#D98C70]" />
+          <div className="flex items-center gap-2 text-xs text-[#613E35]">
+            <HelpCircle size={14} className="text-[#613E35]" />
             <span>Updates are synced to Cloud Firestore under <code>socialLinks/main</code> with real-time public delivery.</span>
           </div>
 

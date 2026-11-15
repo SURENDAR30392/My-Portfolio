@@ -21,7 +21,7 @@ export const Education = () => {
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#613E35] tracking-tight">
             {settings.educationTitle || "Academic Background & Journey"}
           </h2>
-          <p className="text-base text-[#A27B6E] mt-2 max-w-2xl">
+          <p className="text-base text-[#613E35] mt-2 max-w-2xl">
             {settings.educationSubtitle || "My undergraduate Computer Science engineering curriculum and academic progression at KL University."}
           </p>
         </div>
@@ -40,24 +40,24 @@ export const Education = () => {
                 className="bg-[#FFF8F3] border border-[#F0DED4] rounded-2xl p-6 md:p-8 shadow-card hover:border-[#F4C9B5] transition-all duration-200"
               >
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-white border border-[#F4C9B5] text-[#D98C70] flex items-center justify-center shrink-0 shadow-xs">
+                  <div className="w-12 h-12 rounded-xl bg-white border border-[#F4C9B5] text-[#613E35] flex items-center justify-center shrink-0 shadow-xs">
                     <GraduationCap size={24} />
                   </div>
                   <div>
                     <h4 className="text-lg font-bold text-[#613E35]">
                       {edu.degree}
                     </h4>
-                    <p className="text-base font-medium text-[#D98C70]">
+                    <p className="text-base font-medium text-[#613E35]">
                       {edu.institution}
                     </p>
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[#A27B6E] mt-1.5">
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[#613E35] mt-1.5">
                       <span className="inline-flex items-center gap-1 font-medium text-[#613E35]">
-                        <Calendar size={12} className="text-[#D98C70]" />
+                        <Calendar size={12} className="text-[#613E35]" />
                         {edu.dates}
                       </span>
                       <span>•</span>
                       <span className="inline-flex items-center gap-1">
-                        <MapPin size={12} className="text-[#A27B6E]" />
+                        <MapPin size={12} className="text-[#613E35]" />
                         {edu.location}
                       </span>
                     </div>
@@ -73,13 +73,13 @@ export const Education = () => {
                 {/* Highlights / Coursework */}
                 {Array.isArray(edu.highlights) && edu.highlights.length > 0 && (
                   <div className="pt-4 border-t border-[#F0DED4] space-y-2">
-                    <div className="text-xs font-bold uppercase tracking-wider text-[#A27B6E]">
+                    <div className="text-xs font-bold uppercase tracking-wider text-[#613E35]">
                       Curriculum Highlights
                     </div>
                     <ul className="space-y-1.5">
                       {edu.highlights.map((hl, idx) => (
                         <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-[#613E35]">
-                          <CheckCircle2 size={15} className="text-[#D98C70] shrink-0 mt-0.5" />
+                          <CheckCircle2 size={15} className="text-[#613E35] shrink-0 mt-0.5" />
                           <span>{hl}</span>
                         </li>
                       ))}
@@ -91,7 +91,7 @@ export const Education = () => {
 
             {educationList.length === 0 && (
               <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-xl p-8 text-center">
-                <p className="text-sm text-[#A27B6E]">No published education records available.</p>
+                <p className="text-sm text-[#613E35]">No published education records available.</p>
               </div>
             )}
           </div>
@@ -112,13 +112,13 @@ export const Education = () => {
                   />
                   
                   <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-xl p-4.5 group-hover:border-[#F4C9B5] group-hover:bg-[#FCE9DF]/40 transition-all duration-150 shadow-subtle">
-                    <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-[#D98C70] mb-1">
+                    <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-[#613E35] mb-1">
                       {milestone.year}
                     </span>
                     <h5 className="text-base font-semibold text-[#613E35] mb-1">
                       {milestone.title}
                     </h5>
-                    <p className="text-sm text-[#A27B6E] leading-relaxed">
+                    <p className="text-sm text-[#613E35] leading-relaxed">
                       {milestone.desc}
                     </p>
                   </div>

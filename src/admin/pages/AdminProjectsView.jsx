@@ -94,7 +94,7 @@ export const AdminProjectsView = () => {
           <h1 className="text-2xl font-semibold text-[#613E35]">
             Project Management
           </h1>
-          <p className="text-sm text-[#A27B6E] mt-1">
+          <p className="text-sm text-[#613E35] mt-1">
             Add, update, reorder, or publish software engineering projects with full details.
           </p>
         </div>
@@ -112,7 +112,7 @@ export const AdminProjectsView = () => {
       <div className="bg-white border border-[#F0DED4] rounded-xl overflow-hidden shadow-sm">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm">
-            <thead className="bg-[#FFF8F3] border-b border-[#F0DED4] text-xs font-semibold text-[#A27B6E] uppercase">
+            <thead className="bg-[#FFF8F3] border-b border-[#F0DED4] text-xs font-semibold text-[#613E35] uppercase">
               <tr>
                 <th className="px-6 py-4">Project</th>
                 <th className="px-6 py-4">Level</th>
@@ -130,7 +130,7 @@ export const AdminProjectsView = () => {
                         {proj.image ? (
                           <img src={proj.image} alt="" className="w-full h-full object-cover" />
                         ) : (
-                          <div className="w-full h-full flex items-center justify-center text-[10px] text-[#D98C70]">No Pic</div>
+                          <div className="w-full h-full flex items-center justify-center text-[10px] text-[#613E35]">No Pic</div>
                         )}
                       </div>
                       <div>
@@ -140,7 +140,7 @@ export const AdminProjectsView = () => {
                             <Star size={13} className="text-[#B45309] fill-[#B45309]" />
                           )}
                         </div>
-                        <div className="text-xs text-[#A27B6E] line-clamp-1 max-w-sm">
+                        <div className="text-xs text-[#613E35] line-clamp-1 max-w-sm">
                           {proj.description}
                         </div>
                       </div>
@@ -148,7 +148,7 @@ export const AdminProjectsView = () => {
                   </td>
 
                   <td className="px-6 py-4">
-                    <span className="text-xs px-2.5 py-1 rounded-md bg-[#FCE9DF] text-[#D98C70] font-medium border border-[#F0DED4]">
+                    <span className="text-xs px-2.5 py-1 rounded-md bg-[#FCE9DF] text-[#613E35] font-medium border border-[#F0DED4]">
                       {proj.level || 'Advanced'}
                     </span>
                   </td>
@@ -160,7 +160,7 @@ export const AdminProjectsView = () => {
                         Published
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1.5 text-xs text-[#A27B6E]">
+                      <span className="inline-flex items-center gap-1.5 text-xs text-[#613E35]">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#A27B6E]" />
                         Draft
                       </span>
@@ -173,7 +173,7 @@ export const AdminProjectsView = () => {
                         Sample Data
                       </span>
                     ) : (
-                      <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-[#FCE9DF] text-[#D98C70]">
+                      <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-[#FCE9DF] text-[#613E35]">
                         Verified
                       </span>
                     )}
@@ -183,14 +183,14 @@ export const AdminProjectsView = () => {
                     <div className="inline-flex items-center gap-1">
                       <button
                         onClick={() => openEditModal(proj)}
-                        className="p-1.5 rounded-lg text-[#A27B6E] hover:text-[#D98C70] hover:bg-[#FCE9DF]"
+                        className="p-1.5 rounded-lg text-[#613E35] hover:text-[#D98C70] hover:bg-[#FCE9DF]"
                         title="Edit Project"
                       >
                         <Edit3 size={16} />
                       </button>
                       <button
                         onClick={() => handleDelete(proj.id, proj.title)}
-                        className="p-1.5 rounded-lg text-[#A27B6E] hover:text-[#DC2626] hover:bg-[#FEF2F2]"
+                        className="p-1.5 rounded-lg text-[#613E35] hover:text-[#DC2626] hover:bg-[#FEF2F2]"
                         title="Delete Project"
                       >
                         <Trash2 size={16} />
@@ -212,7 +212,7 @@ export const AdminProjectsView = () => {
               <h2 className="text-lg font-semibold text-[#613E35]">
                 {currentId ? 'Edit Project' : 'Add New Project'}
               </h2>
-              <button onClick={() => setIsEditing(false)} className="p-1 text-[#A27B6E] hover:text-[#613E35]">
+              <button onClick={() => setIsEditing(false)} className="p-1 text-[#613E35] hover:text-[#613E35]">
                 <X size={20} />
               </button>
             </div>
@@ -334,7 +334,7 @@ export const AdminProjectsView = () => {
                     type="checkbox"
                     checked={form.featured}
                     onChange={e => setForm({ ...form, featured: e.target.checked })}
-                    className="rounded text-[#D98C70] focus:ring-[#F4C9B5]"
+                    className="rounded text-[#613E35] focus:ring-[#F4C9B5]"
                   />
                   <span>Mark as Featured</span>
                 </label>
@@ -344,7 +344,7 @@ export const AdminProjectsView = () => {
                     type="checkbox"
                     checked={form.published}
                     onChange={e => setForm({ ...form, published: e.target.checked })}
-                    className="rounded text-[#D98C70] focus:ring-[#F4C9B5]"
+                    className="rounded text-[#613E35] focus:ring-[#F4C9B5]"
                   />
                   <span>Published on Website</span>
                 </label>

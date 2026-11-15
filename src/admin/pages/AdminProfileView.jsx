@@ -271,7 +271,7 @@ export const AdminProfileView = () => {
         <h1 className="text-2xl font-semibold text-[#613E35]">
           Personal Information & Professional Profiles
         </h1>
-        <p className="text-sm text-[#A27B6E] mt-1">
+        <p className="text-sm text-[#613E35] mt-1">
           Update your public profile, bio narratives, portrait image, and independent coding links.
         </p>
       </div>
@@ -281,7 +281,7 @@ export const AdminProfileView = () => {
         {/* Core Identity */}
         <div className="bg-white border border-[#F0DED4] rounded-xl p-6 shadow-sm space-y-5">
           <h2 className="text-base font-semibold text-[#613E35] border-b border-[#F0DED4] pb-3 flex items-center gap-2">
-            <User size={18} className="text-[#D98C70]" />
+            <User size={18} className="text-[#613E35]" />
             <span>Identity & Academic Information</span>
           </h2>
 
@@ -338,7 +338,7 @@ export const AdminProfileView = () => {
 
             <div>
               <label className="block text-xs font-semibold text-[#613E35] mb-1.5 flex items-center gap-1.5">
-                <Mail size={14} className="text-[#D98C70]" />
+                <Mail size={14} className="text-[#613E35]" />
                 <span>Email Address (Gmail) *</span>
               </label>
               <input
@@ -353,7 +353,7 @@ export const AdminProfileView = () => {
 
             <div>
               <label className="block text-xs font-semibold text-[#613E35] mb-1.5 flex items-center gap-1.5">
-                <Phone size={14} className="text-[#D98C70]" />
+                <Phone size={14} className="text-[#613E35]" />
                 <span>Phone / WhatsApp Mobile Number</span>
               </label>
               <input
@@ -367,7 +367,7 @@ export const AdminProfileView = () => {
 
             <div>
               <label className="block text-xs font-semibold text-[#613E35] mb-1.5 flex items-center gap-1.5">
-                <MapPin size={14} className="text-[#D98C70]" />
+                <MapPin size={14} className="text-[#613E35]" />
                 <span>Campus Location</span>
               </label>
               <input
@@ -446,21 +446,21 @@ export const AdminProfileView = () => {
         <div className="bg-white border border-[#F0DED4] rounded-xl p-6 shadow-sm space-y-5">
           <div className="border-b border-[#F0DED4] pb-3 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <BarChart2 size={18} className="text-[#D98C70]" />
+              <BarChart2 size={18} className="text-[#613E35]" />
               <h2 className="text-base font-semibold text-[#613E35]">
                 About Section Key Metrics & Statistics (4 Badges)
               </h2>
             </div>
-            <span className="text-xs text-[#A27B6E] font-normal">Homepage stats row</span>
+            <span className="text-xs text-[#613E35] font-normal">Homepage stats row</span>
           </div>
-          <p className="text-xs text-[#A27B6E]">
+          <p className="text-xs text-[#613E35]">
             Configure the 4 numeric/status metric badges displayed directly below your narrative biography in the About Me section.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Stat 1 */}
             <div className="p-4 bg-[#FFF8F3] border border-[#F0DED4] rounded-xl space-y-2.5">
-              <span className="text-[10.5px] font-bold text-[#A27B6E] uppercase tracking-wider block">Metric 1</span>
+              <span className="text-[10.5px] font-bold text-[#613E35] uppercase tracking-wider block">Metric 1</span>
               <div>
                 <label className="block text-[11px] font-semibold text-[#613E35] mb-1">Value / Count</label>
                 <input
@@ -469,7 +469,7 @@ export const AdminProfileView = () => {
                   value={form.stat1Value}
                   onChange={e => setForm({ ...form, stat1Value: e.target.value })}
                   placeholder="200+"
-                  className="w-full px-3 py-1.5 rounded-lg border border-[#F0DED4] text-sm font-bold text-[#D98C70] bg-white focus:outline-none focus:border-[#D98C70]"
+                  className="w-full px-3 py-1.5 rounded-lg border border-[#F0DED4] text-sm font-bold text-[#613E35] bg-white focus:outline-none focus:border-[#D98C70]"
                 />
               </div>
               <div>
@@ -487,7 +487,7 @@ export const AdminProfileView = () => {
 
             {/* Stat 2 */}
             <div className="p-4 bg-[#FFF8F3] border border-[#F0DED4] rounded-xl space-y-2.5">
-              <span className="text-[10.5px] font-bold text-[#A27B6E] uppercase tracking-wider block">Metric 2</span>
+              <span className="text-[10.5px] font-bold text-[#613E35] uppercase tracking-wider block">Metric 2</span>
               <div>
                 <label className="block text-[11px] font-semibold text-[#613E35] mb-1">Value / Count</label>
                 <input
@@ -496,7 +496,7 @@ export const AdminProfileView = () => {
                   value={form.stat2Value}
                   onChange={e => setForm({ ...form, stat2Value: e.target.value })}
                   placeholder="8+"
-                  className="w-full px-3 py-1.5 rounded-lg border border-[#F0DED4] text-sm font-bold text-[#D98C70] bg-white focus:outline-none focus:border-[#D98C70]"
+                  className="w-full px-3 py-1.5 rounded-lg border border-[#F0DED4] text-sm font-bold text-[#613E35] bg-white focus:outline-none focus:border-[#D98C70]"
                 />
               </div>
               <div>
@@ -514,7 +514,7 @@ export const AdminProfileView = () => {
 
             {/* Stat 3 */}
             <div className="p-4 bg-[#FFF8F3] border border-[#F0DED4] rounded-xl space-y-2.5">
-              <span className="text-[10.5px] font-bold text-[#A27B6E] uppercase tracking-wider block">Metric 3</span>
+              <span className="text-[10.5px] font-bold text-[#613E35] uppercase tracking-wider block">Metric 3</span>
               <div>
                 <label className="block text-[11px] font-semibold text-[#613E35] mb-1">Value / Status</label>
                 <input
@@ -523,7 +523,7 @@ export const AdminProfileView = () => {
                   value={form.stat3Value}
                   onChange={e => setForm({ ...form, stat3Value: e.target.value })}
                   placeholder="Active"
-                  className="w-full px-3 py-1.5 rounded-lg border border-[#F0DED4] text-sm font-bold text-[#D98C70] bg-white focus:outline-none focus:border-[#D98C70]"
+                  className="w-full px-3 py-1.5 rounded-lg border border-[#F0DED4] text-sm font-bold text-[#613E35] bg-white focus:outline-none focus:border-[#D98C70]"
                 />
               </div>
               <div>
@@ -541,7 +541,7 @@ export const AdminProfileView = () => {
 
             {/* Stat 4 */}
             <div className="p-4 bg-[#FFF8F3] border border-[#F0DED4] rounded-xl space-y-2.5">
-              <span className="text-[10.5px] font-bold text-[#A27B6E] uppercase tracking-wider block">Metric 4</span>
+              <span className="text-[10.5px] font-bold text-[#613E35] uppercase tracking-wider block">Metric 4</span>
               <div>
                 <label className="block text-[11px] font-semibold text-[#613E35] mb-1">Value / Year</label>
                 <input
@@ -550,7 +550,7 @@ export const AdminProfileView = () => {
                   value={form.stat4Value}
                   onChange={e => setForm({ ...form, stat4Value: e.target.value })}
                   placeholder="2028"
-                  className="w-full px-3 py-1.5 rounded-lg border border-[#F0DED4] text-sm font-bold text-[#D98C70] bg-white focus:outline-none focus:border-[#D98C70]"
+                  className="w-full px-3 py-1.5 rounded-lg border border-[#F0DED4] text-sm font-bold text-[#613E35] bg-white focus:outline-none focus:border-[#D98C70]"
                 />
               </div>
               <div>
@@ -572,10 +572,10 @@ export const AdminProfileView = () => {
         <div className="bg-white border border-[#F0DED4] rounded-xl p-6 shadow-sm space-y-6">
           <div className="border-b border-[#F0DED4] pb-3">
             <h2 className="text-base font-semibold text-[#613E35] flex items-center gap-2">
-              <Cpu size={18} className="text-[#D98C70]" />
+              <Cpu size={18} className="text-[#613E35]" />
               <span>Key Engineering Focus Pillars & Philosophy Card</span>
             </h2>
-            <p className="text-xs text-[#A27B6E] mt-1">
+            <p className="text-xs text-[#613E35] mt-1">
               Edit the Software Craftsmanship card and the 3 technical specialization pillars rendered in the About Me section.
             </p>
           </div>
@@ -583,7 +583,7 @@ export const AdminProfileView = () => {
           {/* Software Craftsmanship Philosophy Card */}
           <div className="p-4 bg-[#FCE9DF] border border-[#F4C9B5] rounded-xl space-y-3">
             <div className="flex items-center gap-2 text-sm font-bold text-[#613E35]">
-              <Quote size={16} className="text-[#D98C70]" />
+              <Quote size={16} className="text-[#613E35]" />
               <span>Software Craftsmanship Callout Card</span>
             </div>
             <div>
@@ -629,7 +629,7 @@ export const AdminProfileView = () => {
             <div className="space-y-3 pt-2">
               {/* Pillar 1 */}
               <div className="p-3.5 bg-white border border-[#F0DED4] rounded-lg space-y-2">
-                <div className="flex items-center gap-2 text-xs font-bold text-[#D98C70]">
+                <div className="flex items-center gap-2 text-xs font-bold text-[#613E35]">
                   <Cpu size={14} />
                   <span>Pillar 1 (Backend Systems & Architecture)</span>
                 </div>
@@ -659,7 +659,7 @@ export const AdminProfileView = () => {
 
               {/* Pillar 2 */}
               <div className="p-3.5 bg-white border border-[#F0DED4] rounded-lg space-y-2">
-                <div className="flex items-center gap-2 text-xs font-bold text-[#D98C70]">
+                <div className="flex items-center gap-2 text-xs font-bold text-[#613E35]">
                   <Code2 size={14} />
                   <span>Pillar 2 (Data Structures & Algorithms)</span>
                 </div>
@@ -689,7 +689,7 @@ export const AdminProfileView = () => {
 
               {/* Pillar 3 */}
               <div className="p-3.5 bg-white border border-[#F0DED4] rounded-lg space-y-2">
-                <div className="flex items-center gap-2 text-xs font-bold text-[#D98C70]">
+                <div className="flex items-center gap-2 text-xs font-bold text-[#613E35]">
                   <GraduationCap size={14} />
                   <span>Pillar 3 (Academic & Community)</span>
                 </div>
@@ -724,16 +724,16 @@ export const AdminProfileView = () => {
         <div className="bg-white border border-[#F0DED4] rounded-xl p-6 shadow-sm space-y-5">
           <h2 className="text-base font-semibold text-[#613E35] border-b border-[#F0DED4] pb-3 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Globe size={18} className="text-[#D98C70]" />
+              <Globe size={18} className="text-[#613E35]" />
               <span>Independent Profile Links (4 Platforms)</span>
             </div>
-            <span className="text-xs text-[#A27B6E] font-normal">Strict 1:1 platform mapping</span>
+            <span className="text-xs text-[#613E35] font-normal">Strict 1:1 platform mapping</span>
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-xs font-semibold text-[#613E35] mb-1.5 flex items-center gap-1.5">
-                <Linkedin size={14} className="text-[#D98C70]" />
+                <Linkedin size={14} className="text-[#613E35]" />
                 <span>LinkedIn URL</span>
               </label>
               <input
@@ -748,7 +748,7 @@ export const AdminProfileView = () => {
 
             <div>
               <label className="block text-xs font-semibold text-[#613E35] mb-1.5 flex items-center gap-1.5">
-                <Github size={14} className="text-[#D98C70]" />
+                <Github size={14} className="text-[#613E35]" />
                 <span>GitHub URL</span>
               </label>
               <input
@@ -763,7 +763,7 @@ export const AdminProfileView = () => {
 
             <div>
               <label className="block text-xs font-semibold text-[#613E35] mb-1.5 flex items-center gap-1.5">
-                <Code2 size={14} className="text-[#D98C70]" />
+                <Code2 size={14} className="text-[#613E35]" />
                 <span>LeetCode URL</span>
               </label>
               <input
@@ -778,7 +778,7 @@ export const AdminProfileView = () => {
 
             <div>
               <label className="block text-xs font-semibold text-[#613E35] mb-1.5 flex items-center gap-1.5">
-                <CodeChefIcon size={14} className="text-[#D98C70]" />
+                <CodeChefIcon size={14} className="text-[#613E35]" />
                 <span>CodeChef URL</span>
               </label>
               <input
@@ -823,7 +823,7 @@ export const AdminProfileView = () => {
 
             <div>
               <label className="block text-xs font-semibold text-[#613E35] mb-1.5 flex items-center gap-1.5">
-                <Mail size={14} className="text-[#D98C70]" />
+                <Mail size={14} className="text-[#613E35]" />
                 <span>Contact Email</span>
               </label>
               <input
@@ -837,7 +837,7 @@ export const AdminProfileView = () => {
 
             <div>
               <label className="block text-xs font-semibold text-[#613E35] mb-1.5 flex items-center gap-1.5">
-                <Phone size={14} className="text-[#D98C70]" />
+                <Phone size={14} className="text-[#613E35]" />
                 <span>Phone / WhatsApp Mobile Number</span>
               </label>
               <input
@@ -855,10 +855,10 @@ export const AdminProfileView = () => {
         <div className="bg-white border border-[#F0DED4] rounded-xl p-6 shadow-sm space-y-6">
           <div className="border-b border-[#F0DED4] pb-3">
             <h2 className="text-base font-semibold text-[#613E35] flex items-center gap-2">
-              <Code2 size={18} className="text-[#D98C70]" />
+              <Code2 size={18} className="text-[#613E35]" />
               <span>Coding Profiles Cards Content (Descriptions & Stat Badges)</span>
             </h2>
-            <p className="text-xs text-[#A27B6E] mt-1">
+            <p className="text-xs text-[#613E35] mt-1">
               Edit the card descriptions and the 3 metric tags displayed on GitHub, LeetCode, and CodeChef cards.
             </p>
           </div>
@@ -866,7 +866,7 @@ export const AdminProfileView = () => {
           {/* GitHub Card Editor */}
           <div className="p-4 bg-[#FFF8F3] border border-[#F0DED4] rounded-lg space-y-3">
             <div className="flex items-center gap-2 text-sm font-semibold text-[#613E35]">
-              <Github size={16} className="text-[#D98C70]" />
+              <Github size={16} className="text-[#613E35]" />
               <span>GitHub Card</span>
             </div>
             <div>
@@ -880,7 +880,7 @@ export const AdminProfileView = () => {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
               <div className="bg-white p-2.5 rounded border border-[#F0DED4] space-y-1.5">
-                <span className="text-[10px] font-bold text-[#A27B6E] uppercase">Badge 1</span>
+                <span className="text-[10px] font-bold text-[#613E35] uppercase">Badge 1</span>
                 <input
                   type="text"
                   placeholder="Value (e.g. Java)"
@@ -893,11 +893,11 @@ export const AdminProfileView = () => {
                   placeholder="Label (e.g. Primary Tech)"
                   value={form.githubStat1Label}
                   onChange={e => setForm({ ...form, githubStat1Label: e.target.value })}
-                  className="w-full px-2 py-1 text-xs border rounded text-[#A27B6E] focus:outline-none focus:border-[#D98C70]"
+                  className="w-full px-2 py-1 text-xs border rounded text-[#613E35] focus:outline-none focus:border-[#D98C70]"
                 />
               </div>
               <div className="bg-white p-2.5 rounded border border-[#F0DED4] space-y-1.5">
-                <span className="text-[10px] font-bold text-[#A27B6E] uppercase">Badge 2</span>
+                <span className="text-[10px] font-bold text-[#613E35] uppercase">Badge 2</span>
                 <input
                   type="text"
                   placeholder="Value (e.g. Public)"
@@ -910,24 +910,24 @@ export const AdminProfileView = () => {
                   placeholder="Label (e.g. Repositories)"
                   value={form.githubStat2Label}
                   onChange={e => setForm({ ...form, githubStat2Label: e.target.value })}
-                  className="w-full px-2 py-1 text-xs border rounded text-[#A27B6E] focus:outline-none focus:border-[#D98C70]"
+                  className="w-full px-2 py-1 text-xs border rounded text-[#613E35] focus:outline-none focus:border-[#D98C70]"
                 />
               </div>
               <div className="bg-white p-2.5 rounded border border-[#F0DED4] space-y-1.5">
-                <span className="text-[10px] font-bold text-[#A27B6E] uppercase">Badge 3</span>
+                <span className="text-[10px] font-bold text-[#613E35] uppercase">Badge 3</span>
                 <input
                   type="text"
                   placeholder="Value (e.g. Active)"
                   value={form.githubStat3Value}
                   onChange={e => setForm({ ...form, githubStat3Value: e.target.value })}
-                  className="w-full px-2 py-1 text-xs border rounded text-[#D98C70] font-semibold focus:outline-none focus:border-[#D98C70]"
+                  className="w-full px-2 py-1 text-xs border rounded text-[#613E35] font-semibold focus:outline-none focus:border-[#D98C70]"
                 />
                 <input
                   type="text"
                   placeholder="Label (e.g. Commits)"
                   value={form.githubStat3Label}
                   onChange={e => setForm({ ...form, githubStat3Label: e.target.value })}
-                  className="w-full px-2 py-1 text-xs border rounded text-[#A27B6E] focus:outline-none focus:border-[#D98C70]"
+                  className="w-full px-2 py-1 text-xs border rounded text-[#613E35] focus:outline-none focus:border-[#D98C70]"
                 />
               </div>
             </div>
@@ -936,7 +936,7 @@ export const AdminProfileView = () => {
           {/* LeetCode Card Editor */}
           <div className="p-4 bg-[#FFF8F3] border border-[#F0DED4] rounded-lg space-y-3">
             <div className="flex items-center gap-2 text-sm font-semibold text-[#613E35]">
-              <Code2 size={16} className="text-[#D98C70]" />
+              <Code2 size={16} className="text-[#613E35]" />
               <span>LeetCode Card</span>
             </div>
             <div>
@@ -950,7 +950,7 @@ export const AdminProfileView = () => {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
               <div className="bg-white p-2.5 rounded border border-[#F0DED4] space-y-1.5">
-                <span className="text-[10px] font-bold text-[#A27B6E] uppercase">Badge 1</span>
+                <span className="text-[10px] font-bold text-[#613E35] uppercase">Badge 1</span>
                 <input
                   type="text"
                   placeholder="Value (e.g. 150+)"
@@ -963,11 +963,11 @@ export const AdminProfileView = () => {
                   placeholder="Label (e.g. Solved)"
                   value={form.leetcodeStat1Label}
                   onChange={e => setForm({ ...form, leetcodeStat1Label: e.target.value })}
-                  className="w-full px-2 py-1 text-xs border rounded text-[#A27B6E] focus:outline-none focus:border-[#D98C70]"
+                  className="w-full px-2 py-1 text-xs border rounded text-[#613E35] focus:outline-none focus:border-[#D98C70]"
                 />
               </div>
               <div className="bg-white p-2.5 rounded border border-[#F0DED4] space-y-1.5">
-                <span className="text-[10px] font-bold text-[#A27B6E] uppercase">Badge 2</span>
+                <span className="text-[10px] font-bold text-[#613E35] uppercase">Badge 2</span>
                 <input
                   type="text"
                   placeholder="Value (e.g. DSA)"
@@ -980,24 +980,24 @@ export const AdminProfileView = () => {
                   placeholder="Label (e.g. Algorithms)"
                   value={form.leetcodeStat2Label}
                   onChange={e => setForm({ ...form, leetcodeStat2Label: e.target.value })}
-                  className="w-full px-2 py-1 text-xs border rounded text-[#A27B6E] focus:outline-none focus:border-[#D98C70]"
+                  className="w-full px-2 py-1 text-xs border rounded text-[#613E35] focus:outline-none focus:border-[#D98C70]"
                 />
               </div>
               <div className="bg-white p-2.5 rounded border border-[#F0DED4] space-y-1.5">
-                <span className="text-[10px] font-bold text-[#A27B6E] uppercase">Badge 3</span>
+                <span className="text-[10px] font-bold text-[#613E35] uppercase">Badge 3</span>
                 <input
                   type="text"
                   placeholder="Value (e.g. Java)"
                   value={form.leetcodeStat3Value}
                   onChange={e => setForm({ ...form, leetcodeStat3Value: e.target.value })}
-                  className="w-full px-2 py-1 text-xs border rounded text-[#D98C70] font-semibold focus:outline-none focus:border-[#D98C70]"
+                  className="w-full px-2 py-1 text-xs border rounded text-[#613E35] font-semibold focus:outline-none focus:border-[#D98C70]"
                 />
                 <input
                   type="text"
                   placeholder="Label (e.g. Language)"
                   value={form.leetcodeStat3Label}
                   onChange={e => setForm({ ...form, leetcodeStat3Label: e.target.value })}
-                  className="w-full px-2 py-1 text-xs border rounded text-[#A27B6E] focus:outline-none focus:border-[#D98C70]"
+                  className="w-full px-2 py-1 text-xs border rounded text-[#613E35] focus:outline-none focus:border-[#D98C70]"
                 />
               </div>
             </div>
@@ -1006,7 +1006,7 @@ export const AdminProfileView = () => {
           {/* CodeChef Card Editor */}
           <div className="p-4 bg-[#FFF8F3] border border-[#F0DED4] rounded-lg space-y-3">
             <div className="flex items-center gap-2 text-sm font-semibold text-[#613E35]">
-              <CodeChefIcon size={16} className="text-[#D98C70]" />
+              <CodeChefIcon size={16} className="text-[#613E35]" />
               <span>CodeChef Card</span>
             </div>
             <div>
@@ -1020,7 +1020,7 @@ export const AdminProfileView = () => {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
               <div className="bg-white p-2.5 rounded border border-[#F0DED4] space-y-1.5">
-                <span className="text-[10px] font-bold text-[#A27B6E] uppercase">Badge 1</span>
+                <span className="text-[10px] font-bold text-[#613E35] uppercase">Badge 1</span>
                 <input
                   type="text"
                   placeholder="Value (e.g. Div 4/3)"
@@ -1033,11 +1033,11 @@ export const AdminProfileView = () => {
                   placeholder="Label (e.g. Division)"
                   value={form.codechefStat1Label}
                   onChange={e => setForm({ ...form, codechefStat1Label: e.target.value })}
-                  className="w-full px-2 py-1 text-xs border rounded text-[#A27B6E] focus:outline-none focus:border-[#D98C70]"
+                  className="w-full px-2 py-1 text-xs border rounded text-[#613E35] focus:outline-none focus:border-[#D98C70]"
                 />
               </div>
               <div className="bg-white p-2.5 rounded border border-[#F0DED4] space-y-1.5">
-                <span className="text-[10px] font-bold text-[#A27B6E] uppercase">Badge 2</span>
+                <span className="text-[10px] font-bold text-[#613E35] uppercase">Badge 2</span>
                 <input
                   type="text"
                   placeholder="Value (e.g. Contests)"
@@ -1050,24 +1050,24 @@ export const AdminProfileView = () => {
                   placeholder="Label (e.g. Starters)"
                   value={form.codechefStat2Label}
                   onChange={e => setForm({ ...form, codechefStat2Label: e.target.value })}
-                  className="w-full px-2 py-1 text-xs border rounded text-[#A27B6E] focus:outline-none focus:border-[#D98C70]"
+                  className="w-full px-2 py-1 text-xs border rounded text-[#613E35] focus:outline-none focus:border-[#D98C70]"
                 />
               </div>
               <div className="bg-white p-2.5 rounded border border-[#F0DED4] space-y-1.5">
-                <span className="text-[10px] font-bold text-[#A27B6E] uppercase">Badge 3</span>
+                <span className="text-[10px] font-bold text-[#613E35] uppercase">Badge 3</span>
                 <input
                   type="text"
                   placeholder="Value (e.g. Active)"
                   value={form.codechefStat3Value}
                   onChange={e => setForm({ ...form, codechefStat3Value: e.target.value })}
-                  className="w-full px-2 py-1 text-xs border rounded text-[#D98C70] font-semibold focus:outline-none focus:border-[#D98C70]"
+                  className="w-full px-2 py-1 text-xs border rounded text-[#613E35] font-semibold focus:outline-none focus:border-[#D98C70]"
                 />
                 <input
                   type="text"
                   placeholder="Label (e.g. Rating)"
                   value={form.codechefStat3Label}
                   onChange={e => setForm({ ...form, codechefStat3Label: e.target.value })}
-                  className="w-full px-2 py-1 text-xs border rounded text-[#A27B6E] focus:outline-none focus:border-[#D98C70]"
+                  className="w-full px-2 py-1 text-xs border rounded text-[#613E35] focus:outline-none focus:border-[#D98C70]"
                 />
               </div>
             </div>

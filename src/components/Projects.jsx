@@ -26,7 +26,7 @@ export const Projects = ({ onSelectProject }) => {
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#613E35] tracking-tight">
               Featured Software Engineering Work
             </h2>
-            <p className="text-base text-[#A27B6E] mt-2 max-w-2xl">
+            <p className="text-base text-[#613E35] mt-2 max-w-2xl">
               Software platforms, backend architectures, data structures implementations, and full-stack web applications.
             </p>
           </div>
@@ -41,7 +41,7 @@ export const Projects = ({ onSelectProject }) => {
                 className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold capitalize transition-all duration-150 ${
                   filter === cat
                     ? 'bg-[#D98C70] text-white shadow-xs'
-                    : 'bg-[#FFF8F3] text-[#A27B6E] border border-[#F0DED4] hover:bg-[#FCE9DF] hover:border-[#F4C9B5] hover:text-[#D98C70]'
+                    : 'bg-[#FFF8F3] text-[#613E35] border border-[#F0DED4] hover:bg-[#FCE9DF] hover:border-[#F4C9B5] hover:text-[#D98C70]'
                 }`}
               >
                 {cat}
@@ -101,7 +101,7 @@ export const Projects = ({ onSelectProject }) => {
                     <h3 className="text-lg font-bold text-[#613E35] mb-2 line-clamp-1 group-hover:text-[#D98C70] transition-colors">
                       {project.title}
                     </h3>
-                    <p className="text-sm text-[#A27B6E] leading-relaxed line-clamp-2">
+                    <p className="text-sm text-[#613E35] leading-relaxed line-clamp-2">
                       {project.description}
                     </p>
                   </div>
@@ -114,14 +114,14 @@ export const Projects = ({ onSelectProject }) => {
                       {visibleTech.map((tech, idx) => (
                         <span
                           key={idx}
-                          className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-[#FCE9DF] text-[#D98C70] border border-[#F4C9B5]"
+                          className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-[#FCE9DF] text-[#613E35] border border-[#F4C9B5]"
                         >
                           {tech}
                         </span>
                       ))}
                       {extraCount > 0 && (
                         <span 
-                          className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-[#FFF8F3] text-[#A27B6E] border border-[#F0DED4]"
+                          className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-[#FFF8F3] text-[#613E35] border border-[#F0DED4]"
                           title={techList.slice(3).join(', ')}
                         >
                           +{extraCount}
@@ -143,7 +143,7 @@ export const Projects = ({ onSelectProject }) => {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`GitHub source code for ${project.title}`}
-                          className="p-1.5 text-[#A27B6E] hover:text-[#D98C70] hover:bg-[#FCE9DF] rounded-md transition-colors"
+                          className="p-1.5 text-[#613E35] hover:text-[#D98C70] hover:bg-[#FCE9DF] rounded-md transition-colors"
                           title="Source Code"
                         >
                           <Github size={16} />
@@ -155,7 +155,7 @@ export const Projects = ({ onSelectProject }) => {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`Live preview of ${project.title}`}
-                          className="p-1.5 text-[#A27B6E] hover:text-[#D98C70] hover:bg-[#FCE9DF] rounded-md transition-colors"
+                          className="p-1.5 text-[#613E35] hover:text-[#D98C70] hover:bg-[#FCE9DF] rounded-md transition-colors"
                           title="Live Demo"
                         >
                           <ExternalLink size={16} />
@@ -172,8 +172,8 @@ export const Projects = ({ onSelectProject }) => {
         {/* Empty State */}
         {filteredProjects.length === 0 && (
           <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-2xl p-12 text-center my-6">
-            <FolderGit2 size={32} className="mx-auto text-[#A27B6E] mb-3" />
-            <p className="text-sm font-medium text-[#A27B6E]">No projects found in this category.</p>
+            <FolderGit2 size={32} className="mx-auto text-[#613E35] mb-3" />
+            <p className="text-sm font-medium text-[#613E35]">No projects found in this category.</p>
           </div>
         )}
 

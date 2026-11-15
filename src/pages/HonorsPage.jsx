@@ -33,7 +33,7 @@ export const HonorsPage = () => {
           <div className="mb-10">
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-sm font-medium text-[#A27B6E] hover:text-[#D98C70] transition-colors mb-4"
+              className="inline-flex items-center gap-2 text-sm font-medium text-[#613E35] hover:text-[#D98C70] transition-colors mb-4"
             >
               <ArrowLeft size={16} />
               <span>Back to Portfolio</span>
@@ -43,7 +43,7 @@ export const HonorsPage = () => {
             <h1 className="text-3xl sm:text-4xl font-bold text-[#613E35] mb-2 tracking-tight">
               Honors, Certifications & Achievements
             </h1>
-            <p className="text-base text-[#A27B6E] max-w-2xl">
+            <p className="text-base text-[#613E35] max-w-2xl">
               Complete archive of technical certifications, competitive programming recognitions, and academic milestones earned at KL University.
             </p>
           </div>
@@ -60,7 +60,7 @@ export const HonorsPage = () => {
                 onClick={() => setTab(t.id)}
                 className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-150 ${tab === t.id
                     ? 'bg-[#D98C70] text-white shadow-xs'
-                    : 'bg-white text-[#A27B6E] border border-[#F0DED4] hover:bg-[#FCE9DF] hover:border-[#F4C9B5] hover:text-[#D98C70]'
+                    : 'bg-white text-[#613E35] border border-[#F0DED4] hover:bg-[#FCE9DF] hover:border-[#F4C9B5] hover:text-[#D98C70]'
                   }`}
               >
                 {t.label}
@@ -78,7 +78,7 @@ export const HonorsPage = () => {
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] text-[#D98C70] flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] text-[#613E35] flex items-center justify-center">
                       <Award size={20} />
                     </div>
                     {item.isSample && (
@@ -91,22 +91,22 @@ export const HonorsPage = () => {
                   <h3 className="text-base font-bold text-[#613E35] mb-1.5 line-clamp-2 group-hover:text-[#D98C70] transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-sm font-medium text-[#A27B6E] mb-3">
+                  <p className="text-sm font-medium text-[#613E35] mb-3">
                     {item.organization || item.issuer}
                   </p>
                   {item.description && (
-                    <p className="text-xs text-[#A27B6E] line-clamp-2 mb-4 leading-relaxed">
+                    <p className="text-xs text-[#613E35] line-clamp-2 mb-4 leading-relaxed">
                       {item.description}
                     </p>
                   )}
                 </div>
 
-                <div className="pt-3.5 border-t border-[#F0DED4] flex items-center justify-between text-xs text-[#A27B6E]">
-                  <span className="flex items-center gap-1.5 font-medium text-[#A27B6E]">
-                    <Calendar size={13} className="text-[#D98C70]" />
+                <div className="pt-3.5 border-t border-[#F0DED4] flex items-center justify-between text-xs text-[#613E35]">
+                  <span className="flex items-center gap-1.5 font-medium text-[#613E35]">
+                    <Calendar size={13} className="text-[#613E35]" />
                     <span>{item.date || "2025"}</span>
                   </span>
-                  <span className="text-[#D98C70] font-semibold group-hover:underline">
+                  <span className="text-[#613E35] font-semibold group-hover:underline">
                     View Details →
                   </span>
                 </div>

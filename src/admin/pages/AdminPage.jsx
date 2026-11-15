@@ -24,8 +24,8 @@ export const AdminPage = () => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#FFF8F3] text-[#613E35]">
         <div className="flex flex-col items-center gap-3">
-          <span className="font-semibold text-2xl text-[#D98C70] animate-pulse">MSR Admin</span>
-          <span className="text-xs text-[#A27B6E]">Verifying Security Access...</span>
+          <span className="font-semibold text-2xl text-[#613E35] animate-pulse">MSR Admin</span>
+          <span className="text-xs text-[#613E35]">Verifying Security Access...</span>
         </div>
       </div>
     );

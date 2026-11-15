@@ -77,7 +77,7 @@
 }
 
 .link-accent {
-  color: #D98C70;
+  color: #613E35;
   align-items: center;
   gap: 4px;
   font-weight: 500;
@@ -87,7 +87,7 @@
 }
 
 .link-accent:hover {
-  color: #C5775B;
+  color: #8C4E3A;
   text-decoration: underline;
 }
 
@@ -103,7 +103,7 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
   background-color: #FCE9DF;
-  color: #D98C70;
+  color: #613E35;
   border: 1px solid #F4C9B5;
 }
 

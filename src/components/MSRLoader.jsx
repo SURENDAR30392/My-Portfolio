@@ -91,7 +91,7 @@ export const MSRLoader = ({ onComplete }) => {
 
         {/* Subtitle */}
         <div 
-          className={`mt-3 text-xs tracking-widest uppercase font-medium text-[#A27B6E] transition-opacity duration-300 ${
+          className={`mt-3 text-xs tracking-widest uppercase font-medium text-[#613E35] transition-opacity duration-300 ${
             letterStep >= 3 ? 'opacity-100' : 'opacity-0'
           }`}
         >

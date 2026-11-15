@@ -84,7 +84,7 @@ export const AdminSettingsView = () => {
         <h1 className="text-2xl font-semibold text-[#613E35]">
           Website Settings
         </h1>
-        <p className="text-sm text-[#A27B6E] mt-1">
+        <p className="text-sm text-[#613E35] mt-1">
           Configure search engine optimization, independent social links, and toggle portfolio sections.
         </p>
       </div>
@@ -122,16 +122,16 @@ export const AdminSettingsView = () => {
         <div className="bg-white border border-[#F0DED4] rounded-xl p-6 shadow-sm space-y-4">
           <h2 className="text-base font-semibold text-[#613E35] border-b border-[#F0DED4] pb-3 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Globe size={18} className="text-[#D98C70]" />
+              <Globe size={18} className="text-[#613E35]" />
               <span>Independent Profile Links</span>
             </div>
-            <span className="text-xs text-[#A27B6E] font-normal">Strict independent mapping</span>
+            <span className="text-xs text-[#613E35] font-normal">Strict independent mapping</span>
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-xs font-semibold text-[#613E35] mb-1.5 flex items-center gap-1.5">
-                <Linkedin size={14} className="text-[#D98C70]" />
+                <Linkedin size={14} className="text-[#613E35]" />
                 <span>LinkedIn URL</span>
               </label>
               <input
@@ -144,7 +144,7 @@ export const AdminSettingsView = () => {
 
             <div>
               <label className="block text-xs font-semibold text-[#613E35] mb-1.5 flex items-center gap-1.5">
-                <Github size={14} className="text-[#D98C70]" />
+                <Github size={14} className="text-[#613E35]" />
                 <span>GitHub URL</span>
               </label>
               <input
@@ -157,7 +157,7 @@ export const AdminSettingsView = () => {
 
             <div>
               <label className="block text-xs font-semibold text-[#613E35] mb-1.5 flex items-center gap-1.5">
-                <Code2 size={14} className="text-[#D98C70]" />
+                <Code2 size={14} className="text-[#613E35]" />
                 <span>LeetCode URL</span>
               </label>
               <input
@@ -170,7 +170,7 @@ export const AdminSettingsView = () => {
 
             <div>
               <label className="block text-xs font-semibold text-[#613E35] mb-1.5 flex items-center gap-1.5">
-                <CodeChefIcon size={14} className="text-[#D98C70]" />
+                <CodeChefIcon size={14} className="text-[#613E35]" />
                 <span>CodeChef URL</span>
               </label>
               <input
@@ -183,7 +183,7 @@ export const AdminSettingsView = () => {
 
             <div>
               <label className="block text-xs font-semibold text-[#613E35] mb-1.5 flex items-center gap-1.5">
-                <Phone size={14} className="text-[#D98C70]" />
+                <Phone size={14} className="text-[#613E35]" />
                 <span>Phone / WhatsApp Mobile Number</span>
               </label>
               <input
@@ -200,7 +200,7 @@ export const AdminSettingsView = () => {
         {/* Section Toggles */}
         <div className="bg-white border border-[#F0DED4] rounded-xl p-6 shadow-sm space-y-4">
           <h2 className="text-base font-semibold text-[#613E35] border-b border-[#F0DED4] pb-3 flex items-center gap-2">
-            <Layout size={18} className="text-[#D98C70]" />
+            <Layout size={18} className="text-[#613E35]" />
             <span>Enable / Disable Portfolio Sections</span>
           </h2>
 
@@ -215,8 +215,8 @@ export const AdminSettingsView = () => {
                     onClick={() => toggleSection(sec.key)}
                     className={`inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full transition-colors ${
                       isEnabled
-                        ? 'bg-[#FCE9DF] text-[#D98C70] border border-[#F4C9B5]'
-                        : 'bg-[#FFF8F3] text-[#A27B6E] border border-[#F0DED4]'
+                        ? 'bg-[#FCE9DF] text-[#613E35] border border-[#F4C9B5]'
+                        : 'bg-[#FFF8F3] text-[#613E35] border border-[#F0DED4]'
                     }`}
                   >
                     <span>{isEnabled ? 'Visible' : 'Hidden'}</span>

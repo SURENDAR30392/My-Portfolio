@@ -27,14 +27,14 @@ export const CertificateModal = ({ cert, onClose }) => {
       >
         <div className="relative p-6 border-b border-[#F0DED4] flex items-start justify-between bg-[#FFF8F3]">
           <div className="flex items-center gap-3.5">
-            <div className="w-11 h-11 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] text-[#D98C70] flex items-center justify-center shrink-0">
+            <div className="w-11 h-11 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] text-[#613E35] flex items-center justify-center shrink-0">
               <Award size={22} />
             </div>
             <div>
               <h3 className="text-lg font-bold text-[#613E35] leading-snug">
                 {cert.title}
               </h3>
-              <p className="text-xs font-medium text-[#A27B6E] mt-0.5">
+              <p className="text-xs font-medium text-[#613E35] mt-0.5">
                 {cert.organization || "Verified Credential"}
               </p>
             </div>
@@ -42,7 +42,7 @@ export const CertificateModal = ({ cert, onClose }) => {
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-[#A27B6E] hover:text-[#613E35] hover:bg-[#FCE9DF] transition-colors"
+            className="p-1.5 rounded-lg text-[#613E35] hover:text-[#613E35] hover:bg-[#FCE9DF] transition-colors"
             aria-label="Close"
           >
             <X size={18} />
@@ -70,8 +70,8 @@ export const CertificateModal = ({ cert, onClose }) => {
             </p>
           )}
 
-          <div className="flex items-center gap-2 text-xs text-[#A27B6E]">
-            <Calendar size={14} className="text-[#D98C70]" />
+          <div className="flex items-center gap-2 text-xs text-[#613E35]">
+            <Calendar size={14} className="text-[#613E35]" />
             <span>Issued: {cert.date || cert.issueDate || "2025"}</span>
             {cert.isSample && (
               <span className="ml-2 px-2 py-0.5 rounded text-[10px] font-medium bg-[#FEF3C7] text-[#92400E] border border-[#FDE68A]">
@@ -92,13 +92,13 @@ export const CertificateModal = ({ cert, onClose }) => {
                 <ExternalLink size={15} />
               </a>
             ) : (
-              <span className="text-xs text-[#A27B6E]">Verified academic milestone</span>
+              <span className="text-xs text-[#613E35]">Verified academic milestone</span>
             )}
 
             <button
               type="button"
               onClick={onClose}
-              className="text-xs font-medium text-[#A27B6E] hover:text-[#613E35] px-3 py-2"
+              className="text-xs font-medium text-[#613E35] hover:text-[#613E35] px-3 py-2"
             >
               Close
             </button>

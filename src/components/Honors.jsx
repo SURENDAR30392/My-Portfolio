@@ -43,7 +43,7 @@ export const Honors = ({ onSelectCert }) => {
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#613E35] tracking-tight">
               Certifications & Technical Honors
             </h2>
-            <p className="text-base text-[#A27B6E] mt-2 max-w-2xl">
+            <p className="text-base text-[#613E35] mt-2 max-w-2xl">
               Professional credentials, algorithmic contest recognitions, and academic awards.
             </p>
           </div>
@@ -67,7 +67,7 @@ export const Honors = ({ onSelectCert }) => {
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] text-[#D98C70] flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] text-[#613E35] flex items-center justify-center shrink-0">
                     <Award size={20} />
                   </div>
                   {item.isSample && (
@@ -80,17 +80,17 @@ export const Honors = ({ onSelectCert }) => {
                 <h3 className="text-base font-bold text-[#613E35] mb-1.5 line-clamp-2 group-hover:text-[#D98C70] transition-colors">
                   {item.title}
                 </h3>
-                <p className="text-sm font-medium text-[#A27B6E] mb-4">
+                <p className="text-sm font-medium text-[#613E35] mb-4">
                   {item.issuer}
                 </p>
               </div>
 
               <div className="pt-3.5 border-t border-[#F0DED4] flex items-center justify-between text-xs">
-                <span className="font-medium text-[#A27B6E] inline-flex items-center gap-1">
-                  <Calendar size={12} className="text-[#D98C70]" />
+                <span className="font-medium text-[#613E35] inline-flex items-center gap-1">
+                  <Calendar size={12} className="text-[#613E35]" />
                   <span>{item.date}</span>
                 </span>
-                <span className="text-[#D98C70] font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="text-[#613E35] font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
                   View details →
                 </span>
               </div>
@@ -101,7 +101,7 @@ export const Honors = ({ onSelectCert }) => {
         {/* Empty State */}
         {displayItems.length === 0 && (
           <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-2xl p-12 text-center my-6">
-            <p className="text-sm text-[#A27B6E]">No published honors or certifications found.</p>
+            <p className="text-sm text-[#613E35]">No published honors or certifications found.</p>
           </div>
         )}
 

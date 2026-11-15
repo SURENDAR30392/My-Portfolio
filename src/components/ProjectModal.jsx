@@ -78,7 +78,7 @@ export const ProjectModal = ({ project, onClose }) => {
           {/* Problem / Challenge Block */}
           {project.problem && (
             <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-xl p-4.5 space-y-1.5">
-              <div className="text-xs font-bold uppercase tracking-wider text-[#D98C70]">
+              <div className="text-xs font-bold uppercase tracking-wider text-[#613E35]">
                 The Engineering Challenge
               </div>
               <p className="text-sm text-[#613E35] leading-relaxed">
@@ -90,7 +90,7 @@ export const ProjectModal = ({ project, onClose }) => {
           {/* Solution / Approach Block */}
           {project.solution && (
             <div className="bg-[#FCE9DF] border border-[#F4C9B5] rounded-xl p-4.5 space-y-1.5">
-              <div className="text-xs font-bold uppercase tracking-wider text-[#D98C70]">
+              <div className="text-xs font-bold uppercase tracking-wider text-[#613E35]">
                 Architectural Solution
               </div>
               <p className="text-sm text-[#613E35] leading-relaxed">
@@ -108,7 +108,7 @@ export const ProjectModal = ({ project, onClose }) => {
               {techList.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="px-2.5 py-1 rounded-md text-xs font-medium bg-[#FCE9DF] text-[#D98C70] border border-[#F4C9B5]"
+                  className="px-2.5 py-1 rounded-md text-xs font-medium bg-[#FCE9DF] text-[#613E35] border border-[#F4C9B5]"
                 >
                   {tech}
                 </span>
@@ -146,7 +146,7 @@ export const ProjectModal = ({ project, onClose }) => {
             <button
               type="button"
               onClick={onClose}
-              className="text-xs font-medium text-[#A27B6E] hover:text-[#613E35] px-3 py-2"
+              className="text-xs font-medium text-[#613E35] hover:text-[#613E35] px-3 py-2"
             >
               Close
             </button>

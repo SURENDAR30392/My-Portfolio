@@ -33,7 +33,7 @@ export const Navbar = () => {
           className="flex items-center gap-2.5 group py-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D98C70] rounded-lg"
           title="Marthala Surendar Reddy — Home"
         >
-          <span className="w-8 h-8 rounded-lg bg-[#FCE9DF] border border-[#F4C9B5] text-[#D98C70] font-bold text-xs flex items-center justify-center tracking-tight shadow-xs group-hover:bg-[#D98C70] group-hover:text-white transition-all duration-200">
+          <span className="w-8 h-8 rounded-lg bg-[#FCE9DF] border border-[#F4C9B5] text-[#613E35] font-bold text-xs flex items-center justify-center tracking-tight shadow-xs group-hover:bg-[#D98C70] group-hover:text-white transition-all duration-200">
             MSR
           </span>
           <span className="text-[15px] font-semibold text-[#613E35] tracking-tight whitespace-nowrap group-hover:text-[#D98C70] transition-colors">
@@ -50,8 +50,8 @@ export const Navbar = () => {
 
             const baseClass = "text-sm px-3 py-1.5 rounded-lg transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D98C70]";
             const activeClass = isActive 
-              ? "text-[#D98C70] font-semibold bg-[#FCE9DF]" 
-              : "text-[#A27B6E] hover:text-[#613E35] hover:bg-[#FFF8F3]";
+              ? "text-[#613E35] font-semibold bg-[#FCE9DF]" 
+              : "text-[#613E35] hover:text-[#D98C70] hover:bg-[#FFF8F3]";
 
             return isAnchor ? (
               <a 
@@ -118,8 +118,8 @@ export const Navbar = () => {
             const isActive = link.href === location.pathname;
             const baseClass = "block px-3 py-2 text-sm font-medium rounded-lg transition-colors";
             const activeClass = isActive 
-              ? "text-[#D98C70] bg-[#FCE9DF] font-semibold" 
-              : "text-[#A27B6E] hover:text-[#613E35] hover:bg-[#FFF8F3]";
+              ? "text-[#613E35] bg-[#FCE9DF] font-semibold" 
+              : "text-[#613E35] hover:text-[#D98C70] hover:bg-[#FFF8F3]";
 
             return isAnchor ? (
               <a 

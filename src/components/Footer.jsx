@@ -51,14 +51,14 @@ export const Footer = () => {
           
           {/* Identity & Department */}
           <div className="flex items-center gap-3">
-            <span className="w-9 h-9 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] text-[#D98C70] font-bold text-xs flex items-center justify-center tracking-tight shadow-xs">
+            <span className="w-9 h-9 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] text-[#613E35] font-bold text-xs flex items-center justify-center tracking-tight shadow-xs">
               MSR
             </span>
             <div>
               <div className="text-base font-bold text-[#613E35]">
                 {profile.name || "Marthala Surendar Reddy"}
               </div>
-              <p className="text-xs text-[#A27B6E] mt-0.5">
+              <p className="text-xs text-[#613E35] mt-0.5">
                 B.Tech Computer Science & Engineering · KL University
               </p>
             </div>
@@ -77,7 +77,7 @@ export const Footer = () => {
                   rel={isMail ? undefined : "noopener noreferrer"}
                   aria-label={item.label}
                   title={item.name}
-                  className="w-9 h-9 rounded-lg border border-[#F0DED4] bg-white hover:bg-[#FCE9DF] hover:border-[#F4C9B5] text-[#A27B6E] hover:text-[#D98C70] flex items-center justify-center transition-all duration-150 shadow-xs focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D98C70]"
+                  className="w-9 h-9 rounded-lg border border-[#F0DED4] bg-white hover:bg-[#FCE9DF] hover:border-[#F4C9B5] text-[#613E35] hover:text-[#D98C70] flex items-center justify-center transition-all duration-150 shadow-xs focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D98C70]"
                 >
                   <Icon size={16} />
                 </a>
@@ -88,7 +88,7 @@ export const Footer = () => {
         </div>
 
         {/* Bottom Bar: Copyright & Admin Portal Link */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#A27B6E]">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#613E35]">
           <div>
             © {new Date().getFullYear()} {profile.name || "Marthala Surendar Reddy"}. All rights reserved.
           </div>
@@ -96,21 +96,21 @@ export const Footer = () => {
           <div className="flex items-center gap-4">
             <Link 
               to="/resume" 
-              className="text-[#A27B6E] hover:text-[#D98C70] transition-colors"
+              className="text-[#613E35] hover:text-[#D98C70] transition-colors"
             >
               Resume PDF
             </Link>
             <span>•</span>
             <Link 
               to="/honors" 
-              className="text-[#A27B6E] hover:text-[#D98C70] transition-colors"
+              className="text-[#613E35] hover:text-[#D98C70] transition-colors"
             >
               Honors & Certifications
             </Link>
             <span>•</span>
             <Link 
               to="/admin" 
-              className="inline-flex items-center gap-1 text-[#A27B6E] hover:text-[#D98C70] transition-colors"
+              className="inline-flex items-center gap-1 text-[#613E35] hover:text-[#D98C70] transition-colors"
               title="Super Admin Portal"
             >
               <ShieldCheck size={13} />

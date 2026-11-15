@@ -234,10 +234,10 @@ export const AdminEducationView = () => {
       {/* Page Header */}
       <div>
         <h1 className="text-2xl font-bold text-[#613E35] flex items-center gap-2.5">
-          <GraduationCap size={26} className="text-[#D98C70]" />
+          <GraduationCap size={26} className="text-[#613E35]" />
           <span>Academic Background & Journey Management</span>
         </h1>
-        <p className="text-sm text-[#A27B6E] mt-1">
+        <p className="text-sm text-[#613E35] mt-1">
           Manage your degrees, university coursework, and the 4-year progression track shown on your portfolio.
         </p>
       </div>
@@ -249,7 +249,7 @@ export const AdminEducationView = () => {
           className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
             activeTab === 'degrees'
               ? 'bg-[#D98C70] text-white shadow-xs'
-              : 'bg-white text-[#A27B6E] border border-[#F0DED4] hover:bg-[#FCE9DF] hover:text-[#D98C70]'
+              : 'bg-white text-[#613E35] border border-[#F0DED4] hover:bg-[#FCE9DF] hover:text-[#D98C70]'
           }`}
         >
           <GraduationCap size={15} />
@@ -261,7 +261,7 @@ export const AdminEducationView = () => {
           className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
             activeTab === 'journey'
               ? 'bg-[#D98C70] text-white shadow-xs'
-              : 'bg-white text-[#A27B6E] border border-[#F0DED4] hover:bg-[#FCE9DF] hover:text-[#D98C70]'
+              : 'bg-white text-[#613E35] border border-[#F0DED4] hover:bg-[#FCE9DF] hover:text-[#D98C70]'
           }`}
         >
           <Milestone size={15} />
@@ -273,7 +273,7 @@ export const AdminEducationView = () => {
           className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
             activeTab === 'titles'
               ? 'bg-[#D98C70] text-white shadow-xs'
-              : 'bg-white text-[#A27B6E] border border-[#F0DED4] hover:bg-[#FCE9DF] hover:text-[#D98C70]'
+              : 'bg-white text-[#613E35] border border-[#F0DED4] hover:bg-[#FCE9DF] hover:text-[#D98C70]'
           }`}
         >
           <Sliders size={15} />
@@ -289,7 +289,7 @@ export const AdminEducationView = () => {
               <h2 className="text-base font-bold text-[#613E35]">
                 {settings.degreesTitle || 'Degrees & Formal Coursework'}
               </h2>
-              <p className="text-xs text-[#A27B6E] mt-0.5">
+              <p className="text-xs text-[#613E35] mt-0.5">
                 These records appear in the left column of your Education section.
               </p>
             </div>
@@ -310,7 +310,7 @@ export const AdminEducationView = () => {
               >
                 <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-[#FCE9DF] text-[#D98C70] border border-[#F4C9B5] flex items-center justify-center shrink-0 shadow-xs">
+                    <div className="w-12 h-12 rounded-xl bg-[#FCE9DF] text-[#613E35] border border-[#F4C9B5] flex items-center justify-center shrink-0 shadow-xs">
                       <GraduationCap size={24} />
                     </div>
                     <div>
@@ -330,18 +330,18 @@ export const AdminEducationView = () => {
                         )}
                       </div>
                       
-                      <div className="text-sm text-[#D98C70] font-medium mt-1">
+                      <div className="text-sm text-[#613E35] font-medium mt-1">
                         {edu.institution}
                       </div>
 
-                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[#A27B6E] mt-1.5">
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[#613E35] mt-1.5">
                         <span className="inline-flex items-center gap-1 font-medium text-[#613E35]">
-                          <Calendar size={12} className="text-[#D98C70]" />
+                          <Calendar size={12} className="text-[#613E35]" />
                           {edu.dates}
                         </span>
                         <span>•</span>
                         <span className="inline-flex items-center gap-1">
-                          <MapPin size={12} className="text-[#A27B6E]" />
+                          <MapPin size={12} className="text-[#613E35]" />
                           {edu.location}
                         </span>
                       </div>
@@ -353,7 +353,7 @@ export const AdminEducationView = () => {
                       onClick={() => handleDegreeTogglePublish(edu)}
                       className={`text-xs px-2.5 py-1.5 rounded-lg border font-medium transition-colors ${
                         edu.published !== false
-                          ? 'border-[#F0DED4] text-[#A27B6E] hover:text-[#613E35] hover:bg-[#FFF8F3]'
+                          ? 'border-[#F0DED4] text-[#613E35] hover:text-[#613E35] hover:bg-[#FFF8F3]'
                           : 'border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100'
                       }`}
                       title={edu.published !== false ? "Hide from public view" : "Publish to live website"}
@@ -371,7 +371,7 @@ export const AdminEducationView = () => {
 
                     <button
                       onClick={() => handleDegreeDelete(edu.id, edu.degree)}
-                      className="p-1.5 rounded-lg border border-[#F0DED4] text-[#A27B6E] hover:text-red-600 hover:bg-red-50 transition-colors"
+                      className="p-1.5 rounded-lg border border-[#F0DED4] text-[#613E35] hover:text-red-600 hover:bg-red-50 transition-colors"
                       title="Delete education record"
                     >
                       <Trash2 size={15} />
@@ -387,13 +387,13 @@ export const AdminEducationView = () => {
 
                 {Array.isArray(edu.highlights) && edu.highlights.length > 0 && (
                   <div className="pt-3 border-t border-[#F0DED4] space-y-2">
-                    <div className="text-[11px] font-bold uppercase tracking-wider text-[#A27B6E]">
+                    <div className="text-[11px] font-bold uppercase tracking-wider text-[#613E35]">
                       Curriculum Highlights
                     </div>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
                       {edu.highlights.map((hl, i) => (
                         <li key={i} className="flex items-center gap-2 text-xs text-[#613E35]">
-                          <CheckCircle2 size={13} className="text-[#D98C70] shrink-0" />
+                          <CheckCircle2 size={13} className="text-[#613E35] shrink-0" />
                           <span>{hl}</span>
                         </li>
                       ))}
@@ -405,9 +405,9 @@ export const AdminEducationView = () => {
 
             {education.length === 0 && (
               <div className="bg-white border border-[#F0DED4] rounded-2xl p-12 text-center space-y-3">
-                <GraduationCap size={36} className="mx-auto text-[#A27B6E]" />
+                <GraduationCap size={36} className="mx-auto text-[#613E35]" />
                 <h3 className="text-base font-semibold text-[#613E35]">No Education Records Found</h3>
-                <p className="text-xs text-[#A27B6E]">Click "Add Degree Record" to create your first degree or academic credential.</p>
+                <p className="text-xs text-[#613E35]">Click "Add Degree Record" to create your first degree or academic credential.</p>
                 <button onClick={openAddDegreeModal} className="btn-primary text-xs h-8 px-4">
                   Add Degree Record
                 </button>
@@ -425,7 +425,7 @@ export const AdminEducationView = () => {
               <h2 className="text-base font-bold text-[#613E35]">
                 {settings.journeyTitle || '4 Years at KL University (2024 – 2028)'}
               </h2>
-              <p className="text-xs text-[#A27B6E] mt-0.5">
+              <p className="text-xs text-[#613E35] mt-0.5">
                 These milestone cards appear in the right column timeline on your Education section.
               </p>
             </div>
@@ -458,17 +458,17 @@ export const AdminEducationView = () => {
                 className="bg-white border border-[#F0DED4] rounded-2xl p-5 shadow-card hover:border-[#F4C9B5] transition-all flex flex-col md:flex-row md:items-start justify-between gap-4"
               >
                 <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] text-[#D98C70] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
+                  <div className="w-9 h-9 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] text-[#613E35] flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
                     {idx + 1}
                   </div>
                   <div className="space-y-1">
-                    <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-[#D98C70]">
+                    <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-[#613E35]">
                       {item.year}
                     </span>
                     <h3 className="text-base font-bold text-[#613E35]">
                       {item.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#A27B6E] leading-relaxed max-w-2xl pt-1">
+                    <p className="text-xs sm:text-sm text-[#613E35] leading-relaxed max-w-2xl pt-1">
                       {item.desc}
                     </p>
                   </div>
@@ -479,7 +479,7 @@ export const AdminEducationView = () => {
                   <button
                     onClick={() => handleJourneyMove(idx, -1)}
                     disabled={idx === 0}
-                    className="p-1.5 rounded-lg border border-[#F0DED4] text-[#A27B6E] hover:text-[#D98C70] hover:bg-[#FCE9DF] disabled:opacity-30 disabled:pointer-events-none transition-colors"
+                    className="p-1.5 rounded-lg border border-[#F0DED4] text-[#613E35] hover:text-[#D98C70] hover:bg-[#FCE9DF] disabled:opacity-30 disabled:pointer-events-none transition-colors"
                     title="Move milestone up"
                   >
                     <ArrowUp size={14} />
@@ -488,7 +488,7 @@ export const AdminEducationView = () => {
                   <button
                     onClick={() => handleJourneyMove(idx, 1)}
                     disabled={idx === journey.length - 1}
-                    className="p-1.5 rounded-lg border border-[#F0DED4] text-[#A27B6E] hover:text-[#D98C70] hover:bg-[#FCE9DF] disabled:opacity-30 disabled:pointer-events-none transition-colors"
+                    className="p-1.5 rounded-lg border border-[#F0DED4] text-[#613E35] hover:text-[#D98C70] hover:bg-[#FCE9DF] disabled:opacity-30 disabled:pointer-events-none transition-colors"
                     title="Move milestone down"
                   >
                     <ArrowDown size={14} />
@@ -504,7 +504,7 @@ export const AdminEducationView = () => {
 
                   <button
                     onClick={() => handleJourneyDelete(idx, item.title)}
-                    className="p-1.5 rounded-lg border border-[#F0DED4] text-[#A27B6E] hover:text-red-600 hover:bg-red-50 transition-colors"
+                    className="p-1.5 rounded-lg border border-[#F0DED4] text-[#613E35] hover:text-red-600 hover:bg-red-50 transition-colors"
                     title="Delete milestone"
                   >
                     <Trash2 size={14} />
@@ -515,9 +515,9 @@ export const AdminEducationView = () => {
 
             {journey.length === 0 && (
               <div className="bg-white border border-[#F0DED4] rounded-2xl p-12 text-center space-y-3">
-                <Milestone size={36} className="mx-auto text-[#A27B6E]" />
+                <Milestone size={36} className="mx-auto text-[#613E35]" />
                 <h3 className="text-base font-semibold text-[#613E35]">No Timeline Milestones Defined</h3>
-                <p className="text-xs text-[#A27B6E]">Add annual milestones to showcase your academic progression across your engineering degree.</p>
+                <p className="text-xs text-[#613E35]">Add annual milestones to showcase your academic progression across your engineering degree.</p>
                 <button onClick={openAddJourneyModal} className="btn-primary text-xs h-8 px-4">
                   Add Milestone
                 </button>
@@ -534,7 +534,7 @@ export const AdminEducationView = () => {
             <h2 className="text-base font-bold text-[#613E35]">
               Customize Education Section Headings
             </h2>
-            <p className="text-xs text-[#A27B6E] mt-0.5">
+            <p className="text-xs text-[#613E35] mt-0.5">
               Edit the headings, badge, and subtitles displayed on the public Education section.
             </p>
           </div>
@@ -640,12 +640,12 @@ export const AdminEducationView = () => {
           <div className="bg-white border border-[#F0DED4] rounded-2xl max-w-xl w-full p-6 shadow-2xl max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-4 border-b border-[#F0DED4] mb-4">
               <h2 className="text-base font-bold text-[#613E35] flex items-center gap-2">
-                <GraduationCap size={18} className="text-[#D98C70]" />
+                <GraduationCap size={18} className="text-[#613E35]" />
                 <span>{currentDegreeId ? 'Edit Degree Record' : 'Add Degree Record'}</span>
               </h2>
               <button 
                 onClick={() => setIsDegreeModalOpen(false)} 
-                className="text-[#A27B6E] hover:text-[#613E35] p-1 rounded-lg"
+                className="text-[#613E35] hover:text-[#613E35] p-1 rounded-lg"
               >
                 <X size={18} />
               </button>
@@ -733,7 +733,7 @@ export const AdminEducationView = () => {
                   placeholder={"Core Java & Object-Oriented Software Design\nData Structures and Algorithms\nDBMS & Relational Databases"}
                   className="w-full px-3.5 py-2.5 rounded-xl border border-[#F0DED4] text-xs focus:outline-none focus:border-[#D98C70] font-mono resize-none"
                 />
-                <p className="text-[11px] text-[#A27B6E] mt-1">
+                <p className="text-[11px] text-[#613E35] mt-1">
                   Enter each key highlight on a new line to display as checkmark bullet points.
                 </p>
               </div>
@@ -744,7 +744,7 @@ export const AdminEducationView = () => {
                     type="checkbox"
                     checked={degreeForm.published}
                     onChange={e => setDegreeForm({ ...degreeForm, published: e.target.checked })}
-                    className="w-4 h-4 rounded text-[#D98C70] focus:ring-[#F4C9B5]"
+                    className="w-4 h-4 rounded text-[#613E35] focus:ring-[#F4C9B5]"
                   />
                   <span>Publish this degree record on the public website</span>
                 </label>
@@ -777,12 +777,12 @@ export const AdminEducationView = () => {
           <div className="bg-white border border-[#F0DED4] rounded-2xl max-w-lg w-full p-6 shadow-2xl">
             <div className="flex items-center justify-between pb-4 border-b border-[#F0DED4] mb-4">
               <h2 className="text-base font-bold text-[#613E35] flex items-center gap-2">
-                <Milestone size={18} className="text-[#D98C70]" />
+                <Milestone size={18} className="text-[#613E35]" />
                 <span>{currentJourneyIdx !== null ? 'Edit Progression Milestone' : 'Add Progression Milestone'}</span>
               </h2>
               <button 
                 onClick={() => setIsJourneyModalOpen(false)} 
-                className="text-[#A27B6E] hover:text-[#613E35] p-1 rounded-lg"
+                className="text-[#613E35] hover:text-[#613E35] p-1 rounded-lg"
               >
                 <X size={18} />
               </button>

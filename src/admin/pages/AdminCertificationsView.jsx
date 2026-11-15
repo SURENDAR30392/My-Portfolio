@@ -90,7 +90,7 @@ export const AdminCertificationsView = () => {
           <h1 className="text-2xl font-semibold text-[#613E35]">
             Certifications & Achievements
           </h1>
-          <p className="text-sm text-[#A27B6E] mt-1">
+          <p className="text-sm text-[#613E35] mt-1">
             Manage industry credentials, competitive programming honors, and hackathon awards.
           </p>
         </div>
@@ -110,8 +110,8 @@ export const AdminCertificationsView = () => {
           onClick={() => setActiveSubTab('certs')}
           className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
             activeSubTab === 'certs'
-              ? 'bg-[#FCE9DF] text-[#D98C70] font-semibold'
-              : 'text-[#A27B6E] hover:bg-[#FFF8F3]'
+              ? 'bg-[#FCE9DF] text-[#613E35] font-semibold'
+              : 'text-[#613E35] hover:bg-[#FFF8F3]'
           }`}
         >
           <Award size={16} />
@@ -122,8 +122,8 @@ export const AdminCertificationsView = () => {
           onClick={() => setActiveSubTab('achievements')}
           className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
             activeSubTab === 'achievements'
-              ? 'bg-[#FCE9DF] text-[#D98C70] font-semibold'
-              : 'text-[#A27B6E] hover:bg-[#FFF8F3]'
+              ? 'bg-[#FCE9DF] text-[#613E35] font-semibold'
+              : 'text-[#613E35] hover:bg-[#FFF8F3]'
           }`}
         >
           <Trophy size={16} />
@@ -141,14 +141,14 @@ export const AdminCertificationsView = () => {
             <div>
               <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-lg bg-[#FCE9DF] text-[#D98C70] flex items-center justify-center shrink-0">
+                  <div className="w-9 h-9 rounded-lg bg-[#FCE9DF] text-[#613E35] flex items-center justify-center shrink-0">
                     {activeSubTab === 'certs' ? <Award size={18} /> : <Trophy size={18} />}
                   </div>
                   <div>
                     <h3 className="text-sm font-semibold text-[#613E35] leading-tight">
                       {item.title}
                     </h3>
-                    <div className="text-xs text-[#A27B6E] mt-0.5">{item.organization}</div>
+                    <div className="text-xs text-[#613E35] mt-0.5">{item.organization}</div>
                   </div>
                 </div>
 
@@ -160,24 +160,24 @@ export const AdminCertificationsView = () => {
               </div>
 
               {item.description && (
-                <p className="text-xs text-[#A27B6E] line-clamp-2 mb-3 leading-relaxed">
+                <p className="text-xs text-[#613E35] line-clamp-2 mb-3 leading-relaxed">
                   {item.description}
                 </p>
               )}
             </div>
 
-            <div className="pt-3 border-t border-[#F0DED4] flex items-center justify-between text-xs text-[#A27B6E]">
+            <div className="pt-3 border-t border-[#F0DED4] flex items-center justify-between text-xs text-[#613E35]">
               <span>Issued: {item.date}</span>
               <div className="flex items-center gap-1">
                 <button
                   onClick={() => openEditModal(item)}
-                  className="p-1.5 rounded-lg text-[#A27B6E] hover:text-[#D98C70] hover:bg-[#FCE9DF]"
+                  className="p-1.5 rounded-lg text-[#613E35] hover:text-[#D98C70] hover:bg-[#FCE9DF]"
                 >
                   <Edit3 size={15} />
                 </button>
                 <button
                   onClick={() => handleDelete(item.id, item.title)}
-                  className="p-1.5 rounded-lg text-[#A27B6E] hover:text-[#DC2626] hover:bg-[#FEF2F2]"
+                  className="p-1.5 rounded-lg text-[#613E35] hover:text-[#DC2626] hover:bg-[#FEF2F2]"
                 >
                   <Trash2 size={15} />
                 </button>
@@ -195,7 +195,7 @@ export const AdminCertificationsView = () => {
               <h2 className="text-base font-semibold text-[#613E35]">
                 {currentId ? 'Edit Record' : 'Add New Record'}
               </h2>
-              <button onClick={() => setIsEditing(false)} className="text-[#A27B6E] hover:text-[#613E35]">
+              <button onClick={() => setIsEditing(false)} className="text-[#613E35] hover:text-[#613E35]">
                 <X size={18} />
               </button>
             </div>

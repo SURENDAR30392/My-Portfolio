@@ -38,7 +38,7 @@ export const Skills = () => {
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#613E35] tracking-tight">
             Skills & Technical Capabilities
           </h2>
-          <p className="text-base text-[#A27B6E] mt-2 max-w-2xl">
+          <p className="text-base text-[#613E35] mt-2 max-w-2xl">
             The core programming languages, distributed backend systems, and developer tools I leverage to build scalable software.
           </p>
         </div>
@@ -57,14 +57,14 @@ export const Skills = () => {
                 <div>
                   {/* Category Header */}
                   <div className="flex items-center gap-3 mb-4 pb-4 border-b border-[#F0DED4]">
-                    <div className="w-10 h-10 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] text-[#D98C70] flex items-center justify-center shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] text-[#613E35] flex items-center justify-center shrink-0">
                       <CategoryIcon size={20} />
                     </div>
                     <div>
                       <h3 className="text-base font-bold text-[#613E35]">
                         {cat.title}
                       </h3>
-                      <p className="text-[11px] text-[#A27B6E] leading-snug mt-0.5">
+                      <p className="text-[11px] text-[#613E35] leading-snug mt-0.5">
                         {cat.description}
                       </p>
                     </div>
@@ -86,7 +86,7 @@ export const Skills = () => {
                                 style={{ width: `${skill.proficiency}%` }}
                               />
                             </div>
-                            <span className="text-xs font-semibold text-[#A27B6E] w-8 text-right">
+                            <span className="text-xs font-semibold text-[#613E35] w-8 text-right">
                               {skill.proficiency}%
                             </span>
                           </div>
@@ -97,9 +97,9 @@ export const Skills = () => {
                 </div>
 
                 {/* Footer Count */}
-                <div className="mt-6 pt-4 border-t border-[#F0DED4] text-xs text-[#A27B6E] flex items-center justify-between font-medium">
+                <div className="mt-6 pt-4 border-t border-[#F0DED4] text-xs text-[#613E35] flex items-center justify-between font-medium">
                   <span>{categorySkills.length} competencies</span>
-                  <span className="text-[#D98C70] inline-flex items-center gap-1">
+                  <span className="text-[#613E35] inline-flex items-center gap-1">
                     <CheckCircle size={13} />
                     <span>Verified</span>
                   </span>
@@ -112,7 +112,7 @@ export const Skills = () => {
         {/* Empty State */}
         {allSkills.length === 0 && (
           <div className="bg-white border border-[#F0DED4] rounded-xl p-12 text-center my-6">
-            <p className="text-sm text-[#A27B6E]">No published skills found.</p>
+            <p className="text-sm text-[#613E35]">No published skills found.</p>
           </div>
         )}
 

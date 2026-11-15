@@ -26,7 +26,7 @@ export const CodingProfiles = () => {
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#613E35] tracking-tight">
             {social.codingSectionTitle || DEFAULT_SOCIAL_LINKS.codingSectionTitle || "Coding Profiles & Contributions"}
           </h2>
-          <p className="text-base text-[#A27B6E] mt-2 max-w-2xl">
+          <p className="text-base text-[#613E35] mt-2 max-w-2xl">
             {social.codingSectionSubtitle || DEFAULT_SOCIAL_LINKS.codingSectionSubtitle || "Active technical platforms where I practice algorithmic problem solving, participate in competitive programming contests, and maintain open-source software repositories."}
           </p>
         </div>
@@ -39,12 +39,12 @@ export const CodingProfiles = () => {
             <div>
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] text-[#D98C70] flex items-center justify-center shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] text-[#613E35] flex items-center justify-center shrink-0">
                     <Github size={24} />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-[#613E35]">GitHub</h3>
-                    <p className="text-xs text-[#A27B6E] font-mono">@{githubUser}</p>
+                    <p className="text-xs text-[#613E35] font-mono">@{githubUser}</p>
                   </div>
                 </div>
 
@@ -70,7 +70,7 @@ export const CodingProfiles = () => {
                   <div className="text-sm font-bold text-[#613E35]">
                     {social.githubStat1Value || DEFAULT_SOCIAL_LINKS.githubStat1Value}
                   </div>
-                  <div className="text-[10.5px] text-[#A27B6E] font-medium">
+                  <div className="text-[10.5px] text-[#613E35] font-medium">
                     {social.githubStat1Label || DEFAULT_SOCIAL_LINKS.githubStat1Label}
                   </div>
                 </div>
@@ -78,27 +78,27 @@ export const CodingProfiles = () => {
                   <div className="text-sm font-bold text-[#613E35]">
                     {social.githubStat2Value || DEFAULT_SOCIAL_LINKS.githubStat2Value}
                   </div>
-                  <div className="text-[10.5px] text-[#A27B6E] font-medium">
+                  <div className="text-[10.5px] text-[#613E35] font-medium">
                     {social.githubStat2Label || DEFAULT_SOCIAL_LINKS.githubStat2Label}
                   </div>
                 </div>
                 <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-xl p-2.5 text-center">
-                  <div className="text-sm font-bold text-[#D98C70]">
+                  <div className="text-sm font-bold text-[#613E35]">
                     {social.githubStat3Value || DEFAULT_SOCIAL_LINKS.githubStat3Value}
                   </div>
-                  <div className="text-[10.5px] text-[#A27B6E] font-medium">
+                  <div className="text-[10.5px] text-[#613E35] font-medium">
                     {social.githubStat3Label || DEFAULT_SOCIAL_LINKS.githubStat3Label}
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="mt-6 pt-3.5 border-t border-[#F0DED4] flex items-center justify-between text-xs text-[#A27B6E]">
+            <div className="mt-6 pt-3.5 border-t border-[#F0DED4] flex items-center justify-between text-xs text-[#613E35]">
               <span className="flex items-center gap-1.5 truncate">
-                <GitBranch size={13} className="text-[#D98C70] shrink-0" />
+                <GitBranch size={13} className="text-[#613E35] shrink-0" />
                 <span className="truncate">github.com/{githubUser}</span>
               </span>
-              <span className="text-[#D98C70] font-semibold shrink-0">Verified</span>
+              <span className="text-[#613E35] font-semibold shrink-0">Verified</span>
             </div>
           </div>
 
@@ -107,12 +107,12 @@ export const CodingProfiles = () => {
             <div>
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] text-[#D98C70] flex items-center justify-center shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] text-[#613E35] flex items-center justify-center shrink-0">
                     <Code2 size={24} />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-[#613E35]">LeetCode</h3>
-                    <p className="text-xs text-[#A27B6E] font-mono">@{leetcodeUser}</p>
+                    <p className="text-xs text-[#613E35] font-mono">@{leetcodeUser}</p>
                   </div>
                 </div>
 
@@ -138,7 +138,7 @@ export const CodingProfiles = () => {
                   <div className="text-sm font-bold text-[#10B981]">
                     {social.leetcodeStat1Value || DEFAULT_SOCIAL_LINKS.leetcodeStat1Value}
                   </div>
-                  <div className="text-[10.5px] text-[#A27B6E] font-medium">
+                  <div className="text-[10.5px] text-[#613E35] font-medium">
                     {social.leetcodeStat1Label || DEFAULT_SOCIAL_LINKS.leetcodeStat1Label}
                   </div>
                 </div>
@@ -146,27 +146,27 @@ export const CodingProfiles = () => {
                   <div className="text-sm font-bold text-[#613E35]">
                     {social.leetcodeStat2Value || DEFAULT_SOCIAL_LINKS.leetcodeStat2Value}
                   </div>
-                  <div className="text-[10.5px] text-[#A27B6E] font-medium">
+                  <div className="text-[10.5px] text-[#613E35] font-medium">
                     {social.leetcodeStat2Label || DEFAULT_SOCIAL_LINKS.leetcodeStat2Label}
                   </div>
                 </div>
                 <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-xl p-2.5 text-center">
-                  <div className="text-sm font-bold text-[#D98C70]">
+                  <div className="text-sm font-bold text-[#613E35]">
                     {social.leetcodeStat3Value || DEFAULT_SOCIAL_LINKS.leetcodeStat3Value}
                   </div>
-                  <div className="text-[10.5px] text-[#A27B6E] font-medium">
+                  <div className="text-[10.5px] text-[#613E35] font-medium">
                     {social.leetcodeStat3Label || DEFAULT_SOCIAL_LINKS.leetcodeStat3Label}
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="mt-6 pt-3.5 border-t border-[#F0DED4] flex items-center justify-between text-xs text-[#A27B6E]">
+            <div className="mt-6 pt-3.5 border-t border-[#F0DED4] flex items-center justify-between text-xs text-[#613E35]">
               <span className="flex items-center gap-1.5 truncate">
-                <Award size={13} className="text-[#D98C70] shrink-0" />
+                <Award size={13} className="text-[#613E35] shrink-0" />
                 <span className="truncate">leetcode.com/u/{leetcodeUser}</span>
               </span>
-              <span className="text-[#D98C70] font-semibold shrink-0">Verified</span>
+              <span className="text-[#613E35] font-semibold shrink-0">Verified</span>
             </div>
           </div>
 
@@ -175,12 +175,12 @@ export const CodingProfiles = () => {
             <div>
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] text-[#D98C70] flex items-center justify-center shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] text-[#613E35] flex items-center justify-center shrink-0">
                     <CodeChefIcon size={24} />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-[#613E35]">CodeChef</h3>
-                    <p className="text-xs text-[#A27B6E] font-mono">@{codechefUser}</p>
+                    <p className="text-xs text-[#613E35] font-mono">@{codechefUser}</p>
                   </div>
                 </div>
 
@@ -206,7 +206,7 @@ export const CodingProfiles = () => {
                   <div className="text-sm font-bold text-[#613E35]">
                     {social.codechefStat1Value || DEFAULT_SOCIAL_LINKS.codechefStat1Value}
                   </div>
-                  <div className="text-[10.5px] text-[#A27B6E] font-medium">
+                  <div className="text-[10.5px] text-[#613E35] font-medium">
                     {social.codechefStat1Label || DEFAULT_SOCIAL_LINKS.codechefStat1Label}
                   </div>
                 </div>
@@ -214,27 +214,27 @@ export const CodingProfiles = () => {
                   <div className="text-sm font-bold text-[#613E35]">
                     {social.codechefStat2Value || DEFAULT_SOCIAL_LINKS.codechefStat2Value}
                   </div>
-                  <div className="text-[10.5px] text-[#A27B6E] font-medium">
+                  <div className="text-[10.5px] text-[#613E35] font-medium">
                     {social.codechefStat2Label || DEFAULT_SOCIAL_LINKS.codechefStat2Label}
                   </div>
                 </div>
                 <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-xl p-2.5 text-center">
-                  <div className="text-sm font-bold text-[#D98C70]">
+                  <div className="text-sm font-bold text-[#613E35]">
                     {social.codechefStat3Value || DEFAULT_SOCIAL_LINKS.codechefStat3Value}
                   </div>
-                  <div className="text-[10.5px] text-[#A27B6E] font-medium">
+                  <div className="text-[10.5px] text-[#613E35] font-medium">
                     {social.codechefStat3Label || DEFAULT_SOCIAL_LINKS.codechefStat3Label}
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="mt-6 pt-3.5 border-t border-[#F0DED4] flex items-center justify-between text-xs text-[#A27B6E]">
+            <div className="mt-6 pt-3.5 border-t border-[#F0DED4] flex items-center justify-between text-xs text-[#613E35]">
               <span className="flex items-center gap-1.5 truncate">
-                <Trophy size={13} className="text-[#D98C70] shrink-0" />
+                <Trophy size={13} className="text-[#613E35] shrink-0" />
                 <span className="truncate">codechef.com/users/{codechefUser}</span>
               </span>
-              <span className="text-[#D98C70] font-semibold shrink-0">Verified</span>
+              <span className="text-[#613E35] font-semibold shrink-0">Verified</span>
             </div>
           </div>
 

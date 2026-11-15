@@ -39,7 +39,7 @@ export const AdminMessagesView = () => {
           <h1 className="text-2xl font-semibold text-[#613E35]">
             Contact Messages ({messages.length})
           </h1>
-          <p className="text-sm text-[#A27B6E] mt-1">
+          <p className="text-sm text-[#613E35] mt-1">
             Review incoming inquiries submitted through the public Contact Us form.
           </p>
         </div>
@@ -50,7 +50,7 @@ export const AdminMessagesView = () => {
             className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
               filter === 'all'
                 ? 'bg-[#D98C70] text-white'
-                : 'bg-white text-[#A27B6E] border border-[#F0DED4]'
+                : 'bg-white text-[#613E35] border border-[#F0DED4]'
             }`}
           >
             All Messages ({messages.length})
@@ -60,7 +60,7 @@ export const AdminMessagesView = () => {
             className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
               filter === 'unread'
                 ? 'bg-[#D98C70] text-white'
-                : 'bg-white text-[#A27B6E] border border-[#F0DED4]'
+                : 'bg-white text-[#613E35] border border-[#F0DED4]'
             }`}
           >
             Unread ({messages.filter(m => !m.read).length})
@@ -71,11 +71,11 @@ export const AdminMessagesView = () => {
       {/* Messages List */}
       {filtered.length === 0 ? (
         <div className="bg-white border border-[#F0DED4] rounded-xl p-12 text-center shadow-sm">
-          <Mail size={36} className="text-[#A27B6E] mx-auto mb-3" />
+          <Mail size={36} className="text-[#613E35] mx-auto mb-3" />
           <h3 className="text-base font-semibold text-[#613E35] mb-1">
             No Messages Found
           </h3>
-          <p className="text-xs text-[#A27B6E]">
+          <p className="text-xs text-[#613E35]">
             {filter === 'unread' ? "All messages have been marked as read." : "Your inbox is currently empty."}
           </p>
         </div>
@@ -93,7 +93,7 @@ export const AdminMessagesView = () => {
                 <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 mt-0.5 ${
                   !msg.read 
                     ? 'bg-[#D98C70] text-white' 
-                    : 'bg-[#FCE9DF] text-[#A27B6E]'
+                    : 'bg-[#FCE9DF] text-[#613E35]'
                 }`}>
                   {!msg.read ? <Mail size={16} /> : <MailOpen size={16} />}
                 </div>
@@ -101,22 +101,22 @@ export const AdminMessagesView = () => {
                 <div>
                   <div className="flex items-center gap-2.5">
                     <span className="text-sm font-semibold text-[#613E35]">{msg.name}</span>
-                    <span className="text-xs text-[#A27B6E]">{msg.email}</span>
+                    <span className="text-xs text-[#613E35]">{msg.email}</span>
                   </div>
 
                   {msg.subject && (
-                    <div className="text-xs font-medium text-[#D98C70] mt-0.5">
+                    <div className="text-xs font-medium text-[#613E35] mt-0.5">
                       Subject: {msg.subject}
                     </div>
                   )}
 
-                  <p className="text-xs text-[#A27B6E] mt-1 line-clamp-1 max-w-xl">
+                  <p className="text-xs text-[#613E35] mt-1 line-clamp-1 max-w-xl">
                     {msg.message}
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 self-end sm:self-center text-xs text-[#A27B6E]">
+              <div className="flex items-center gap-3 self-end sm:self-center text-xs text-[#613E35]">
                 <span>
                   {new Date(msg.timestamp || msg.createdAt || Date.now()).toLocaleDateString('en-US', {
                     month: 'short',
@@ -132,7 +132,7 @@ export const AdminMessagesView = () => {
                     e.stopPropagation();
                     markMessageRead(msg.id, !msg.read);
                   }}
-                  className="p-1.5 rounded-lg text-[#A27B6E] hover:text-[#D98C70] hover:bg-[#FCE9DF]"
+                  className="p-1.5 rounded-lg text-[#613E35] hover:text-[#D98C70] hover:bg-[#FCE9DF]"
                   title={msg.read ? "Mark unread" : "Mark read"}
                 >
                   <Check size={15} />
@@ -141,7 +141,7 @@ export const AdminMessagesView = () => {
                 <button
                   type="button"
                   onClick={(e) => handleDelete(msg.id, msg.name, e)}
-                  className="p-1.5 rounded-lg text-[#A27B6E] hover:text-[#DC2626] hover:bg-[#FEF2F2]"
+                  className="p-1.5 rounded-lg text-[#613E35] hover:text-[#DC2626] hover:bg-[#FEF2F2]"
                   title="Delete message"
                 >
                   <Trash2 size={15} />
@@ -161,13 +161,13 @@ export const AdminMessagesView = () => {
                 <h2 className="text-lg font-semibold text-[#613E35]">
                   {selectedMessage.subject || "Contact Inquiry"}
                 </h2>
-                <div className="text-xs text-[#A27B6E] mt-1">
+                <div className="text-xs text-[#613E35] mt-1">
                   From: <span className="font-medium text-[#613E35]">{selectedMessage.name}</span> ({selectedMessage.email})
                 </div>
               </div>
               <button 
                 onClick={() => setSelectedMessage(null)}
-                className="text-[#A27B6E] hover:text-[#613E35]"
+                className="text-[#613E35] hover:text-[#613E35]"
               >
                 <X size={18} />
               </button>
@@ -178,7 +178,7 @@ export const AdminMessagesView = () => {
                 {selectedMessage.message}
               </div>
 
-              <div className="text-xs text-[#A27B6E] flex items-center justify-between">
+              <div className="text-xs text-[#613E35] flex items-center justify-between">
                 <span>Received: {new Date(selectedMessage.timestamp || selectedMessage.createdAt || Date.now()).toLocaleString()}</span>
                 <a
                   href={`mailto:${selectedMessage.email}?subject=Re: ${encodeURIComponent(selectedMessage.subject || 'Portfolio Inquiry')}`}

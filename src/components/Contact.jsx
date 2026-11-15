@@ -90,7 +90,7 @@ export const Contact = () => {
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#613E35] tracking-tight">
             Let's Discuss Software Opportunities
           </h2>
-          <p className="text-base text-[#A27B6E] mt-2 max-w-2xl">
+          <p className="text-base text-[#613E35] mt-2 max-w-2xl">
             Whether for software engineering internships, technical collaborations, or general questions, I'm always open to connecting.
           </p>
         </div>
@@ -108,11 +108,11 @@ export const Contact = () => {
                 href={`mailto:${email}`}
                 className="flex items-center gap-3.5 p-4 rounded-xl border border-[#F0DED4] bg-[#FFF8F3] hover:bg-[#FCE9DF] hover:border-[#F4C9B5] transition-all duration-150 group"
               >
-                <div className="w-10 h-10 rounded-xl bg-white border border-[#F0DED4] text-[#D98C70] flex items-center justify-center shrink-0 shadow-xs group-hover:bg-[#D98C70] group-hover:text-white transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-white border border-[#F0DED4] text-[#613E35] flex items-center justify-center shrink-0 shadow-xs group-hover:bg-[#D98C70] group-hover:text-white transition-colors">
                   <Mail size={18} />
                 </div>
                 <div className="truncate">
-                  <div className="text-xs font-semibold text-[#A27B6E] uppercase">Email Address</div>
+                  <div className="text-xs font-semibold text-[#613E35] uppercase">Email Address</div>
                   <div className="text-sm font-semibold text-[#613E35] group-hover:text-[#D98C70] transition-colors truncate">
                     {email}
                   </div>
@@ -123,11 +123,11 @@ export const Contact = () => {
                 href={`tel:${phone.replace(/\s+/g, '')}`}
                 className="flex items-center gap-3.5 p-4 rounded-xl border border-[#F0DED4] bg-[#FFF8F3] hover:bg-[#FCE9DF] hover:border-[#F4C9B5] transition-all duration-150 group"
               >
-                <div className="w-10 h-10 rounded-xl bg-white border border-[#F0DED4] text-[#D98C70] flex items-center justify-center shrink-0 shadow-xs group-hover:bg-[#D98C70] group-hover:text-white transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-white border border-[#F0DED4] text-[#613E35] flex items-center justify-center shrink-0 shadow-xs group-hover:bg-[#D98C70] group-hover:text-white transition-colors">
                   <Phone size={18} />
                 </div>
                 <div>
-                  <div className="text-xs font-semibold text-[#A27B6E] uppercase">Phone / WhatsApp</div>
+                  <div className="text-xs font-semibold text-[#613E35] uppercase">Phone / WhatsApp</div>
                   <div className="text-sm font-semibold text-[#613E35] group-hover:text-[#D98C70] transition-colors">
                     {phone}
                   </div>
@@ -135,11 +135,11 @@ export const Contact = () => {
               </a>
 
               <div className="flex items-center gap-3.5 p-4 rounded-xl border border-[#F0DED4] bg-[#FFF8F3]">
-                <div className="w-10 h-10 rounded-xl bg-white border border-[#F0DED4] text-[#D98C70] flex items-center justify-center shrink-0 shadow-xs">
+                <div className="w-10 h-10 rounded-xl bg-white border border-[#F0DED4] text-[#613E35] flex items-center justify-center shrink-0 shadow-xs">
                   <MapPin size={18} />
                 </div>
                 <div>
-                  <div className="text-xs font-semibold text-[#A27B6E] uppercase">Campus Location</div>
+                  <div className="text-xs font-semibold text-[#613E35] uppercase">Campus Location</div>
                   <div className="text-sm font-semibold text-[#613E35]">
                     {location} (KL University)
                   </div>
@@ -149,7 +149,7 @@ export const Contact = () => {
 
             {/* Direct Social Grid */}
             <div className="pt-2">
-              <div className="text-xs font-bold uppercase tracking-wider text-[#A27B6E] mb-3">
+              <div className="text-xs font-bold uppercase tracking-wider text-[#613E35] mb-3">
                 Technical Profiles
               </div>
               <div className="grid grid-cols-2 gap-2.5">
@@ -163,7 +163,7 @@ export const Contact = () => {
                       rel="noopener noreferrer"
                       className="flex items-center gap-2.5 p-3 rounded-xl border border-[#F0DED4] bg-[#FFF8F3] hover:bg-[#FCE9DF] hover:border-[#F4C9B5] transition-all duration-150 group"
                     >
-                      <Icon size={16} className="text-[#D98C70]" />
+                      <Icon size={16} className="text-[#613E35]" />
                       <span className="text-xs font-semibold text-[#613E35] group-hover:text-[#D98C70] transition-colors">
                         {item.name}
                       </span>
@@ -179,16 +179,16 @@ export const Contact = () => {
             <h3 className="text-lg font-bold text-[#613E35] mb-2">
               Send a Direct Message
             </h3>
-            <p className="text-xs text-[#A27B6E] mb-6">
+            <p className="text-xs text-[#613E35] mb-6">
               Messages are routed securely to Cloud Firestore and accessible only to the authorized Super Admin.
             </p>
 
             {status === 'success' && (
               <div className="mb-6 p-4 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] flex items-start gap-3 animate-fade-in">
-                <Check size={18} className="text-[#D98C70] shrink-0 mt-0.5" />
+                <Check size={18} className="text-[#613E35] shrink-0 mt-0.5" />
                 <div>
                   <div className="text-sm font-bold text-[#613E35]">Message Sent Successfully</div>
-                  <div className="text-xs text-[#A27B6E] mt-0.5">
+                  <div className="text-xs text-[#613E35] mt-0.5">
                     Thank you for reaching out. I have received your message and will reply shortly.
                   </div>
                 </div>
@@ -229,7 +229,7 @@ export const Contact = () => {
                     value={formData.name}
                     onChange={e => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Alex Johnson"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#F0DED4] bg-white text-sm text-[#613E35] placeholder:text-[#A27B6E] focus:outline-none focus:border-[#D98C70] focus:ring-2 focus:ring-[#FCE9DF] transition-all"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#F0DED4] bg-white text-sm text-[#613E35] placeholder:text-[#613E35] focus:outline-none focus:border-[#D98C70] focus:ring-2 focus:ring-[#FCE9DF] transition-all"
                   />
                 </div>
 
@@ -243,7 +243,7 @@ export const Contact = () => {
                     value={formData.email}
                     onChange={e => setFormData({ ...formData, email: e.target.value })}
                     placeholder="alex@company.com"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#F0DED4] bg-white text-sm text-[#613E35] placeholder:text-[#A27B6E] focus:outline-none focus:border-[#D98C70] focus:ring-2 focus:ring-[#FCE9DF] transition-all"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#F0DED4] bg-white text-sm text-[#613E35] placeholder:text-[#613E35] focus:outline-none focus:border-[#D98C70] focus:ring-2 focus:ring-[#FCE9DF] transition-all"
                   />
                 </div>
               </div>
@@ -257,7 +257,7 @@ export const Contact = () => {
                   value={formData.subject}
                   onChange={e => setFormData({ ...formData, subject: e.target.value })}
                   placeholder="Internship opportunity / Technical question"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#F0DED4] bg-white text-sm text-[#613E35] placeholder:text-[#A27B6E] focus:outline-none focus:border-[#D98C70] focus:ring-2 focus:ring-[#FCE9DF] transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#F0DED4] bg-white text-sm text-[#613E35] placeholder:text-[#613E35] focus:outline-none focus:border-[#D98C70] focus:ring-2 focus:ring-[#FCE9DF] transition-all"
                 />
               </div>
 
@@ -271,7 +271,7 @@ export const Contact = () => {
                   value={formData.message}
                   onChange={e => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Hello Surendar, I'd like to discuss..."
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#F0DED4] bg-white text-sm text-[#613E35] placeholder:text-[#A27B6E] focus:outline-none focus:border-[#D98C70] focus:ring-2 focus:ring-[#FCE9DF] transition-all resize-none"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#F0DED4] bg-white text-sm text-[#613E35] placeholder:text-[#613E35] focus:outline-none focus:border-[#D98C70] focus:ring-2 focus:ring-[#FCE9DF] transition-all resize-none"
                 />
               </div>
 

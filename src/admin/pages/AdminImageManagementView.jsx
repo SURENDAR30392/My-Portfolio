@@ -166,10 +166,10 @@ export const AdminImageManagementView = () => {
       {/* Header */}
       <div>
         <h1 className="text-2xl font-semibold text-[#613E35] flex items-center gap-2.5">
-          <Images size={24} className="text-[#D98C70]" />
+          <Images size={24} className="text-[#613E35]" />
           <span>Image Management</span>
         </h1>
-        <p className="text-sm text-[#A27B6E] mt-1">
+        <p className="text-sm text-[#613E35] mt-1">
           Manage all portfolio images via direct public URLs. Optimized for Firebase Spark free plan with zero-cost external hosting.
         </p>
       </div>
@@ -177,14 +177,14 @@ export const AdminImageManagementView = () => {
       {/* Spark Free Plan Architecture Callout */}
       <div className="bg-[#FCE9DF] border border-[#F4C9B5]/60 rounded-xl p-5 flex flex-col sm:flex-row sm:items-start justify-between gap-4">
         <div className="flex items-start gap-3">
-          <div className="w-9 h-9 rounded-lg bg-white text-[#D98C70] flex items-center justify-center shrink-0 shadow-xs border border-[#F0DED4]">
+          <div className="w-9 h-9 rounded-lg bg-white text-[#613E35] flex items-center justify-center shrink-0 shadow-xs border border-[#F0DED4]">
             <Globe size={18} />
           </div>
           <div>
             <h3 className="text-sm font-semibold text-[#613E35]">
               Firebase Spark Free Plan — URL-Based Image Pipeline
             </h3>
-            <p className="text-xs text-[#A27B6E] mt-1 leading-relaxed">
+            <p className="text-xs text-[#613E35] mt-1 leading-relaxed">
               No Firebase Storage bucket billing is required. You can host images anywhere: <strong>GitHub Raw</strong>, <strong>Imgur</strong>, <strong>Cloudinary Free</strong>, <strong>PostImages</strong>, or any HTTPS CDN. Every URL provides an instant live preview before saving to Firestore.
             </p>
           </div>
@@ -208,7 +208,7 @@ export const AdminImageManagementView = () => {
             className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors ${
               activeTab === t.id
                 ? 'bg-[#D98C70] text-white shadow-xs'
-                : 'bg-white text-[#A27B6E] border border-[#F0DED4] hover:bg-[#FCE9DF]'
+                : 'bg-white text-[#613E35] border border-[#F0DED4] hover:bg-[#FCE9DF]'
             }`}
           >
             {t.label} {t.count !== undefined ? `(${t.count})` : ''}
@@ -228,11 +228,11 @@ export const AdminImageManagementView = () => {
                   <h2 className="text-base font-semibold text-[#613E35]">
                     Image Title: Profile Image
                   </h2>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider bg-[#FCE9DF] text-[#D98C70] border border-[#F4C9B5]/40">
+                  <span className="px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider bg-[#FCE9DF] text-[#613E35] border border-[#F4C9B5]/40">
                     Category: Profile
                   </span>
                 </div>
-                <p className="text-xs text-[#A27B6E] mt-0.5">Hero section main portrait photograph</p>
+                <p className="text-xs text-[#613E35] mt-0.5">Hero section main portrait photograph</p>
               </div>
 
               <div className="flex items-center gap-2">
@@ -248,7 +248,7 @@ export const AdminImageManagementView = () => {
                 <button
                   type="button"
                   onClick={handleRemoveProfile}
-                  className="p-2 rounded-lg border border-[#F0DED4] text-[#A27B6E] hover:text-[#DC2626] hover:bg-[#FEF2F2] transition-colors"
+                  className="p-2 rounded-lg border border-[#F0DED4] text-[#613E35] hover:text-[#DC2626] hover:bg-[#FEF2F2] transition-colors"
                   title="Remove Image (reset to default)"
                 >
                   <Trash2 size={14} />
@@ -284,11 +284,11 @@ export const AdminImageManagementView = () => {
                   <h2 className="text-base font-semibold text-[#613E35]">
                     Image Title: About Section Graphic / Image
                   </h2>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider bg-[#FCE9DF] text-[#D98C70] border border-[#F4C9B5]/40">
+                  <span className="px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider bg-[#FCE9DF] text-[#613E35] border border-[#F4C9B5]/40">
                     Category: About Section
                   </span>
                 </div>
-                <p className="text-xs text-[#A27B6E] mt-0.5">Secondary portrait or academic campus photo</p>
+                <p className="text-xs text-[#613E35] mt-0.5">Secondary portrait or academic campus photo</p>
               </div>
 
               <div className="flex items-center gap-2">
@@ -303,7 +303,7 @@ export const AdminImageManagementView = () => {
                 <button
                   type="button"
                   onClick={handleRemoveAboutImage}
-                  className="p-2 rounded-lg border border-[#F0DED4] text-[#A27B6E] hover:text-[#DC2626] hover:bg-[#FEF2F2] transition-colors"
+                  className="p-2 rounded-lg border border-[#F0DED4] text-[#613E35] hover:text-[#DC2626] hover:bg-[#FEF2F2] transition-colors"
                   title="Remove image"
                 >
                   <Trash2 size={14} />
@@ -335,10 +335,10 @@ export const AdminImageManagementView = () => {
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <h2 className="text-base font-semibold text-[#613E35] flex items-center gap-2">
-                <Briefcase size={18} className="text-[#D98C70]" />
+                <Briefcase size={18} className="text-[#613E35]" />
                 <span>Project Images ({projects.length})</span>
               </h2>
-              <span className="text-xs text-[#A27B6E]">All project cover preview banners</span>
+              <span className="text-xs text-[#613E35]">All project cover preview banners</span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -351,7 +351,7 @@ export const AdminImageManagementView = () => {
                     <div className="flex items-start justify-between gap-2 border-b border-[#F0DED4] pb-2.5">
                       <div>
                         <div className="flex items-center gap-1.5">
-                          <span className="px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider bg-[#FCE9DF] text-[#D98C70] border border-[#F4C9B5]/40">
+                          <span className="px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider bg-[#FCE9DF] text-[#613E35] border border-[#F4C9B5]/40">
                             Category: Projects
                           </span>
                         </div>
@@ -389,7 +389,7 @@ export const AdminImageManagementView = () => {
                     <button
                       type="button"
                       onClick={() => handleRemoveProject(proj.id)}
-                      className="p-1.5 rounded-lg border border-[#F0DED4] text-[#A27B6E] hover:text-[#DC2626] hover:bg-[#FEF2F2] transition-colors"
+                      className="p-1.5 rounded-lg border border-[#F0DED4] text-[#613E35] hover:text-[#DC2626] hover:bg-[#FEF2F2] transition-colors"
                       title="Remove image"
                     >
                       <Trash2 size={13} />
@@ -414,10 +414,10 @@ export const AdminImageManagementView = () => {
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <h2 className="text-base font-semibold text-[#613E35] flex items-center gap-2">
-                <Award size={18} className="text-[#D98C70]" />
+                <Award size={18} className="text-[#613E35]" />
                 <span>Certification Images ({certs.length})</span>
               </h2>
-              <span className="text-xs text-[#A27B6E]">Certificate credentials & proof preview cards</span>
+              <span className="text-xs text-[#613E35]">Certificate credentials & proof preview cards</span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -430,14 +430,14 @@ export const AdminImageManagementView = () => {
                     <div className="flex items-start justify-between gap-2 border-b border-[#F0DED4] pb-2.5">
                       <div>
                         <div className="flex items-center gap-1.5">
-                          <span className="px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider bg-[#FCE9DF] text-[#D98C70] border border-[#F4C9B5]/40">
+                          <span className="px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider bg-[#FCE9DF] text-[#613E35] border border-[#F4C9B5]/40">
                             Category: Certifications
                           </span>
                         </div>
                         <h3 className="text-sm font-semibold text-[#613E35] mt-1 line-clamp-1">
                           Image Title: {c.title}
                         </h3>
-                        <span className="text-[11px] text-[#A27B6E]">{c.organization}</span>
+                        <span className="text-[11px] text-[#613E35]">{c.organization}</span>
                       </div>
                       {c.isSample && (
                         <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-[#FDE68A] text-[#B45309]">
@@ -469,7 +469,7 @@ export const AdminImageManagementView = () => {
                     <button
                       type="button"
                       onClick={() => handleRemoveCert(c.id)}
-                      className="p-1.5 rounded-lg border border-[#F0DED4] text-[#A27B6E] hover:text-[#DC2626] hover:bg-[#FEF2F2] transition-colors"
+                      className="p-1.5 rounded-lg border border-[#F0DED4] text-[#613E35] hover:text-[#DC2626] hover:bg-[#FEF2F2] transition-colors"
                       title="Remove image"
                     >
                       <Trash2 size={13} />
@@ -493,7 +493,7 @@ export const AdminImageManagementView = () => {
         {(activeTab === 'all' || activeTab === 'achievements') && achievements.length > 0 && (
           <div className="space-y-4">
             <h2 className="text-base font-semibold text-[#613E35] flex items-center gap-2">
-              <Award size={18} className="text-[#D98C70]" />
+              <Award size={18} className="text-[#613E35]" />
               <span>Achievement Images ({achievements.length})</span>
             </h2>
 
@@ -506,14 +506,14 @@ export const AdminImageManagementView = () => {
                   <div className="space-y-3">
                     <div className="border-b border-[#F0DED4] pb-2.5">
                       <div className="flex items-center gap-1.5">
-                        <span className="px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider bg-[#FCE9DF] text-[#D98C70] border border-[#F4C9B5]/40">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider bg-[#FCE9DF] text-[#613E35] border border-[#F4C9B5]/40">
                           Category: Achievements
                         </span>
                       </div>
                       <h3 className="text-sm font-semibold text-[#613E35] mt-1">
                         Image Title: {a.title}
                       </h3>
-                      <span className="text-[11px] text-[#A27B6E]">{a.organization}</span>
+                      <span className="text-[11px] text-[#613E35]">{a.organization}</span>
                     </div>
 
                     <ImageUrlInput
@@ -539,7 +539,7 @@ export const AdminImageManagementView = () => {
                     <button
                       type="button"
                       onClick={() => handleRemoveAch(a.id)}
-                      className="p-1.5 rounded-lg border border-[#F0DED4] text-[#A27B6E] hover:text-[#DC2626] hover:bg-[#FEF2F2] transition-colors"
+                      className="p-1.5 rounded-lg border border-[#F0DED4] text-[#613E35] hover:text-[#DC2626] hover:bg-[#FEF2F2] transition-colors"
                       title="Remove image"
                     >
                       <Trash2 size={13} />
@@ -563,7 +563,7 @@ export const AdminImageManagementView = () => {
         {(activeTab === 'all' || activeTab === 'other') && (
           <div className="space-y-4">
             <h2 className="text-base font-semibold text-[#613E35] flex items-center gap-2">
-              <FileText size={18} className="text-[#D98C70]" />
+              <FileText size={18} className="text-[#613E35]" />
               <span>Other Portfolio Images & Social Previews</span>
             </h2>
 
@@ -573,7 +573,7 @@ export const AdminImageManagementView = () => {
               <div className="bg-white border border-[#F0DED4] rounded-xl p-5 shadow-sm space-y-4 flex flex-col justify-between">
                 <div className="space-y-3">
                   <div className="border-b border-[#F0DED4] pb-2.5">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider bg-[#FCE9DF] text-[#D98C70] border border-[#F4C9B5]/40">
+                    <span className="px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider bg-[#FCE9DF] text-[#613E35] border border-[#F4C9B5]/40">
                       Category: Other / Documents
                     </span>
                     <h3 className="text-sm font-semibold text-[#613E35] mt-1">
@@ -606,7 +606,7 @@ export const AdminImageManagementView = () => {
                   <button
                     type="button"
                     onClick={() => setResumeThumbUrl('')}
-                    className="p-1.5 rounded-lg border border-[#F0DED4] text-[#A27B6E] hover:text-[#DC2626] hover:bg-[#FEF2F2] transition-colors"
+                    className="p-1.5 rounded-lg border border-[#F0DED4] text-[#613E35] hover:text-[#DC2626] hover:bg-[#FEF2F2] transition-colors"
                   >
                     <Trash2 size={13} />
                   </button>
@@ -625,7 +625,7 @@ export const AdminImageManagementView = () => {
               <div className="bg-white border border-[#F0DED4] rounded-xl p-5 shadow-sm space-y-4 flex flex-col justify-between">
                 <div className="space-y-3">
                   <div className="border-b border-[#F0DED4] pb-2.5">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider bg-[#FCE9DF] text-[#D98C70] border border-[#F4C9B5]/40">
+                    <span className="px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider bg-[#FCE9DF] text-[#613E35] border border-[#F4C9B5]/40">
                       Category: Other / Social Share
                     </span>
                     <h3 className="text-sm font-semibold text-[#613E35] mt-1">
@@ -658,7 +658,7 @@ export const AdminImageManagementView = () => {
                   <button
                     type="button"
                     onClick={() => setOgImageUrl('')}
-                    className="p-1.5 rounded-lg border border-[#F0DED4] text-[#A27B6E] hover:text-[#DC2626] hover:bg-[#FEF2F2] transition-colors"
+                    className="p-1.5 rounded-lg border border-[#F0DED4] text-[#613E35] hover:text-[#DC2626] hover:bg-[#FEF2F2] transition-colors"
                   >
                     <Trash2 size={13} />
                   </button>

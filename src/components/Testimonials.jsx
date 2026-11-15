@@ -16,7 +16,7 @@ export const Testimonials = () => {
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#613E35] tracking-tight">
             Endorsements & Feedback
           </h2>
-          <p className="text-base text-[#A27B6E] mt-2 max-w-2xl">
+          <p className="text-base text-[#613E35] mt-2 max-w-2xl">
             Observations from academic mentors, hackathon teammates, and peer developers at KL University.
           </p>
         </div>
@@ -29,7 +29,7 @@ export const Testimonials = () => {
               className="bg-white border border-[#F0DED4] rounded-2xl p-6 sm:p-7 shadow-card hover:border-[#F4C9B5] hover:-translate-y-1 hover:shadow-card-hover transition-all duration-200 flex flex-col justify-between"
             >
               <div>
-                <div className="w-9 h-9 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] text-[#D98C70] flex items-center justify-center mb-4">
+                <div className="w-9 h-9 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] text-[#613E35] flex items-center justify-center mb-4">
                   <Quote size={18} />
                 </div>
                 <p className="text-sm sm:text-base text-[#613E35] leading-relaxed mb-6 italic">
@@ -41,7 +41,7 @@ export const Testimonials = () => {
                 <div className="text-sm font-bold text-[#613E35]">
                   {t.author}
                 </div>
-                <div className="text-xs font-medium text-[#D98C70] mt-0.5">
+                <div className="text-xs font-medium text-[#613E35] mt-0.5">
                   {t.role}
                 </div>
               </div>
