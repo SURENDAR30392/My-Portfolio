@@ -11,7 +11,8 @@ import {
   onSnapshot, 
   serverTimestamp, 
   query, 
-  orderBy 
+  orderBy,
+  where 
 } from 'firebase/firestore';
 import { 
   GoogleAuthProvider, 
@@ -58,6 +59,7 @@ export {
   serverTimestamp, 
   query, 
   orderBy,
+  where,
   signInWithPopup, 
   signOut, 
   onAuthStateChanged,

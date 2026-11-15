@@ -7,6 +7,7 @@ export const AdminSampleDataView = () => {
     data, 
     removeSampleData, 
     restoreDefaultData,
+    seedFirestoreCollections,
     deleteProject,
     deleteSkill,
     deleteCertification,
@@ -62,7 +63,15 @@ export const AdminSampleDataView = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
+          <button
+            onClick={seedFirestoreCollections}
+            className="p-2.5 px-4 rounded-lg bg-[#E6F4F2] border border-[#7CC7BD] text-[#0F766E] text-xs font-semibold hover:bg-[#D1EBE7] transition-colors inline-flex items-center gap-2"
+            title="Idempotently synchronize all 10 collections to Cloud Firestore"
+          >
+            <Sparkles size={16} />
+            <span>Sync Live Firestore Collections</span>
+          </button>
           {totalSampleCount > 0 ? (
             <button
               onClick={() => setConfirmModalOpen(true)}

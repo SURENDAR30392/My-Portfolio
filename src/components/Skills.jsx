@@ -82,6 +82,13 @@ export const Skills = () => {
           })}
         </div>
 
+        {/* Empty State */}
+        {allSkills.length === 0 && (
+          <div className="bg-white border border-[#DDE7E5] rounded-xl p-12 text-center my-6">
+            <p className="text-sm text-[#4B5F5C]">No published skills found.</p>
+          </div>
+        )}
+
       </div>
     </section>
   );
