@@ -12,7 +12,6 @@ export const AdminSkillsView = () => {
   const emptyForm = {
     name: '',
     category: 'Programming Languages',
-    proficiency: 85,
     isSample: false
   };
 
@@ -28,7 +27,6 @@ export const AdminSkillsView = () => {
     setForm({
       name: s.name || '',
       category: s.category || 'Programming Languages',
-      proficiency: s.proficiency || 85,
       isSample: Boolean(s.isSample)
     });
     setCurrentId(s.id);
@@ -78,7 +76,6 @@ export const AdminSkillsView = () => {
             <tr>
               <th className="px-6 py-4">Skill Name</th>
               <th className="px-6 py-4">Category</th>
-              <th className="px-6 py-4">Proficiency</th>
               <th className="px-6 py-4">Status</th>
               <th className="px-6 py-4 text-right">Actions</th>
             </tr>
@@ -93,14 +90,6 @@ export const AdminSkillsView = () => {
                   <span className="text-xs px-2.5 py-1 rounded-md bg-[#FCE9DF] text-[#613E35] font-medium border border-[#F0DED4]">
                     {s.category}
                   </span>
-                </td>
-                <td className="px-6 py-4">
-                  <div className="flex items-center gap-2">
-                    <div className="w-20 h-1.5 bg-[#FCE9DF] rounded-full overflow-hidden">
-                      <div className="h-full bg-[#D98C70]" style={{ width: `${s.proficiency || 80}%` }} />
-                    </div>
-                    <span className="text-xs text-[#613E35]">{s.proficiency}%</span>
-                  </div>
                 </td>
                 <td className="px-6 py-4">
                   {s.isSample ? (
@@ -171,21 +160,6 @@ export const AdminSkillsView = () => {
                   <option value="Backend & Cloud">Backend & Cloud Systems</option>
                   <option value="Frontend & Tools">Frontend & Developer Tools</option>
                 </select>
-              </div>
-
-              <div>
-                <div className="flex justify-between items-center mb-1">
-                  <label className="text-xs font-semibold text-[#613E35]">Proficiency Level</label>
-                  <span className="text-xs font-medium text-[#613E35]">{form.proficiency}%</span>
-                </div>
-                <input
-                  type="range"
-                  min="50"
-                  max="100"
-                  value={form.proficiency}
-                  onChange={e => setForm({ ...form, proficiency: Number(e.target.value) })}
-                  className="w-full accent-[#D98C70]"
-                />
               </div>
 
               <div className="pt-2">

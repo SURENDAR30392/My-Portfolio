@@ -190,7 +190,7 @@ export const AdminSampleDataView = () => {
                   key={s.id}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs bg-[#FFF8F3] border border-[#F0DED4] text-[#613E35]"
                 >
-                  <span>{s.name} ({s.proficiency}%)</span>
+                  <span>{s.name}</span>
                   <button
                     onClick={() => deleteSkill(s.id)}
                     className="text-[#613E35] hover:text-[#DC2626]"
