@@ -43,6 +43,15 @@ export const Hero = () => {
     }
   ];
 
+  const handleScrollTo = (e, id) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (el) {
+      window.history.pushState(null, '', `#${id}`);
+      el.scrollIntoView({ behavior: 'instant', block: 'start' });
+    }
+  };
+
   return (
     <section 
       id="hero" 
@@ -82,11 +91,19 @@ export const Hero = () => {
 
             {/* Call-to-Action Buttons */}
             <div className="flex flex-wrap items-center gap-3.5 mb-8">
-              <a href="#work" className="btn-primary">
+              <a 
+                href="#work" 
+                onClick={(e) => handleScrollTo(e, 'work')} 
+                className="btn-primary"
+              >
                 <span>View Projects</span>
                 <ArrowRight size={16} />
               </a>
-              <a href="#contact" className="btn-secondary">
+              <a 
+                href="#contact" 
+                onClick={(e) => handleScrollTo(e, 'contact')} 
+                className="btn-secondary"
+              >
                 <span>Get in Touch</span>
               </a>
               <a 

@@ -20,6 +20,16 @@ export const HomePage = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedCert, setSelectedCert] = useState(null);
 
+  React.useEffect(() => {
+    if (window.location.hash) {
+      const id = window.location.hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'instant', block: 'start' });
+      }
+    }
+  }, []);
+
   const sections = data.settings?.sectionsEnabled || {
     hero: true,
     work: true,

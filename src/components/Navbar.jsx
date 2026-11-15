@@ -19,6 +19,21 @@ export const Navbar = () => {
     { name: "Contact", href: "/#contact" }
   ];
 
+  const handleAnchorClick = (e, href) => {
+    setMobileMenuOpen(false);
+    if (href.startsWith("/#") || href.startsWith("#")) {
+      const id = href.replace(/^\/?#/, '');
+      if (location.pathname === '/') {
+        const el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          window.history.pushState(null, '', `#${id}`);
+          el.scrollIntoView({ behavior: 'instant', block: 'start' });
+        }
+      }
+    }
+  };
+
   const handleNavClick = () => {
     setMobileMenuOpen(false);
   };
@@ -57,6 +72,7 @@ export const Navbar = () => {
               <a 
                 key={link.name} 
                 href={link.href} 
+                onClick={(e) => handleAnchorClick(e, link.href)}
                 className={`${baseClass} ${activeClass}`}
               >
                 {link.name}
@@ -125,7 +141,7 @@ export const Navbar = () => {
               <a 
                 key={link.name} 
                 href={link.href} 
-                onClick={handleNavClick} 
+                onClick={(e) => handleAnchorClick(e, link.href)} 
                 className={`${baseClass} ${activeClass}`}
               >
                 {link.name}
