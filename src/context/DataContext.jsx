@@ -509,7 +509,6 @@ export const DataProvider = ({ children }) => {
         messages: [newMessage, ...(prev.messages || [])]
       };
       persistLocally(updated);
-      syncToFirestore(updated);
       return updated;
     });
 

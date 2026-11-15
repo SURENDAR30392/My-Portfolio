@@ -1,6 +1,7 @@
 import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
+import { initAppCheck } from './appCheck.js';
 
 // Firebase configuration loaded from environment variables (.env.local)
 // matching the registered Web App 'MSR Portfolio Web' (Project: msr-portfolio-5c52f)
@@ -23,6 +24,9 @@ const auth = getAuth(app);
 // Initialize Cloud Firestore (only once)
 const db = getFirestore(app);
 
+// Optionally initialize App Check (non-blocking, Spark plan friendly)
+const appCheck = initAppCheck(app);
+
 // Export initialized services
-export { app, auth, db, firebaseConfig };
+export { app, auth, db, appCheck, firebaseConfig };
 export default app;

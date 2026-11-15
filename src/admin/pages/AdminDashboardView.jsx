@@ -11,9 +11,11 @@ import {
   AlertTriangle
 } from 'lucide-react';
 import { useData } from '../../context/DataContext';
+import { useAuth } from '../../context/AuthContext';
 
 export const AdminDashboardView = ({ setActiveTab }) => {
   const { data, isFirebaseLive } = useData();
+  const { currentUser } = useAuth();
 
   const totalProjects = data.projects?.length || 0;
   const totalSkills = data.skills?.length || 0;
@@ -218,13 +220,23 @@ export const AdminDashboardView = ({ setActiveTab }) => {
               </div>
 
               <div className="flex items-center justify-between p-3 rounded-lg bg-[#F7FAFA] border border-[#DDE7E5] text-xs">
-                <span className="text-[#4B5F5C]">Admin Claim Security</span>
-                <span className="font-semibold text-[#15803D]">Strict Super Admin Rule</span>
+                <span className="text-[#4B5F5C]">Admin Identity</span>
+                <span className="font-semibold text-[#15803D]">Single Super Admin</span>
+              </div>
+
+              <div className="flex items-center justify-between p-3 rounded-lg bg-[#E6F4F2] border border-[#7CC7BD]/50 text-xs">
+                <div>
+                  <span className="text-[#0F766E] font-medium block">Firebase Auth UID</span>
+                  <span className="text-[10px] text-[#8A9B98]">Required for firestore.rules</span>
+                </div>
+                <span className="font-mono font-semibold text-[#102A28] bg-white px-2 py-1 rounded border border-[#DDE7E5] select-all">
+                  {currentUser?.uid || "Sign in with Google to view"}
+                </span>
               </div>
 
               <div className="flex items-center justify-between p-3 rounded-lg bg-[#F7FAFA] border border-[#DDE7E5] text-xs">
-                <span className="text-[#4B5F5C]">File Storage</span>
-                <span className="font-semibold text-[#102A28]">Firebase Storage / Data URI</span>
+                <span className="text-[#4B5F5C]">Image Pipeline</span>
+                <span className="font-semibold text-[#102A28]">Spark Plan (Image URLs)</span>
               </div>
             </div>
           </div>

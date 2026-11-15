@@ -2,84 +2,146 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
+    // =========================================================================
+    // SUPER ADMIN IDENTITY RESTRICTION
+    // =========================================================================
+    // CRITICAL: Replace 'PLACEHOLDER_SUPER_ADMIN_UID_HERE' with your real 
+    // Firebase Authentication UID after signing in with your Google account.
+    // DO NOT DEPLOY this file until the placeholder is replaced with your real UID!
+    // =========================================================================
     function isAuthenticated() {
       return request.auth != null;
     }
 
-    // EXACTLY ONE SUPER ADMIN: Marthala Surendar Reddy with verified email
     function isSuperAdmin() {
-      return isAuthenticated() && 
+      return isAuthenticated() &&
+        request.auth.uid == 'PLACEHOLDER_SUPER_ADMIN_UID_HERE' &&
         request.auth.token.email.lower() == 'marthalasurendarreddy@gmail.com' &&
         request.auth.token.email_verified == true;
     }
 
-    // Portfolio Content Collection
-    match /content/{docId} {
-      allow read: if true;
-      allow write: if isSuperAdmin();
-    }
-
-    // Public Portfolio Collections (skills, projects, education, experience, certifications, achievements, settings)
+    // =========================================================================
+    // 1. PROFILE
+    // Public can read; only Super Admin can create, update, or delete
+    // =========================================================================
     match /profile/{docId} {
       allow read: if true;
       allow write: if isSuperAdmin();
     }
 
-    match /projects/{projectId} {
-      allow read: if resource.data.published == true || isSuperAdmin();
-      allow write: if isSuperAdmin();
-    }
-
+    // =========================================================================
+    // 2. SKILLS
+    // Public can read; only Super Admin can create, update, or delete
+    // =========================================================================
     match /skills/{skillId} {
       allow read: if true;
       allow write: if isSuperAdmin();
     }
 
+    // =========================================================================
+    // 3. PROJECTS
+    // Public can read published projects; Super Admin has full CRUD
+    // =========================================================================
+    match /projects/{projectId} {
+      allow read: if resource.data.published == true || isSuperAdmin();
+      allow write: if isSuperAdmin();
+    }
+
+    // =========================================================================
+    // 4. EDUCATION
+    // Public can read; only Super Admin can create, update, or delete
+    // =========================================================================
     match /education/{educationId} {
       allow read: if true;
       allow write: if isSuperAdmin();
     }
 
+    // =========================================================================
+    // 5. EXPERIENCE
+    // Public can read; only Super Admin can create, update, or delete
+    // =========================================================================
     match /experience/{experienceId} {
       allow read: if true;
       allow write: if isSuperAdmin();
     }
 
+    // =========================================================================
+    // 6. CERTIFICATIONS
+    // Public can read published certifications; Super Admin has full CRUD
+    // =========================================================================
     match /certifications/{certId} {
-      allow read: if true;
+      allow read: if resource.data.published == true || isSuperAdmin();
       allow write: if isSuperAdmin();
     }
 
+    // =========================================================================
+    // 7. ACHIEVEMENTS
+    // Public can read; only Super Admin can create, update, or delete
+    // =========================================================================
     match /achievements/{achievementId} {
       allow read: if true;
       allow write: if isSuperAdmin();
     }
 
+    // =========================================================================
+    // 8. SOCIAL LINKS
+    // Public can read; only Super Admin can create, update, or delete
+    // =========================================================================
     match /socialLinks/{socialLinkId} {
       allow read: if true;
       allow write: if isSuperAdmin();
     }
 
+    // =========================================================================
+    // 9. SETTINGS
+    // Only explicitly public settings readable; Super Admin has full CRUD
+    // =========================================================================
     match /settings/{settingsId} {
+      allow read: if resource.data.isPublic == true || isSuperAdmin();
+      allow write: if isSuperAdmin();
+    }
+
+    // Aggregate portfolio data document for fallback/cache sync
+    match /content/{docId} {
       allow read: if true;
       allow write: if isSuperAdmin();
     }
 
-    // Contact Messages Collection (Protected submission & Admin-only read)
+    // =========================================================================
+    // 10. CONTACT MESSAGES (Strictly Private & Validated)
+    // - Normal visitors CANNOT read, update, or delete any messages.
+    // - Normal visitors can ONLY create messages with strict validation.
+    // - Only the authorized Super Admin can read, update (mark read), or delete.
+    // =========================================================================
     match /messages/{messageId} {
-      // Normal visitors can create messages if valid
-      allow create: if request.resource.data.name is string &&
-                       request.resource.data.name.size() > 0 &&
-                       request.resource.data.name.size() <= 100 &&
-                       request.resource.data.email is string &&
-                       request.resource.data.email.matches('^[^@]+@[^@]+\\.[^@]+$') &&
-                       request.resource.data.message is string &&
-                       request.resource.data.message.size() > 0 &&
-                       request.resource.data.message.size() <= 3000;
-
-      // STRICTLY SUPER ADMIN ONLY: Normal users CANNOT read, update or delete messages
+      allow create: if isValidMessage();
       allow read, update, delete: if isSuperAdmin();
     }
 
+    function isValidMessage() {
+      let data = request.resource.data;
+      return data.keys().hasAll(['name', 'email', 'subject', 'message']) &&
+             data.name is string &&
+             data.name.size() >= 2 &&
+             data.name.size() <= 100 &&
+             data.email is string &&
+             data.email.size() <= 100 &&
+             data.email.matches('^[^@]+@[^@]+\\.[^@]+$') &&
+             data.subject is string &&
+             data.subject.size() >= 2 &&
+             data.subject.size() <= 200 &&
+             data.message is string &&
+             data.message.size() >= 5 &&
+             data.message.size() <= 2000 &&
+             data.read == false;
+    }
+
+    // =========================================================================
+    // DEFAULT DENY
+    // Block any unspecified paths, collections, or subcollections
+    // =========================================================================
+    match /{document=**} {
+      allow read, write: if false;
+    }
   }
 }
