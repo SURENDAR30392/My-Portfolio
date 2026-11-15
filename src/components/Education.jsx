@@ -102,28 +102,34 @@ export const Education = () => {
               {settings.journeyTitle || "4 Years at KL University (2024 – 2028)"}
             </h3>
 
-            <div className="relative pl-6 border-l-2 border-[#F4C9B5] space-y-6 py-2">
+            <div className="space-y-5">
               {journey.map((milestone, idx) => (
-                <div key={idx} className="relative group">
-                  {/* Timeline Node */}
-                  <div 
-                    className="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-white border-2 border-[#D98C70] group-hover:scale-125 transition-transform duration-150" 
-                    aria-hidden="true" 
-                  />
-                  
-                  <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-xl p-4.5 group-hover:border-[#F4C9B5] group-hover:bg-[#FCE9DF]/40 transition-all duration-150 shadow-subtle">
-                    <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-[#613E35] mb-1">
-                      {milestone.year}
+                <div 
+                  key={idx} 
+                  className="bg-[#FFF8F3] border border-[#F0DED4] rounded-2xl p-6 sm:p-7 shadow-card hover:border-[#F4C9B5] hover:bg-[#FCE9DF]/20 transition-all duration-200"
+                >
+                  <div className="mb-3">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FCE9DF] border border-[#F4C9B5] text-xs font-bold text-[#613E35]">
+                      <Calendar size={13} className="text-[#D98C70]" />
+                      <span>{milestone.year}</span>
                     </span>
-                    <h5 className="text-base font-semibold text-[#613E35] mb-1">
-                      {milestone.title}
-                    </h5>
-                    <p className="text-sm text-[#613E35] leading-relaxed">
-                      {milestone.desc}
-                    </p>
                   </div>
+
+                  <h4 className="text-base sm:text-lg font-bold text-[#613E35] mb-2">
+                    {milestone.title}
+                  </h4>
+
+                  <p className="text-sm text-[#613E35] leading-relaxed">
+                    {milestone.desc}
+                  </p>
                 </div>
               ))}
+
+              {journey.length === 0 && (
+                <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-xl p-8 text-center">
+                  <p className="text-sm text-[#613E35]">No academic progression milestones added yet.</p>
+                </div>
+              )}
             </div>
           </div>
 
