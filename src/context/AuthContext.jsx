@@ -10,8 +10,9 @@ import {
 
 const AuthContext = createContext(null);
 
-// Authorized admin email - configured via env or fallback
-const AUTHORIZED_ADMIN_EMAIL = (import.meta.env.VITE_ADMIN_EMAIL || "marthalasurendarreddy@gmail.com").toLowerCase();
+// EXACTLY ONE SUPER ADMIN: Strictly Marthala Surendar Reddy
+export const SUPER_ADMIN_EMAIL = "marthalasurendarreddy@gmail.com";
+export const SUPER_ADMIN_UID = import.meta.env.VITE_ADMIN_UID || "";
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -19,45 +20,49 @@ export const AuthProvider = ({ children }) => {
   const [authLoading, setAuthLoading] = useState(true);
   const [authError, setAuthError] = useState('');
 
+  // Validate if a user is strictly the single Super Admin
+  const isSuperAdminUser = (user) => {
+    if (!user || !user.email) return false;
+    const emailMatch = user.email.toLowerCase() === SUPER_ADMIN_EMAIL.toLowerCase();
+    
+    // In live Firebase, verify email_verified is true
+    const verifiedMatch = user.emailVerified !== false;
+
+    // If a specific UID is pinned in environment variables, verify it matches
+    const uidMatch = !SUPER_ADMIN_UID || user.uid === SUPER_ADMIN_UID;
+
+    return emailMatch && verifiedMatch && uidMatch;
+  };
+
   useEffect(() => {
-    // Check local admin session backup
-    const savedLocalAdmin = sessionStorage.getItem('msr_admin_authenticated');
+    // Check saved session
+    const savedLocalAdmin = sessionStorage.getItem('msr_single_super_admin_auth');
     if (savedLocalAdmin === 'true') {
       setIsAdmin(true);
       setCurrentUser({
-        email: AUTHORIZED_ADMIN_EMAIL,
-        displayName: "Marthala Surendar Reddy (Owner)",
-        photoURL: "/msr-portrait.svg"
+        email: SUPER_ADMIN_EMAIL,
+        displayName: "Marthala Surendar Reddy (Sole Owner & Super Admin)",
+        photoURL: "/msr-portrait.svg",
+        emailVerified: true
       });
     }
 
     if (isFirebaseConfigured && auth) {
       const unsubscribe = onAuthStateChanged(auth, async (user) => {
         if (user) {
-          // Check custom claim first, then fallback to authorized email check
-          try {
-            const idTokenResult = await user.getIdTokenResult(true);
-            const hasAdminClaim = Boolean(idTokenResult.claims.admin);
-            const isAuthorizedEmail = user.email && user.email.toLowerCase() === AUTHORIZED_ADMIN_EMAIL;
-
-            if (hasAdminClaim || isAuthorizedEmail) {
-              setCurrentUser(user);
-              setIsAdmin(true);
-              sessionStorage.setItem('msr_admin_authenticated', 'true');
-              setAuthError('');
-            } else {
-              // Unauthorized user
-              setCurrentUser(user);
-              setIsAdmin(false);
-              sessionStorage.removeItem('msr_admin_authenticated');
-              setAuthError(`Access Denied: ${user.email} is not authorized to access this private Super Admin panel.`);
-            }
-          } catch (e) {
-            console.error("Token verification error:", e);
-            if (user.email && user.email.toLowerCase() === AUTHORIZED_ADMIN_EMAIL) {
-              setCurrentUser(user);
-              setIsAdmin(true);
-            }
+          if (isSuperAdminUser(user)) {
+            setCurrentUser(user);
+            setIsAdmin(true);
+            sessionStorage.setItem('msr_single_super_admin_auth', 'true');
+            setAuthError('');
+          } else {
+            // Unauthorized account: immediately sign out and reject
+            console.warn(`Unauthorized login attempt blocked for: ${user.email}`);
+            await signOut(auth);
+            setCurrentUser(null);
+            setIsAdmin(false);
+            sessionStorage.removeItem('msr_single_super_admin_auth');
+            setAuthError(`Access Denied: ${user.email} is not authorized. Only Marthala Surendar Reddy (${SUPER_ADMIN_EMAIL}) has Super Admin access.`);
           }
         } else {
           if (savedLocalAdmin !== 'true') {
@@ -80,43 +85,43 @@ export const AuthProvider = ({ children }) => {
       try {
         const result = await signInWithPopup(auth, googleProvider);
         const user = result.user;
-        const idTokenResult = await user.getIdTokenResult();
-        const hasAdminClaim = Boolean(idTokenResult.claims.admin);
-        const isAuthorizedEmail = user.email && user.email.toLowerCase() === AUTHORIZED_ADMIN_EMAIL;
 
-        if (hasAdminClaim || isAuthorizedEmail) {
+        if (isSuperAdminUser(user)) {
           setCurrentUser(user);
           setIsAdmin(true);
-          sessionStorage.setItem('msr_admin_authenticated', 'true');
+          sessionStorage.setItem('msr_single_super_admin_auth', 'true');
+          setAuthError('');
           return true;
         } else {
+          // Immediately kick out unauthorized account
           await signOut(auth);
           setCurrentUser(null);
           setIsAdmin(false);
-          sessionStorage.removeItem('msr_admin_authenticated');
-          setAuthError(`Access Denied: ${user.email} is not authorized.`);
+          sessionStorage.removeItem('msr_single_super_admin_auth');
+          setAuthError(`Access Denied: ${user.email} is not authorized. Exactly one Super Admin (${SUPER_ADMIN_EMAIL}) can access this panel.`);
           return false;
         }
       } catch (err) {
-        console.error("Google sign-in error:", err);
+        console.error("Google authentication error:", err);
         setAuthError(err.message);
         return false;
       }
     } else {
-      // Offline / Developer bypass for local inspection
+      // Local development evaluation for the owner
       setCurrentUser({
-        email: AUTHORIZED_ADMIN_EMAIL,
-        displayName: "Marthala Surendar Reddy (Owner)",
-        photoURL: "/msr-portrait.svg"
+        email: SUPER_ADMIN_EMAIL,
+        displayName: "Marthala Surendar Reddy (Sole Owner & Super Admin)",
+        photoURL: "/msr-portrait.svg",
+        emailVerified: true
       });
       setIsAdmin(true);
-      sessionStorage.setItem('msr_admin_authenticated', 'true');
+      sessionStorage.setItem('msr_single_super_admin_auth', 'true');
       return true;
     }
   };
 
   const logout = async () => {
-    sessionStorage.removeItem('msr_admin_authenticated');
+    sessionStorage.removeItem('msr_single_super_admin_auth');
     if (isFirebaseConfigured && auth) {
       try {
         await signOut(auth);
@@ -126,6 +131,7 @@ export const AuthProvider = ({ children }) => {
     }
     setCurrentUser(null);
     setIsAdmin(false);
+    setAuthError('');
   };
 
   const value = {
@@ -135,7 +141,7 @@ export const AuthProvider = ({ children }) => {
     authError,
     loginWithGoogle,
     logout,
-    authorizedEmail: AUTHORIZED_ADMIN_EMAIL
+    superAdminEmail: SUPER_ADMIN_EMAIL
   };
 
   return (
@@ -152,4 +158,3 @@ export const useAuth = () => {
   }
   return context;
 };
-

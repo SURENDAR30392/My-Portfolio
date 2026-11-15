@@ -64,16 +64,20 @@ export const ResumePage = () => {
                 <span>•</span>
                 <span>{profile.email || "marthalasurendarreddy@gmail.com"}</span>
                 <span>•</span>
-                <a href={data.social?.linkedin} target="_blank" rel="noreferrer" className="text-[#0F766E] hover:underline">
+                <a href={data.social?.linkedin || "https://www.linkedin.com/in/marthalasurendarreddy/"} target="_blank" rel="noreferrer" className="text-[#0F766E] hover:underline">
                   LinkedIn
                 </a>
                 <span>•</span>
-                <a href={data.social?.github} target="_blank" rel="noreferrer" className="text-[#0F766E] hover:underline">
+                <a href={data.social?.github || "https://github.com/SURENDAR30392"} target="_blank" rel="noreferrer" className="text-[#0F766E] hover:underline">
                   GitHub
                 </a>
                 <span>•</span>
-                <a href={data.social?.leetcode} target="_blank" rel="noreferrer" className="text-[#0F766E] hover:underline">
+                <a href={data.social?.leetcode || "https://leetcode.com/u/kl_2400030392/"} target="_blank" rel="noreferrer" className="text-[#0F766E] hover:underline">
                   LeetCode
+                </a>
+                <span>•</span>
+                <a href={data.social?.codechef || "https://www.codechef.com/users/kl2400030392"} target="_blank" rel="noreferrer" className="text-[#0F766E] hover:underline">
+                  CodeChef
                 </a>
               </div>
             </div>

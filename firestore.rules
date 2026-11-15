@@ -2,67 +2,67 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Helper functions
     function isAuthenticated() {
       return request.auth != null;
     }
 
-    function isAdmin() {
+    // EXACTLY ONE SUPER ADMIN: Marthala Surendar Reddy with verified email
+    function isSuperAdmin() {
       return isAuthenticated() && 
-        (request.auth.token.admin == true || 
-         request.auth.token.email.lower() == 'marthalasurendarreddy@gmail.com');
+        request.auth.token.email.lower() == 'marthalasurendarreddy@gmail.com' &&
+        request.auth.token.email_verified == true;
     }
 
-    // Portfolio Content Collection (Singleton or modular documents)
+    // Portfolio Content Collection
     match /content/{docId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isSuperAdmin();
     }
 
     // Public Portfolio Collections (skills, projects, education, experience, certifications, achievements, settings)
     match /profile/{docId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isSuperAdmin();
     }
 
     match /projects/{projectId} {
-      allow read: if resource.data.published == true || isAdmin();
-      allow write: if isAdmin();
+      allow read: if resource.data.published == true || isSuperAdmin();
+      allow write: if isSuperAdmin();
     }
 
     match /skills/{skillId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isSuperAdmin();
     }
 
     match /education/{educationId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isSuperAdmin();
     }
 
     match /experience/{experienceId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isSuperAdmin();
     }
 
     match /certifications/{certId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isSuperAdmin();
     }
 
     match /achievements/{achievementId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isSuperAdmin();
     }
 
     match /socialLinks/{socialLinkId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isSuperAdmin();
     }
 
     match /settings/{settingsId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isSuperAdmin();
     }
 
     // Contact Messages Collection (Protected submission & Admin-only read)
@@ -77,10 +77,9 @@ service cloud.firestore {
                        request.resource.data.message.size() > 0 &&
                        request.resource.data.message.size() <= 3000;
 
-      // Normal users CANNOT read, update or delete messages
-      allow read, update, delete: if isAdmin();
+      // STRICTLY SUPER ADMIN ONLY: Normal users CANNOT read, update or delete messages
+      allow read, update, delete: if isSuperAdmin();
     }
 
   }
 }
-

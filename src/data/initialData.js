@@ -1,3 +1,5 @@
+import { DEFAULT_SOCIAL_LINKS } from './socialLinks.js';
+
 export const initialPortfolioData = {
   profile: {
     name: "Marthala Surendar Reddy",
@@ -14,12 +16,12 @@ export const initialPortfolioData = {
     bio: [
       "I am Marthala Surendar Reddy (MSR), a Computer Science and Engineering undergraduate at KL University with an unwavering passion for software craftsmanship. My focus spans core Java backend engineering, full-stack web architectures, and algorithmic problem solving.",
       "I believe in building software that balances computational rigor with clean, intuitive design. Whether designing RESTful microservices, optimizing relational and NoSQL database schemas, or building full-stack web platforms, I strive to write maintainable, production-ready code.",
-      "Driven by continuous learning, I actively solve challenges on LeetCode and contribute to open-source projects on GitHub, aiming to create real-world technological impact."
+      "Driven by continuous learning, I actively solve challenges on LeetCode and CodeChef, and contribute to open-source projects on GitHub, aiming to create real-world technological impact."
     ],
     stats: [
-      { label: "DSA Problems", value: "150+" },
+      { label: "DSA Problems", value: "200+" },
       { label: "Projects Built", value: "8+" },
-      { label: "Hackathons", value: "3+" },
+      { label: "CodeChef / LeetCode", value: "Active" },
       { label: "Expected Grad", value: "2028" }
     ],
     availableForWork: true
@@ -44,7 +46,7 @@ export const initialPortfolioData = {
     {
       year: "Year 1 · 2024 – 2025",
       title: "Foundations, Data Structures & Java",
-      desc: "Enrolled in B.Tech Computer Science at KL University. Mastered core Java, Object-Oriented Programming, algorithmic problem solving, and version control."
+      desc: "Enrolled in B.Tech Computer Science at KL University. Mastered core Java, Object-Oriented Programming, algorithmic problem solving on LeetCode and CodeChef."
     }
   ],
 
@@ -191,7 +193,7 @@ export const initialPortfolioData = {
       highlights: [
         "Core Coursework: Data Structures, OOP with Java, Database Systems, Computer Networks",
         "Active member of departmental coding and technical forums",
-        "Consistent academic performance and active hackathon participation"
+        "Consistent academic performance and active competitive programming"
       ],
       isSample: false
     }
@@ -224,7 +226,7 @@ export const initialPortfolioData = {
       title: "Java SE Programming & Object-Oriented Design",
       organization: "Oracle / Certified Academy (Placeholder)",
       date: "2025",
-      credentialUrl: "https://github.com/SURENDAR30392",
+      credentialUrl: "https://www.linkedin.com/in/marthalasurendarreddy/",
       imageUrl: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80",
       isSample: true,
       published: true
@@ -232,7 +234,7 @@ export const initialPortfolioData = {
     {
       id: "cert-2",
       title: "Data Structures & Algorithms in Java",
-      organization: "LeetCode / HackerRank Verified",
+      organization: "LeetCode Verified Practice",
       date: "2025",
       credentialUrl: "https://leetcode.com/u/kl_2400030392/",
       imageUrl: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=80",
@@ -241,10 +243,10 @@ export const initialPortfolioData = {
     },
     {
       id: "cert-3",
-      title: "Full Stack Web Development with React & Node",
-      organization: "Technical Learning Academy (Placeholder)",
-      date: "2024",
-      credentialUrl: "https://github.com/SURENDAR30392",
+      title: "CodeChef Competitive Programming Track",
+      organization: "CodeChef Division Contests",
+      date: "2024 – 2025",
+      credentialUrl: "https://www.codechef.com/users/kl2400030392",
       imageUrl: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
       isSample: true,
       published: true
@@ -254,7 +256,7 @@ export const initialPortfolioData = {
       title: "Cloud Computing & DevOps Fundamentals",
       organization: "AWS Training & Certification (Placeholder)",
       date: "2025",
-      credentialUrl: "https://github.com/SURENDAR30392",
+      credentialUrl: "https://www.linkedin.com/in/marthalasurendarreddy/",
       imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
       isSample: true,
       published: true
@@ -268,22 +270,34 @@ export const initialPortfolioData = {
       organization: "LeetCode Competitive Programming",
       date: "2024 – Present",
       description: "Consistent problem solver across arrays, binary trees, dynamic programming, and graph algorithms on profile kl_2400030392.",
+      credentialUrl: "https://leetcode.com/u/kl_2400030392/",
       isSample: false
     },
     {
       id: "ach-2",
+      title: "CodeChef Competitive Programming Rating",
+      organization: "CodeChef Contests",
+      date: "2024 – Present",
+      description: "Active participant in Starters and Cook-Off contests under username kl2400030392.",
+      credentialUrl: "https://www.codechef.com/users/kl2400030392",
+      isSample: false
+    },
+    {
+      id: "ach-3",
       title: "University Hackathon Finalist",
       organization: "KL University Tech Fest",
       date: "2025",
       description: "Collaborated in a team of 4 to design and deploy a full-stack campus management prototype within 36 hours.",
+      credentialUrl: "https://www.linkedin.com/in/marthalasurendarreddy/",
       isSample: true
     },
     {
-      id: "ach-3",
+      id: "ach-4",
       title: "Open Source Repository Contributor",
       organization: "GitHub Community",
       date: "2024 – Present",
       description: "Maintains public development repositories on GitHub (SURENDAR30392) documenting clean code and algorithms.",
+      credentialUrl: "https://github.com/SURENDAR30392",
       isSample: false
     }
   ],
@@ -303,20 +317,13 @@ export const initialPortfolioData = {
     },
     {
       id: 3,
-      quote: "A disciplined developer with strong problem-solving initiative. His consistent LeetCode practice and enthusiasm for cloud engineering make him a standout peer.",
+      quote: "A disciplined developer with strong problem-solving initiative. His consistent LeetCode and CodeChef practice and enthusiasm for cloud engineering make him a standout peer.",
       author: "Technical Club Lead",
       role: "Coding Club Member"
     }
   ],
 
-  social: {
-    linkedin: "https://www.linkedin.com/in/marthalasurendarreddy/",
-    github: "https://github.com/SURENDAR30392",
-    leetcode: "https://leetcode.com/u/kl_2400030392/",
-    email: "marthalasurendarreddy@gmail.com",
-    githubUsername: "SURENDAR30392",
-    leetcodeUsername: "kl_2400030392"
-  },
+  social: { ...DEFAULT_SOCIAL_LINKS },
 
   settings: {
     seoTitle: "Marthala Surendar Reddy | Full Stack Developer | KL University",
@@ -344,4 +351,3 @@ export const initialPortfolioData = {
 
   messages: []
 };
-

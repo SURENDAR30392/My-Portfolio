@@ -1,6 +1,8 @@
 import React from 'react';
 import { Linkedin, Github, Code2, Mail } from 'lucide-react';
+import { CodeChefIcon } from './icons/CodeChefIcon';
 import { useData } from '../context/DataContext';
+import { DEFAULT_SOCIAL_LINKS } from '../data/socialLinks';
 
 export const Footer = () => {
   const { data } = useData();
@@ -8,10 +10,36 @@ export const Footer = () => {
   const social = data.social || {};
 
   const socialLinks = [
-    { name: "LinkedIn", url: social.linkedin || "https://www.linkedin.com/in/marthalasurendarreddy/", icon: Linkedin },
-    { name: "GitHub", url: social.github || "https://github.com/SURENDAR30392", icon: Github },
-    { name: "LeetCode", url: social.leetcode || "https://leetcode.com/u/kl_2400030392/", icon: Code2 },
-    { name: "Email", url: `mailto:${social.email || "marthalasurendarreddy@gmail.com"}`, icon: Mail }
+    { 
+      name: "LinkedIn", 
+      url: social.linkedin || DEFAULT_SOCIAL_LINKS.linkedin, 
+      icon: Linkedin,
+      label: "LinkedIn Profile"
+    },
+    { 
+      name: "GitHub", 
+      url: social.github || DEFAULT_SOCIAL_LINKS.github, 
+      icon: Github,
+      label: "GitHub Profile"
+    },
+    { 
+      name: "LeetCode", 
+      url: social.leetcode || DEFAULT_SOCIAL_LINKS.leetcode, 
+      icon: Code2,
+      label: "LeetCode Profile"
+    },
+    { 
+      name: "CodeChef", 
+      url: social.codechef || DEFAULT_SOCIAL_LINKS.codechef, 
+      icon: CodeChefIcon,
+      label: "CodeChef Profile"
+    },
+    { 
+      name: "Email", 
+      url: `mailto:${social.email || profile.email || DEFAULT_SOCIAL_LINKS.email}`, 
+      icon: Mail,
+      label: "Email Marthala Surendar Reddy"
+    }
   ];
 
   return (
@@ -28,17 +56,19 @@ export const Footer = () => {
           </p>
         </div>
 
-        {/* Social Icons */}
-        <div className="flex items-center gap-3">
+        {/* Social Icons - Strictly mapped to each platform */}
+        <div className="flex flex-wrap items-center gap-2.5">
           {socialLinks.map((item) => {
             const Icon = item.icon;
+            const isMail = item.url.startsWith('mailto:');
             return (
               <a
                 key={item.name}
                 href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={item.name}
+                target={isMail ? undefined : "_blank"}
+                rel={isMail ? undefined : "noopener noreferrer"}
+                aria-label={item.label}
+                title={item.name}
                 className="w-10 h-10 rounded-lg border border-[#DDE7E5] bg-[#FFFFFF] hover:bg-[#E6F4F2] text-[#4B5F5C] hover:text-[#0F766E] flex items-center justify-center transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#7CC7BD]"
               >
                 <Icon size={18} />
@@ -56,4 +86,3 @@ export const Footer = () => {
     </footer>
   );
 };
-

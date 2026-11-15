@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Save, Upload, User, Globe, Mail, Phone, MapPin, Linkedin, Github, Code2 } from 'lucide-react';
+import { Save, Upload, User, Globe, Mail, Phone, MapPin, Linkedin, Github, Code2, Trophy } from 'lucide-react';
+import { CodeChefIcon } from '../../components/icons/CodeChefIcon';
 import { useData } from '../../context/DataContext';
+import { DEFAULT_SOCIAL_LINKS } from '../../data/socialLinks';
 
 export const AdminProfileView = () => {
   const { data, updateProfile, updateSocialLinks, uploadFile } = useData();
@@ -11,20 +13,22 @@ export const AdminProfileView = () => {
     name: profile.name || '',
     title: profile.title || '',
     intro: profile.intro || '',
-    university: profile.university || '',
+    university: profile.university || 'KL University',
     graduationYear: profile.graduationYear || '2028',
-    location: profile.location || '',
-    email: profile.email || '',
-    phone: profile.phone || '',
-    avatar: profile.avatar || '',
+    location: profile.location || 'Andhra Pradesh, India',
+    email: profile.email || DEFAULT_SOCIAL_LINKS.email,
+    phone: profile.phone || '+91 98765 43210',
+    avatar: profile.avatar || '/msr-portrait.svg',
     bio1: Array.isArray(profile.bio) ? profile.bio[0] || '' : profile.bio || '',
     bio2: Array.isArray(profile.bio) ? profile.bio[1] || '' : '',
     bio3: Array.isArray(profile.bio) ? profile.bio[2] || '' : '',
-    linkedin: social.linkedin || '',
-    github: social.github || '',
-    leetcode: social.leetcode || '',
-    githubUsername: social.githubUsername || 'SURENDAR30392',
-    leetcodeUsername: social.leetcodeUsername || 'kl_2400030392'
+    linkedin: social.linkedin || DEFAULT_SOCIAL_LINKS.linkedin,
+    github: social.github || DEFAULT_SOCIAL_LINKS.github,
+    leetcode: social.leetcode || DEFAULT_SOCIAL_LINKS.leetcode,
+    codechef: social.codechef || DEFAULT_SOCIAL_LINKS.codechef,
+    githubUsername: social.githubUsername || DEFAULT_SOCIAL_LINKS.githubUsername,
+    leetcodeUsername: social.leetcodeUsername || DEFAULT_SOCIAL_LINKS.leetcodeUsername,
+    codechefUsername: social.codechefUsername || DEFAULT_SOCIAL_LINKS.codechefUsername
   });
 
   const [uploading, setUploading] = useState(false);
@@ -62,8 +66,10 @@ export const AdminProfileView = () => {
       linkedin: form.linkedin,
       github: form.github,
       leetcode: form.leetcode,
+      codechef: form.codechef,
       githubUsername: form.githubUsername,
       leetcodeUsername: form.leetcodeUsername,
+      codechefUsername: form.codechefUsername,
       email: form.email
     });
   };
@@ -72,10 +78,10 @@ export const AdminProfileView = () => {
     <div className="space-y-8 animate-fade-in max-w-4xl">
       <div>
         <h1 className="text-2xl font-semibold text-[#102A28]">
-          Personal Information
+          Personal Information & Professional Profiles
         </h1>
         <p className="text-sm text-[#4B5F5C] mt-1">
-          Update your public profile, bio narratives, portrait image, and professional links.
+          Update your public profile, bio narratives, portrait image, and independent coding links.
         </p>
       </div>
 
@@ -220,70 +226,113 @@ export const AdminProfileView = () => {
           </div>
         </div>
 
-        {/* Contact & Social Links */}
-        <div className="bg-white border border-[#DDE7E5] rounded-xl p-6 shadow-sm space-y-4">
-          <h2 className="text-base font-semibold text-[#102A28] border-b border-[#DDE7E5] pb-3 flex items-center gap-2">
-            <Globe size={18} className="text-[#0F766E]" />
-            <span>Contact Channels & Verified Profiles</span>
+        {/* Independent Social & Coding Platform Links */}
+        <div className="bg-white border border-[#DDE7E5] rounded-xl p-6 shadow-sm space-y-5">
+          <h2 className="text-base font-semibold text-[#102A28] border-b border-[#DDE7E5] pb-3 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Globe size={18} className="text-[#0F766E]" />
+              <span>Independent Profile Links (4 Platforms)</span>
+            </div>
+            <span className="text-xs text-[#8A9B98] font-normal">Strict 1:1 platform mapping</span>
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-xs font-semibold text-[#102A28] mb-1.5 flex items-center gap-1.5">
+                <Linkedin size={14} className="text-[#0F766E]" />
+                <span>LinkedIn URL</span>
+              </label>
+              <input
+                type="url"
+                required
+                value={form.linkedin}
+                onChange={e => setForm({ ...form, linkedin: e.target.value })}
+                placeholder="https://www.linkedin.com/in/marthalasurendarreddy/"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E]"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#102A28] mb-1.5 flex items-center gap-1.5">
+                <Github size={14} className="text-[#0F766E]" />
+                <span>GitHub URL</span>
+              </label>
+              <input
+                type="url"
+                required
+                value={form.github}
+                onChange={e => setForm({ ...form, github: e.target.value })}
+                placeholder="https://github.com/SURENDAR30392"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E]"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#102A28] mb-1.5 flex items-center gap-1.5">
+                <Code2 size={14} className="text-[#0F766E]" />
+                <span>LeetCode URL</span>
+              </label>
+              <input
+                type="url"
+                required
+                value={form.leetcode}
+                onChange={e => setForm({ ...form, leetcode: e.target.value })}
+                placeholder="https://leetcode.com/u/kl_2400030392/"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E]"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#102A28] mb-1.5 flex items-center gap-1.5">
+                <CodeChefIcon size={14} className="text-[#0F766E]" />
+                <span>CodeChef URL</span>
+              </label>
+              <input
+                type="url"
+                required
+                value={form.codechef}
+                onChange={e => setForm({ ...form, codechef: e.target.value })}
+                placeholder="https://www.codechef.com/users/kl2400030392"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E]"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#102A28] mb-1.5">GitHub Username</label>
+              <input
+                type="text"
+                value={form.githubUsername}
+                onChange={e => setForm({ ...form, githubUsername: e.target.value })}
+                className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E]"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#102A28] mb-1.5">LeetCode Username</label>
+              <input
+                type="text"
+                value={form.leetcodeUsername}
+                onChange={e => setForm({ ...form, leetcodeUsername: e.target.value })}
+                className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E]"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#102A28] mb-1.5">CodeChef Username</label>
+              <input
+                type="text"
+                value={form.codechefUsername}
+                onChange={e => setForm({ ...form, codechefUsername: e.target.value })}
+                className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E]"
+              />
+            </div>
+
             <div>
               <label className="block text-xs font-semibold text-[#102A28] mb-1.5">Contact Email</label>
               <input
                 type="email"
                 value={form.email}
                 onChange={e => setForm({ ...form, email: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E]"
-              />
-            </div>
-
-            <div>
-              <label className="block text-xs font-semibold text-[#102A28] mb-1.5">Contact Phone</label>
-              <input
-                type="text"
-                value={form.phone}
-                onChange={e => setForm({ ...form, phone: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E]"
-              />
-            </div>
-
-            <div>
-              <label className="block text-xs font-semibold text-[#102A28] mb-1.5">Location</label>
-              <input
-                type="text"
-                value={form.location}
-                onChange={e => setForm({ ...form, location: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E]"
-              />
-            </div>
-
-            <div>
-              <label className="block text-xs font-semibold text-[#102A28] mb-1.5">LinkedIn URL</label>
-              <input
-                type="url"
-                value={form.linkedin}
-                onChange={e => setForm({ ...form, linkedin: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E]"
-              />
-            </div>
-
-            <div>
-              <label className="block text-xs font-semibold text-[#102A28] mb-1.5">GitHub Profile URL</label>
-              <input
-                type="url"
-                value={form.github}
-                onChange={e => setForm({ ...form, github: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E]"
-              />
-            </div>
-
-            <div>
-              <label className="block text-xs font-semibold text-[#102A28] mb-1.5">LeetCode Profile URL</label>
-              <input
-                type="url"
-                value={form.leetcode}
-                onChange={e => setForm({ ...form, leetcode: e.target.value })}
                 className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E]"
               />
             </div>
@@ -302,4 +351,3 @@ export const AdminProfileView = () => {
     </div>
   );
 };
-

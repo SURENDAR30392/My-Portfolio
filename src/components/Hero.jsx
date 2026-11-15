@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Linkedin, Github, Code2, Mail, ChevronDown } from 'lucide-react';
+import { CodeChefIcon } from './icons/CodeChefIcon';
 import { useData } from '../context/DataContext';
+import { DEFAULT_SOCIAL_LINKS } from '../data/socialLinks';
 
 export const Hero = () => {
   const { data } = useData();
@@ -19,11 +21,38 @@ export const Hero = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Strict independent social links mapping - NO shared or fallback-to-GitHub links
   const socialLinks = [
-    { name: "LinkedIn", url: social.linkedin || "https://www.linkedin.com/in/marthalasurendarreddy/", icon: Linkedin },
-    { name: "GitHub", url: social.github || "https://github.com/SURENDAR30392", icon: Github },
-    { name: "LeetCode", url: social.leetcode || "https://leetcode.com/u/kl_2400030392/", icon: Code2 },
-    { name: "Email", url: `mailto:${social.email || "marthalasurendarreddy@gmail.com"}`, icon: Mail }
+    { 
+      name: "LinkedIn", 
+      url: social.linkedin || DEFAULT_SOCIAL_LINKS.linkedin, 
+      icon: Linkedin,
+      label: "View Marthala Surendar Reddy on LinkedIn"
+    },
+    { 
+      name: "GitHub", 
+      url: social.github || DEFAULT_SOCIAL_LINKS.github, 
+      icon: Github,
+      label: "View SURENDAR30392 on GitHub"
+    },
+    { 
+      name: "LeetCode", 
+      url: social.leetcode || DEFAULT_SOCIAL_LINKS.leetcode, 
+      icon: Code2,
+      label: "View kl_2400030392 on LeetCode"
+    },
+    { 
+      name: "CodeChef", 
+      url: social.codechef || DEFAULT_SOCIAL_LINKS.codechef, 
+      icon: CodeChefIcon,
+      label: "View kl2400030392 on CodeChef"
+    },
+    { 
+      name: "Email", 
+      url: `mailto:${social.email || profile.email || DEFAULT_SOCIAL_LINKS.email}`, 
+      icon: Mail,
+      label: "Send Email to Marthala Surendar Reddy"
+    }
   ];
 
   return (
@@ -68,16 +97,17 @@ export const Hero = () => {
             </div>
 
             {/* Social Links with Tooltips */}
-            <div className="flex items-center gap-[8px]">
+            <div className="flex flex-wrap items-center gap-[8px]">
               {socialLinks.map((item) => {
                 const Icon = item.icon;
+                const isMail = item.url.startsWith('mailto:');
                 return (
                   <div key={item.name} className="relative group">
                     <a
                       href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={item.name}
+                      target={isMail ? undefined : "_blank"}
+                      rel={isMail ? undefined : "noopener noreferrer"}
+                      aria-label={item.label}
                       className="w-[40px] h-[40px] rounded-full flex items-center justify-center text-[#4B5F5C] hover:text-[#0F766E] hover:bg-[#E6F4F2] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#7CC7BD]"
                     >
                       <Icon size={20} />
@@ -121,4 +151,3 @@ export const Hero = () => {
     </section>
   );
 };
-

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Check, AlertCircle, Loader2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Check, AlertCircle, Loader2, Linkedin, Github, Code2 } from 'lucide-react';
+import { CodeChefIcon } from './icons/CodeChefIcon';
 import { useData } from '../context/DataContext';
+import { DEFAULT_SOCIAL_LINKS } from '../data/socialLinks';
 
 export const Contact = () => {
   const { data, sendMessage } = useData();
@@ -18,9 +20,16 @@ export const Contact = () => {
   const [status, setStatus] = useState('idle'); // 'idle' | 'sending' | 'success' | 'error'
   const [errorMessage, setErrorMessage] = useState('');
 
-  const email = profile.email || social.email || "marthalasurendarreddy@gmail.com";
+  const email = profile.email || social.email || DEFAULT_SOCIAL_LINKS.email;
   const phone = profile.phone || "+91 98765 43210";
   const location = profile.location || "Andhra Pradesh, India";
+
+  const directLinks = [
+    { name: "LinkedIn", url: social.linkedin || DEFAULT_SOCIAL_LINKS.linkedin, icon: Linkedin },
+    { name: "GitHub", url: social.github || DEFAULT_SOCIAL_LINKS.github, icon: Github },
+    { name: "LeetCode", url: social.leetcode || DEFAULT_SOCIAL_LINKS.leetcode, icon: Code2 },
+    { name: "CodeChef", url: social.codechef || DEFAULT_SOCIAL_LINKS.codechef, icon: CodeChefIcon }
+  ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -85,7 +94,7 @@ export const Contact = () => {
               Feel free to reach out for software project discussions, technical inquiries, or internship opportunities. I typically respond within 24 hours.
             </p>
 
-            <div className="space-y-3.5">
+            <div className="space-y-3.5 mb-6">
               <a 
                 href={`mailto:${email}`}
                 className="flex items-center gap-3 p-3.5 rounded-lg border border-[#DDE7E5] bg-[#FFFFFF] hover:bg-[#E6F4F2] hover:border-[#7CC7BD] transition-all text-sm text-[#102A28] font-medium"
@@ -120,6 +129,30 @@ export const Contact = () => {
                   <div className="text-xs text-[#8A9B98]">Location</div>
                   <div>{location}</div>
                 </div>
+              </div>
+            </div>
+
+            {/* Direct Social & Coding Links */}
+            <div>
+              <div className="text-xs font-semibold text-[#8A9B98] uppercase tracking-wider mb-2.5">
+                Profiles
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                {directLinks.map((p) => {
+                  const Icon = p.icon;
+                  return (
+                    <a
+                      key={p.name}
+                      href={p.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 p-2.5 rounded-lg border border-[#DDE7E5] bg-white text-xs font-medium text-[#4B5F5C] hover:text-[#0F766E] hover:bg-[#E6F4F2] hover:border-[#7CC7BD] transition-all"
+                    >
+                      <Icon size={15} className="text-[#0F766E] shrink-0" />
+                      <span className="truncate">{p.name}</span>
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -251,4 +284,3 @@ export const Contact = () => {
     </section>
   );
 };
-
