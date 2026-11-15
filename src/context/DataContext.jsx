@@ -29,12 +29,13 @@ export const DataProvider = ({ children }) => {
     try {
       const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
       if (saved) {
-        return JSON.parse(saved);
+        const parsed = JSON.parse(saved);
+        return { messages: [], ...parsed };
       }
     } catch (e) {
       console.warn("Could not load from localStorage:", e);
     }
-    return initialPortfolioData;
+    return { messages: [], ...initialPortfolioData };
   });
 
   const [loading, setLoading] = useState(true);
@@ -89,7 +90,8 @@ export const DataProvider = ({ children }) => {
           } else {
             // First time setup - seed initial data to Firestore if authorized
             if (isAdmin) {
-              setDoc(docRef, initialPortfolioData, { merge: true })
+              const { messages, ...cleanInitial } = initialPortfolioData;
+              setDoc(docRef, { ...cleanInitial, published: true }, { merge: true })
                 .then(() => setIsFirebaseLive(true))
                 .catch(err => console.warn("Firestore seed note:", err.message));
             }
@@ -115,12 +117,13 @@ export const DataProvider = ({ children }) => {
     };
   }, [persistLocally, isAdmin]);
 
-  // Sync to Firestore helper
+  // Sync to Firestore helper (Never sync contact messages to public content document)
   const syncToFirestore = async (newFullData) => {
     if (isFirebaseConfigured && db) {
       try {
+        const { messages, ...publicData } = newFullData;
         const docRef = doc(db, 'content', 'portfolioData');
-        await setDoc(docRef, { ...newFullData, lastUpdated: new Date().toISOString() }, { merge: true });
+        await setDoc(docRef, { ...publicData, published: true, lastUpdated: new Date().toISOString() }, { merge: true });
       } catch (err) {
         console.error("Firestore sync error:", err);
       }

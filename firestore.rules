@@ -3,9 +3,9 @@ service cloud.firestore {
   match /databases/{database}/documents {
 
     // =========================================================================
-    // EXACT SINGLE SUPER ADMIN IDENTITY
-    // Authorized strictly using the verified Firebase Authentication UID.
-    // No hardcoded Gmail address or email comparison in security rules.
+    // 1. EXACT SUPER ADMIN IDENTITY
+    // Strictly authorized by verified Firebase Authentication UID.
+    // No hardcoded Gmail address or email comparison in Firestore rules.
     // =========================================================================
     function isSuperAdmin() {
       return request.auth != null &&
@@ -14,26 +14,26 @@ service cloud.firestore {
     }
 
     // =========================================================================
-    // 1. PROFILE
-    // Public can read published data; only Super Admin can write
+    // 2. PROFILE (Published Only)
+    // Public can ONLY read published profile data; Super Admin has full CRUD
     // =========================================================================
     match /profile/{docId} {
-      allow read: if true;
+      allow read: if resource.data.published == true || isSuperAdmin();
       allow write: if isSuperAdmin();
     }
 
     // =========================================================================
-    // 2. SKILLS
-    // Public can read published data; only Super Admin can write
+    // 3. SKILLS (Published Only)
+    // Public can ONLY read published skills; Super Admin has full CRUD
     // =========================================================================
     match /skills/{skillId} {
-      allow read: if true;
+      allow read: if resource.data.published == true || isSuperAdmin();
       allow write: if isSuperAdmin();
     }
 
     // =========================================================================
-    // 3. PROJECTS
-    // Public can read published projects; Super Admin has full CRUD
+    // 4. PROJECTS (Published Only)
+    // Public can ONLY read published projects; Super Admin has full CRUD
     // =========================================================================
     match /projects/{projectId} {
       allow read: if resource.data.published == true || isSuperAdmin();
@@ -41,26 +41,26 @@ service cloud.firestore {
     }
 
     // =========================================================================
-    // 4. EDUCATION
-    // Public can read; only Super Admin can write
+    // 5. EDUCATION (Published Only)
+    // Public can ONLY read published education records; Super Admin has full CRUD
     // =========================================================================
     match /education/{educationId} {
-      allow read: if true;
+      allow read: if resource.data.published == true || isSuperAdmin();
       allow write: if isSuperAdmin();
     }
 
     // =========================================================================
-    // 5. EXPERIENCE
-    // Public can read; only Super Admin can write
+    // 6. EXPERIENCE (Published Only)
+    // Public can ONLY read published experience records; Super Admin has full CRUD
     // =========================================================================
     match /experience/{experienceId} {
-      allow read: if true;
+      allow read: if resource.data.published == true || isSuperAdmin();
       allow write: if isSuperAdmin();
     }
 
     // =========================================================================
-    // 6. CERTIFICATIONS
-    // Public can read published certifications; Super Admin has full CRUD
+    // 7. CERTIFICATIONS (Published Only)
+    // Public can ONLY read published certifications; Super Admin has full CRUD
     // =========================================================================
     match /certifications/{certId} {
       allow read: if resource.data.published == true || isSuperAdmin();
@@ -68,42 +68,47 @@ service cloud.firestore {
     }
 
     // =========================================================================
-    // 7. ACHIEVEMENTS
-    // Public can read; only Super Admin can write
+    // 8. ACHIEVEMENTS (Published Only)
+    // Public can ONLY read published achievements; Super Admin has full CRUD
     // =========================================================================
     match /achievements/{achievementId} {
-      allow read: if true;
+      allow read: if resource.data.published == true || isSuperAdmin();
       allow write: if isSuperAdmin();
     }
 
     // =========================================================================
-    // 8. SOCIAL LINKS
-    // Public can read; only Super Admin can write
+    // 9. SOCIAL LINKS (Published Only)
+    // Public can ONLY read published social links; Super Admin has full CRUD
     // =========================================================================
     match /socialLinks/{socialLinkId} {
-      allow read: if true;
+      allow read: if resource.data.published == true || isSuperAdmin();
       allow write: if isSuperAdmin();
     }
 
     // =========================================================================
-    // 9. SETTINGS
-    // Only explicitly public settings readable; Super Admin has full CRUD
+    // 10. SETTINGS (Public Settings Only)
+    // Public can ONLY read settings where isPublic == true; Super Admin has full CRUD
     // =========================================================================
     match /settings/{settingsId} {
       allow read: if resource.data.isPublic == true || isSuperAdmin();
       allow write: if isSuperAdmin();
     }
 
-    // Portfolio aggregate content document
+    // =========================================================================
+    // 11. CONTENT (Aggregate Portfolio Document)
+    // Public can ONLY read published content documents that do NOT contain messages;
+    // Super Admin has full CRUD
+    // =========================================================================
     match /content/{docId} {
-      allow read: if true;
+      allow read: if isSuperAdmin() || 
+                     (resource.data.published == true && !('messages' in resource.data));
       allow write: if isSuperAdmin();
     }
 
     // =========================================================================
-    // 10. CONTACT MESSAGES (Strictly Private & Validated)
-    // - Public visitors CANNOT read, update, or delete any messages.
-    // - Public visitors can ONLY create messages matching strict schema limits.
+    // 12. CONTACT MESSAGES (Strict Validation & Super Admin Private)
+    // - Normal visitors CANNOT read, update, or delete any messages.
+    // - Normal visitors can ONLY create messages matching strict schema limits.
     // - Rejects unexpected fields to prevent payload tampering.
     // - Super Admin can read, update (mark read), or delete.
     // =========================================================================
@@ -114,12 +119,13 @@ service cloud.firestore {
 
     function isValidMessage() {
       let data = request.resource.data;
-      return data.keys().hasAll(['name', 'email', 'subject', 'message']) &&
+      return data.keys().hasAll(['name', 'email', 'subject', 'message', 'read']) &&
              data.keys().hasOnly(['name', 'email', 'subject', 'message', 'read', 'timestamp', 'createdAt', 'id', 'hp_check']) &&
              data.name is string &&
              data.name.size() >= 2 &&
              data.name.size() <= 100 &&
              data.email is string &&
+             data.email.size() >= 5 &&
              data.email.size() <= 100 &&
              data.email.matches('^[^@]+@[^@]+\\.[^@]+$') &&
              data.subject is string &&
@@ -128,11 +134,16 @@ service cloud.firestore {
              data.message is string &&
              data.message.size() >= 5 &&
              data.message.size() <= 2000 &&
-             data.read == false;
+             data.read is bool &&
+             data.read == false &&
+             (!('timestamp' in data) || data.timestamp is string || data.timestamp is timestamp) &&
+             (!('createdAt' in data) || data.createdAt is timestamp) &&
+             (!('id' in data) || (data.id is string && data.id.size() <= 100)) &&
+             (!('hp_check' in data) || (data.hp_check is string && data.hp_check.size() == 0));
     }
 
     // =========================================================================
-    // DEFAULT DENY
+    // 13. DEFAULT DENY
     // Block any unspecified collections, subcollections, or paths
     // =========================================================================
     match /{document=**} {

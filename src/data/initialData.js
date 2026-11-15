@@ -1,6 +1,7 @@
 import { DEFAULT_SOCIAL_LINKS } from './socialLinks.js';
 
 export const initialPortfolioData = {
+  published: true,
   profile: {
     name: "Marthala Surendar Reddy",
     initials: "MSR",
@@ -24,7 +25,8 @@ export const initialPortfolioData = {
       { label: "CodeChef / LeetCode", value: "Active" },
       { label: "Expected Grad", value: "2028" }
     ],
-    availableForWork: true
+    availableForWork: true,
+    published: true
   },
 
   academicJourney: [
@@ -52,29 +54,29 @@ export const initialPortfolioData = {
 
   skills: [
     // Programming Languages
-    { id: "sk-1", name: "Java", category: "Programming Languages", proficiency: 90, icon: "Code", isSample: true, displayOrder: 1 },
-    { id: "sk-2", name: "Python", category: "Programming Languages", proficiency: 85, icon: "Terminal", isSample: true, displayOrder: 2 },
-    { id: "sk-3", name: "C", category: "Programming Languages", proficiency: 80, icon: "Cpu", isSample: true, displayOrder: 3 },
-    { id: "sk-4", name: "C++", category: "Programming Languages", proficiency: 82, icon: "Binary", isSample: true, displayOrder: 4 },
-    { id: "sk-5", name: "JavaScript (ES6+)", category: "Programming Languages", proficiency: 88, icon: "FileCode", isSample: true, displayOrder: 5 },
-    { id: "sk-6", name: "Data Structures & Algorithms", category: "Programming Languages", proficiency: 86, icon: "GitFork", isSample: true, displayOrder: 6 },
+    { id: "sk-1", name: "Java", category: "Programming Languages", proficiency: 90, icon: "Code", isSample: true, displayOrder: 1, published: true },
+    { id: "sk-2", name: "Python", category: "Programming Languages", proficiency: 85, icon: "Terminal", isSample: true, displayOrder: 2, published: true },
+    { id: "sk-3", name: "C", category: "Programming Languages", proficiency: 80, icon: "Cpu", isSample: true, displayOrder: 3, published: true },
+    { id: "sk-4", name: "C++", category: "Programming Languages", proficiency: 82, icon: "Binary", isSample: true, displayOrder: 4, published: true },
+    { id: "sk-5", name: "JavaScript (ES6+)", category: "Programming Languages", proficiency: 88, icon: "FileCode", isSample: true, displayOrder: 5, published: true },
+    { id: "sk-6", name: "Data Structures & Algorithms", category: "Programming Languages", proficiency: 86, icon: "GitFork", isSample: true, displayOrder: 6, published: true },
 
     // Backend & Cloud
-    { id: "sk-7", name: "Spring Boot", category: "Backend & Cloud", proficiency: 82, icon: "Server", isSample: true, displayOrder: 7 },
-    { id: "sk-8", name: "Node.js", category: "Backend & Cloud", proficiency: 80, icon: "Layers", isSample: true, displayOrder: 8 },
-    { id: "sk-9", name: "MySQL", category: "Backend & Cloud", proficiency: 85, icon: "Database", isSample: true, displayOrder: 9 },
-    { id: "sk-10", name: "PostgreSQL", category: "Backend & Cloud", proficiency: 80, icon: "Database", isSample: true, displayOrder: 10 },
-    { id: "sk-11", name: "Firebase (Firestore, Auth, Storage)", category: "Backend & Cloud", proficiency: 90, icon: "Flame", isSample: true, displayOrder: 11 },
-    { id: "sk-12", name: "AWS Cloud Basics", category: "Backend & Cloud", proficiency: 75, icon: "Cloud", isSample: true, displayOrder: 12 },
-    { id: "sk-13", name: "Docker Containerization", category: "Backend & Cloud", proficiency: 74, icon: "Box", isSample: true, displayOrder: 13 },
+    { id: "sk-7", name: "Spring Boot", category: "Backend & Cloud", proficiency: 82, icon: "Server", isSample: true, displayOrder: 7, published: true },
+    { id: "sk-8", name: "Node.js", category: "Backend & Cloud", proficiency: 80, icon: "Layers", isSample: true, displayOrder: 8, published: true },
+    { id: "sk-9", name: "MySQL", category: "Backend & Cloud", proficiency: 85, icon: "Database", isSample: true, displayOrder: 9, published: true },
+    { id: "sk-10", name: "PostgreSQL", category: "Backend & Cloud", proficiency: 80, icon: "Database", isSample: true, displayOrder: 10, published: true },
+    { id: "sk-11", name: "Firebase (Firestore, Auth, Storage)", category: "Backend & Cloud", proficiency: 90, icon: "Flame", isSample: true, displayOrder: 11, published: true },
+    { id: "sk-12", name: "AWS Cloud Basics", category: "Backend & Cloud", proficiency: 75, icon: "Cloud", isSample: true, displayOrder: 12, published: true },
+    { id: "sk-13", name: "Docker Containerization", category: "Backend & Cloud", proficiency: 74, icon: "Box", isSample: true, displayOrder: 13, published: true },
 
     // Frontend & Tools
-    { id: "sk-14", name: "React.js", category: "Frontend & Tools", proficiency: 88, icon: "Layout", isSample: true, displayOrder: 14 },
-    { id: "sk-15", name: "HTML5 & Modern CSS", category: "Frontend & Tools", proficiency: 92, icon: "Code2", isSample: true, displayOrder: 15 },
-    { id: "sk-16", name: "Tailwind CSS", category: "Frontend & Tools", proficiency: 90, icon: "Palette", isSample: true, displayOrder: 16 },
-    { id: "sk-17", name: "Git & GitHub", category: "Frontend & Tools", proficiency: 88, icon: "GitBranch", isSample: true, displayOrder: 17 },
-    { id: "sk-18", name: "Postman API Testing", category: "Frontend & Tools", proficiency: 85, icon: "Send", isSample: true, displayOrder: 18 },
-    { id: "sk-19", name: "Linux & Bash", category: "Frontend & Tools", proficiency: 78, icon: "TerminalSquare", isSample: true, displayOrder: 19 }
+    { id: "sk-14", name: "React.js", category: "Frontend & Tools", proficiency: 88, icon: "Layout", isSample: true, displayOrder: 14, published: true },
+    { id: "sk-15", name: "HTML5 & Modern CSS", category: "Frontend & Tools", proficiency: 92, icon: "Code2", isSample: true, displayOrder: 15, published: true },
+    { id: "sk-16", name: "Tailwind CSS", category: "Frontend & Tools", proficiency: 90, icon: "Palette", isSample: true, displayOrder: 16, published: true },
+    { id: "sk-17", name: "Git & GitHub", category: "Frontend & Tools", proficiency: 88, icon: "GitBranch", isSample: true, displayOrder: 17, published: true },
+    { id: "sk-18", name: "Postman API Testing", category: "Frontend & Tools", proficiency: 85, icon: "Send", isSample: true, displayOrder: 18, published: true },
+    { id: "sk-19", name: "Linux & Bash", category: "Frontend & Tools", proficiency: 78, icon: "TerminalSquare", isSample: true, displayOrder: 19, published: true }
   ],
 
   projects: [
@@ -195,7 +197,8 @@ export const initialPortfolioData = {
         "Active member of departmental coding and technical forums",
         "Consistent academic performance and active competitive programming"
       ],
-      isSample: false
+      isSample: false,
+      published: true
     }
   ],
 
@@ -207,7 +210,8 @@ export const initialPortfolioData = {
       dates: "2024 – Present",
       location: "Andhra Pradesh, India",
       description: "Designing and developing web modules and algorithmic utilities as part of technical projects and academic practical labs.",
-      isSample: true
+      isSample: true,
+      published: true
     },
     {
       id: "exp-2",
@@ -216,7 +220,8 @@ export const initialPortfolioData = {
       dates: "2025 (Projected)",
       location: "Remote / Hybrid",
       description: "Placeholder record for forthcoming software engineering internship experiences. Editable via the Super Admin Dashboard.",
-      isSample: true
+      isSample: true,
+      published: true
     }
   ],
 
@@ -271,7 +276,8 @@ export const initialPortfolioData = {
       date: "2024 – Present",
       description: "Consistent problem solver across arrays, binary trees, dynamic programming, and graph algorithms on profile kl_2400030392.",
       credentialUrl: "https://leetcode.com/u/kl_2400030392/",
-      isSample: false
+      isSample: false,
+      published: true
     },
     {
       id: "ach-2",
@@ -280,7 +286,8 @@ export const initialPortfolioData = {
       date: "2024 – Present",
       description: "Active participant in Starters and Cook-Off contests under username kl2400030392.",
       credentialUrl: "https://www.codechef.com/users/kl2400030392",
-      isSample: false
+      isSample: false,
+      published: true
     },
     {
       id: "ach-3",
@@ -289,7 +296,8 @@ export const initialPortfolioData = {
       date: "2025",
       description: "Collaborated in a team of 4 to design and deploy a full-stack campus management prototype within 36 hours.",
       credentialUrl: "https://www.linkedin.com/in/marthalasurendarreddy/",
-      isSample: true
+      isSample: true,
+      published: true
     },
     {
       id: "ach-4",
@@ -298,7 +306,8 @@ export const initialPortfolioData = {
       date: "2024 – Present",
       description: "Maintains public development repositories on GitHub (SURENDAR30392) documenting clean code and algorithms.",
       credentialUrl: "https://github.com/SURENDAR30392",
-      isSample: false
+      isSample: false,
+      published: true
     }
   ],
 
@@ -323,9 +332,13 @@ export const initialPortfolioData = {
     }
   ],
 
-  social: { ...DEFAULT_SOCIAL_LINKS },
+  social: {
+    ...DEFAULT_SOCIAL_LINKS,
+    published: true
+  },
 
   settings: {
+    isPublic: true,
     seoTitle: "Marthala Surendar Reddy | Full Stack Developer | KL University",
     seoDescription: "Official developer portfolio of Marthala Surendar Reddy (MSR) — B.Tech Computer Science student at KL University specializing in Java, Backend, and Full Stack Development.",
     sectionsEnabled: {
@@ -347,7 +360,5 @@ export const initialPortfolioData = {
     enabled: true,
     lastUpdated: "November 2026",
     filename: "Marthala_Surendar_Reddy_Resume.pdf"
-  },
-
-  messages: []
+  }
 };
