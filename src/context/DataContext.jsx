@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { initialPortfolioData } from '../data/initialData';
 import { useAuth } from './AuthContext';
+import { formatExternalUrl } from '../utils/urlHelper';
 import { 
   db, 
   storage, 
@@ -32,6 +33,13 @@ export const DataProvider = ({ children }) => {
       const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed.projects)) {
+          parsed.projects = parsed.projects.map(p => ({
+            ...p,
+            liveUrl: formatExternalUrl(p.liveUrl),
+            githubUrl: formatExternalUrl(p.githubUrl)
+          }));
+        }
         return { messages: [], ...parsed };
       }
     } catch (e) {
@@ -150,7 +158,15 @@ export const DataProvider = ({ children }) => {
         unsubs.push(onSnapshot(projectsQuery, (snap) => {
           if (!snap.empty) {
             const items = snap.docs
-              .map(d => ({ id: d.id, ...d.data() }))
+              .map(d => {
+                const docData = d.data();
+                return {
+                  id: d.id,
+                  ...docData,
+                  liveUrl: formatExternalUrl(docData.liveUrl),
+                  githubUrl: formatExternalUrl(docData.githubUrl)
+                };
+              })
               .sort((a, b) => (a.displayOrder || 0) - (b.displayOrder || 0));
             setData(prev => ({ ...prev, projects: items }));
             setIsFirebaseLive(true);
@@ -291,8 +307,12 @@ export const DataProvider = ({ children }) => {
   // CRUD for Projects (Strictly Super Admin only)
   const addProject = async (project) => {
     if (!verifySuperAdmin()) return false;
+    const sanitizedLiveUrl = formatExternalUrl(project.liveUrl);
+    const sanitizedGithubUrl = formatExternalUrl(project.githubUrl);
     const newProject = {
       ...project,
+      liveUrl: sanitizedLiveUrl,
+      githubUrl: sanitizedGithubUrl,
       id: project.id || `proj-${Date.now()}`,
       displayOrder: (data.projects?.length || 0) + 1,
       published: project.published !== undefined ? project.published : true,
@@ -321,10 +341,17 @@ export const DataProvider = ({ children }) => {
 
   const updateProject = async (id, projectUpdates) => {
     if (!verifySuperAdmin()) return false;
+    const cleanUpdates = { ...projectUpdates };
+    if (cleanUpdates.liveUrl !== undefined) {
+      cleanUpdates.liveUrl = formatExternalUrl(cleanUpdates.liveUrl);
+    }
+    if (cleanUpdates.githubUrl !== undefined) {
+      cleanUpdates.githubUrl = formatExternalUrl(cleanUpdates.githubUrl);
+    }
     setData(prev => {
       const updated = {
         ...prev,
-        projects: (prev.projects || []).map(p => p.id === id ? { ...p, ...projectUpdates, updatedAt: new Date().toISOString() } : p)
+        projects: (prev.projects || []).map(p => p.id === id ? { ...p, ...cleanUpdates, updatedAt: new Date().toISOString() } : p)
       };
       persistLocally(updated);
       syncToFirestore(updated);
@@ -332,7 +359,7 @@ export const DataProvider = ({ children }) => {
     });
     if (isFirebaseConfigured && db) {
       try {
-        await setDoc(doc(db, 'projects', id), { ...projectUpdates, updatedAt: new Date().toISOString() }, { merge: true });
+        await setDoc(doc(db, 'projects', id), { ...cleanUpdates, updatedAt: new Date().toISOString() }, { merge: true });
       } catch (e) {
         console.warn("Project direct update notice:", e.message);
       }

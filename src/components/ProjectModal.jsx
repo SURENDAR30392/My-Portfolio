@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { X, ExternalLink, Github } from 'lucide-react';
+import { formatExternalUrl } from '../utils/urlHelper';
 
 export const ProjectModal = ({ project, onClose }) => {
   useEffect(() => {
@@ -121,7 +122,7 @@ export const ProjectModal = ({ project, onClose }) => {
             <div className="flex items-center gap-3">
               {project.githubUrl && (
                 <a
-                  href={project.githubUrl}
+                  href={formatExternalUrl(project.githubUrl)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary text-sm h-10 px-4"
@@ -132,7 +133,7 @@ export const ProjectModal = ({ project, onClose }) => {
               )}
               {project.liveUrl && (
                 <a
-                  href={project.liveUrl}
+                  href={formatExternalUrl(project.liveUrl)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary text-sm h-10 px-4"

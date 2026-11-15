@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight, Github, ExternalLink, FolderGit2 } from 'lucide-react';
 import { useData } from '../context/DataContext';
+import { formatExternalUrl } from '../utils/urlHelper';
 
 export const Projects = ({ onSelectProject }) => {
   const { data } = useData();
@@ -139,7 +140,7 @@ export const Projects = ({ onSelectProject }) => {
                     <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
                       {project.githubUrl && (
                         <a
-                          href={project.githubUrl}
+                          href={formatExternalUrl(project.githubUrl)}
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`GitHub source code for ${project.title}`}
@@ -151,7 +152,7 @@ export const Projects = ({ onSelectProject }) => {
                       )}
                       {project.liveUrl && (
                         <a
-                          href={project.liveUrl}
+                          href={formatExternalUrl(project.liveUrl)}
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`Live preview of ${project.title}`}

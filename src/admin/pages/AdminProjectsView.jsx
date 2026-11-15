@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 import { ImageUrlInput } from '../../components/common/ImageUrlInput';
+import { formatExternalUrl } from '../../utils/urlHelper';
 
 export const AdminProjectsView = () => {
   const { data, addProject, updateProject, deleteProject } = useData();
@@ -68,6 +69,8 @@ export const AdminProjectsView = () => {
     e.preventDefault();
     const payload = {
       ...form,
+      liveUrl: formatExternalUrl(form.liveUrl),
+      githubUrl: formatExternalUrl(form.githubUrl),
       techUsed: form.techUsed.split(',').map(t => t.trim()).filter(Boolean)
     };
 
@@ -270,25 +273,64 @@ export const AdminProjectsView = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-[#613E35] mb-1">GitHub URL</label>
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="block text-xs font-semibold text-[#613E35]">GitHub URL</label>
+                    {form.githubUrl && (
+                      <a
+                        href={formatExternalUrl(form.githubUrl)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[11px] text-[#D98C70] hover:underline inline-flex items-center gap-1"
+                      >
+                        <span>Test link</span>
+                        <ExternalLink size={11} />
+                      </a>
+                    )}
+                  </div>
                   <input
-                    type="url"
+                    type="text"
                     value={form.githubUrl}
                     onChange={e => setForm({ ...form, githubUrl: e.target.value })}
+                    onBlur={() => {
+                      if (form.githubUrl) {
+                        setForm(prev => ({ ...prev, githubUrl: formatExternalUrl(prev.githubUrl) }));
+                      }
+                    }}
                     placeholder="https://github.com/SURENDAR30392/repo"
                     className="w-full px-3.5 py-2.5 rounded-lg border border-[#F0DED4] text-sm focus:outline-none focus:border-[#D98C70]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[#613E35] mb-1">Live Demo URL</label>
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="block text-xs font-semibold text-[#613E35]">Live Demo URL</label>
+                    {form.liveUrl && (
+                      <a
+                        href={formatExternalUrl(form.liveUrl)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[11px] text-[#D98C70] hover:underline inline-flex items-center gap-1"
+                      >
+                        <span>Test link</span>
+                        <ExternalLink size={11} />
+                      </a>
+                    )}
+                  </div>
                   <input
-                    type="url"
+                    type="text"
                     value={form.liveUrl}
                     onChange={e => setForm({ ...form, liveUrl: e.target.value })}
-                    placeholder="https://..."
+                    onBlur={() => {
+                      if (form.liveUrl) {
+                        setForm(prev => ({ ...prev, liveUrl: formatExternalUrl(prev.liveUrl) }));
+                      }
+                    }}
+                    placeholder="https://my-app.vercel.app"
                     className="w-full px-3.5 py-2.5 rounded-lg border border-[#F0DED4] text-sm focus:outline-none focus:border-[#D98C70]"
                   />
+                  <p className="text-[11px] text-[#A27B6E] mt-1">
+                    Opens directly to your external project without portfolio prefix.
+                  </p>
                 </div>
               </div>
 
