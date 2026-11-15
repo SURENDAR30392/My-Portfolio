@@ -1,0 +1,25 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && 
+        (request.auth.token.admin == true || 
+         request.auth.token.email.lower() == 'marthalasurendarreddy@gmail.com');
+    }
+
+    // Public portfolio images, certificates, and resume PDF
+    match /{allPaths=**} {
+      // Normal visitors can read/download published media
+      allow read: if true;
+
+      // Only the Super Admin can create, replace, or delete files
+      allow write, delete: if isAdmin() &&
+                              request.resource.size < 15 * 1024 * 1024; // 15MB limit
+    }
+  }
+}

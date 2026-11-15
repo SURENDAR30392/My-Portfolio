@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 620" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E6F4F2"/>
+      <stop offset="100%" stop-color="#CDEBE6"/>
+    </linearGradient>
+    <linearGradient id="suitGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E3A36"/>
+      <stop offset="100%" stop-color="#102A28"/>
+    </linearGradient>
+    <linearGradient id="skinGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#D9A07A"/>
+      <stop offset="100%" stop-color="#C28760"/>
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#102A28" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Background subtle aura -->
+  <circle cx="260" cy="280" r="190" fill="#D5ECE8" opacity="0.6"/>
+  <circle cx="260" cy="280" r="140" fill="#C5E6E1" opacity="0.7"/>
+
+  <!-- Developer Silhouette with Smart Blazer -->
+  <!-- Shoulders & Torso -->
+  <path d="M100 620 C100 510 140 450 200 420 L260 480 L320 420 C380 450 420 510 420 620 Z" fill="url(#suitGrad)" filter="url(#softShadow)"/>
+
+  <!-- Shirt & Tie -->
+  <polygon points="230,420 290,420 270,540 250,540" fill="#FFFFFF"/>
+  <polygon points="255,440 265,440 268,520 260,530 252,520" fill="#0F766E"/>
+
+  <!-- Blazer Lapels -->
+  <path d="M200 420 L248 540 L260 540 L220 420 Z" fill="#17312E"/>
+  <path d="M320 420 L272 540 L260 540 L300 420 Z" fill="#17312E"/>
+
+  <!-- Neck -->
+  <rect x="235" y="340" width="50" height="90" rx="10" fill="url(#skinGrad)"/>
+
+  <!-- Head -->
+  <ellipse cx="260" cy="270" rx="68" ry="86" fill="url(#skinGrad)" filter="url(#softShadow)"/>
+
+  <!-- Hair -->
+  <path d="M190 270 C186 210 215 170 260 170 C310 170 334 210 330 270 C322 250 310 238 290 236 C270 234 240 238 220 248 C205 256 195 264 190 270 Z" fill="#1C2120"/>
+
+  <!-- Ears -->
+  <ellipse cx="192" cy="275" rx="10" ry="16" fill="url(#skinGrad)"/>
+  <ellipse cx="328" cy="275" rx="10" ry="16" fill="url(#skinGrad)"/>
+
+  <!-- Minimal glasses / eyes indication -->
+  <rect x="215" y="255" width="36" height="22" rx="6" fill="none" stroke="#102A28" stroke-width="3"/>
+  <rect x="269" y="255" width="36" height="22" rx="6" fill="none" stroke="#102A28" stroke-width="3"/>
+  <line x1="251" y1="264" x2="269" y2="264" stroke="#102A28" stroke-width="3"/>
+
+  <!-- Eyeballs -->
+  <circle cx="233" cy="266" r="3.5" fill="#102A28"/>
+  <circle cx="287" cy="266" r="3.5" fill="#102A28"/>
+
+  <!-- Smile -->
+  <path d="M246 312 Q260 322 274 312" fill="none" stroke="#874D2E" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Lapel Badge: MSR -->
+  <g transform="translate(295, 470)">
+    <rect width="48" height="22" rx="6" fill="#0F766E"/>
+    <text x="24" y="15" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#FFFFFF" text-anchor="middle">MSR</text>
+  </g>
+
+  <!-- Elegant floating code symbol pills -->
+  <g transform="translate(60, 220)" opacity="0.9">
+    <rect width="84" height="32" rx="8" fill="#FFFFFF" stroke="#DDE7E5" filter="url(#softShadow)"/>
+    <text x="42" y="21" font-family="monospace" font-size="13" font-weight="bold" fill="#0F766E" text-anchor="middle">&lt;Java/&gt;</text>
+  </g>
+
+  <g transform="translate(370, 260)" opacity="0.9">
+    <rect width="90" height="32" rx="8" fill="#FFFFFF" stroke="#DDE7E5" filter="url(#softShadow)"/>
+    <text x="45" y="21" font-family="monospace" font-size="13" font-weight="bold" fill="#0F766E" text-anchor="middle">&lt;React/&gt;</text>
+  </g>
+
+  <g transform="translate(70, 380)" opacity="0.9">
+    <rect width="98" height="32" rx="8" fill="#FFFFFF" stroke="#DDE7E5" filter="url(#softShadow)"/>
+    <text x="49" y="21" font-family="sans-serif" font-size="12" font-weight="600" fill="#102A28" text-anchor="middle">KL Univ '28</text>
+  </g>
+</svg>
