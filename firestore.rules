@@ -102,12 +102,10 @@ service cloud.firestore {
 
     // =========================================================================
     // 11. CONTENT (Aggregate Portfolio Document)
-    // Public can ONLY read published content documents that do NOT contain messages;
-    // Super Admin has full CRUD
+    // Public can ONLY read published content documents; Super Admin has full CRUD
     // =========================================================================
     match /content/{docId} {
-      allow read: if isSuperAdmin() || 
-                     (resource.data.published == true && !('messages' in resource.data));
+      allow read: if resource.data.published == true || isSuperAdmin();
       allow write: if isSuperAdmin();
     }
 

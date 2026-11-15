@@ -51,11 +51,6 @@ export const initialPortfolioData = {
 
   academicJourney: [
     {
-      year: "Year 4 · 2027 – 2028",
-      title: "Advanced Systems, Capstone & Graduation",
-      desc: "Architecting cloud-native distributed systems, completing senior capstone engineering projects, and transitioning into full-time software engineering roles."
-    },
-    {
       year: "Year 3 · 2026 – 2027",
       title: "Full Stack & Cloud Architecture",
       desc: "Deepening expertise in Spring Boot microservices, Docker containerization, AWS cloud infrastructure, and large-scale web systems."
