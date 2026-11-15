@@ -7,6 +7,7 @@ export const Education = () => {
   const rawEducation = data.education || [];
   const educationList = rawEducation.filter(e => e.published !== false);
   const journey = data.academicJourney || [];
+  const settings = data.settings || {};
 
   return (
     <section id="education" className="py-16 md:py-24 bg-white border-b border-[#E2E8F0]">
@@ -14,12 +15,14 @@ export const Education = () => {
         
         {/* Section Header */}
         <div className="mb-12">
-          <span className="section-badge mb-3">Education</span>
+          <span className="section-badge mb-3">
+            {settings.educationBadge || "Education"}
+          </span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#172554] tracking-tight">
-            Academic Background & Journey
+            {settings.educationTitle || "Academic Background & Journey"}
           </h2>
           <p className="text-base text-[#64748B] mt-2 max-w-2xl">
-            My undergraduate Computer Science engineering curriculum and academic progression at KL University.
+            {settings.educationSubtitle || "My undergraduate Computer Science engineering curriculum and academic progression at KL University."}
           </p>
         </div>
 
@@ -28,7 +31,7 @@ export const Education = () => {
           {/* Left Column: Formal Degree Cards */}
           <div className="lg:col-span-6 space-y-6">
             <h3 className="text-lg font-semibold text-[#172554]">
-              Degrees & Formal Coursework
+              {settings.degreesTitle || "Degrees & Formal Coursework"}
             </h3>
 
             {educationList.map((edu) => (
@@ -96,7 +99,7 @@ export const Education = () => {
           {/* Right Column: 4-Year Academic Progression Track */}
           <div className="lg:col-span-6 space-y-6">
             <h3 className="text-lg font-semibold text-[#172554]">
-              4 Years at KL University (2024 – 2028)
+              {settings.journeyTitle || "4 Years at KL University (2024 – 2028)"}
             </h3>
 
             <div className="relative pl-6 border-l-2 border-[#DBEAFE] space-y-6 py-2">

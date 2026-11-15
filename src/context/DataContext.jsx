@@ -511,6 +511,33 @@ export const DataProvider = ({ children }) => {
     return true;
   };
 
+  // Update 4-Year Academic Progression Journey (Strictly Super Admin only)
+  const updateAcademicJourney = async (newJourney) => {
+    if (!verifySuperAdmin()) return false;
+    setData(prev => {
+      const updated = {
+        ...prev,
+        academicJourney: newJourney
+      };
+      persistLocally(updated);
+      syncToFirestore(updated);
+      return updated;
+    });
+    if (isFirebaseConfigured && db) {
+      try {
+        await setDoc(doc(db, 'content', 'portfolioData'), { 
+          academicJourney: newJourney, 
+          published: true, 
+          lastUpdated: new Date().toISOString() 
+        }, { merge: true });
+      } catch (e) {
+        console.warn("Academic journey direct write notice:", e.message);
+      }
+    }
+    showNotification("Academic progression journey updated!");
+    return true;
+  };
+
   // CRUD for Experience (Strictly Super Admin only)
   const addExperience = async (exp) => {
     if (!verifySuperAdmin()) return false;
@@ -1032,6 +1059,7 @@ export const DataProvider = ({ children }) => {
     addEducation,
     updateEducation,
     deleteEducation,
+    updateAcademicJourney,
     addExperience,
     updateExperience,
     deleteExperience,
