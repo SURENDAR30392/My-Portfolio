@@ -9,7 +9,8 @@ service cloud.firestore {
     // =========================================================================
     function isSuperAdmin() {
       return request.auth != null &&
-        request.auth.uid == 'HOHTgjkAZlTPOO7bH98ukkw2vip1' &&
+        (request.auth.uid == 'HOHTgjkAZlTPOO7bH98ukkw2vip1' ||
+         request.auth.token.email.lower() == 'marthalasurendarreddy@gmail.com') &&
         request.auth.token.email_verified == true;
     }
 

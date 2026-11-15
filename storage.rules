@@ -2,13 +2,9 @@ rules_version = '2';
 service firebase.storage {
   match /b/{bucket}/o {
 
-    function isAuthenticated() {
-      return request.auth != null;
-    }
-
-    function isAdmin() {
-      return isAuthenticated() && 
-        (request.auth.token.admin == true || 
+    function isSuperAdmin() {
+      return request.auth != null && 
+        (request.auth.uid == 'HOHTgjkAZlTPOO7bH98ukkw2vip1' || 
          request.auth.token.email.lower() == 'marthalasurendarreddy@gmail.com');
     }
 
@@ -17,10 +13,9 @@ service firebase.storage {
       // Normal visitors can read/download published media
       allow read: if true;
 
-      // Only the Super Admin can create, replace, or delete files
-      allow write, delete: if isAdmin() &&
-                              request.resource.size < 15 * 1024 * 1024; // 15MB limit
+      // Only the Super Admin can create, replace, or delete files (15MB limit)
+      allow write, delete: if isSuperAdmin() &&
+                              request.resource.size < 15 * 1024 * 1024;
     }
   }
 }
-
