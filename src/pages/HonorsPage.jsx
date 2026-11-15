@@ -19,8 +19,8 @@ export const HonorsPage = () => {
     ...achievements.map(a => ({ ...a, type: 'achievement' }))
   ];
 
-  const filtered = tab === 'all' 
-    ? items 
+  const filtered = tab === 'all'
+    ? items
     : items.filter(i => i.type === tab);
 
   return (
@@ -29,10 +29,10 @@ export const HonorsPage = () => {
 
       <main className="flex-1 py-12 md:py-16">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
-          
+
           <div className="mb-10">
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className="inline-flex items-center gap-2 text-sm font-medium text-[#64748B] hover:text-[#2563EB] transition-colors mb-4"
             >
               <ArrowLeft size={16} />
@@ -58,11 +58,10 @@ export const HonorsPage = () => {
               <button
                 key={t.id}
                 onClick={() => setTab(t.id)}
-                className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-150 ${
-                  tab === t.id
+                className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-150 ${tab === t.id
                     ? 'bg-[#2563EB] text-white shadow-xs'
                     : 'bg-white text-[#64748B] border border-[#E2E8F0] hover:bg-[#EFF6FF] hover:border-[#BFDBFE] hover:text-[#2563EB]'
-                }`}
+                  }`}
               >
                 {t.label}
               </button>

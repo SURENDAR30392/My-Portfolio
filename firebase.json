@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "surendar-reddy",
     "public": "dist",
     "ignore": [
       "firebase.json",
