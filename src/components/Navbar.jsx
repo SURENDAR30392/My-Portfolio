@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useData } from '../context/DataContext';
 
@@ -10,12 +10,12 @@ export const Navbar = () => {
   const { isAdmin } = useAuth();
   const { data } = useData();
 
+  // Exactly matching the reference navbar: Work, About, Honors, Blog, Contact + Resume
   const navLinks = [
     { name: "Work", href: "/#work" },
     { name: "About", href: "/#about" },
-    { name: "Skills", href: "/#skills" },
     { name: "Honors", href: "/honors" },
-    { name: "Profiles", href: "/#coding" },
+    { name: "Blog", href: "/#coding" },
     { name: "Contact", href: "/#contact" }
   ];
 
@@ -26,15 +26,17 @@ export const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 bg-[#FFFFFF] border-b border-[#DDE7E5]">
       <div className="max-w-[1100px] mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Brand Link */}
+        
+        {/* Brand Link: Marthala Surendar Reddy with refined, slightly reduced font size */}
         <Link 
           to="/" 
-          className="text-base font-semibold text-[#102A28] hover:bg-[#E6F4F2] px-3 py-1.5 rounded-[8px] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#7CC7BD]"
+          className="text-[14px] sm:text-[14.5px] font-semibold text-[#102A28] hover:bg-[#E6F4F2] px-2.5 py-1.5 rounded-[8px] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#7CC7BD] tracking-tight whitespace-nowrap"
+          title="Marthala Surendar Reddy"
         >
           {data.profile?.name || "Marthala Surendar Reddy"}
         </Link>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation: Exactly matching user image */}
         <nav className="hidden md:flex items-center gap-1.5">
           {navLinks.map((link) => {
             const isAnchor = link.href.startsWith("/#");
@@ -65,6 +67,7 @@ export const Navbar = () => {
             );
           })}
 
+          {/* Divider and Resume Button */}
           <div className="ml-3 pl-3 border-l border-[#DDE7E5] flex items-center gap-2">
             <Link 
               to="/resume" 
@@ -75,18 +78,6 @@ export const Navbar = () => {
               }`}
             >
               <span>Resume</span>
-            </Link>
-
-            <Link 
-              to="/admin" 
-              className={`text-sm font-medium px-3 py-1.5 rounded-[8px] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#7CC7BD] ${
-                isAdmin 
-                  ? "text-[#0F766E] bg-[#E6F4F2] font-semibold" 
-                  : "text-[#4B5F5C] hover:text-[#0F766E] hover:bg-[#E6F4F2]"
-              }`}
-              title="Super Admin Dashboard"
-            >
-              {isAdmin ? "Admin (Active)" : "Admin"}
             </Link>
           </div>
         </nav>
@@ -145,17 +136,9 @@ export const Navbar = () => {
             >
               Resume
             </Link>
-            <Link 
-              to="/admin" 
-              onClick={handleNavClick} 
-              className="block text-center py-2 text-sm font-medium text-[#4B5F5C] hover:text-[#0F766E] hover:bg-[#E6F4F2] rounded-[8px] transition-colors"
-            >
-              Super Admin Dashboard
-            </Link>
           </div>
         </div>
       )}
     </header>
   );
 };
-
