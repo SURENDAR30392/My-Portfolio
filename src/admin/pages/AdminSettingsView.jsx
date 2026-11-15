@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Save, Settings, ToggleLeft, ToggleRight, Layout, Globe, Linkedin, Github, Code2 } from 'lucide-react';
+import { Save, Settings, ToggleLeft, ToggleRight, Layout, Globe, Linkedin, Github, Code2, Phone } from 'lucide-react';
 import { CodeChefIcon } from '../../components/icons/CodeChefIcon';
 import { useData } from '../../context/DataContext';
 import { DEFAULT_SOCIAL_LINKS } from '../../data/socialLinks';
 
 export const AdminSettingsView = () => {
-  const { data, updateSettings, updateSocialLinks } = useData();
+  const { data, updateSettings, updateSocialLinks, updateProfile } = useData();
   const settings = data.settings || {};
   const social = data.social || {};
+  const profile = data.profile || {};
 
   const sections = settings.sectionsEnabled || {
     hero: true,
@@ -29,7 +30,8 @@ export const AdminSettingsView = () => {
     linkedin: social.linkedin || DEFAULT_SOCIAL_LINKS.linkedin,
     github: social.github || DEFAULT_SOCIAL_LINKS.github,
     leetcode: social.leetcode || DEFAULT_SOCIAL_LINKS.leetcode,
-    codechef: social.codechef || DEFAULT_SOCIAL_LINKS.codechef
+    codechef: social.codechef || DEFAULT_SOCIAL_LINKS.codechef,
+    phone: profile.phone || social.phone || '+91 98765 43210'
   });
 
   const toggleSection = (key) => {
@@ -56,8 +58,13 @@ export const AdminSettingsView = () => {
       linkedin: form.linkedin,
       github: form.github,
       leetcode: form.leetcode,
-      codechef: form.codechef
+      codechef: form.codechef,
+      phone: form.phone
     });
+
+    if (updateProfile) {
+      await updateProfile({ phone: form.phone });
+    }
   };
 
   const sectionLabels = [
@@ -170,6 +177,20 @@ export const AdminSettingsView = () => {
                 type="url"
                 value={form.codechef}
                 onChange={e => setForm({ ...form, codechef: e.target.value })}
+                className="w-full px-3.5 py-2.5 rounded-lg border border-[#E2E8F0] text-sm focus:outline-none focus:border-[#2563EB]"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#172554] mb-1.5 flex items-center gap-1.5">
+                <Phone size={14} className="text-[#2563EB]" />
+                <span>Phone / WhatsApp Mobile Number</span>
+              </label>
+              <input
+                type="tel"
+                value={form.phone}
+                onChange={e => setForm({ ...form, phone: e.target.value })}
+                placeholder="+91 98765 43210"
                 className="w-full px-3.5 py-2.5 rounded-lg border border-[#E2E8F0] text-sm focus:outline-none focus:border-[#2563EB]"
               />
             </div>

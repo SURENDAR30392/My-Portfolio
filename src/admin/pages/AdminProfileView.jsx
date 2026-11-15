@@ -60,6 +60,56 @@ export const AdminProfileView = () => {
     codechefStat3Label: social.codechefStat3Label || DEFAULT_SOCIAL_LINKS.codechefStat3Label
   });
 
+  React.useEffect(() => {
+    if (profile.name || social.github || profile.phone) {
+      setForm(prev => ({
+        ...prev,
+        name: profile.name ?? prev.name,
+        title: profile.title ?? prev.title,
+        intro: profile.intro ?? prev.intro,
+        university: profile.university ?? prev.university,
+        graduationYear: profile.graduationYear ?? prev.graduationYear,
+        location: profile.location ?? prev.location,
+        email: profile.email ?? social.email ?? prev.email,
+        phone: profile.phone ?? social.phone ?? prev.phone,
+        avatar: profile.avatar ?? prev.avatar,
+        bio1: Array.isArray(profile.bio) ? profile.bio[0] || '' : profile.bio || prev.bio1,
+        bio2: Array.isArray(profile.bio) ? profile.bio[1] || '' : prev.bio2,
+        bio3: Array.isArray(profile.bio) ? profile.bio[2] || '' : prev.bio3,
+        linkedin: social.linkedin ?? prev.linkedin,
+        github: social.github ?? prev.github,
+        leetcode: social.leetcode ?? prev.leetcode,
+        codechef: social.codechef ?? prev.codechef,
+        githubUsername: social.githubUsername ?? prev.githubUsername,
+        leetcodeUsername: social.leetcodeUsername ?? prev.leetcodeUsername,
+        codechefUsername: social.codechefUsername ?? prev.codechefUsername,
+        codingSectionTitle: social.codingSectionTitle ?? prev.codingSectionTitle,
+        codingSectionSubtitle: social.codingSectionSubtitle ?? prev.codingSectionSubtitle,
+        githubDescription: social.githubDescription ?? prev.githubDescription,
+        githubStat1Value: social.githubStat1Value ?? prev.githubStat1Value,
+        githubStat1Label: social.githubStat1Label ?? prev.githubStat1Label,
+        githubStat2Value: social.githubStat2Value ?? prev.githubStat2Value,
+        githubStat2Label: social.githubStat2Label ?? prev.githubStat2Label,
+        githubStat3Value: social.githubStat3Value ?? prev.githubStat3Value,
+        githubStat3Label: social.githubStat3Label ?? prev.githubStat3Label,
+        leetcodeDescription: social.leetcodeDescription ?? prev.leetcodeDescription,
+        leetcodeStat1Value: social.leetcodeStat1Value ?? prev.leetcodeStat1Value,
+        leetcodeStat1Label: social.leetcodeStat1Label ?? prev.leetcodeStat1Label,
+        leetcodeStat2Value: social.leetcodeStat2Value ?? prev.leetcodeStat2Value,
+        leetcodeStat2Label: social.leetcodeStat2Label ?? prev.leetcodeStat2Label,
+        leetcodeStat3Value: social.leetcodeStat3Value ?? prev.leetcodeStat3Value,
+        leetcodeStat3Label: social.leetcodeStat3Label ?? prev.leetcodeStat3Label,
+        codechefDescription: social.codechefDescription ?? prev.codechefDescription,
+        codechefStat1Value: social.codechefStat1Value ?? prev.codechefStat1Value,
+        codechefStat1Label: social.codechefStat1Label ?? prev.codechefStat1Label,
+        codechefStat2Value: social.codechefStat2Value ?? prev.codechefStat2Value,
+        codechefStat2Label: social.codechefStat2Label ?? prev.codechefStat2Label,
+        codechefStat3Value: social.codechefStat3Value ?? prev.codechefStat3Value,
+        codechefStat3Label: social.codechefStat3Label ?? prev.codechefStat3Label
+      }));
+    }
+  }, [profile, social]);
+
   const handleSave = async (e) => {
     e.preventDefault();
     await updateProfile({
@@ -84,6 +134,7 @@ export const AdminProfileView = () => {
       leetcodeUsername: form.leetcodeUsername,
       codechefUsername: form.codechefUsername,
       email: form.email,
+      phone: form.phone,
       codingSectionTitle: form.codingSectionTitle,
       codingSectionSubtitle: form.codingSectionSubtitle,
       githubDescription: form.githubDescription,
@@ -177,6 +228,34 @@ export const AdminProfileView = () => {
                 type="text"
                 value={form.graduationYear}
                 onChange={e => setForm({ ...form, graduationYear: e.target.value })}
+                className="w-full px-3.5 py-2.5 rounded-lg border border-[#E2E8F0] text-sm focus:outline-none focus:border-[#2563EB]"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#172554] mb-1.5 flex items-center gap-1.5">
+                <MapPin size={14} className="text-[#2563EB]" />
+                <span>Campus Location</span>
+              </label>
+              <input
+                type="text"
+                value={form.location}
+                onChange={e => setForm({ ...form, location: e.target.value })}
+                placeholder="Andhra Pradesh, India"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-[#E2E8F0] text-sm focus:outline-none focus:border-[#2563EB]"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#172554] mb-1.5 flex items-center gap-1.5">
+                <Phone size={14} className="text-[#2563EB]" />
+                <span>Phone / WhatsApp Mobile Number</span>
+              </label>
+              <input
+                type="tel"
+                value={form.phone}
+                onChange={e => setForm({ ...form, phone: e.target.value })}
+                placeholder="+91 98765 43210"
                 className="w-full px-3.5 py-2.5 rounded-lg border border-[#E2E8F0] text-sm focus:outline-none focus:border-[#2563EB]"
               />
             </div>
@@ -346,11 +425,29 @@ export const AdminProfileView = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-[#172554] mb-1.5">Contact Email</label>
+              <label className="block text-xs font-semibold text-[#172554] mb-1.5 flex items-center gap-1.5">
+                <Mail size={14} className="text-[#2563EB]" />
+                <span>Contact Email</span>
+              </label>
               <input
                 type="email"
                 value={form.email}
                 onChange={e => setForm({ ...form, email: e.target.value })}
+                placeholder="marthalasurendarreddy@gmail.com"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-[#E2E8F0] text-sm focus:outline-none focus:border-[#2563EB]"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[#172554] mb-1.5 flex items-center gap-1.5">
+                <Phone size={14} className="text-[#2563EB]" />
+                <span>Phone / WhatsApp Mobile Number</span>
+              </label>
+              <input
+                type="tel"
+                value={form.phone}
+                onChange={e => setForm({ ...form, phone: e.target.value })}
+                placeholder="+91 98765 43210"
                 className="w-full px-3.5 py-2.5 rounded-lg border border-[#E2E8F0] text-sm focus:outline-none focus:border-[#2563EB]"
               />
             </div>
