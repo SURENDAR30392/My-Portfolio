@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Plus, Edit3, Trash2, Award, Upload, X, Trophy } from 'lucide-react';
+import { Plus, Edit3, Trash2, Award, X, Trophy } from 'lucide-react';
 import { useData } from '../../context/DataContext';
+import { ImageUrlInput } from '../../components/common/ImageUrlInput';
 
 export const AdminCertificationsView = () => {
   const { 
@@ -8,10 +9,9 @@ export const AdminCertificationsView = () => {
     addCertification, 
     updateCertification, 
     deleteCertification,
-    addAchievement,
-    updateAchievement,
-    deleteAchievement,
-    uploadFile 
+    addAchievement, 
+    updateAchievement, 
+    deleteAchievement 
   } = useData();
 
   const certs = data.certifications || [];
@@ -20,7 +20,6 @@ export const AdminCertificationsView = () => {
   const [activeSubTab, setActiveSubTab] = useState('certs'); // 'certs' | 'achievements'
   const [isEditing, setIsEditing] = useState(false);
   const [currentId, setCurrentId] = useState(null);
-  const [uploading, setUploading] = useState(false);
 
   const emptyCertForm = {
     title: '',
@@ -52,20 +51,6 @@ export const AdminCertificationsView = () => {
     });
     setCurrentId(item.id);
     setIsEditing(true);
-  };
-
-  const handleImageUpload = async (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    setUploading(true);
-    try {
-      const url = await uploadFile(file, 'certificates');
-      setForm(prev => ({ ...prev, imageUrl: url }));
-    } catch (err) {
-      console.error("Cert image upload failed:", err);
-    } finally {
-      setUploading(false);
-    }
   };
 
   const handleSubmit = async (e) => {
@@ -265,21 +250,14 @@ export const AdminCertificationsView = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#102A28] mb-1">Certificate Image / Proof</label>
-                <div className="flex items-center gap-3">
-                  <input
-                    type="text"
-                    value={form.imageUrl}
-                    onChange={e => setForm({ ...form, imageUrl: e.target.value })}
-                    placeholder="Image URL or upload"
-                    className="flex-1 px-3.5 py-2 rounded-lg border border-[#DDE7E5] text-xs focus:outline-none focus:border-[#0F766E]"
-                  />
-                  <label className="btn-secondary text-xs h-9 px-3 cursor-pointer inline-flex items-center gap-1.5 shrink-0">
-                    <Upload size={14} />
-                    <span>{uploading ? "..." : "Upload"}</span>
-                    <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
-                  </label>
-                </div>
+                <ImageUrlInput
+                  label="Certificate Image / Proof URL (Firebase Spark Free Plan)"
+                  value={form.imageUrl}
+                  onChange={newVal => setForm({ ...form, imageUrl: newVal })}
+                  onRemove={() => setForm({ ...form, imageUrl: '' })}
+                  placeholder="https://... direct image link"
+                  aspectRatio="aspect-[16/10]"
+                />
               </div>
 
               <div>

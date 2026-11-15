@@ -56,6 +56,10 @@ export const CertificateModal = ({ cert, onClose }) => {
                 src={cert.imageUrl} 
                 alt={cert.title} 
                 className="w-full h-full object-cover" 
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.style.display = 'none';
+                }}
               />
             </div>
           )}

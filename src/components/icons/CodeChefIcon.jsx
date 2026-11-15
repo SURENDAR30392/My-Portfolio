@@ -24,3 +24,4 @@ export const CodeChefIcon = ({ size = 20, className = "" }) => {
     </svg>
   );
 };
+

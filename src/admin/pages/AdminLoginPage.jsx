@@ -23,7 +23,7 @@ export const AdminLoginPage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-[#F7FAFA] p-6 text-[#102A28]">
       <div className="max-w-md w-full bg-white border border-[#DDE7E5] rounded-xl p-8 shadow-sm">
-        
+
         {/* Shield Icon */}
         <div className="w-14 h-14 bg-[#E6F4F2] text-[#0F766E] rounded-full flex items-center justify-center mx-auto mb-5 border border-[#7CC7BD]/40">
           <ShieldCheck size={28} />

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Save, Upload, User, Globe, Mail, Phone, MapPin, Linkedin, Github, Code2, Trophy } from 'lucide-react';
+import { Save, User, Globe, Mail, Phone, MapPin, Linkedin, Github, Code2, Trophy } from 'lucide-react';
 import { CodeChefIcon } from '../../components/icons/CodeChefIcon';
 import { useData } from '../../context/DataContext';
 import { DEFAULT_SOCIAL_LINKS } from '../../data/socialLinks';
+import { ImageUrlInput } from '../../components/common/ImageUrlInput';
 
 export const AdminProfileView = () => {
-  const { data, updateProfile, updateSocialLinks, uploadFile } = useData();
+  const { data, updateProfile, updateSocialLinks } = useData();
   const profile = data.profile || {};
   const social = data.social || {};
 
@@ -30,22 +31,6 @@ export const AdminProfileView = () => {
     leetcodeUsername: social.leetcodeUsername || DEFAULT_SOCIAL_LINKS.leetcodeUsername,
     codechefUsername: social.codechefUsername || DEFAULT_SOCIAL_LINKS.codechefUsername
   });
-
-  const [uploading, setUploading] = useState(false);
-
-  const handleAvatarUpload = async (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    setUploading(true);
-    try {
-      const url = await uploadFile(file, 'avatars');
-      setForm(prev => ({ ...prev, avatar: url }));
-    } catch (err) {
-      console.error("Avatar upload failed:", err);
-    } finally {
-      setUploading(false);
-    }
-  };
 
   const handleSave = async (e) => {
     e.preventDefault();
@@ -158,34 +143,16 @@ export const AdminProfileView = () => {
             />
           </div>
 
-          {/* Avatar Picture */}
-          <div>
-            <label className="block text-xs font-semibold text-[#102A28] mb-2">
-              Hero Portrait Image
-            </label>
-            <div className="flex items-center gap-5">
-              <div className="w-20 h-20 rounded-xl bg-[#E6F4F2] border border-[#DDE7E5] overflow-hidden shrink-0 flex items-center justify-center">
-                {form.avatar ? (
-                  <img src={form.avatar} alt="Preview" className="w-full h-full object-contain" />
-                ) : (
-                  <User size={32} className="text-[#0F766E]" />
-                )}
-              </div>
-              <div className="space-y-2 flex-1">
-                <input
-                  type="text"
-                  value={form.avatar}
-                  onChange={e => setForm({ ...form, avatar: e.target.value })}
-                  placeholder="Image URL or upload below"
-                  className="w-full px-3.5 py-2 rounded-lg border border-[#DDE7E5] text-xs focus:outline-none focus:border-[#0F766E]"
-                />
-                <label className="btn-secondary text-xs h-8 px-3 cursor-pointer inline-flex items-center gap-1.5">
-                  <Upload size={14} />
-                  <span>{uploading ? "Uploading..." : "Upload Local Photo"}</span>
-                  <input type="file" accept="image/*" onChange={handleAvatarUpload} className="hidden" />
-                </label>
-              </div>
-            </div>
+          {/* Hero Portrait Image (Image URL) */}
+          <div className="pt-2">
+            <ImageUrlInput
+              label="Hero Portrait Image URL (Firebase Spark Free Plan)"
+              value={form.avatar}
+              onChange={val => setForm({ ...form, avatar: val })}
+              onRemove={() => setForm({ ...form, avatar: '/msr-portrait.svg' })}
+              placeholder="https://example.com/msr.jpg or /msr-portrait.svg"
+              aspectRatio="aspect-[4/5]"
+            />
           </div>
         </div>
 

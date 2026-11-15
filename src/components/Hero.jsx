@@ -132,6 +132,10 @@ export const Hero = () => {
                 alt={profile.name || "Marthala Surendar Reddy"}
                 className="w-full h-full object-contain object-bottom pointer-events-none transition-transform duration-300 group-hover:scale-[1.02]"
                 loading="eager"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = "/msr-portrait.svg";
+                }}
               />
             </div>
           </div>

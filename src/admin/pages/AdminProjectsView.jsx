@@ -8,20 +8,19 @@ import {
   Star, 
   Eye, 
   EyeOff, 
-  Upload, 
   Check, 
   X,
   Sparkles
 } from 'lucide-react';
 import { useData } from '../../context/DataContext';
+import { ImageUrlInput } from '../../components/common/ImageUrlInput';
 
 export const AdminProjectsView = () => {
-  const { data, addProject, updateProject, deleteProject, uploadFile } = useData();
+  const { data, addProject, updateProject, deleteProject } = useData();
   const projects = data.projects || [];
 
   const [isEditing, setIsEditing] = useState(false);
   const [currentId, setCurrentId] = useState(null);
-  const [uploading, setUploading] = useState(false);
 
   const emptyForm = {
     title: '',
@@ -63,20 +62,6 @@ export const AdminProjectsView = () => {
     });
     setCurrentId(proj.id);
     setIsEditing(true);
-  };
-
-  const handleImageUpload = async (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    setUploading(true);
-    try {
-      const url = await uploadFile(file, 'projects');
-      setForm(prev => ({ ...prev, image: url }));
-    } catch (err) {
-      console.error("Project image upload failed:", err);
-    } finally {
-      setUploading(false);
-    }
   };
 
   const handleSubmit = async (e) => {
@@ -307,23 +292,16 @@ export const AdminProjectsView = () => {
                 </div>
               </div>
 
-              {/* Project Image */}
+              {/* Project Image (Spark Free Plan URL) */}
               <div>
-                <label className="block text-xs font-semibold text-[#102A28] mb-1">Project Cover Image</label>
-                <div className="flex items-center gap-3">
-                  <input
-                    type="text"
-                    value={form.image}
-                    onChange={e => setForm({ ...form, image: e.target.value })}
-                    placeholder="https://... or upload file"
-                    className="flex-1 px-3.5 py-2 rounded-lg border border-[#DDE7E5] text-xs focus:outline-none focus:border-[#0F766E]"
-                  />
-                  <label className="btn-secondary text-xs h-9 px-3 cursor-pointer inline-flex items-center gap-1.5 shrink-0">
-                    <Upload size={14} />
-                    <span>{uploading ? "Uploading..." : "Upload File"}</span>
-                    <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
-                  </label>
-                </div>
+                <ImageUrlInput
+                  label="Project Cover Image URL (Firebase Spark Free Plan)"
+                  value={form.image}
+                  onChange={newVal => setForm({ ...form, image: newVal })}
+                  onRemove={() => setForm({ ...form, image: '' })}
+                  placeholder="https://images.unsplash.com/... or GitHub raw image URL"
+                  aspectRatio="aspect-[16/10]"
+                />
               </div>
 
               {/* Problem / Solution Detailed info */}

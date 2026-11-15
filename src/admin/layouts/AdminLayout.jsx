@@ -17,7 +17,8 @@ import {
   Menu, 
   X,
   History,
-  ShieldCheck
+  ShieldCheck,
+  Images
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useData } from '../../context/DataContext';
@@ -46,6 +47,7 @@ export const AdminLayout = ({ activeTab, setActiveTab, children }) => {
   const navItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'profile', label: 'Personal Information', icon: User },
+    { id: 'images', label: 'Image Management', icon: Images },
     { id: 'projects', label: 'Projects', icon: Briefcase, badge: data.projects?.length },
     { id: 'skills', label: 'Skills', icon: Code2, badge: data.skills?.length },
     { id: 'education', label: 'Education', icon: GraduationCap },

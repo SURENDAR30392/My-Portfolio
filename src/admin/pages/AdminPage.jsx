@@ -4,6 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import { AdminLayout } from '../layouts/AdminLayout';
 import { AdminDashboardView } from './AdminDashboardView';
 import { AdminProfileView } from './AdminProfileView';
+import { AdminImageManagementView } from './AdminImageManagementView';
 import { AdminProjectsView } from './AdminProjectsView';
 import { AdminSkillsView } from './AdminSkillsView';
 import { AdminEducationView } from './AdminEducationView';
@@ -39,6 +40,8 @@ export const AdminPage = () => {
         return <AdminDashboardView setActiveTab={setActiveTab} />;
       case 'profile':
         return <AdminProfileView />;
+      case 'images':
+        return <AdminImageManagementView />;
       case 'projects':
         return <AdminProjectsView />;
       case 'skills':
