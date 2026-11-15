@@ -10,12 +10,13 @@ import {
   Briefcase, 
   Award,
   Eye,
-  FileCheck
+  FileCheck,
+  FileX
 } from 'lucide-react';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { useData } from '../context/DataContext';
-import { getResumeEmbedUrl, triggerResumeDownload } from '../utils/resumeHelper';
+import { getResumeEmbedUrl, triggerResumeDownload, hasValidResume } from '../utils/resumeHelper';
 
 export const ResumePage = () => {
   const { data } = useData();
@@ -26,13 +27,18 @@ export const ResumePage = () => {
   const certifications = (data.certifications || []).filter(c => c.published !== false);
   const resume = data.resume || {};
 
-  const [viewMode, setViewMode] = useState('pdf'); // 'pdf' | 'sheet'
+  const hasResume = hasValidResume(resume.url);
+  const [viewMode, setViewMode] = useState(() => hasResume ? 'pdf' : 'sheet');
 
   const currentEmbedUrl = getResumeEmbedUrl(resume.url);
   const filename = resume.filename || 'Marthala_Surendar_Reddy_Resume.pdf';
 
   const handleDownload = () => {
-    triggerResumeDownload(resume.url, filename);
+    if (hasResume) {
+      triggerResumeDownload(resume.url, filename);
+    } else {
+      window.print();
+    }
   };
 
   // Group skills by category for the sheet view
@@ -96,7 +102,7 @@ export const ResumePage = () => {
                 className="btn-primary inline-flex items-center gap-2 h-9 px-4 text-xs shadow-xs"
               >
                 <Download size={14} />
-                <span>Download PDF</span>
+                <span>{hasResume ? "Download PDF" : "Print Web Sheet"}</span>
               </button>
             </div>
           </div>
@@ -104,42 +110,61 @@ export const ResumePage = () => {
           {/* VIEW MODE A: Embedded PDF Document */}
           {viewMode === 'pdf' && (
             <div className="bg-white border border-[#E2E8F0] rounded-2xl p-4 sm:p-6 shadow-card space-y-3 animate-fade-in">
-              <div className="flex items-center justify-between px-1 text-xs text-[#64748B]">
-                <div className="flex items-center gap-2">
-                  <FileCheck size={16} className="text-[#2563EB]" />
-                  <span className="font-semibold text-[#172554]">{filename}</span>
+              {hasResume && currentEmbedUrl ? (
+                <>
+                  <div className="flex items-center justify-between px-1 text-xs text-[#64748B]">
+                    <div className="flex items-center gap-2">
+                      <FileCheck size={16} className="text-[#2563EB]" />
+                      <span className="font-semibold text-[#172554]">{filename}</span>
+                    </div>
+                    <a
+                      href={currentEmbedUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#2563EB] hover:underline flex items-center gap-1 font-semibold"
+                    >
+                      <span>Open in fullscreen</span>
+                      <ExternalLink size={12} />
+                    </a>
+                  </div>
+
+                  {/* Responsive Iframe Container */}
+                  <div className="border border-[#E2E8F0] rounded-xl overflow-hidden bg-[#F8FAFC] shadow-inner h-[760px] md:h-[920px] w-full">
+                    <iframe
+                      key={currentEmbedUrl}
+                      src={currentEmbedUrl}
+                      title="Marthala Surendar Reddy Resume PDF"
+                      className="w-full h-full border-0"
+                    />
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 px-1 text-xs text-[#94A3B8]">
+                    <span>Candidate: {profile.name || "Marthala Surendar Reddy"}</span>
+                    <button
+                      type="button"
+                      onClick={handleDownload}
+                      className="text-[#2563EB] hover:underline font-medium text-left"
+                    >
+                      Trouble viewing? Click here to download {filename}
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <div className="border-2 border-dashed border-[#E2E8F0] rounded-2xl p-12 text-center bg-[#F8FAFC] space-y-3 my-4">
+                  <FileX size={44} className="mx-auto text-[#94A3B8]" />
+                  <h3 className="text-base font-bold text-[#172554]">No Official PDF Uploaded Yet</h3>
+                  <p className="text-xs text-[#64748B] max-w-sm mx-auto">
+                    The official resume PDF document is currently being updated. You can view the complete interactive credentials in the Web Sheet tab.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setViewMode('sheet')}
+                    className="btn-primary text-xs h-9 px-4"
+                  >
+                    View Interactive Web Sheet
+                  </button>
                 </div>
-                <a
-                  href={currentEmbedUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#2563EB] hover:underline flex items-center gap-1 font-semibold"
-                >
-                  <span>Open in fullscreen</span>
-                  <ExternalLink size={12} />
-                </a>
-              </div>
-
-              {/* Responsive Iframe Container */}
-              <div className="border border-[#E2E8F0] rounded-xl overflow-hidden bg-[#F8FAFC] shadow-inner h-[760px] md:h-[920px] w-full">
-                <iframe
-                  key={currentEmbedUrl}
-                  src={currentEmbedUrl}
-                  title="Marthala Surendar Reddy Resume PDF"
-                  className="w-full h-full border-0"
-                />
-              </div>
-
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 px-1 text-xs text-[#94A3B8]">
-                <span>Candidate: {profile.name || "Marthala Surendar Reddy"}</span>
-                <button
-                  type="button"
-                  onClick={handleDownload}
-                  className="text-[#2563EB] hover:underline font-medium text-left"
-                >
-                  Trouble viewing? Click here to download {filename}
-                </button>
-              </div>
+              )}
             </div>
           )}
 

@@ -4,30 +4,32 @@ import {
   Download, 
   CheckCircle, 
   ExternalLink, 
-  RefreshCw, 
   Eye, 
-  Globe, 
-  Printer, 
-  Sparkles,
-  UploadCloud,
-  AlertCircle,
-  Trash2,
-  Check,
-  Link as LinkIcon
+  UploadCloud, 
+  AlertCircle, 
+  Trash2, 
+  Link as LinkIcon,
+  FileX
 } from 'lucide-react';
 import { useData } from '../../context/DataContext';
-import { getResumeEmbedUrl, getResumeDownloadUrl, triggerResumeDownload } from '../../utils/resumeHelper';
+import { 
+  getResumeEmbedUrl, 
+  hasValidResume, 
+  normalizeResumeUrl, 
+  triggerResumeDownload 
+} from '../../utils/resumeHelper';
 
 export const AdminResumeView = () => {
   const { data, updateResume } = useData();
   const resume = data.resume || {};
 
-  const defaultUrl = '/resume.pdf';
-  const defaultFilename = 'Marthala_Surendar_Reddy_Resume.pdf';
+  // If previous url was the built-in '/resume.pdf', treat it as no custom resume
+  const initialUrl = normalizeResumeUrl(resume.url);
+  const initialFilename = initialUrl ? (resume.filename || 'Resume.pdf') : '';
 
-  const [url, setUrl] = useState(resume.url || defaultUrl);
+  const [url, setUrl] = useState(initialUrl);
   const [enabled, setEnabled] = useState(resume.enabled !== false);
-  const [filename, setFilename] = useState(resume.filename || defaultFilename);
+  const [filename, setFilename] = useState(initialFilename);
   const [showEmbeddedPdf, setShowEmbeddedPdf] = useState(true);
   const [sourceType, setSourceType] = useState('upload'); // 'upload' | 'link'
   const [fileError, setFileError] = useState('');
@@ -38,17 +40,24 @@ export const AdminResumeView = () => {
 
   // Synchronize state when data loads from Firestore
   useEffect(() => {
-    if (resume.url) setUrl(resume.url);
-    if (resume.filename) setFilename(resume.filename);
+    const cleanUrl = normalizeResumeUrl(resume.url);
+    setUrl(cleanUrl);
+    setFilename(cleanUrl ? (resume.filename || 'Resume.pdf') : '');
     if (resume.enabled !== undefined) setEnabled(resume.enabled);
   }, [resume.url, resume.filename, resume.enabled]);
 
-  // Determine source type for badge
-  const isDefaultPdf = !url || url === defaultUrl || url === '/resume.pdf';
+  const hasResume = hasValidResume(url);
   const isDataUrl = url?.startsWith('data:application/pdf');
   const isGoogleDrive = url?.includes('drive.google.com');
 
   const getSourceBadge = () => {
+    if (!hasResume) {
+      return (
+        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-amber-50 text-amber-700 border border-amber-200">
+          No Resume Uploaded
+        </span>
+      );
+    }
     if (isDataUrl) {
       return (
         <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
@@ -60,13 +69,6 @@ export const AdminResumeView = () => {
       return (
         <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-50 text-[#2563EB] border border-blue-200">
           Google Drive Document
-        </span>
-      );
-    }
-    if (isDefaultPdf) {
-      return (
-        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-slate-100 text-slate-700 border border-slate-200">
-          Default Portfolio PDF
         </span>
       );
     }
@@ -123,9 +125,9 @@ export const AdminResumeView = () => {
 
     try {
       await updateResume({
-        url: url.trim() || defaultUrl,
+        url: url.trim(),
         enabled,
-        filename: filename.trim() || defaultFilename,
+        filename: filename.trim() || 'Resume.pdf',
         lastUpdated: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
       });
       setFileSuccess('Resume settings saved successfully to Firestore!');
@@ -137,16 +139,16 @@ export const AdminResumeView = () => {
     }
   };
 
-  const handleResetToDefault = async () => {
-    if (window.confirm("Reset resume to the default portfolio PDF?")) {
-      setUrl(defaultUrl);
-      setFilename(defaultFilename);
-      setFileSuccess('');
-      setFileError('');
+  const handleRemoveResume = async () => {
+    if (window.confirm("Are you sure you want to remove the current resume document from the portfolio?")) {
+      setUrl('');
+      setFilename('');
+      setFileSuccess('Resume document removed.');
+      setTimeout(() => setFileSuccess(''), 3000);
       await updateResume({
-        url: defaultUrl,
-        filename: defaultFilename,
-        enabled: true,
+        url: '',
+        filename: '',
+        enabled: false,
         lastUpdated: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
       });
     }
@@ -164,7 +166,7 @@ export const AdminResumeView = () => {
           <span>Resume Management & Live Preview</span>
         </h1>
         <p className="text-sm text-[#64748B] mt-1">
-          Upload your resume PDF or link an external document. Your live resume is immediately updated for public visitors.
+          Upload your official resume PDF or link an external document. Updates reflect live across your portfolio.
         </p>
       </div>
 
@@ -172,33 +174,56 @@ export const AdminResumeView = () => {
       <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6 shadow-card space-y-5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E2E8F0] pb-4">
           <div className="flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-xl bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center shrink-0 border border-[#DBEAFE]">
-              <FileText size={26} />
+            <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border ${
+              hasResume 
+                ? 'bg-[#EFF6FF] text-[#2563EB] border-[#DBEAFE]' 
+                : 'bg-amber-50 text-amber-600 border-amber-200'
+            }`}>
+              {hasResume ? <FileText size={26} /> : <FileX size={26} />}
             </div>
             <div>
               <div className="flex flex-wrap items-center gap-2">
                 <h2 className="text-base font-bold text-[#172554] truncate max-w-sm">
-                  {filename}
+                  {hasResume ? filename : "No Resume Uploaded"}
                 </h2>
                 {getSourceBadge()}
               </div>
               <p className="text-xs text-[#64748B] mt-1">
-                Last updated: <span className="text-[#172554] font-medium">{resume.lastUpdated || 'Recently'}</span>
-                {isDataUrl && <span className="ml-2 text-emerald-600 font-medium">· Stored in Cloud Firestore</span>}
+                {hasResume ? (
+                  <>
+                    Last updated: <span className="text-[#172554] font-medium">{resume.lastUpdated || 'Recently'}</span>
+                    {isDataUrl && <span className="ml-2 text-emerald-600 font-medium">· Stored in Cloud Firestore</span>}
+                  </>
+                ) : (
+                  <span>Please upload your official resume PDF or paste a link below.</span>
+                )}
               </p>
             </div>
           </div>
 
           {/* Quick Actions */}
           <div className="flex flex-wrap items-center gap-2">
-            <button
-              type="button"
-              onClick={() => triggerResumeDownload(url, filename)}
-              className="btn-secondary text-xs h-9 px-3.5 inline-flex items-center gap-1.5"
-            >
-              <Download size={14} />
-              <span>Download</span>
-            </button>
+            {hasResume && (
+              <>
+                <button
+                  type="button"
+                  onClick={() => triggerResumeDownload(url, filename)}
+                  className="btn-secondary text-xs h-9 px-3.5 inline-flex items-center gap-1.5"
+                >
+                  <Download size={14} />
+                  <span>Download</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleRemoveResume}
+                  className="p-2 rounded-lg border border-[#E2E8F0] text-[#94A3B8] hover:text-red-600 hover:bg-red-50 transition-colors"
+                  title="Remove current resume document"
+                >
+                  <Trash2 size={15} />
+                </button>
+              </>
+            )}
 
             <a
               href="/resume"
@@ -210,17 +235,6 @@ export const AdminResumeView = () => {
               <ExternalLink size={14} />
               <span>Public Page</span>
             </a>
-
-            {!isDefaultPdf && (
-              <button
-                type="button"
-                onClick={handleResetToDefault}
-                className="p-2 rounded-lg border border-[#E2E8F0] text-[#64748B] hover:text-[#2563EB] hover:bg-[#EFF6FF] transition-colors"
-                title="Reset to default portfolio resume"
-              >
-                <RefreshCw size={14} />
-              </button>
-            )}
           </div>
         </div>
 
@@ -245,7 +259,7 @@ export const AdminResumeView = () => {
           {/* Method Selector Tabs */}
           <div>
             <label className="block text-xs font-bold text-[#172554] mb-2">
-              Choose How to Provide Your Resume
+              Provide Your Official Resume
             </label>
             <div className="grid grid-cols-2 gap-3 max-w-md">
               <button
@@ -304,7 +318,7 @@ export const AdminResumeView = () => {
                   Click to browse or drag and drop your Resume PDF
                 </div>
                 <p className="text-xs text-[#64748B] max-w-sm">
-                  Upload a standard single-page PDF document (under 800 KB). It will be saved directly and displayed in the live viewer.
+                  Upload your real single-page or multi-page PDF document (under 800 KB).
                 </p>
                 <button
                   type="button"
@@ -322,14 +336,14 @@ export const AdminResumeView = () => {
               </label>
               <input
                 type="text"
-                required
+                required={sourceType === 'link'}
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 placeholder="e.g. https://drive.google.com/file/d/... or https://example.com/resume.pdf"
                 className="w-full px-3.5 py-2.5 rounded-xl border border-[#E2E8F0] text-sm text-[#172554] focus:outline-none focus:border-[#2563EB] font-mono text-xs"
               />
               <p className="text-[11px] text-[#64748B]">
-                Supports Google Drive sharing links (automatically normalized for embedding), Dropbox, ImageKit, or any public PDF URL.
+                Supports Google Drive sharing links (automatically normalized for embedding), Dropbox, ImageKit, or any direct PDF URL.
               </p>
             </div>
           )}
@@ -342,7 +356,6 @@ export const AdminResumeView = () => {
               </label>
               <input
                 type="text"
-                required
                 value={filename}
                 onChange={(e) => setFilename(e.target.value)}
                 placeholder="Marthala_Surendar_Reddy_Resume.pdf"
@@ -365,14 +378,16 @@ export const AdminResumeView = () => {
 
           {/* Save Button Row */}
           <div className="pt-4 border-t border-[#E2E8F0] flex items-center justify-between">
-            <button
-              type="button"
-              onClick={handleResetToDefault}
-              className="btn-secondary text-xs h-9 px-4 inline-flex items-center gap-1.5"
-            >
-              <RefreshCw size={13} />
-              <span>Reset to Default</span>
-            </button>
+            {hasResume ? (
+              <button
+                type="button"
+                onClick={handleRemoveResume}
+                className="text-xs text-red-600 hover:text-red-700 font-semibold inline-flex items-center gap-1.5"
+              >
+                <Trash2 size={13} />
+                <span>Remove Resume</span>
+              </button>
+            ) : <div />}
 
             <button
               type="submit"
@@ -395,49 +410,69 @@ export const AdminResumeView = () => {
               Live Document Preview
             </h2>
           </div>
-          <div className="flex items-center gap-3">
-            <button
-              type="button"
-              onClick={() => triggerResumeDownload(url, filename)}
-              className="text-xs text-[#2563EB] hover:underline font-semibold flex items-center gap-1"
-            >
-              <Download size={13} />
-              <span>Download</span>
-            </button>
-            <span className="text-[#E2E8F0]">|</span>
-            <button
-              type="button"
-              onClick={() => setShowEmbeddedPdf(!showEmbeddedPdf)}
-              className="text-xs text-[#64748B] hover:text-[#172554] font-medium"
-            >
-              {showEmbeddedPdf ? "Hide Preview" : "Show Preview"}
-            </button>
-          </div>
+          {hasResume && (
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => triggerResumeDownload(url, filename)}
+                className="text-xs text-[#2563EB] hover:underline font-semibold flex items-center gap-1"
+              >
+                <Download size={13} />
+                <span>Download</span>
+              </button>
+              <span className="text-[#E2E8F0]">|</span>
+              <button
+                type="button"
+                onClick={() => setShowEmbeddedPdf(!showEmbeddedPdf)}
+                className="text-xs text-[#64748B] hover:text-[#172554] font-medium"
+              >
+                {showEmbeddedPdf ? "Hide Preview" : "Show Preview"}
+              </button>
+            </div>
+          )}
         </div>
 
         {showEmbeddedPdf && (
           <div className="space-y-3 animate-fade-in">
-            {/* Embedded Responsive Iframe */}
-            <div className="border border-[#E2E8F0] rounded-xl overflow-hidden bg-[#F8FAFC] shadow-inner h-[680px] w-full">
-              <iframe
-                key={currentEmbedUrl}
-                src={currentEmbedUrl}
-                title="Resume PDF Preview"
-                className="w-full h-full border-0"
-              />
-            </div>
-            <div className="flex items-center justify-between text-xs text-[#64748B] px-1">
-              <span>Dynamic preview of currently configured resume</span>
-              <a 
-                href={currentEmbedUrl} 
-                target="_blank" 
-                rel="noreferrer" 
-                className="text-[#2563EB] hover:underline flex items-center gap-1 font-semibold"
-              >
-                <span>Open in fullscreen</span>
-                <ExternalLink size={12} />
-              </a>
-            </div>
+            {hasResume && currentEmbedUrl ? (
+              <>
+                <div className="border border-[#E2E8F0] rounded-xl overflow-hidden bg-[#F8FAFC] shadow-inner h-[680px] w-full">
+                  <iframe
+                    key={currentEmbedUrl}
+                    src={currentEmbedUrl}
+                    title="Resume PDF Preview"
+                    className="w-full h-full border-0"
+                  />
+                </div>
+                <div className="flex items-center justify-between text-xs text-[#64748B] px-1">
+                  <span>Dynamic preview of currently configured resume</span>
+                  <a 
+                    href={currentEmbedUrl} 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="text-[#2563EB] hover:underline flex items-center gap-1 font-semibold"
+                  >
+                    <span>Open in fullscreen</span>
+                    <ExternalLink size={12} />
+                  </a>
+                </div>
+              </>
+            ) : (
+              <div className="border-2 border-dashed border-[#E2E8F0] rounded-2xl p-12 text-center bg-[#F8FAFC] space-y-3">
+                <FileX size={40} className="mx-auto text-[#94A3B8]" />
+                <h3 className="text-base font-bold text-[#172554]">No Resume File Attached</h3>
+                <p className="text-xs text-[#64748B] max-w-sm mx-auto">
+                  Upload your official resume PDF above to activate the live document preview.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  className="btn-primary text-xs h-8 px-4"
+                >
+                  Choose PDF to Upload
+                </button>
+              </div>
+            )}
           </div>
         )}
       </div>

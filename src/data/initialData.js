@@ -356,9 +356,9 @@ export const initialPortfolioData = {
   },
 
   resume: {
-    url: "/resume.pdf",
+    url: "",
     enabled: true,
     lastUpdated: "November 2026",
-    filename: "Marthala_Surendar_Reddy_Resume.pdf"
+    filename: ""
   }
 };
