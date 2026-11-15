@@ -264,10 +264,7 @@ export const ResumePage = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                     {technicalSkills.map((s) => (
                       <div key={s.id} className="bg-[#FFF8F3] border border-[#F0DED4] rounded-xl p-3">
-                        <div className="flex items-center justify-between">
-                          <div className="text-xs font-bold text-[#613E35]">{s.name}</div>
-                          <span className="text-[10px] text-[#613E35] font-semibold">{s.level || s.proficiency || ''}%</span>
-                        </div>
+                        <div className="text-xs font-bold text-[#613E35]">{s.name}</div>
                         <div className="text-[11px] text-[#613E35] mt-0.5">{s.category || 'Skill'}</div>
                       </div>
                     ))}

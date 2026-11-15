@@ -107,15 +107,6 @@ export const Footer = () => {
             >
               Honors & Certifications
             </Link>
-            <span>•</span>
-            <Link 
-              to="/admin" 
-              className="inline-flex items-center gap-1 text-[#613E35] hover:text-[#D98C70] transition-colors"
-              title="Super Admin Portal"
-            >
-              <ShieldCheck size={13} />
-              <span>Admin</span>
-            </Link>
           </div>
         </div>
 

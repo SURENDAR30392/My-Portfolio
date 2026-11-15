@@ -71,26 +71,13 @@ export const Skills = () => {
                   </div>
 
                   {/* Skills List */}
-                  <ul className="space-y-3.5">
+                  <ul className="space-y-2.5">
                     {categorySkills.map((skill) => (
-                      <li key={skill.id} className="flex items-center justify-between text-sm">
-                        <div className="flex items-center gap-2">
+                      <li key={skill.id} className="flex items-center text-sm py-1">
+                        <div className="flex items-center gap-2.5">
                           <span className="w-1.5 h-1.5 rounded-full bg-[#D98C70]" aria-hidden="true" />
                           <span className="font-medium text-[#613E35]">{skill.name}</span>
                         </div>
-                        {skill.proficiency && (
-                          <div className="flex items-center gap-2.5">
-                            <div className="w-20 sm:w-24 h-1.5 bg-[#FCE9DF] border border-[#F4C9B5]/40 rounded-full overflow-hidden">
-                              <div 
-                                className="h-full bg-gradient-to-r from-[#D98C70] to-[#F4C9B5] rounded-full transition-all duration-500 ease-out" 
-                                style={{ width: `${skill.proficiency}%` }}
-                              />
-                            </div>
-                            <span className="text-xs font-semibold text-[#613E35] w-8 text-right">
-                              {skill.proficiency}%
-                            </span>
-                          </div>
-                        )}
                       </li>
                     ))}
                   </ul>
