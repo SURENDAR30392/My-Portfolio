@@ -250,6 +250,19 @@ export const AdminDashboardView = ({ setActiveTab }) => {
                 <span className="text-[#64748B]">Image Pipeline</span>
                 <span className="font-bold text-[#172554]">Spark Plan (Image URLs)</span>
               </div>
+
+              <div className="flex items-center justify-between p-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-xs">
+                <span className="text-[#64748B]">Production Live URL</span>
+                <a
+                  href="https://marthala-surendar-reddy.web.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-[#2563EB] hover:underline inline-flex items-center gap-1"
+                >
+                  <span>marthala-surendar-reddy.web.app</span>
+                  <ExternalLink size={12} />
+                </a>
+              </div>
             </div>
           </div>
 

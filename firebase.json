@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "surendar-reddy",
+    "site": "marthala-surendar-reddy",
     "public": "dist",
     "ignore": [
       "firebase.json",
