@@ -8,8 +8,8 @@ import { useData } from '../context/DataContext';
 export const ResumePage = () => {
   const { data } = useData();
   const profile = data.profile || {};
-  const education = data.education || [];
-  const skills = data.skills || [];
+  const education = (data.education || []).filter(e => e.published !== false);
+  const skills = (data.skills || []).filter(s => s.published !== false);
   const resume = data.resume || {};
 
   const handleDownload = () => {

@@ -907,6 +907,7 @@ export const DataProvider = ({ children }) => {
   };
 
   // Idempotent Multi-Collection Firestore Synchronizer (Strictly Super Admin only)
+  // NEVER overwrites existing documents; checks getDoc() and skips existing completely.
   const seedFirestoreCollections = async () => {
     if (!verifySuperAdmin()) return false;
     if (!isFirebaseConfigured || !db) {
@@ -915,53 +916,67 @@ export const DataProvider = ({ children }) => {
     }
 
     try {
-      showNotification("Starting idempotent Firestore seeding...", "info");
+      showNotification("Checking Firestore for missing documents...", "info");
+      let createdCount = 0;
+      let skippedCount = 0;
 
-      // 1. Profile
-      await setDoc(doc(db, 'profile', 'main'), { ...initialPortfolioData.profile, published: true }, { merge: true });
+      const safeCreateIfMissing = async (collectionName, docId, data) => {
+        const ref = doc(db, collectionName, docId);
+        const snap = await getDoc(ref);
+        if (snap.exists()) {
+          console.log(`[SKIP - ALREADY EXISTS] ${collectionName}/${docId}`);
+          skippedCount++;
+          return false;
+        } else {
+          // Document does NOT exist -> create only missing document, NO merge
+          await setDoc(ref, data);
+          console.log(`[CREATED MISSING] ${collectionName}/${docId}`);
+          createdCount++;
+          return true;
+        }
+      };
 
-      // 2. Social Links
-      await setDoc(doc(db, 'socialLinks', 'main'), { ...initialPortfolioData.social, published: true }, { merge: true });
+      // 1. Profile (Skip if exists)
+      await safeCreateIfMissing('profile', 'main', { ...initialPortfolioData.profile, published: true });
 
-      // 3. Settings
-      await setDoc(doc(db, 'settings', 'general'), { ...initialPortfolioData.settings, isPublic: true }, { merge: true });
+      // 2. Social Links (Skip if exists)
+      await safeCreateIfMissing('socialLinks', 'main', { ...initialPortfolioData.social, published: true });
 
-      // 4. Skills
+      // 3. Settings (Skip if exists)
+      await safeCreateIfMissing('settings', 'general', { ...initialPortfolioData.settings, isPublic: true });
+
+      // 4. Skills (Create only missing skill documents)
       for (const skill of initialPortfolioData.skills) {
-        await setDoc(doc(db, 'skills', skill.id), { ...skill, published: true }, { merge: true });
+        await safeCreateIfMissing('skills', skill.id, { ...skill, published: true });
       }
 
-      // 5. Projects
+      // 5. Projects (Create only missing project documents)
       for (const proj of initialPortfolioData.projects) {
-        await setDoc(doc(db, 'projects', proj.id), { ...proj, published: true }, { merge: true });
+        await safeCreateIfMissing('projects', proj.id, { ...proj, published: true });
       }
 
-      // 6. Education
+      // 6. Education (Create only missing education documents)
       for (const edu of initialPortfolioData.education) {
-        await setDoc(doc(db, 'education', edu.id), { ...edu, published: true }, { merge: true });
+        await safeCreateIfMissing('education', edu.id, { ...edu, published: true });
       }
 
-      // 7. Experience
+      // 7. Experience (Create only missing experience documents)
       for (const exp of initialPortfolioData.experience) {
-        await setDoc(doc(db, 'experience', exp.id), { ...exp, published: true }, { merge: true });
+        await safeCreateIfMissing('experience', exp.id, { ...exp, published: true });
       }
 
-      // 8. Certifications
+      // 8. Certifications (Create only missing certification documents)
       for (const cert of initialPortfolioData.certifications) {
-        await setDoc(doc(db, 'certifications', cert.id), { ...cert, published: true }, { merge: true });
+        await safeCreateIfMissing('certifications', cert.id, { ...cert, published: true });
       }
 
-      // 9. Achievements
+      // 9. Achievements (Create only missing achievement documents)
       for (const ach of initialPortfolioData.achievements) {
-        await setDoc(doc(db, 'achievements', ach.id), { ...ach, published: true }, { merge: true });
+        await safeCreateIfMissing('achievements', ach.id, { ...ach, published: true });
       }
 
-      // 10. Aggregate Document Sync
-      const { messages, ...cleanData } = initialPortfolioData;
-      await setDoc(doc(db, 'content', 'portfolioData'), { ...cleanData, published: true, lastUpdated: new Date().toISOString() }, { merge: true });
-
-      showNotification("Firestore collections successfully synchronized!", "success");
-      return true;
+      showNotification(`Sync Complete: ${createdCount} created, ${skippedCount} existing preserved.`, "success");
+      return { createdCount, skippedCount };
     } catch (err) {
       console.error("Firestore seeding error:", err);
       showNotification(`Seeding error: ${err.message}`, "error");
