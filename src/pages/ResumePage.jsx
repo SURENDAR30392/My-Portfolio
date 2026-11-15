@@ -13,13 +13,14 @@ export const ResumePage = () => {
   const resume = data.resume || {};
 
   const handleDownload = () => {
-    // Generate or download resume file
-    if (resume.url && resume.url !== '/resume.pdf') {
-      window.open(resume.url, '_blank');
-    } else {
-      // Trigger print / PDF generation or download alert
-      window.print();
-    }
+    const downloadUrl = resume.url || '/resume.pdf';
+    const link = document.createElement('a');
+    link.href = downloadUrl;
+    link.download = resume.filename || 'Marthala_Surendar_Reddy_Resume.pdf';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (

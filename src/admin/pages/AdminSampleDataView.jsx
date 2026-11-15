@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Database, Trash2, AlertTriangle, RefreshCw, CheckCircle, Sparkles } from 'lucide-react';
+import { Database, Trash2, AlertTriangle, RefreshCw, CheckCircle, Sparkles, FileText, Eye, ExternalLink } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 
 export const AdminSampleDataView = () => {
@@ -86,6 +86,51 @@ export const AdminSampleDataView = () => {
       {/* Detailed Breakdown */}
       <div className="space-y-6">
         
+        {/* Sample / Dummy Resume Document */}
+        <div className="bg-white border border-[#DDE7E5] rounded-xl p-6 shadow-sm">
+          <div className="flex items-center justify-between mb-4 border-b border-[#DDE7E5] pb-3">
+            <h2 className="text-sm font-semibold text-[#102A28] flex items-center gap-2">
+              <FileText size={16} className="text-[#0F766E]" />
+              <span>Dummy Resume Document</span>
+            </h2>
+            <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-[#E6F4F2] text-[#0F766E] border border-[#7CC7BD]/40">
+              Active (/resume.pdf)
+            </span>
+          </div>
+
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <div className="text-sm font-medium text-[#102A28]">
+                {data.resume?.filename || 'Marthala_Surendar_Reddy_Resume.pdf'}
+              </div>
+              <div className="text-xs text-[#8A9B98] mt-0.5">
+                Pre-compiled PDF resume for Marthala Surendar Reddy with KL University education & projects.
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className="btn-secondary text-xs h-8 px-3 inline-flex items-center gap-1.5"
+              >
+                <Eye size={13} />
+                <span>Preview PDF</span>
+              </a>
+              <a
+                href="/resume"
+                target="_blank"
+                rel="noreferrer"
+                className="btn-primary text-xs h-8 px-3 inline-flex items-center gap-1.5"
+              >
+                <span>Printable Sheet</span>
+                <ExternalLink size={12} />
+              </a>
+            </div>
+          </div>
+        </div>
+
         {/* Sample Projects */}
         <div className="bg-white border border-[#DDE7E5] rounded-xl p-6 shadow-sm">
           <div className="flex items-center justify-between mb-4 border-b border-[#DDE7E5] pb-3">

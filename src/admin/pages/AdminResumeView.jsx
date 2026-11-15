@@ -1,118 +1,216 @@
 import React, { useState } from 'react';
-import { FileText, Upload, Download, CheckCircle, ExternalLink, AlertCircle } from 'lucide-react';
+import { 
+  FileText, 
+  Download, 
+  CheckCircle, 
+  ExternalLink, 
+  RefreshCw, 
+  Eye, 
+  Globe, 
+  Printer, 
+  Sparkles,
+  AlertCircle
+} from 'lucide-react';
 import { useData } from '../../context/DataContext';
 
 export const AdminResumeView = () => {
-  const { data, updateResume, uploadFile } = useData();
+  const { data, updateResume } = useData();
   const resume = data.resume || {};
 
-  const [url, setUrl] = useState(resume.url || '');
-  const [enabled, setEnabled] = useState(resume.enabled !== false);
-  const [filename, setFilename] = useState(resume.filename || 'Marthala_Surendar_Reddy_Resume.pdf');
-  const [uploading, setUploading] = useState(false);
+  const defaultUrl = '/resume.pdf';
+  const defaultFilename = 'Marthala_Surendar_Reddy_Resume.pdf';
 
-  const handleFileUpload = async (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    setUploading(true);
-    try {
-      const downloadUrl = await uploadFile(file, 'resumes');
-      setUrl(downloadUrl);
-      setFilename(file.name);
-      await updateResume({
-        url: downloadUrl,
-        filename: file.name,
-        enabled: true
-      });
-    } catch (err) {
-      console.error("Resume upload failed:", err);
-    } finally {
-      setUploading(false);
-    }
-  };
+  const [url, setUrl] = useState(resume.url || defaultUrl);
+  const [enabled, setEnabled] = useState(resume.enabled !== false);
+  const [filename, setFilename] = useState(resume.filename || defaultFilename);
+  const [showEmbeddedPdf, setShowEmbeddedPdf] = useState(true);
+
+  const isBuiltInDummy = !url || url === defaultUrl || url === '/resume.pdf';
 
   const handleSave = async (e) => {
     e.preventDefault();
     await updateResume({
-      url,
+      url: url.trim() || defaultUrl,
       enabled,
-      filename
+      filename: filename.trim() || defaultFilename,
+      lastUpdated: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+    });
+  };
+
+  const handleSetBuiltInDummy = async () => {
+    setUrl(defaultUrl);
+    setFilename(defaultFilename);
+    await updateResume({
+      url: defaultUrl,
+      filename: defaultFilename,
+      enabled: true,
+      lastUpdated: 'November 2026'
     });
   };
 
   return (
-    <div className="space-y-8 animate-fade-in max-w-3xl">
+    <div className="space-y-8 animate-fade-in max-w-4xl">
+      
+      {/* Header */}
       <div>
-        <h1 className="text-2xl font-semibold text-[#102A28]">
-          Resume Management
+        <h1 className="text-2xl font-semibold text-[#102A28] flex items-center gap-2.5">
+          <FileText size={24} className="text-[#0F766E]" />
+          <span>Resume Management & Dummy Resume Preview</span>
         </h1>
         <p className="text-sm text-[#4B5F5C] mt-1">
-          Upload and manage your official resume PDF served to visitors on the public portfolio.
+          Review, preview, and configure the official resume PDF served to recruiters and visitors on your portfolio.
         </p>
       </div>
 
-      <div className="bg-white border border-[#DDE7E5] rounded-xl p-6 shadow-sm space-y-6">
-        
-        {/* Current Status */}
-        <div className="flex items-center gap-4 p-4 rounded-lg bg-[#F7FAFA] border border-[#DDE7E5]">
-          <div className="w-12 h-12 rounded-lg bg-[#E6F4F2] text-[#0F766E] flex items-center justify-center shrink-0">
-            <FileText size={24} />
+      {/* Spark Free Plan Zero-Cost Architecture Notice */}
+      <div className="bg-[#E6F4F2] border border-[#7CC7BD]/60 rounded-xl p-5 flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+        <div className="flex items-start gap-3">
+          <div className="w-9 h-9 rounded-lg bg-white text-[#0F766E] flex items-center justify-center shrink-0 shadow-xs border border-[#DDE7E5]">
+            <Globe size={18} />
           </div>
-          <div className="flex-1 truncate">
-            <div className="text-sm font-semibold text-[#102A28] truncate">
-              {filename}
+          <div>
+            <h3 className="text-sm font-semibold text-[#102A28]">
+              Zero-Cost Resume Pipeline (Firebase Spark Free Plan)
+            </h3>
+            <p className="text-xs text-[#4B5F5C] mt-1 leading-relaxed">
+              Your portfolio includes a pre-compiled, valid <strong>Dummy Resume PDF</strong> (<code className="font-mono bg-white px-1.5 py-0.5 rounded border border-[#DDE7E5] text-[#0F766E]">/resume.pdf</code>) containing all your personal academic details for KL University. You can use this built-in resume or link any external PDF (Google Drive, GitHub raw, Dropbox) without paid storage.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Built-in Dummy Resume Card */}
+      <div className="bg-white border border-[#DDE7E5] rounded-xl p-6 shadow-sm space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#DDE7E5] pb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-xl bg-[#E6F4F2] text-[#0F766E] flex items-center justify-center shrink-0 border border-[#7CC7BD]/30">
+              <FileText size={26} />
             </div>
-            <div className="text-xs text-[#8A9B98] mt-0.5">
-              Last updated: {resume.lastUpdated || "November 2026"}
+            <div>
+              <div className="flex items-center gap-2">
+                <h2 className="text-base font-semibold text-[#102A28]">
+                  {filename}
+                </h2>
+                {isBuiltInDummy ? (
+                  <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#E6F4F2] text-[#0F766E] border border-[#7CC7BD]/40">
+                    Built-in Dummy Resume
+                  </span>
+                ) : (
+                  <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#EFF6FF] text-[#1D4ED8] border border-[#93C5FD]">
+                    External URL
+                  </span>
+                )}
+              </div>
+              <p className="text-xs text-[#8A9B98] mt-0.5">
+                Path: <span className="font-mono text-[#102A28]">{url || defaultUrl}</span> · Last updated: {resume.lastUpdated || "November 2026"}
+              </p>
             </div>
           </div>
-          {url && (
+
+          <div className="flex flex-wrap items-center gap-2">
             <a
-              href={url}
+              href={url || defaultUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-secondary text-xs h-9 px-3 shrink-0"
+              className="btn-primary text-xs h-9 px-3.5 inline-flex items-center gap-1.5"
             >
-              <ExternalLink size={14} />
-              <span>Preview</span>
+              <Eye size={14} />
+              <span>Preview PDF</span>
             </a>
-          )}
+
+            <a
+              href={url || defaultUrl}
+              download={filename}
+              className="btn-secondary text-xs h-9 px-3.5 inline-flex items-center gap-1.5"
+            >
+              <Download size={14} />
+              <span>Download PDF</span>
+            </a>
+
+            <a
+              href="/resume"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary text-xs h-9 px-3.5 inline-flex items-center gap-1.5"
+              title="View Public Printable Web Page"
+            >
+              <Printer size={14} />
+              <span>Public Sheet</span>
+            </a>
+
+            {!isBuiltInDummy && (
+              <button
+                type="button"
+                onClick={handleSetBuiltInDummy}
+                className="p-2 rounded-lg border border-[#DDE7E5] text-[#4B5F5C] hover:text-[#0F766E] hover:bg-[#E6F4F2] transition-colors"
+                title="Reset to Built-in Dummy Resume"
+              >
+                <RefreshCw size={14} />
+              </button>
+            )}
+          </div>
         </div>
 
-        {/* Upload New Resume */}
-        <div className="border-2 border-dashed border-[#DDE7E5] rounded-xl p-8 text-center bg-[#F7FAFA]/50 hover:bg-[#E6F4F2]/30 transition-colors">
-          <Upload size={32} className="text-[#0F766E] mx-auto mb-3" />
-          <h3 className="text-sm font-semibold text-[#102A28] mb-1">
-            Upload New Resume File (PDF)
-          </h3>
-          <p className="text-xs text-[#8A9B98] mb-4">
-            Supports PDF format up to 10MB
-          </p>
-          <label className="btn-primary text-xs h-9 px-4 cursor-pointer inline-flex items-center gap-2">
-            <span>{uploading ? "Uploading to Cloud Storage..." : "Choose PDF Document"}</span>
-            <input 
-              type="file" 
-              accept=".pdf,application/pdf" 
-              onChange={handleFileUpload} 
-              disabled={uploading}
-              className="hidden" 
-            />
-          </label>
-        </div>
+        {/* Quick Details of the Dummy Resume */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+          <div className="p-3.5 rounded-lg bg-[#F7FAFA] border border-[#DDE7E5]">
+            <span className="text-[#8A9B98] block">Candidate Identity</span>
+            <span className="font-semibold text-[#102A28] text-sm mt-0.5 block">
+              Marthala Surendar Reddy
+            </span>
+            <span className="text-[#4B5F5C] text-[11px]">B.Tech CSE · KL University (2024–2028)</span>
+          </div>
 
-        {/* Form settings */}
-        <form onSubmit={handleSave} className="space-y-4 pt-4 border-t border-[#DDE7E5]">
+          <div className="p-3.5 rounded-lg bg-[#F7FAFA] border border-[#DDE7E5]">
+            <span className="text-[#8A9B98] block">Competitive Coding</span>
+            <span className="font-semibold text-[#0F766E] text-sm mt-0.5 block">
+              200+ Solved Problems
+            </span>
+            <span className="text-[#4B5F5C] text-[11px]">LeetCode & CodeChef Division Active</span>
+          </div>
+
+          <div className="p-3.5 rounded-lg bg-[#F7FAFA] border border-[#DDE7E5]">
+            <span className="text-[#8A9B98] block">Core Tech Stack</span>
+            <span className="font-semibold text-[#102A28] text-sm mt-0.5 block">
+              Java, Spring Boot, React
+            </span>
+            <span className="text-[#4B5F5C] text-[11px]">PostgreSQL, MySQL, Firebase, Docker</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Resume Configuration Form */}
+      <div className="bg-white border border-[#DDE7E5] rounded-xl p-6 shadow-sm space-y-5">
+        <h2 className="text-base font-semibold text-[#102A28] border-b border-[#DDE7E5] pb-3">
+          Resume Settings & Hosting URL
+        </h2>
+
+        <form onSubmit={handleSave} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-[#102A28] mb-1.5">
-              Direct Resume File URL
-            </label>
+            <div className="flex items-center justify-between mb-1.5">
+              <label className="block text-xs font-semibold text-[#102A28]">
+                Resume File URL *
+              </label>
+              <button
+                type="button"
+                onClick={() => setUrl(defaultUrl)}
+                className="text-[11px] text-[#0F766E] hover:underline flex items-center gap-1 font-medium"
+              >
+                <Sparkles size={11} />
+                <span>Use Built-in Dummy PDF (/resume.pdf)</span>
+              </button>
+            </div>
             <input
               type="text"
+              required
               value={url}
               onChange={e => setUrl(e.target.value)}
-              placeholder="https://... or uploaded URL"
-              className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E]"
+              placeholder="e.g. /resume.pdf or https://drive.google.com/..."
+              className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm text-[#102A28] focus:outline-none focus:border-[#0F766E] font-mono text-xs"
             />
+            <p className="text-[11px] text-[#8A9B98] mt-1">
+              Enter <code className="text-[#0F766E] font-mono">/resume.pdf</code> to use the bundled PDF, or paste an external direct PDF link.
+            </p>
           </div>
 
           <div>
@@ -121,36 +219,91 @@ export const AdminResumeView = () => {
             </label>
             <input
               type="text"
+              required
               value={filename}
               onChange={e => setFilename(e.target.value)}
+              placeholder="Marthala_Surendar_Reddy_Resume.pdf"
               className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E]"
             />
           </div>
 
           <div className="pt-2">
-            <label className="inline-flex items-center gap-2 cursor-pointer text-xs font-medium text-[#102A28]">
+            <label className="inline-flex items-center gap-2.5 cursor-pointer text-xs font-medium text-[#102A28]">
               <input
                 type="checkbox"
                 checked={enabled}
                 onChange={e => setEnabled(e.target.checked)}
-                className="rounded text-[#0F766E]"
+                className="w-4 h-4 rounded text-[#0F766E] focus:ring-[#7CC7BD]"
               />
-              <span>Enable Resume button in Navigation Bar and Hero Section</span>
+              <span>Display "Resume" button in the public Navbar and Hero section</span>
             </label>
           </div>
 
-          <div className="pt-4 border-t border-[#DDE7E5] flex justify-end">
+          <div className="pt-4 border-t border-[#DDE7E5] flex items-center justify-between">
+            <button
+              type="button"
+              onClick={handleSetBuiltInDummy}
+              className="btn-secondary text-xs h-9 px-4 inline-flex items-center gap-1.5"
+            >
+              <RefreshCw size={13} />
+              <span>Reset to Default Dummy Resume</span>
+            </button>
+
             <button
               type="submit"
-              className="btn-primary text-xs h-10 px-5"
+              className="btn-primary text-xs h-9 px-5 inline-flex items-center gap-1.5"
             >
-              Save Resume Settings
+              <CheckCircle size={14} />
+              <span>Save Resume Settings</span>
             </button>
           </div>
         </form>
-
       </div>
+
+      {/* Live Embedded Resume Viewer Section */}
+      <div className="bg-white border border-[#DDE7E5] rounded-xl p-6 shadow-sm space-y-4">
+        <div className="flex items-center justify-between border-b border-[#DDE7E5] pb-3">
+          <div className="flex items-center gap-2">
+            <FileText size={18} className="text-[#0F766E]" />
+            <h2 className="text-base font-semibold text-[#102A28]">
+              Live Dummy Resume Document Preview
+            </h2>
+          </div>
+          <button
+            type="button"
+            onClick={() => setShowEmbeddedPdf(!showEmbeddedPdf)}
+            className="text-xs text-[#0F766E] hover:underline font-medium"
+          >
+            {showEmbeddedPdf ? "Hide Viewer" : "Show Viewer"}
+          </button>
+        </div>
+
+        {showEmbeddedPdf && (
+          <div className="space-y-4 animate-fade-in">
+            {/* Embedded Iframe Preview */}
+            <div className="border border-[#DDE7E5] rounded-xl overflow-hidden bg-[#F7FAFA] shadow-inner h-[600px] w-full">
+              <iframe
+                src="/resume.pdf#toolbar=0&navpanes=0"
+                title="MSR Dummy Resume PDF Preview"
+                className="w-full h-full border-0"
+              />
+            </div>
+            <div className="flex items-center justify-between text-xs text-[#8A9B98] px-1">
+              <span>Standard A4 PDF Document · 1 Page · Marthala Surendar Reddy</span>
+              <a 
+                href="/resume.pdf" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="text-[#0F766E] hover:underline flex items-center gap-1 font-medium"
+              >
+                <span>Open in fullscreen</span>
+                <ExternalLink size={12} />
+              </a>
+            </div>
+          </div>
+        )}
+      </div>
+
     </div>
   );
 };
-
