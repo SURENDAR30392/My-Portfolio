@@ -104,3 +104,4 @@ export const CertificateModal = ({ cert, onClose }) => {
     </div>
   );
 };
+

@@ -302,3 +302,4 @@ export const AdminProfileView = () => {
     </div>
   );
 };
+

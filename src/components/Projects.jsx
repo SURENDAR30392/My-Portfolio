@@ -166,3 +166,4 @@ export const Projects = ({ onSelectProject }) => {
     </section>
   );
 };
+

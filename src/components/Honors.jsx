@@ -100,3 +100,4 @@ export const Honors = ({ onSelectCert }) => {
     </section>
   );
 };
+

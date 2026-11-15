@@ -185,3 +185,4 @@ export const AdminLayout = ({ activeTab, setActiveTab, children }) => {
     </div>
   );
 };
+

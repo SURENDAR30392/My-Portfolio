@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { initialPortfolioData } from '../data/initialData';
+import { useAuth } from './AuthContext';
 import { 
   db, 
   storage, 
@@ -22,6 +23,8 @@ const LOCAL_STORAGE_KEY = 'msr_portfolio_data_backup_v1';
 const DataContext = createContext(null);
 
 export const DataProvider = ({ children }) => {
+  const { isAdmin } = useAuth();
+
   const [data, setData] = useState(() => {
     try {
       const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -45,7 +48,17 @@ export const DataProvider = ({ children }) => {
     }, 4000);
   }, []);
 
-  // Save changes to localStorage
+  // Strict Super Admin Access Verification
+  const verifySuperAdmin = useCallback(() => {
+    if (!isAdmin) {
+      showNotification("Access Denied: Only Super Admin (Marthala Surendar Reddy) has permission to make changes.", "error");
+      console.warn("Unauthorized modification attempt blocked: Caller is not the authorized Super Admin.");
+      return false;
+    }
+    return true;
+  }, [isAdmin, showNotification]);
+
+  // Save changes to localStorage only if authorized
   const persistLocally = useCallback((updatedData) => {
     try {
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedData));
@@ -74,10 +87,12 @@ export const DataProvider = ({ children }) => {
             });
             setIsFirebaseLive(true);
           } else {
-            // First time setup - seed initial data to Firestore
-            setDoc(docRef, initialPortfolioData, { merge: true })
-              .then(() => setIsFirebaseLive(true))
-              .catch(err => console.warn("Firestore seed note:", err.message));
+            // First time setup - seed initial data to Firestore if authorized
+            if (isAdmin) {
+              setDoc(docRef, initialPortfolioData, { merge: true })
+                .then(() => setIsFirebaseLive(true))
+                .catch(err => console.warn("Firestore seed note:", err.message));
+            }
           }
           setLoading(false);
           clearTimeout(timeoutId);
@@ -91,7 +106,6 @@ export const DataProvider = ({ children }) => {
         setLoading(false);
       }
     } else {
-      // Local mode
       setLoading(false);
     }
 
@@ -99,7 +113,7 @@ export const DataProvider = ({ children }) => {
       clearTimeout(timeoutId);
       unsubscribe();
     };
-  }, [persistLocally]);
+  }, [persistLocally, isAdmin]);
 
   // Sync to Firestore helper
   const syncToFirestore = async (newFullData) => {
@@ -113,8 +127,9 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-  // CRUD for Profile
+  // CRUD for Profile (Strictly Super Admin only)
   const updateProfile = async (profileUpdates) => {
+    if (!verifySuperAdmin()) return false;
     setData(prev => {
       const updated = {
         ...prev,
@@ -125,10 +140,12 @@ export const DataProvider = ({ children }) => {
       return updated;
     });
     showNotification("Profile updated successfully!");
+    return true;
   };
 
-  // CRUD for Projects
+  // CRUD for Projects (Strictly Super Admin only)
   const addProject = async (project) => {
+    if (!verifySuperAdmin()) return false;
     const newProject = {
       ...project,
       id: `proj-${Date.now()}`,
@@ -150,6 +167,7 @@ export const DataProvider = ({ children }) => {
   };
 
   const updateProject = async (id, projectUpdates) => {
+    if (!verifySuperAdmin()) return false;
     setData(prev => {
       const updated = {
         ...prev,
@@ -160,9 +178,11 @@ export const DataProvider = ({ children }) => {
       return updated;
     });
     showNotification("Project updated successfully!");
+    return true;
   };
 
   const deleteProject = async (id) => {
+    if (!verifySuperAdmin()) return false;
     setData(prev => {
       const updated = {
         ...prev,
@@ -173,10 +193,12 @@ export const DataProvider = ({ children }) => {
       return updated;
     });
     showNotification("Project removed successfully!");
+    return true;
   };
 
-  // CRUD for Skills
+  // CRUD for Skills (Strictly Super Admin only)
   const addSkill = async (skill) => {
+    if (!verifySuperAdmin()) return false;
     const newSkill = {
       ...skill,
       id: `sk-${Date.now()}`,
@@ -193,9 +215,11 @@ export const DataProvider = ({ children }) => {
       return updated;
     });
     showNotification("Skill added successfully!");
+    return true;
   };
 
   const updateSkill = async (id, updates) => {
+    if (!verifySuperAdmin()) return false;
     setData(prev => {
       const updated = {
         ...prev,
@@ -206,9 +230,11 @@ export const DataProvider = ({ children }) => {
       return updated;
     });
     showNotification("Skill updated successfully!");
+    return true;
   };
 
   const deleteSkill = async (id) => {
+    if (!verifySuperAdmin()) return false;
     setData(prev => {
       const updated = {
         ...prev,
@@ -219,10 +245,12 @@ export const DataProvider = ({ children }) => {
       return updated;
     });
     showNotification("Skill deleted successfully!");
+    return true;
   };
 
-  // CRUD for Education
+  // CRUD for Education (Strictly Super Admin only)
   const addEducation = async (edu) => {
+    if (!verifySuperAdmin()) return false;
     const newEdu = { ...edu, id: `edu-${Date.now()}` };
     setData(prev => {
       const updated = {
@@ -234,9 +262,11 @@ export const DataProvider = ({ children }) => {
       return updated;
     });
     showNotification("Education entry added!");
+    return true;
   };
 
   const updateEducation = async (id, updates) => {
+    if (!verifySuperAdmin()) return false;
     setData(prev => {
       const updated = {
         ...prev,
@@ -247,9 +277,11 @@ export const DataProvider = ({ children }) => {
       return updated;
     });
     showNotification("Education entry updated!");
+    return true;
   };
 
   const deleteEducation = async (id) => {
+    if (!verifySuperAdmin()) return false;
     setData(prev => {
       const updated = {
         ...prev,
@@ -260,10 +292,12 @@ export const DataProvider = ({ children }) => {
       return updated;
     });
     showNotification("Education entry deleted!");
+    return true;
   };
 
-  // CRUD for Experience
+  // CRUD for Experience (Strictly Super Admin only)
   const addExperience = async (exp) => {
+    if (!verifySuperAdmin()) return false;
     const newExp = { ...exp, id: `exp-${Date.now()}` };
     setData(prev => {
       const updated = {
@@ -275,9 +309,11 @@ export const DataProvider = ({ children }) => {
       return updated;
     });
     showNotification("Experience added!");
+    return true;
   };
 
   const updateExperience = async (id, updates) => {
+    if (!verifySuperAdmin()) return false;
     setData(prev => {
       const updated = {
         ...prev,
@@ -288,9 +324,11 @@ export const DataProvider = ({ children }) => {
       return updated;
     });
     showNotification("Experience updated!");
+    return true;
   };
 
   const deleteExperience = async (id) => {
+    if (!verifySuperAdmin()) return false;
     setData(prev => {
       const updated = {
         ...prev,
@@ -301,10 +339,12 @@ export const DataProvider = ({ children }) => {
       return updated;
     });
     showNotification("Experience deleted!");
+    return true;
   };
 
-  // CRUD for Certifications
+  // CRUD for Certifications (Strictly Super Admin only)
   const addCertification = async (cert) => {
+    if (!verifySuperAdmin()) return false;
     const newCert = { ...cert, id: `cert-${Date.now()}`, published: true };
     setData(prev => {
       const updated = {
@@ -316,9 +356,11 @@ export const DataProvider = ({ children }) => {
       return updated;
     });
     showNotification("Certification added!");
+    return true;
   };
 
   const updateCertification = async (id, updates) => {
+    if (!verifySuperAdmin()) return false;
     setData(prev => {
       const updated = {
         ...prev,
@@ -329,9 +371,11 @@ export const DataProvider = ({ children }) => {
       return updated;
     });
     showNotification("Certification updated!");
+    return true;
   };
 
   const deleteCertification = async (id) => {
+    if (!verifySuperAdmin()) return false;
     setData(prev => {
       const updated = {
         ...prev,
@@ -342,10 +386,12 @@ export const DataProvider = ({ children }) => {
       return updated;
     });
     showNotification("Certification deleted!");
+    return true;
   };
 
-  // CRUD for Achievements
+  // CRUD for Achievements (Strictly Super Admin only)
   const addAchievement = async (ach) => {
+    if (!verifySuperAdmin()) return false;
     const newAch = { ...ach, id: `ach-${Date.now()}` };
     setData(prev => {
       const updated = {
@@ -357,9 +403,11 @@ export const DataProvider = ({ children }) => {
       return updated;
     });
     showNotification("Achievement added!");
+    return true;
   };
 
   const updateAchievement = async (id, updates) => {
+    if (!verifySuperAdmin()) return false;
     setData(prev => {
       const updated = {
         ...prev,
@@ -370,9 +418,11 @@ export const DataProvider = ({ children }) => {
       return updated;
     });
     showNotification("Achievement updated!");
+    return true;
   };
 
   const deleteAchievement = async (id) => {
+    if (!verifySuperAdmin()) return false;
     setData(prev => {
       const updated = {
         ...prev,
@@ -383,10 +433,12 @@ export const DataProvider = ({ children }) => {
       return updated;
     });
     showNotification("Achievement deleted!");
+    return true;
   };
 
-  // Resume Update
+  // Resume Update (Strictly Super Admin only)
   const updateResume = async (resumeData) => {
+    if (!verifySuperAdmin()) return false;
     setData(prev => {
       const updated = {
         ...prev,
@@ -397,10 +449,12 @@ export const DataProvider = ({ children }) => {
       return updated;
     });
     showNotification("Resume details updated!");
+    return true;
   };
 
-  // Settings & Social Links
+  // Settings & Social Links (Strictly Super Admin only)
   const updateSettings = async (settingsUpdates) => {
+    if (!verifySuperAdmin()) return false;
     setData(prev => {
       const updated = {
         ...prev,
@@ -411,9 +465,11 @@ export const DataProvider = ({ children }) => {
       return updated;
     });
     showNotification("Settings updated!");
+    return true;
   };
 
   const updateSocialLinks = async (socialUpdates) => {
+    if (!verifySuperAdmin()) return false;
     setData(prev => {
       const updated = {
         ...prev,
@@ -424,9 +480,10 @@ export const DataProvider = ({ children }) => {
       return updated;
     });
     showNotification("Social links updated!");
+    return true;
   };
 
-  // Contact Form - Send Message
+  // PUBLIC CONTACT FORM SUBMISSION (Normal visitors are permitted to send messages)
   const sendMessage = async (messageData) => {
     const newMessage = {
       ...messageData,
@@ -435,7 +492,6 @@ export const DataProvider = ({ children }) => {
       read: false
     };
 
-    // If Firestore is live, also add to Firestore messages collection
     if (isFirebaseConfigured && db) {
       try {
         await addDoc(collection(db, 'messages'), {
@@ -447,7 +503,6 @@ export const DataProvider = ({ children }) => {
       }
     }
 
-    // Always update local state
     setData(prev => {
       const updated = {
         ...prev,
@@ -461,7 +516,9 @@ export const DataProvider = ({ children }) => {
     return true;
   };
 
+  // Managing Messages (Strictly Super Admin only)
   const markMessageRead = async (id, isRead = true) => {
+    if (!verifySuperAdmin()) return false;
     setData(prev => {
       const updated = {
         ...prev,
@@ -471,9 +528,11 @@ export const DataProvider = ({ children }) => {
       syncToFirestore(updated);
       return updated;
     });
+    return true;
   };
 
   const deleteMessage = async (id) => {
+    if (!verifySuperAdmin()) return false;
     setData(prev => {
       const updated = {
         ...prev,
@@ -484,10 +543,12 @@ export const DataProvider = ({ children }) => {
       return updated;
     });
     showNotification("Message deleted!");
+    return true;
   };
 
-  // Bulk Sample Data Management (Module 12)
+  // Bulk Sample Data Management (Strictly Super Admin only)
   const removeSampleData = async () => {
+    if (!verifySuperAdmin()) return false;
     setData(prev => {
       const updated = {
         ...prev,
@@ -502,18 +563,24 @@ export const DataProvider = ({ children }) => {
       return updated;
     });
     showNotification("All sample records removed safely!");
+    return true;
   };
 
-  // Restore Default Sample Data
+  // Restore Default Sample Data (Strictly Super Admin only)
   const restoreDefaultData = async () => {
+    if (!verifySuperAdmin()) return false;
     setData(initialPortfolioData);
     persistLocally(initialPortfolioData);
     syncToFirestore(initialPortfolioData);
     showNotification("Default data restored!");
+    return true;
   };
 
-  // File Upload helper (Firebase Storage or local data URL preview)
+  // File Upload helper (Strictly Super Admin only)
   const uploadFile = async (file, path) => {
+    if (!verifySuperAdmin()) {
+      throw new Error("Unauthorized: Super Admin permission required to upload media.");
+    }
     if (isFirebaseConfigured && storage) {
       try {
         const fileRef = storageRef(storage, `${path}/${Date.now()}_${file.name}`);
@@ -524,7 +591,6 @@ export const DataProvider = ({ children }) => {
         console.warn("Storage upload fallback:", e);
       }
     }
-    // Fallback: create base64 / blob URL for local development preview
     return new Promise((resolve) => {
       const reader = new FileReader();
       reader.onloadend = () => resolve(reader.result);

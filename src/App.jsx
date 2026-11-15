@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { DataProvider } from './context/DataContext';
 import { AuthProvider } from './context/AuthContext';
+import { DataProvider } from './context/DataContext';
 import { MSRLoader } from './components/MSRLoader';
 import { HomePage } from './pages/HomePage';
 import { ResumePage } from './pages/ResumePage';
@@ -22,8 +22,8 @@ export function App() {
   };
 
   return (
-    <DataProvider>
-      <AuthProvider>
+    <AuthProvider>
+      <DataProvider>
         {!initialLoadingComplete && (
           <MSRLoader onComplete={handleLoadingComplete} />
         )}
@@ -38,8 +38,8 @@ export function App() {
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Router>
-      </AuthProvider>
-    </DataProvider>
+      </DataProvider>
+    </AuthProvider>
   );
 }
 

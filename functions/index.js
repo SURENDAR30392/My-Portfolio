@@ -67,3 +67,4 @@ exports.assignAdminRole = functions.auth.user().onCreate(async (user) => {
     }
   }
 });
+
