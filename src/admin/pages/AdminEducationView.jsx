@@ -432,16 +432,6 @@ export const AdminEducationView = () => {
             
             <div className="flex items-center gap-2 self-start sm:self-auto">
               <button
-                type="button"
-                onClick={handleResetJourneyToDefault}
-                className="btn-secondary text-xs h-9 px-3 gap-1.5"
-                title="Reset track to standard 4 years"
-              >
-                <RefreshCw size={13} />
-                <span>Reset to Default 4 Years</span>
-              </button>
-
-              <button
                 onClick={openAddJourneyModal}
                 className="btn-primary text-xs h-9 px-4 gap-1.5"
               >
