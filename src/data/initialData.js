@@ -25,6 +25,26 @@ export const initialPortfolioData = {
       { label: "CodeChef / LeetCode", value: "Active" },
       { label: "Expected Grad", value: "2028" }
     ],
+    craftsmanshipTitle: "Software Craftsmanship",
+    craftsmanshipQuote: "I believe in building software that balances computational rigor with clean, intuitive design. Whether architecting backend microservices, optimizing database schemas, or writing frontend modules, I prioritize readability, efficiency, and maintainability.",
+    focusHeading: "Key Engineering Focus",
+    engineeringFocus: [
+      {
+        title: "Backend Systems & Java",
+        desc: "Object-oriented architecture, RESTful services, and relational database modeling.",
+        icon: "Cpu"
+      },
+      {
+        title: "Data Structures & Algorithms",
+        desc: "Continuous problem solving across arrays, trees, dynamic programming, and graphs.",
+        icon: "Code2"
+      },
+      {
+        title: "Continuous Academic Learning",
+        desc: "B.Tech CSE student at KL University actively participating in technical communities.",
+        icon: "GraduationCap"
+      }
+    ],
     availableForWork: true,
     published: true
   },

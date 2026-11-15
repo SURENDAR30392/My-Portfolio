@@ -33,17 +33,17 @@ export const Honors = ({ onSelectCert }) => {
   const displayItems = combined.slice(0, 6);
 
   return (
-    <section id="honors" className="py-16 md:py-24 bg-white border-b border-[#E2E8F0]">
+    <section id="honors" className="py-16 md:py-24 bg-white border-b border-[#F0DED4]">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
             <span className="section-badge mb-3">Recognitions</span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#172554] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#613E35] tracking-tight">
               Certifications & Technical Honors
             </h2>
-            <p className="text-base text-[#64748B] mt-2 max-w-2xl">
+            <p className="text-base text-[#A27B6E] mt-2 max-w-2xl">
               Professional credentials, algorithmic contest recognitions, and academic awards.
             </p>
           </div>
@@ -63,11 +63,11 @@ export const Honors = ({ onSelectCert }) => {
             <div
               key={item.id}
               onClick={() => onSelectCert && onSelectCert(item.raw)}
-              className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-2xl p-6 shadow-subtle hover:bg-white hover:border-[#BFDBFE] hover:-translate-y-1 hover:shadow-card-hover transition-all duration-200 flex flex-col justify-between cursor-pointer group"
+              className="bg-[#FFF8F3] border border-[#F0DED4] rounded-2xl p-6 shadow-subtle hover:bg-white hover:border-[#F4C9B5] hover:-translate-y-1 hover:shadow-card-hover transition-all duration-200 flex flex-col justify-between cursor-pointer group"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-[#EFF6FF] border border-[#DBEAFE] text-[#2563EB] flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] text-[#D98C70] flex items-center justify-center shrink-0">
                     <Award size={20} />
                   </div>
                   {item.isSample && (
@@ -77,20 +77,20 @@ export const Honors = ({ onSelectCert }) => {
                   )}
                 </div>
 
-                <h3 className="text-base font-bold text-[#172554] mb-1.5 line-clamp-2 group-hover:text-[#2563EB] transition-colors">
+                <h3 className="text-base font-bold text-[#613E35] mb-1.5 line-clamp-2 group-hover:text-[#D98C70] transition-colors">
                   {item.title}
                 </h3>
-                <p className="text-sm font-medium text-[#64748B] mb-4">
+                <p className="text-sm font-medium text-[#A27B6E] mb-4">
                   {item.issuer}
                 </p>
               </div>
 
-              <div className="pt-3.5 border-t border-[#E2E8F0] flex items-center justify-between text-xs">
-                <span className="font-medium text-[#94A3B8] inline-flex items-center gap-1">
-                  <Calendar size={12} className="text-[#2563EB]" />
+              <div className="pt-3.5 border-t border-[#F0DED4] flex items-center justify-between text-xs">
+                <span className="font-medium text-[#A27B6E] inline-flex items-center gap-1">
+                  <Calendar size={12} className="text-[#D98C70]" />
                   <span>{item.date}</span>
                 </span>
-                <span className="text-[#2563EB] font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="text-[#D98C70] font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
                   View details →
                 </span>
               </div>
@@ -100,8 +100,8 @@ export const Honors = ({ onSelectCert }) => {
 
         {/* Empty State */}
         {displayItems.length === 0 && (
-          <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-2xl p-12 text-center my-6">
-            <p className="text-sm text-[#64748B]">No published honors or certifications found.</p>
+          <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-2xl p-12 text-center my-6">
+            <p className="text-sm text-[#A27B6E]">No published honors or certifications found.</p>
           </div>
         )}
 

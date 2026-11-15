@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { X, ExternalLink, Github, Sparkles } from 'lucide-react';
+import { X, ExternalLink, Github } from 'lucide-react';
 
 export const ProjectModal = ({ project, onClose }) => {
   useEffect(() => {
@@ -24,15 +24,15 @@ export const ProjectModal = ({ project, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#172554]/40 backdrop-blur-xs animate-fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#613E35]/40 backdrop-blur-xs animate-fade-in"
       onClick={onClose}
     >
       <div
-        className="bg-white border border-[#E2E8F0] rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+        className="bg-white border border-[#F0DED4] rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Image Header */}
-        <div className="relative aspect-[16/9] bg-[#EFF6FF] border-b border-[#E2E8F0] overflow-hidden">
+        <div className="relative aspect-[16/9] bg-[#FCE9DF] border-b border-[#F0DED4] overflow-hidden">
           <img
             src={project.image || "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"}
             alt={project.title}
@@ -44,14 +44,14 @@ export const ProjectModal = ({ project, onClose }) => {
           />
           <button
             onClick={onClose}
-            className="absolute top-3 right-3 p-2 rounded-full bg-white/95 text-[#172554] hover:bg-white transition-colors shadow-sm focus:outline-none"
+            className="absolute top-3 right-3 p-2 rounded-full bg-white/95 text-[#613E35] hover:bg-white transition-colors shadow-sm focus:outline-none"
             aria-label="Close modal"
           >
             <X size={18} />
           </button>
 
           {project.level && (
-            <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-md text-[11px] font-semibold uppercase tracking-wider bg-white/95 text-[#172554] border border-[#E2E8F0] shadow-xs">
+            <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-md text-[11px] font-semibold uppercase tracking-wider bg-white/95 text-[#613E35] border border-[#F0DED4] shadow-xs">
               {project.level}
             </div>
           )}
@@ -61,7 +61,7 @@ export const ProjectModal = ({ project, onClose }) => {
         <div className="p-6 md:p-8 space-y-6">
           <div>
             <div className="flex items-center gap-2 mb-1.5">
-              <h3 className="text-2xl font-bold text-[#172554]">
+              <h3 className="text-2xl font-bold text-[#613E35]">
                 {project.title}
               </h3>
               {project.isSample && (
@@ -70,18 +70,18 @@ export const ProjectModal = ({ project, onClose }) => {
                 </span>
               )}
             </div>
-            <p className="text-base text-[#334155] leading-relaxed mt-2">
+            <p className="text-base text-[#613E35] leading-relaxed mt-2">
               {project.description}
             </p>
           </div>
 
           {/* Problem / Challenge Block */}
           {project.problem && (
-            <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl p-4.5 space-y-1.5">
-              <div className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
+            <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-xl p-4.5 space-y-1.5">
+              <div className="text-xs font-bold uppercase tracking-wider text-[#D98C70]">
                 The Engineering Challenge
               </div>
-              <p className="text-sm text-[#334155] leading-relaxed">
+              <p className="text-sm text-[#613E35] leading-relaxed">
                 {project.problem}
               </p>
             </div>
@@ -89,11 +89,11 @@ export const ProjectModal = ({ project, onClose }) => {
 
           {/* Solution / Approach Block */}
           {project.solution && (
-            <div className="bg-[#EFF6FF] border border-[#DBEAFE] rounded-xl p-4.5 space-y-1.5">
-              <div className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
+            <div className="bg-[#FCE9DF] border border-[#F4C9B5] rounded-xl p-4.5 space-y-1.5">
+              <div className="text-xs font-bold uppercase tracking-wider text-[#D98C70]">
                 Architectural Solution
               </div>
-              <p className="text-sm text-[#334155] leading-relaxed">
+              <p className="text-sm text-[#613E35] leading-relaxed">
                 {project.solution}
               </p>
             </div>
@@ -101,14 +101,14 @@ export const ProjectModal = ({ project, onClose }) => {
 
           {/* Tech Stack */}
           <div>
-            <div className="text-sm font-semibold text-[#172554] mb-2.5">
+            <div className="text-sm font-semibold text-[#613E35] mb-2.5">
               Technologies & Tools
             </div>
             <div className="flex flex-wrap gap-1.5">
               {techList.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="px-2.5 py-1 rounded-md text-xs font-medium bg-[#EFF6FF] text-[#2563EB] border border-[#DBEAFE]"
+                  className="px-2.5 py-1 rounded-md text-xs font-medium bg-[#FCE9DF] text-[#D98C70] border border-[#F4C9B5]"
                 >
                   {tech}
                 </span>
@@ -117,7 +117,7 @@ export const ProjectModal = ({ project, onClose }) => {
           </div>
 
           {/* Actions */}
-          <div className="pt-4 border-t border-[#E2E8F0] flex flex-wrap items-center justify-between gap-3">
+          <div className="pt-4 border-t border-[#F0DED4] flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               {project.githubUrl && (
                 <a
@@ -146,7 +146,7 @@ export const ProjectModal = ({ project, onClose }) => {
             <button
               type="button"
               onClick={onClose}
-              className="text-xs font-medium text-[#64748B] hover:text-[#172554] px-3 py-2"
+              className="text-xs font-medium text-[#A27B6E] hover:text-[#613E35] px-3 py-2"
             >
               Close
             </button>

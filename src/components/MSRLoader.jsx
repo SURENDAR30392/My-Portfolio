@@ -38,7 +38,7 @@ export const MSRLoader = ({ onComplete }) => {
 
   return (
     <div 
-      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#F8FAFC] transition-opacity duration-300 ease-out select-none ${
+      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#FFF8F3] transition-opacity duration-300 ease-out select-none ${
         fadingOut ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
       role="status"
@@ -48,7 +48,7 @@ export const MSRLoader = ({ onComplete }) => {
         
         {/* Subtle Ambient Radial Glow */}
         <div 
-          className="absolute w-48 h-48 sm:w-60 sm:h-60 rounded-full bg-[#EFF6FF] opacity-80 blur-2xl pointer-events-none"
+          className="absolute w-48 h-48 sm:w-60 sm:h-60 rounded-full bg-[#FCE9DF] opacity-80 blur-2xl pointer-events-none"
           aria-hidden="true"
         />
 
@@ -56,7 +56,7 @@ export const MSRLoader = ({ onComplete }) => {
         <div className="relative z-10 flex items-center tracking-tight">
           {/* Letter M */}
           <span 
-            className={`font-semibold text-5xl sm:text-6xl md:text-7xl text-[#172554] inline-block transition-all duration-300 ease-out transform ${
+            className={`font-semibold text-5xl sm:text-6xl md:text-7xl text-[#613E35] inline-block transition-all duration-300 ease-out transform ${
               letterStep >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
             }`}
           >
@@ -65,7 +65,7 @@ export const MSRLoader = ({ onComplete }) => {
 
           {/* Letter S */}
           <span 
-            className={`font-semibold text-5xl sm:text-6xl md:text-7xl text-[#172554] inline-block transition-all duration-300 ease-out transform ${
+            className={`font-semibold text-5xl sm:text-6xl md:text-7xl text-[#613E35] inline-block transition-all duration-300 ease-out transform ${
               letterStep >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
             }`}
           >
@@ -74,14 +74,14 @@ export const MSRLoader = ({ onComplete }) => {
 
           {/* Letter R with Blue Accent Dot */}
           <span 
-            className={`font-semibold text-5xl sm:text-6xl md:text-7xl text-[#172554] inline-block relative transition-all duration-300 ease-out transform ${
+            className={`font-semibold text-5xl sm:text-6xl md:text-7xl text-[#613E35] inline-block relative transition-all duration-300 ease-out transform ${
               letterStep >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
             }`}
           >
             R
             {/* Blue Accent Dot */}
             <span 
-              className={`absolute -right-3 bottom-2.5 w-2.5 h-2.5 rounded-full bg-[#2563EB] transition-all duration-200 ${
+              className={`absolute -right-3 bottom-2.5 w-2.5 h-2.5 rounded-full bg-[#D98C70] transition-all duration-200 ${
                 letterStep >= 3 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
               }`}
               aria-hidden="true"
@@ -91,7 +91,7 @@ export const MSRLoader = ({ onComplete }) => {
 
         {/* Subtitle */}
         <div 
-          className={`mt-3 text-xs tracking-widest uppercase font-medium text-[#64748B] transition-opacity duration-300 ${
+          className={`mt-3 text-xs tracking-widest uppercase font-medium text-[#A27B6E] transition-opacity duration-300 ${
             letterStep >= 3 ? 'opacity-100' : 'opacity-0'
           }`}
         >
@@ -99,9 +99,9 @@ export const MSRLoader = ({ onComplete }) => {
         </div>
 
         {/* Micro Loading Progress Line */}
-        <div className="w-24 h-0.5 bg-[#E2E8F0] rounded-full overflow-hidden mt-4">
+        <div className="w-24 h-0.5 bg-[#F0DED4] rounded-full overflow-hidden mt-4">
           <div 
-            className={`h-full bg-[#2563EB] rounded-full transition-all duration-700 ease-out ${
+            className={`h-full bg-[#D98C70] rounded-full transition-all duration-700 ease-out ${
               letterStep >= 3 ? 'w-full' : letterStep >= 2 ? 'w-2/3' : letterStep >= 1 ? 'w-1/3' : 'w-0'
             }`}
           />

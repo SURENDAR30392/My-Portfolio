@@ -51,7 +51,7 @@ export const ResumePage = () => {
     : (profile.bio || profile.intro || "Motivated Computer Science and Engineering undergraduate at KL University with strong foundations in Java backend engineering, Data Structures & Algorithms, and modern web applications.");
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F8FAFC]">
+    <div className="min-h-screen flex flex-col bg-[#FFF8F3]">
       <Navbar />
 
       <main className="flex-1 py-12 md:py-16">
@@ -61,7 +61,7 @@ export const ResumePage = () => {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <Link 
               to="/" 
-              className="inline-flex items-center gap-2 text-sm font-medium text-[#64748B] hover:text-[#2563EB] transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-medium text-[#A27B6E] hover:text-[#D98C70] transition-colors"
             >
               <ArrowLeft size={16} />
               <span>Back to Portfolio</span>
@@ -69,14 +69,14 @@ export const ResumePage = () => {
 
             {/* View Mode Toggle & Download Button */}
             <div className="flex items-center gap-2.5">
-              <div className="bg-white border border-[#E2E8F0] rounded-xl p-1 flex items-center shadow-xs">
+              <div className="bg-white border border-[#F0DED4] rounded-xl p-1 flex items-center shadow-xs">
                 <button
                   type="button"
                   onClick={() => setViewMode('pdf')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
                     viewMode === 'pdf'
-                      ? 'bg-[#2563EB] text-white shadow-xs'
-                      : 'text-[#64748B] hover:text-[#172554]'
+                      ? 'bg-[#D98C70] text-white shadow-xs'
+                      : 'text-[#A27B6E] hover:text-[#613E35]'
                   }`}
                 >
                   <Eye size={13} />
@@ -88,8 +88,8 @@ export const ResumePage = () => {
                   onClick={() => setViewMode('sheet')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
                     viewMode === 'sheet'
-                      ? 'bg-[#2563EB] text-white shadow-xs'
-                      : 'text-[#64748B] hover:text-[#172554]'
+                      ? 'bg-[#D98C70] text-white shadow-xs'
+                      : 'text-[#A27B6E] hover:text-[#613E35]'
                   }`}
                 >
                   <FileText size={13} />
@@ -109,19 +109,19 @@ export const ResumePage = () => {
 
           {/* VIEW MODE A: Embedded PDF Document */}
           {viewMode === 'pdf' && (
-            <div className="bg-white border border-[#E2E8F0] rounded-2xl p-4 sm:p-6 shadow-card space-y-3 animate-fade-in">
+            <div className="bg-white border border-[#F0DED4] rounded-2xl p-4 sm:p-6 shadow-card space-y-3 animate-fade-in">
               {hasResume && currentEmbedUrl ? (
                 <>
-                  <div className="flex items-center justify-between px-1 text-xs text-[#64748B]">
+                  <div className="flex items-center justify-between px-1 text-xs text-[#A27B6E]">
                     <div className="flex items-center gap-2">
-                      <FileCheck size={16} className="text-[#2563EB]" />
-                      <span className="font-semibold text-[#172554]">{filename}</span>
+                      <FileCheck size={16} className="text-[#D98C70]" />
+                      <span className="font-semibold text-[#613E35]">{filename}</span>
                     </div>
                     <a
                       href={currentEmbedUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#2563EB] hover:underline flex items-center gap-1 font-semibold"
+                      className="text-[#D98C70] hover:underline flex items-center gap-1 font-semibold"
                     >
                       <span>Open in fullscreen</span>
                       <ExternalLink size={12} />
@@ -129,7 +129,7 @@ export const ResumePage = () => {
                   </div>
 
                   {/* Responsive Iframe Container */}
-                  <div className="border border-[#E2E8F0] rounded-xl overflow-hidden bg-[#F8FAFC] shadow-inner h-[760px] md:h-[920px] w-full">
+                  <div className="border border-[#F0DED4] rounded-xl overflow-hidden bg-[#FFF8F3] shadow-inner h-[760px] md:h-[920px] w-full">
                     <iframe
                       key={currentEmbedUrl}
                       src={currentEmbedUrl}
@@ -138,22 +138,22 @@ export const ResumePage = () => {
                     />
                   </div>
 
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 px-1 text-xs text-[#94A3B8]">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 px-1 text-xs text-[#A27B6E]">
                     <span>Candidate: {profile.name || "Marthala Surendar Reddy"}</span>
                     <button
                       type="button"
                       onClick={handleDownload}
-                      className="text-[#2563EB] hover:underline font-medium text-left"
+                      className="text-[#D98C70] hover:underline font-medium text-left"
                     >
                       Trouble viewing? Click here to download {filename}
                     </button>
                   </div>
                 </>
               ) : (
-                <div className="border-2 border-dashed border-[#E2E8F0] rounded-2xl p-12 text-center bg-[#F8FAFC] space-y-3 my-4">
-                  <FileX size={44} className="mx-auto text-[#94A3B8]" />
-                  <h3 className="text-base font-bold text-[#172554]">No Official PDF Uploaded Yet</h3>
-                  <p className="text-xs text-[#64748B] max-w-sm mx-auto">
+                <div className="border-2 border-dashed border-[#F0DED4] rounded-2xl p-12 text-center bg-[#FFF8F3] space-y-3 my-4">
+                  <FileX size={44} className="mx-auto text-[#A27B6E]" />
+                  <h3 className="text-base font-bold text-[#613E35]">No Official PDF Uploaded Yet</h3>
+                  <p className="text-xs text-[#A27B6E] max-w-sm mx-auto">
                     The official resume PDF document is currently being updated. You can view the complete interactive credentials in the Web Sheet tab.
                   </p>
                   <button
@@ -170,24 +170,24 @@ export const ResumePage = () => {
 
           {/* VIEW MODE B: Printable Web Resume Sheet */}
           {viewMode === 'sheet' && (
-            <div className="bg-white border border-[#E2E8F0] rounded-2xl p-8 md:p-12 shadow-card space-y-8 animate-fade-in">
+            <div className="bg-white border border-[#F0DED4] rounded-2xl p-8 md:p-12 shadow-card space-y-8 animate-fade-in">
               
               {/* Header / Identity */}
-              <div className="border-b border-[#E2E8F0] pb-6">
-                <h1 className="text-3xl font-bold text-[#172554]">
+              <div className="border-b border-[#F0DED4] pb-6">
+                <h1 className="text-3xl font-bold text-[#613E35]">
                   {profile.name || "Marthala Surendar Reddy"}
                 </h1>
-                <p className="text-base text-[#2563EB] font-medium mt-1">
+                <p className="text-base text-[#D98C70] font-medium mt-1">
                   {profile.title || "B.Tech Computer Science and Engineering Student"}
                 </p>
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[#64748B] mt-3">
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[#A27B6E] mt-3">
                   <span>{profile.location || "Andhra Pradesh, India"}</span>
                   <span>•</span>
                   <span>{profile.email || "marthalasurendarreddy@gmail.com"}</span>
                   {data.social?.linkedin && (
                     <>
                       <span>•</span>
-                      <a href={data.social.linkedin} target="_blank" rel="noreferrer" className="text-[#2563EB] hover:underline">
+                      <a href={data.social.linkedin} target="_blank" rel="noreferrer" className="text-[#D98C70] hover:underline">
                         LinkedIn
                       </a>
                     </>
@@ -195,7 +195,7 @@ export const ResumePage = () => {
                   {data.social?.github && (
                     <>
                       <span>•</span>
-                      <a href={data.social.github} target="_blank" rel="noreferrer" className="text-[#2563EB] hover:underline">
+                      <a href={data.social.github} target="_blank" rel="noreferrer" className="text-[#D98C70] hover:underline">
                         GitHub
                       </a>
                     </>
@@ -203,7 +203,7 @@ export const ResumePage = () => {
                   {data.social?.leetcode && (
                     <>
                       <span>•</span>
-                      <a href={data.social.leetcode} target="_blank" rel="noreferrer" className="text-[#2563EB] hover:underline">
+                      <a href={data.social.leetcode} target="_blank" rel="noreferrer" className="text-[#D98C70] hover:underline">
                         LeetCode
                       </a>
                     </>
@@ -211,7 +211,7 @@ export const ResumePage = () => {
                   {data.social?.codechef && (
                     <>
                       <span>•</span>
-                      <a href={data.social.codechef} target="_blank" rel="noreferrer" className="text-[#2563EB] hover:underline">
+                      <a href={data.social.codechef} target="_blank" rel="noreferrer" className="text-[#D98C70] hover:underline">
                         CodeChef
                       </a>
                     </>
@@ -221,11 +221,11 @@ export const ResumePage = () => {
 
               {/* Professional Summary */}
               <div>
-                <h2 className="text-xs font-bold uppercase tracking-wider text-[#2563EB] mb-2 flex items-center gap-2">
+                <h2 className="text-xs font-bold uppercase tracking-wider text-[#D98C70] mb-2 flex items-center gap-2">
                   <FileText size={14} />
                   <span>Professional Summary</span>
                 </h2>
-                <p className="text-sm text-[#334155] leading-relaxed">
+                <p className="text-sm text-[#613E35] leading-relaxed">
                   {bioSummary}
                 </p>
               </div>
@@ -233,20 +233,20 @@ export const ResumePage = () => {
               {/* Education */}
               {education.length > 0 && (
                 <div>
-                  <h2 className="text-xs font-bold uppercase tracking-wider text-[#2563EB] mb-3 flex items-center gap-2">
+                  <h2 className="text-xs font-bold uppercase tracking-wider text-[#D98C70] mb-3 flex items-center gap-2">
                     <GraduationCap size={14} />
                     <span>Education</span>
                   </h2>
                   <div className="space-y-4">
                     {education.map((edu) => (
-                      <div key={edu.id} className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl p-4">
+                      <div key={edu.id} className="bg-[#FFF8F3] border border-[#F0DED4] rounded-xl p-4">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                          <div className="font-bold text-[#172554] text-base">{edu.degree}</div>
-                          <div className="text-xs text-[#64748B] font-medium">{edu.dates}</div>
+                          <div className="font-bold text-[#613E35] text-base">{edu.degree}</div>
+                          <div className="text-xs text-[#A27B6E] font-medium">{edu.dates}</div>
                         </div>
-                        <div className="text-sm font-medium text-[#2563EB] mt-0.5">{edu.institution}</div>
+                        <div className="text-sm font-medium text-[#D98C70] mt-0.5">{edu.institution}</div>
                         {edu.description && (
-                          <p className="text-xs text-[#334155] mt-2 leading-relaxed">{edu.description}</p>
+                          <p className="text-xs text-[#613E35] mt-2 leading-relaxed">{edu.description}</p>
                         )}
                       </div>
                     ))}
@@ -257,18 +257,18 @@ export const ResumePage = () => {
               {/* Technical Skills */}
               {technicalSkills.length > 0 && (
                 <div>
-                  <h2 className="text-xs font-bold uppercase tracking-wider text-[#2563EB] mb-3 flex items-center gap-2">
+                  <h2 className="text-xs font-bold uppercase tracking-wider text-[#D98C70] mb-3 flex items-center gap-2">
                     <Code2 size={14} />
                     <span>Technical Skills</span>
                   </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                     {technicalSkills.map((s) => (
-                      <div key={s.id} className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl p-3">
+                      <div key={s.id} className="bg-[#FFF8F3] border border-[#F0DED4] rounded-xl p-3">
                         <div className="flex items-center justify-between">
-                          <div className="text-xs font-bold text-[#172554]">{s.name}</div>
-                          <span className="text-[10px] text-[#2563EB] font-semibold">{s.level || s.proficiency || ''}%</span>
+                          <div className="text-xs font-bold text-[#613E35]">{s.name}</div>
+                          <span className="text-[10px] text-[#D98C70] font-semibold">{s.level || s.proficiency || ''}%</span>
                         </div>
-                        <div className="text-[11px] text-[#64748B] mt-0.5">{s.category || 'Skill'}</div>
+                        <div className="text-[11px] text-[#A27B6E] mt-0.5">{s.category || 'Skill'}</div>
                       </div>
                     ))}
                   </div>
@@ -278,20 +278,20 @@ export const ResumePage = () => {
               {/* Selected Projects */}
               {projects.length > 0 && (
                 <div>
-                  <h2 className="text-xs font-bold uppercase tracking-wider text-[#2563EB] mb-3 flex items-center gap-2">
+                  <h2 className="text-xs font-bold uppercase tracking-wider text-[#D98C70] mb-3 flex items-center gap-2">
                     <Briefcase size={14} />
                     <span>Selected Projects</span>
                   </h2>
                   <div className="space-y-3.5">
                     {projects.slice(0, 4).map((p) => (
-                      <div key={p.id} className="pb-3 border-b border-[#E2E8F0] last:border-0 last:pb-0">
+                      <div key={p.id} className="pb-3 border-b border-[#F0DED4] last:border-0 last:pb-0">
                         <div className="flex items-center justify-between">
-                          <div className="font-bold text-[#172554] text-sm">{p.title}</div>
-                          <div className="text-xs text-[#64748B] font-medium">{p.level || "Project"}</div>
+                          <div className="font-bold text-[#613E35] text-sm">{p.title}</div>
+                          <div className="text-xs text-[#A27B6E] font-medium">{p.level || "Project"}</div>
                         </div>
-                        <p className="text-xs text-[#334155] mt-1 leading-relaxed">{p.description}</p>
+                        <p className="text-xs text-[#613E35] mt-1 leading-relaxed">{p.description}</p>
                         {p.techUsed && (
-                          <div className="text-[11px] text-[#2563EB] font-medium mt-1">
+                          <div className="text-[11px] text-[#D98C70] font-medium mt-1">
                             Tech: {Array.isArray(p.techUsed) ? p.techUsed.join(', ') : p.techUsed}
                           </div>
                         )}
@@ -304,23 +304,23 @@ export const ResumePage = () => {
               {/* Certifications */}
               {certifications.length > 0 && (
                 <div>
-                  <h2 className="text-xs font-bold uppercase tracking-wider text-[#2563EB] mb-3 flex items-center gap-2">
+                  <h2 className="text-xs font-bold uppercase tracking-wider text-[#D98C70] mb-3 flex items-center gap-2">
                     <Award size={14} />
                     <span>Honors & Certifications</span>
                   </h2>
                   <div className="space-y-2.5">
                     {certifications.map((c) => (
-                      <div key={c.id} className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl p-3 flex items-center justify-between">
+                      <div key={c.id} className="bg-[#FFF8F3] border border-[#F0DED4] rounded-xl p-3 flex items-center justify-between">
                         <div>
-                          <div className="font-bold text-[#172554] text-xs">{c.title || c.name}</div>
-                          <div className="text-[11px] text-[#64748B]">{c.issuer} · {c.date}</div>
+                          <div className="font-bold text-[#613E35] text-xs">{c.title || c.name}</div>
+                          <div className="text-[11px] text-[#A27B6E]">{c.issuer} · {c.date}</div>
                         </div>
                         {c.credentialUrl && (
                           <a 
                             href={c.credentialUrl} 
                             target="_blank" 
                             rel="noreferrer" 
-                            className="text-[#2563EB] hover:underline text-xs flex items-center gap-1 font-semibold"
+                            className="text-[#D98C70] hover:underline text-xs flex items-center gap-1 font-semibold"
                           >
                             <span>Verify</span>
                             <ExternalLink size={11} />

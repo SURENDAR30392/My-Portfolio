@@ -24,7 +24,7 @@ export const HonorsPage = () => {
     : items.filter(i => i.type === tab);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F8FAFC]">
+    <div className="min-h-screen flex flex-col bg-[#FFF8F3]">
       <Navbar />
 
       <main className="flex-1 py-12 md:py-16">
@@ -33,23 +33,23 @@ export const HonorsPage = () => {
           <div className="mb-10">
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-sm font-medium text-[#64748B] hover:text-[#2563EB] transition-colors mb-4"
+              className="inline-flex items-center gap-2 text-sm font-medium text-[#A27B6E] hover:text-[#D98C70] transition-colors mb-4"
             >
               <ArrowLeft size={16} />
               <span>Back to Portfolio</span>
             </Link>
 
             <span className="section-badge mb-3 block w-fit">Archive</span>
-            <h1 className="text-3xl sm:text-4xl font-bold text-[#172554] mb-2 tracking-tight">
+            <h1 className="text-3xl sm:text-4xl font-bold text-[#613E35] mb-2 tracking-tight">
               Honors, Certifications & Achievements
             </h1>
-            <p className="text-base text-[#64748B] max-w-2xl">
+            <p className="text-base text-[#A27B6E] max-w-2xl">
               Complete archive of technical certifications, competitive programming recognitions, and academic milestones earned at KL University.
             </p>
           </div>
 
           {/* Filter Tabs */}
-          <div className="flex items-center gap-2 mb-8 border-b border-[#E2E8F0] pb-4">
+          <div className="flex items-center gap-2 mb-8 border-b border-[#F0DED4] pb-4">
             {[
               { id: 'all', label: 'All Records' },
               { id: 'certification', label: 'Certifications' },
@@ -59,8 +59,8 @@ export const HonorsPage = () => {
                 key={t.id}
                 onClick={() => setTab(t.id)}
                 className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-150 ${tab === t.id
-                    ? 'bg-[#2563EB] text-white shadow-xs'
-                    : 'bg-white text-[#64748B] border border-[#E2E8F0] hover:bg-[#EFF6FF] hover:border-[#BFDBFE] hover:text-[#2563EB]'
+                    ? 'bg-[#D98C70] text-white shadow-xs'
+                    : 'bg-white text-[#A27B6E] border border-[#F0DED4] hover:bg-[#FCE9DF] hover:border-[#F4C9B5] hover:text-[#D98C70]'
                   }`}
               >
                 {t.label}
@@ -74,11 +74,11 @@ export const HonorsPage = () => {
               <div
                 key={item.id}
                 onClick={() => setSelectedCert(item)}
-                className="bg-white border border-[#E2E8F0] rounded-2xl p-6 shadow-card hover:border-[#BFDBFE] hover:-translate-y-1 hover:shadow-card-hover transition-all duration-200 flex flex-col justify-between cursor-pointer group"
+                className="bg-white border border-[#F0DED4] rounded-2xl p-6 shadow-card hover:border-[#F4C9B5] hover:-translate-y-1 hover:shadow-card-hover transition-all duration-200 flex flex-col justify-between cursor-pointer group"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-[#EFF6FF] border border-[#DBEAFE] text-[#2563EB] flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] text-[#D98C70] flex items-center justify-center">
                       <Award size={20} />
                     </div>
                     {item.isSample && (
@@ -88,25 +88,25 @@ export const HonorsPage = () => {
                     )}
                   </div>
 
-                  <h3 className="text-base font-bold text-[#172554] mb-1.5 line-clamp-2 group-hover:text-[#2563EB] transition-colors">
+                  <h3 className="text-base font-bold text-[#613E35] mb-1.5 line-clamp-2 group-hover:text-[#D98C70] transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-sm font-medium text-[#64748B] mb-3">
+                  <p className="text-sm font-medium text-[#A27B6E] mb-3">
                     {item.organization || item.issuer}
                   </p>
                   {item.description && (
-                    <p className="text-xs text-[#64748B] line-clamp-2 mb-4 leading-relaxed">
+                    <p className="text-xs text-[#A27B6E] line-clamp-2 mb-4 leading-relaxed">
                       {item.description}
                     </p>
                   )}
                 </div>
 
-                <div className="pt-3.5 border-t border-[#E2E8F0] flex items-center justify-between text-xs text-[#94A3B8]">
-                  <span className="flex items-center gap-1.5 font-medium text-[#64748B]">
-                    <Calendar size={13} className="text-[#2563EB]" />
+                <div className="pt-3.5 border-t border-[#F0DED4] flex items-center justify-between text-xs text-[#A27B6E]">
+                  <span className="flex items-center gap-1.5 font-medium text-[#A27B6E]">
+                    <Calendar size={13} className="text-[#D98C70]" />
                     <span>{item.date || "2025"}</span>
                   </span>
-                  <span className="text-[#2563EB] font-semibold group-hover:underline">
+                  <span className="text-[#D98C70] font-semibold group-hover:underline">
                     View Details →
                   </span>
                 </div>

@@ -67,7 +67,7 @@ export const AdminResumeView = () => {
     }
     if (isGoogleDrive) {
       return (
-        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-50 text-[#2563EB] border border-blue-200">
+        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-50 text-[#D98C70] border border-blue-200">
           Google Drive Document
         </span>
       );
@@ -161,37 +161,37 @@ export const AdminResumeView = () => {
       
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-[#172554] flex items-center gap-2.5">
-          <FileText size={26} className="text-[#2563EB]" />
+        <h1 className="text-2xl font-bold text-[#613E35] flex items-center gap-2.5">
+          <FileText size={26} className="text-[#D98C70]" />
           <span>Resume Management & Live Preview</span>
         </h1>
-        <p className="text-sm text-[#64748B] mt-1">
+        <p className="text-sm text-[#A27B6E] mt-1">
           Upload your official resume PDF or link an external document. Updates reflect live across your portfolio.
         </p>
       </div>
 
       {/* Current Resume Status Card */}
-      <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6 shadow-card space-y-5">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E2E8F0] pb-4">
+      <div className="bg-white border border-[#F0DED4] rounded-2xl p-6 shadow-card space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#F0DED4] pb-4">
           <div className="flex items-center gap-3.5">
             <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border ${
               hasResume 
-                ? 'bg-[#EFF6FF] text-[#2563EB] border-[#DBEAFE]' 
+                ? 'bg-[#FCE9DF] text-[#D98C70] border-[#F4C9B5]' 
                 : 'bg-amber-50 text-amber-600 border-amber-200'
             }`}>
               {hasResume ? <FileText size={26} /> : <FileX size={26} />}
             </div>
             <div>
               <div className="flex flex-wrap items-center gap-2">
-                <h2 className="text-base font-bold text-[#172554] truncate max-w-sm">
+                <h2 className="text-base font-bold text-[#613E35] truncate max-w-sm">
                   {hasResume ? filename : "No Resume Uploaded"}
                 </h2>
                 {getSourceBadge()}
               </div>
-              <p className="text-xs text-[#64748B] mt-1">
+              <p className="text-xs text-[#A27B6E] mt-1">
                 {hasResume ? (
                   <>
-                    Last updated: <span className="text-[#172554] font-medium">{resume.lastUpdated || 'Recently'}</span>
+                    Last updated: <span className="text-[#613E35] font-medium">{resume.lastUpdated || 'Recently'}</span>
                     {isDataUrl && <span className="ml-2 text-emerald-600 font-medium">· Stored in Cloud Firestore</span>}
                   </>
                 ) : (
@@ -217,7 +217,7 @@ export const AdminResumeView = () => {
                 <button
                   type="button"
                   onClick={handleRemoveResume}
-                  className="p-2 rounded-lg border border-[#E2E8F0] text-[#94A3B8] hover:text-red-600 hover:bg-red-50 transition-colors"
+                  className="p-2 rounded-lg border border-[#F0DED4] text-[#A27B6E] hover:text-red-600 hover:bg-red-50 transition-colors"
                   title="Remove current resume document"
                 >
                   <Trash2 size={15} />
@@ -258,7 +258,7 @@ export const AdminResumeView = () => {
           
           {/* Method Selector Tabs */}
           <div>
-            <label className="block text-xs font-bold text-[#172554] mb-2">
+            <label className="block text-xs font-bold text-[#613E35] mb-2">
               Provide Your Official Resume
             </label>
             <div className="grid grid-cols-2 gap-3 max-w-md">
@@ -267,8 +267,8 @@ export const AdminResumeView = () => {
                 onClick={() => setSourceType('upload')}
                 className={`py-2.5 px-4 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 border transition-all ${
                   sourceType === 'upload'
-                    ? 'bg-[#2563EB] text-white border-[#2563EB] shadow-xs'
-                    : 'bg-white text-[#64748B] border-[#E2E8F0] hover:bg-[#EFF6FF] hover:text-[#2563EB]'
+                    ? 'bg-[#D98C70] text-white border-[#D98C70] shadow-xs'
+                    : 'bg-white text-[#A27B6E] border-[#F0DED4] hover:bg-[#FCE9DF] hover:text-[#D98C70]'
                 }`}
               >
                 <UploadCloud size={16} />
@@ -280,8 +280,8 @@ export const AdminResumeView = () => {
                 onClick={() => setSourceType('link')}
                 className={`py-2.5 px-4 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 border transition-all ${
                   sourceType === 'link'
-                    ? 'bg-[#2563EB] text-white border-[#2563EB] shadow-xs'
-                    : 'bg-white text-[#64748B] border-[#E2E8F0] hover:bg-[#EFF6FF] hover:text-[#2563EB]'
+                    ? 'bg-[#D98C70] text-white border-[#D98C70] shadow-xs'
+                    : 'bg-white text-[#A27B6E] border-[#F0DED4] hover:bg-[#FCE9DF] hover:text-[#D98C70]'
                 }`}
               >
                 <LinkIcon size={16} />
@@ -309,15 +309,15 @@ export const AdminResumeView = () => {
                 onDragOver={(e) => e.preventDefault()}
                 onDrop={handleDrop}
                 onClick={() => fileInputRef.current?.click()}
-                className="border-2 border-dashed border-[#BFDBFE] hover:border-[#2563EB] bg-[#EFF6FF]/50 hover:bg-[#EFF6FF] rounded-2xl p-8 text-center cursor-pointer transition-all flex flex-col items-center justify-center gap-2.5 group"
+                className="border-2 border-dashed border-[#F4C9B5] hover:border-[#D98C70] bg-[#FCE9DF]/50 hover:bg-[#FCE9DF] rounded-2xl p-8 text-center cursor-pointer transition-all flex flex-col items-center justify-center gap-2.5 group"
               >
-                <div className="w-12 h-12 rounded-xl bg-white text-[#2563EB] border border-[#DBEAFE] flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
+                <div className="w-12 h-12 rounded-xl bg-white text-[#D98C70] border border-[#F4C9B5] flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
                   <UploadCloud size={24} />
                 </div>
-                <div className="text-sm font-bold text-[#172554]">
+                <div className="text-sm font-bold text-[#613E35]">
                   Click to browse or drag and drop your Resume PDF
                 </div>
-                <p className="text-xs text-[#64748B] max-w-sm">
+                <p className="text-xs text-[#A27B6E] max-w-sm">
                   Upload your real single-page or multi-page PDF document (under 800 KB).
                 </p>
                 <button
@@ -331,7 +331,7 @@ export const AdminResumeView = () => {
           ) : (
             /* Option B: External Link */
             <div className="space-y-2">
-              <label className="block text-xs font-semibold text-[#172554]">
+              <label className="block text-xs font-semibold text-[#613E35]">
                 External Resume Document URL *
               </label>
               <input
@@ -340,9 +340,9 @@ export const AdminResumeView = () => {
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 placeholder="e.g. https://drive.google.com/file/d/... or https://example.com/resume.pdf"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#E2E8F0] text-sm text-[#172554] focus:outline-none focus:border-[#2563EB] font-mono text-xs"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-[#F0DED4] text-sm text-[#613E35] focus:outline-none focus:border-[#D98C70] font-mono text-xs"
               />
-              <p className="text-[11px] text-[#64748B]">
+              <p className="text-[11px] text-[#A27B6E]">
                 Supports Google Drive sharing links (automatically normalized for embedding), Dropbox, ImageKit, or any direct PDF URL.
               </p>
             </div>
@@ -351,7 +351,7 @@ export const AdminResumeView = () => {
           {/* Filename configuration */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
             <div>
-              <label className="block text-xs font-semibold text-[#172554] mb-1.5">
+              <label className="block text-xs font-semibold text-[#613E35] mb-1.5">
                 Download Filename
               </label>
               <input
@@ -359,17 +359,17 @@ export const AdminResumeView = () => {
                 value={filename}
                 onChange={(e) => setFilename(e.target.value)}
                 placeholder="Marthala_Surendar_Reddy_Resume.pdf"
-                className="w-full px-3.5 py-2 rounded-xl border border-[#E2E8F0] text-sm focus:outline-none focus:border-[#2563EB]"
+                className="w-full px-3.5 py-2 rounded-xl border border-[#F0DED4] text-sm focus:outline-none focus:border-[#D98C70]"
               />
             </div>
 
             <div className="flex items-center sm:pt-6">
-              <label className="inline-flex items-center gap-2.5 cursor-pointer text-xs font-medium text-[#172554]">
+              <label className="inline-flex items-center gap-2.5 cursor-pointer text-xs font-medium text-[#613E35]">
                 <input
                   type="checkbox"
                   checked={enabled}
                   onChange={(e) => setEnabled(e.target.checked)}
-                  className="w-4 h-4 rounded text-[#2563EB] focus:ring-[#60A5FA]"
+                  className="w-4 h-4 rounded text-[#D98C70] focus:ring-[#F4C9B5]"
                 />
                 <span>Display "Resume" button in public Navbar and Hero</span>
               </label>
@@ -377,7 +377,7 @@ export const AdminResumeView = () => {
           </div>
 
           {/* Save Button Row */}
-          <div className="pt-4 border-t border-[#E2E8F0] flex items-center justify-between">
+          <div className="pt-4 border-t border-[#F0DED4] flex items-center justify-between">
             {hasResume ? (
               <button
                 type="button"
@@ -402,11 +402,11 @@ export const AdminResumeView = () => {
       </div>
 
       {/* Live Embedded Resume Viewer Section */}
-      <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6 shadow-card space-y-4">
-        <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
+      <div className="bg-white border border-[#F0DED4] rounded-2xl p-6 shadow-card space-y-4">
+        <div className="flex items-center justify-between border-b border-[#F0DED4] pb-3">
           <div className="flex items-center gap-2">
-            <Eye size={18} className="text-[#2563EB]" />
-            <h2 className="text-base font-bold text-[#172554]">
+            <Eye size={18} className="text-[#D98C70]" />
+            <h2 className="text-base font-bold text-[#613E35]">
               Live Document Preview
             </h2>
           </div>
@@ -415,16 +415,16 @@ export const AdminResumeView = () => {
               <button
                 type="button"
                 onClick={() => triggerResumeDownload(url, filename)}
-                className="text-xs text-[#2563EB] hover:underline font-semibold flex items-center gap-1"
+                className="text-xs text-[#D98C70] hover:underline font-semibold flex items-center gap-1"
               >
                 <Download size={13} />
                 <span>Download</span>
               </button>
-              <span className="text-[#E2E8F0]">|</span>
+              <span className="text-[#F0DED4]">|</span>
               <button
                 type="button"
                 onClick={() => setShowEmbeddedPdf(!showEmbeddedPdf)}
-                className="text-xs text-[#64748B] hover:text-[#172554] font-medium"
+                className="text-xs text-[#A27B6E] hover:text-[#613E35] font-medium"
               >
                 {showEmbeddedPdf ? "Hide Preview" : "Show Preview"}
               </button>
@@ -436,7 +436,7 @@ export const AdminResumeView = () => {
           <div className="space-y-3 animate-fade-in">
             {hasResume && currentEmbedUrl ? (
               <>
-                <div className="border border-[#E2E8F0] rounded-xl overflow-hidden bg-[#F8FAFC] shadow-inner h-[680px] w-full">
+                <div className="border border-[#F0DED4] rounded-xl overflow-hidden bg-[#FFF8F3] shadow-inner h-[680px] w-full">
                   <iframe
                     key={currentEmbedUrl}
                     src={currentEmbedUrl}
@@ -444,13 +444,13 @@ export const AdminResumeView = () => {
                     className="w-full h-full border-0"
                   />
                 </div>
-                <div className="flex items-center justify-between text-xs text-[#64748B] px-1">
+                <div className="flex items-center justify-between text-xs text-[#A27B6E] px-1">
                   <span>Dynamic preview of currently configured resume</span>
                   <a 
                     href={currentEmbedUrl} 
                     target="_blank" 
                     rel="noreferrer" 
-                    className="text-[#2563EB] hover:underline flex items-center gap-1 font-semibold"
+                    className="text-[#D98C70] hover:underline flex items-center gap-1 font-semibold"
                   >
                     <span>Open in fullscreen</span>
                     <ExternalLink size={12} />
@@ -458,10 +458,10 @@ export const AdminResumeView = () => {
                 </div>
               </>
             ) : (
-              <div className="border-2 border-dashed border-[#E2E8F0] rounded-2xl p-12 text-center bg-[#F8FAFC] space-y-3">
-                <FileX size={40} className="mx-auto text-[#94A3B8]" />
-                <h3 className="text-base font-bold text-[#172554]">No Resume File Attached</h3>
-                <p className="text-xs text-[#64748B] max-w-sm mx-auto">
+              <div className="border-2 border-dashed border-[#F0DED4] rounded-2xl p-12 text-center bg-[#FFF8F3] space-y-3">
+                <FileX size={40} className="mx-auto text-[#A27B6E]" />
+                <h3 className="text-base font-bold text-[#613E35]">No Resume File Attached</h3>
+                <p className="text-xs text-[#A27B6E] max-w-sm mx-auto">
                   Upload your official resume PDF above to activate the live document preview.
                 </p>
                 <button

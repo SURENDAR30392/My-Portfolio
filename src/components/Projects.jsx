@@ -16,17 +16,17 @@ export const Projects = ({ onSelectProject }) => {
       : publishedProjects.filter(p => p.level?.toLowerCase() === filter.toLowerCase());
 
   return (
-    <section id="work" className="py-16 md:py-24 bg-white border-b border-[#E2E8F0]">
+    <section id="work" className="py-16 md:py-24 bg-white border-b border-[#F0DED4]">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <span className="section-badge mb-3">Projects</span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#172554] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#613E35] tracking-tight">
               Featured Software Engineering Work
             </h2>
-            <p className="text-base text-[#64748B] mt-2 max-w-2xl">
+            <p className="text-base text-[#A27B6E] mt-2 max-w-2xl">
               Software platforms, backend architectures, data structures implementations, and full-stack web applications.
             </p>
           </div>
@@ -40,8 +40,8 @@ export const Projects = ({ onSelectProject }) => {
                 onClick={() => setFilter(cat)}
                 className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold capitalize transition-all duration-150 ${
                   filter === cat
-                    ? 'bg-[#2563EB] text-white shadow-xs'
-                    : 'bg-[#F8FAFC] text-[#64748B] border border-[#E2E8F0] hover:bg-[#EFF6FF] hover:border-[#BFDBFE] hover:text-[#2563EB]'
+                    ? 'bg-[#D98C70] text-white shadow-xs'
+                    : 'bg-[#FFF8F3] text-[#A27B6E] border border-[#F0DED4] hover:bg-[#FCE9DF] hover:border-[#F4C9B5] hover:text-[#D98C70]'
                 }`}
               >
                 {cat}
@@ -67,13 +67,13 @@ export const Projects = ({ onSelectProject }) => {
               <article
                 key={project.id}
                 onClick={() => onSelectProject(project)}
-                className="bg-white border border-[#E2E8F0] rounded-2xl overflow-hidden shadow-card hover:border-[#BFDBFE] hover:-translate-y-1 hover:shadow-card-hover transition-all duration-200 flex flex-col justify-between cursor-pointer group"
+                className="bg-white border border-[#F0DED4] rounded-2xl overflow-hidden shadow-card hover:border-[#F4C9B5] hover:-translate-y-1 hover:shadow-card-hover transition-all duration-200 flex flex-col justify-between cursor-pointer group"
               >
                 <div>
                   {/* Image Container with Badge Overlays */}
-                  <div className="relative aspect-[16/10] bg-[#EFF6FF] border-b border-[#E2E8F0] overflow-hidden">
+                  <div className="relative aspect-[16/10] bg-[#FCE9DF] border-b border-[#F0DED4] overflow-hidden">
                     {level && (
-                      <div className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-md text-[10.5px] font-semibold uppercase tracking-wider bg-white/95 text-[#172554] border border-[#E2E8F0] shadow-xs backdrop-blur-sm">
+                      <div className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-md text-[10.5px] font-semibold uppercase tracking-wider bg-white/95 text-[#613E35] border border-[#F0DED4] shadow-xs backdrop-blur-sm">
                         {level}
                       </div>
                     )}
@@ -98,10 +98,10 @@ export const Projects = ({ onSelectProject }) => {
 
                   {/* Body Content */}
                   <div className="p-5 sm:p-6">
-                    <h3 className="text-lg font-bold text-[#172554] mb-2 line-clamp-1 group-hover:text-[#2563EB] transition-colors">
+                    <h3 className="text-lg font-bold text-[#613E35] mb-2 line-clamp-1 group-hover:text-[#D98C70] transition-colors">
                       {project.title}
                     </h3>
-                    <p className="text-sm text-[#64748B] leading-relaxed line-clamp-2">
+                    <p className="text-sm text-[#A27B6E] leading-relaxed line-clamp-2">
                       {project.description}
                     </p>
                   </div>
@@ -114,14 +114,14 @@ export const Projects = ({ onSelectProject }) => {
                       {visibleTech.map((tech, idx) => (
                         <span
                           key={idx}
-                          className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-[#EFF6FF] text-[#2563EB] border border-[#DBEAFE]"
+                          className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-[#FCE9DF] text-[#D98C70] border border-[#F4C9B5]"
                         >
                           {tech}
                         </span>
                       ))}
                       {extraCount > 0 && (
                         <span 
-                          className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-[#F8FAFC] text-[#64748B] border border-[#E2E8F0]"
+                          className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-[#FFF8F3] text-[#A27B6E] border border-[#F0DED4]"
                           title={techList.slice(3).join(', ')}
                         >
                           +{extraCount}
@@ -130,7 +130,7 @@ export const Projects = ({ onSelectProject }) => {
                     </div>
                   )}
 
-                  <div className="flex items-center justify-between pt-3.5 border-t border-[#E2E8F0]">
+                  <div className="flex items-center justify-between pt-3.5 border-t border-[#F0DED4]">
                     <span className="link-accent text-sm inline-flex items-center gap-1.5">
                       <span>Explore details</span>
                       <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
@@ -143,7 +143,7 @@ export const Projects = ({ onSelectProject }) => {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`GitHub source code for ${project.title}`}
-                          className="p-1.5 text-[#64748B] hover:text-[#2563EB] hover:bg-[#EFF6FF] rounded-md transition-colors"
+                          className="p-1.5 text-[#A27B6E] hover:text-[#D98C70] hover:bg-[#FCE9DF] rounded-md transition-colors"
                           title="Source Code"
                         >
                           <Github size={16} />
@@ -155,7 +155,7 @@ export const Projects = ({ onSelectProject }) => {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`Live preview of ${project.title}`}
-                          className="p-1.5 text-[#64748B] hover:text-[#2563EB] hover:bg-[#EFF6FF] rounded-md transition-colors"
+                          className="p-1.5 text-[#A27B6E] hover:text-[#D98C70] hover:bg-[#FCE9DF] rounded-md transition-colors"
                           title="Live Demo"
                         >
                           <ExternalLink size={16} />
@@ -171,9 +171,9 @@ export const Projects = ({ onSelectProject }) => {
 
         {/* Empty State */}
         {filteredProjects.length === 0 && (
-          <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-2xl p-12 text-center my-6">
-            <FolderGit2 size={32} className="mx-auto text-[#94A3B8] mb-3" />
-            <p className="text-sm font-medium text-[#64748B]">No projects found in this category.</p>
+          <div className="bg-[#FFF8F3] border border-[#F0DED4] rounded-2xl p-12 text-center my-6">
+            <FolderGit2 size={32} className="mx-auto text-[#A27B6E] mb-3" />
+            <p className="text-sm font-medium text-[#A27B6E]">No projects found in this category.</p>
           </div>
         )}
 

@@ -81,16 +81,16 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-white border-b border-[#E2E8F0]">
+    <section id="contact" className="py-16 md:py-24 bg-white border-b border-[#F0DED4]">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
         <div className="mb-12">
           <span className="section-badge mb-3">Contact</span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#172554] tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#613E35] tracking-tight">
             Let's Discuss Software Opportunities
           </h2>
-          <p className="text-base text-[#64748B] mt-2 max-w-2xl">
+          <p className="text-base text-[#A27B6E] mt-2 max-w-2xl">
             Whether for software engineering internships, technical collaborations, or general questions, I'm always open to connecting.
           </p>
         </div>
@@ -99,21 +99,21 @@ export const Contact = () => {
           
           {/* Left Column: Direct Channels */}
           <div className="lg:col-span-5 space-y-6">
-            <h3 className="text-lg font-bold text-[#172554]">
+            <h3 className="text-lg font-bold text-[#613E35]">
               Direct Contact Information
             </h3>
 
             <div className="space-y-3.5">
               <a 
                 href={`mailto:${email}`}
-                className="flex items-center gap-3.5 p-4 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] hover:bg-[#EFF6FF] hover:border-[#BFDBFE] transition-all duration-150 group"
+                className="flex items-center gap-3.5 p-4 rounded-xl border border-[#F0DED4] bg-[#FFF8F3] hover:bg-[#FCE9DF] hover:border-[#F4C9B5] transition-all duration-150 group"
               >
-                <div className="w-10 h-10 rounded-xl bg-white border border-[#E2E8F0] text-[#2563EB] flex items-center justify-center shrink-0 shadow-xs group-hover:bg-[#2563EB] group-hover:text-white transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-white border border-[#F0DED4] text-[#D98C70] flex items-center justify-center shrink-0 shadow-xs group-hover:bg-[#D98C70] group-hover:text-white transition-colors">
                   <Mail size={18} />
                 </div>
                 <div className="truncate">
-                  <div className="text-xs font-semibold text-[#94A3B8] uppercase">Email Address</div>
-                  <div className="text-sm font-semibold text-[#172554] group-hover:text-[#2563EB] transition-colors truncate">
+                  <div className="text-xs font-semibold text-[#A27B6E] uppercase">Email Address</div>
+                  <div className="text-sm font-semibold text-[#613E35] group-hover:text-[#D98C70] transition-colors truncate">
                     {email}
                   </div>
                 </div>
@@ -121,26 +121,26 @@ export const Contact = () => {
 
               <a 
                 href={`tel:${phone.replace(/\s+/g, '')}`}
-                className="flex items-center gap-3.5 p-4 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] hover:bg-[#EFF6FF] hover:border-[#BFDBFE] transition-all duration-150 group"
+                className="flex items-center gap-3.5 p-4 rounded-xl border border-[#F0DED4] bg-[#FFF8F3] hover:bg-[#FCE9DF] hover:border-[#F4C9B5] transition-all duration-150 group"
               >
-                <div className="w-10 h-10 rounded-xl bg-white border border-[#E2E8F0] text-[#2563EB] flex items-center justify-center shrink-0 shadow-xs group-hover:bg-[#2563EB] group-hover:text-white transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-white border border-[#F0DED4] text-[#D98C70] flex items-center justify-center shrink-0 shadow-xs group-hover:bg-[#D98C70] group-hover:text-white transition-colors">
                   <Phone size={18} />
                 </div>
                 <div>
-                  <div className="text-xs font-semibold text-[#94A3B8] uppercase">Phone / WhatsApp</div>
-                  <div className="text-sm font-semibold text-[#172554] group-hover:text-[#2563EB] transition-colors">
+                  <div className="text-xs font-semibold text-[#A27B6E] uppercase">Phone / WhatsApp</div>
+                  <div className="text-sm font-semibold text-[#613E35] group-hover:text-[#D98C70] transition-colors">
                     {phone}
                   </div>
                 </div>
               </a>
 
-              <div className="flex items-center gap-3.5 p-4 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC]">
-                <div className="w-10 h-10 rounded-xl bg-white border border-[#E2E8F0] text-[#2563EB] flex items-center justify-center shrink-0 shadow-xs">
+              <div className="flex items-center gap-3.5 p-4 rounded-xl border border-[#F0DED4] bg-[#FFF8F3]">
+                <div className="w-10 h-10 rounded-xl bg-white border border-[#F0DED4] text-[#D98C70] flex items-center justify-center shrink-0 shadow-xs">
                   <MapPin size={18} />
                 </div>
                 <div>
-                  <div className="text-xs font-semibold text-[#94A3B8] uppercase">Campus Location</div>
-                  <div className="text-sm font-semibold text-[#172554]">
+                  <div className="text-xs font-semibold text-[#A27B6E] uppercase">Campus Location</div>
+                  <div className="text-sm font-semibold text-[#613E35]">
                     {location} (KL University)
                   </div>
                 </div>
@@ -149,7 +149,7 @@ export const Contact = () => {
 
             {/* Direct Social Grid */}
             <div className="pt-2">
-              <div className="text-xs font-bold uppercase tracking-wider text-[#94A3B8] mb-3">
+              <div className="text-xs font-bold uppercase tracking-wider text-[#A27B6E] mb-3">
                 Technical Profiles
               </div>
               <div className="grid grid-cols-2 gap-2.5">
@@ -161,10 +161,10 @@ export const Contact = () => {
                       href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2.5 p-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] hover:bg-[#EFF6FF] hover:border-[#BFDBFE] transition-all duration-150 group"
+                      className="flex items-center gap-2.5 p-3 rounded-xl border border-[#F0DED4] bg-[#FFF8F3] hover:bg-[#FCE9DF] hover:border-[#F4C9B5] transition-all duration-150 group"
                     >
-                      <Icon size={16} className="text-[#2563EB]" />
-                      <span className="text-xs font-semibold text-[#172554] group-hover:text-[#2563EB] transition-colors">
+                      <Icon size={16} className="text-[#D98C70]" />
+                      <span className="text-xs font-semibold text-[#613E35] group-hover:text-[#D98C70] transition-colors">
                         {item.name}
                       </span>
                     </a>
@@ -175,20 +175,20 @@ export const Contact = () => {
           </div>
 
           {/* Right Column: Interactive Contact Form */}
-          <div className="lg:col-span-7 bg-[#F8FAFC] border border-[#E2E8F0] rounded-2xl p-6 sm:p-8 shadow-card">
-            <h3 className="text-lg font-bold text-[#172554] mb-2">
+          <div className="lg:col-span-7 bg-[#FFF8F3] border border-[#F0DED4] rounded-2xl p-6 sm:p-8 shadow-card">
+            <h3 className="text-lg font-bold text-[#613E35] mb-2">
               Send a Direct Message
             </h3>
-            <p className="text-xs text-[#64748B] mb-6">
+            <p className="text-xs text-[#A27B6E] mb-6">
               Messages are routed securely to Cloud Firestore and accessible only to the authorized Super Admin.
             </p>
 
             {status === 'success' && (
-              <div className="mb-6 p-4 rounded-xl bg-[#EFF6FF] border border-[#BFDBFE] flex items-start gap-3 animate-fade-in">
-                <Check size={18} className="text-[#2563EB] shrink-0 mt-0.5" />
+              <div className="mb-6 p-4 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] flex items-start gap-3 animate-fade-in">
+                <Check size={18} className="text-[#D98C70] shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-sm font-bold text-[#172554]">Message Sent Successfully</div>
-                  <div className="text-xs text-[#64748B] mt-0.5">
+                  <div className="text-sm font-bold text-[#613E35]">Message Sent Successfully</div>
+                  <div className="text-xs text-[#A27B6E] mt-0.5">
                     Thank you for reaching out. I have received your message and will reply shortly.
                   </div>
                 </div>
@@ -220,7 +220,7 @@ export const Contact = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-[#172554] mb-1.5">
+                  <label className="block text-xs font-semibold text-[#613E35] mb-1.5">
                     Your Name *
                   </label>
                   <input
@@ -229,12 +229,12 @@ export const Contact = () => {
                     value={formData.name}
                     onChange={e => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Alex Johnson"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#E2E8F0] bg-white text-sm text-[#172554] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#EFF6FF] transition-all"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#F0DED4] bg-white text-sm text-[#613E35] placeholder:text-[#A27B6E] focus:outline-none focus:border-[#D98C70] focus:ring-2 focus:ring-[#FCE9DF] transition-all"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[#172554] mb-1.5">
+                  <label className="block text-xs font-semibold text-[#613E35] mb-1.5">
                     Your Email *
                   </label>
                   <input
@@ -243,13 +243,13 @@ export const Contact = () => {
                     value={formData.email}
                     onChange={e => setFormData({ ...formData, email: e.target.value })}
                     placeholder="alex@company.com"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#E2E8F0] bg-white text-sm text-[#172554] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#EFF6FF] transition-all"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#F0DED4] bg-white text-sm text-[#613E35] placeholder:text-[#A27B6E] focus:outline-none focus:border-[#D98C70] focus:ring-2 focus:ring-[#FCE9DF] transition-all"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#172554] mb-1.5">
+                <label className="block text-xs font-semibold text-[#613E35] mb-1.5">
                   Subject
                 </label>
                 <input
@@ -257,12 +257,12 @@ export const Contact = () => {
                   value={formData.subject}
                   onChange={e => setFormData({ ...formData, subject: e.target.value })}
                   placeholder="Internship opportunity / Technical question"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#E2E8F0] bg-white text-sm text-[#172554] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#EFF6FF] transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#F0DED4] bg-white text-sm text-[#613E35] placeholder:text-[#A27B6E] focus:outline-none focus:border-[#D98C70] focus:ring-2 focus:ring-[#FCE9DF] transition-all"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#172554] mb-1.5">
+                <label className="block text-xs font-semibold text-[#613E35] mb-1.5">
                   Your Message *
                 </label>
                 <textarea
@@ -271,7 +271,7 @@ export const Contact = () => {
                   value={formData.message}
                   onChange={e => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Hello Surendar, I'd like to discuss..."
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#E2E8F0] bg-white text-sm text-[#172554] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#EFF6FF] transition-all resize-none"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#F0DED4] bg-white text-sm text-[#613E35] placeholder:text-[#A27B6E] focus:outline-none focus:border-[#D98C70] focus:ring-2 focus:ring-[#FCE9DF] transition-all resize-none"
                 />
               </div>
 

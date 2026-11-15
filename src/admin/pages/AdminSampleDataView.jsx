@@ -40,22 +40,22 @@ export const AdminSampleDataView = () => {
       
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-semibold text-[#172554]">
+        <h1 className="text-2xl font-semibold text-[#613E35]">
           Sample Data Management
         </h1>
-        <p className="text-sm text-[#64748B] mt-1">
-          Review, edit, or purge placeholder dummy data marked with <code className="text-xs bg-[#EFF6FF] text-[#2563EB] px-1.5 py-0.5 rounded">isSample: true</code>.
+        <p className="text-sm text-[#A27B6E] mt-1">
+          Review, edit, or purge placeholder dummy data marked with <code className="text-xs bg-[#FCE9DF] text-[#D98C70] px-1.5 py-0.5 rounded">isSample: true</code>.
         </p>
       </div>
 
       {/* Summary Banner */}
-      <div className="bg-white border border-[#E2E8F0] rounded-xl p-6 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+      <div className="bg-white border border-[#F0DED4] rounded-xl p-6 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-6">
         <div>
           <div className="flex items-center gap-2">
-            <span className="text-3xl font-semibold text-[#172554]">{totalSampleCount}</span>
-            <span className="text-sm text-[#64748B]">Sample Records Total</span>
+            <span className="text-3xl font-semibold text-[#613E35]">{totalSampleCount}</span>
+            <span className="text-sm text-[#A27B6E]">Sample Records Total</span>
           </div>
-          <p className="text-xs text-[#94A3B8] mt-1">
+          <p className="text-xs text-[#A27B6E] mt-1">
             {totalSampleCount > 0 
               ? "All placeholder records can be deleted in one click without affecting your real data."
               : "Great job! All records in the portfolio are verified real information."
@@ -66,7 +66,7 @@ export const AdminSampleDataView = () => {
         <div className="flex flex-wrap items-center gap-3">
           <button
             onClick={seedFirestoreCollections}
-            className="p-2.5 px-4 rounded-lg bg-[#EFF6FF] border border-[#60A5FA] text-[#2563EB] text-xs font-semibold hover:bg-[#D1EBE7] transition-colors inline-flex items-center gap-2"
+            className="p-2.5 px-4 rounded-lg bg-[#FCE9DF] border border-[#F4C9B5] text-[#D98C70] text-xs font-semibold hover:bg-[#F4C9B5] transition-colors inline-flex items-center gap-2"
             title="Idempotently synchronize all 10 collections to Cloud Firestore"
           >
             <Sparkles size={16} />
@@ -96,23 +96,23 @@ export const AdminSampleDataView = () => {
       <div className="space-y-6">
         
         {/* Sample / Dummy Resume Document */}
-        <div className="bg-white border border-[#E2E8F0] rounded-xl p-6 shadow-sm">
-          <div className="flex items-center justify-between mb-4 border-b border-[#E2E8F0] pb-3">
-            <h2 className="text-sm font-semibold text-[#172554] flex items-center gap-2">
-              <FileText size={16} className="text-[#2563EB]" />
+        <div className="bg-white border border-[#F0DED4] rounded-xl p-6 shadow-sm">
+          <div className="flex items-center justify-between mb-4 border-b border-[#F0DED4] pb-3">
+            <h2 className="text-sm font-semibold text-[#613E35] flex items-center gap-2">
+              <FileText size={16} className="text-[#D98C70]" />
               <span>Dummy Resume Document</span>
             </h2>
-            <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-[#EFF6FF] text-[#2563EB] border border-[#60A5FA]/40">
+            <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-[#FCE9DF] text-[#D98C70] border border-[#F4C9B5]/40">
               Active (/resume.pdf)
             </span>
           </div>
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <div className="text-sm font-medium text-[#172554]">
+              <div className="text-sm font-medium text-[#613E35]">
                 {data.resume?.filename || 'Marthala_Surendar_Reddy_Resume.pdf'}
               </div>
-              <div className="text-xs text-[#94A3B8] mt-0.5">
+              <div className="text-xs text-[#A27B6E] mt-0.5">
                 Pre-compiled PDF resume for Marthala Surendar Reddy with KL University education & projects.
               </div>
             </div>
@@ -141,27 +141,27 @@ export const AdminSampleDataView = () => {
         </div>
 
         {/* Sample Projects */}
-        <div className="bg-white border border-[#E2E8F0] rounded-xl p-6 shadow-sm">
-          <div className="flex items-center justify-between mb-4 border-b border-[#E2E8F0] pb-3">
-            <h2 className="text-sm font-semibold text-[#172554]">
+        <div className="bg-white border border-[#F0DED4] rounded-xl p-6 shadow-sm">
+          <div className="flex items-center justify-between mb-4 border-b border-[#F0DED4] pb-3">
+            <h2 className="text-sm font-semibold text-[#613E35]">
               Sample Projects ({sampleProjects.length})
             </h2>
-            <span className="text-xs text-[#94A3B8]">Flagged with isSample: true</span>
+            <span className="text-xs text-[#A27B6E]">Flagged with isSample: true</span>
           </div>
 
           {sampleProjects.length === 0 ? (
-            <p className="text-xs text-[#94A3B8] py-2">No sample projects present.</p>
+            <p className="text-xs text-[#A27B6E] py-2">No sample projects present.</p>
           ) : (
-            <div className="divide-y divide-[#E2E8F0]">
+            <div className="divide-y divide-[#F0DED4]">
               {sampleProjects.map((p) => (
                 <div key={p.id} className="py-3 flex items-center justify-between gap-3">
                   <div>
-                    <div className="text-sm font-medium text-[#172554]">{p.title}</div>
-                    <div className="text-xs text-[#94A3B8]">{p.level} · {Array.isArray(p.techUsed) ? p.techUsed.join(', ') : p.techUsed}</div>
+                    <div className="text-sm font-medium text-[#613E35]">{p.title}</div>
+                    <div className="text-xs text-[#A27B6E]">{p.level} · {Array.isArray(p.techUsed) ? p.techUsed.join(', ') : p.techUsed}</div>
                   </div>
                   <button
                     onClick={() => deleteProject(p.id)}
-                    className="p-1.5 rounded-lg text-[#94A3B8] hover:text-[#DC2626] hover:bg-[#FEF2F2]"
+                    className="p-1.5 rounded-lg text-[#A27B6E] hover:text-[#DC2626] hover:bg-[#FEF2F2]"
                     title="Delete individual sample project"
                   >
                     <Trash2 size={15} />
@@ -173,27 +173,27 @@ export const AdminSampleDataView = () => {
         </div>
 
         {/* Sample Skills */}
-        <div className="bg-white border border-[#E2E8F0] rounded-xl p-6 shadow-sm">
-          <div className="flex items-center justify-between mb-4 border-b border-[#E2E8F0] pb-3">
-            <h2 className="text-sm font-semibold text-[#172554]">
+        <div className="bg-white border border-[#F0DED4] rounded-xl p-6 shadow-sm">
+          <div className="flex items-center justify-between mb-4 border-b border-[#F0DED4] pb-3">
+            <h2 className="text-sm font-semibold text-[#613E35]">
               Sample Skills ({sampleSkills.length})
             </h2>
-            <span className="text-xs text-[#94A3B8]">Flagged with isSample: true</span>
+            <span className="text-xs text-[#A27B6E]">Flagged with isSample: true</span>
           </div>
 
           {sampleSkills.length === 0 ? (
-            <p className="text-xs text-[#94A3B8] py-2">No sample skills present.</p>
+            <p className="text-xs text-[#A27B6E] py-2">No sample skills present.</p>
           ) : (
             <div className="flex flex-wrap gap-2">
               {sampleSkills.map((s) => (
                 <span
                   key={s.id}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs bg-[#F8FAFC] border border-[#E2E8F0] text-[#172554]"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs bg-[#FFF8F3] border border-[#F0DED4] text-[#613E35]"
                 >
                   <span>{s.name} ({s.proficiency}%)</span>
                   <button
                     onClick={() => deleteSkill(s.id)}
-                    className="text-[#94A3B8] hover:text-[#DC2626]"
+                    className="text-[#A27B6E] hover:text-[#DC2626]"
                     title="Delete sample skill"
                   >
                     <Trash2 size={12} />
@@ -205,27 +205,27 @@ export const AdminSampleDataView = () => {
         </div>
 
         {/* Sample Certifications */}
-        <div className="bg-white border border-[#E2E8F0] rounded-xl p-6 shadow-sm">
-          <div className="flex items-center justify-between mb-4 border-b border-[#E2E8F0] pb-3">
-            <h2 className="text-sm font-semibold text-[#172554]">
+        <div className="bg-white border border-[#F0DED4] rounded-xl p-6 shadow-sm">
+          <div className="flex items-center justify-between mb-4 border-b border-[#F0DED4] pb-3">
+            <h2 className="text-sm font-semibold text-[#613E35]">
               Sample Certifications ({sampleCerts.length})
             </h2>
-            <span className="text-xs text-[#94A3B8]">Flagged with isSample: true</span>
+            <span className="text-xs text-[#A27B6E]">Flagged with isSample: true</span>
           </div>
 
           {sampleCerts.length === 0 ? (
-            <p className="text-xs text-[#94A3B8] py-2">No sample certifications present.</p>
+            <p className="text-xs text-[#A27B6E] py-2">No sample certifications present.</p>
           ) : (
-            <div className="divide-y divide-[#E2E8F0]">
+            <div className="divide-y divide-[#F0DED4]">
               {sampleCerts.map((c) => (
                 <div key={c.id} className="py-2.5 flex items-center justify-between gap-3">
                   <div>
-                    <div className="text-sm font-medium text-[#172554]">{c.title}</div>
-                    <div className="text-xs text-[#94A3B8]">{c.organization} ({c.date})</div>
+                    <div className="text-sm font-medium text-[#613E35]">{c.title}</div>
+                    <div className="text-xs text-[#A27B6E]">{c.organization} ({c.date})</div>
                   </div>
                   <button
                     onClick={() => deleteCertification(c.id)}
-                    className="p-1.5 rounded-lg text-[#94A3B8] hover:text-[#DC2626] hover:bg-[#FEF2F2]"
+                    className="p-1.5 rounded-lg text-[#A27B6E] hover:text-[#DC2626] hover:bg-[#FEF2F2]"
                   >
                     <Trash2 size={15} />
                   </button>
@@ -240,17 +240,17 @@ export const AdminSampleDataView = () => {
       {/* Confirmation Dialog for Bulk Purge */}
       {confirmModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs animate-fade-in">
-          <div className="bg-white border border-[#E2E8F0] rounded-xl max-w-md w-full p-6 shadow-2xl">
+          <div className="bg-white border border-[#F0DED4] rounded-xl max-w-md w-full p-6 shadow-2xl">
             <div className="w-12 h-12 rounded-full bg-[#FEF2F2] border border-[#FCA5A5] text-[#DC2626] flex items-center justify-center mx-auto mb-4">
               <AlertTriangle size={24} />
             </div>
 
-            <h3 className="text-lg font-semibold text-center text-[#172554] mb-2">
+            <h3 className="text-lg font-semibold text-center text-[#613E35] mb-2">
               Confirm Bulk Deletion
             </h3>
 
-            <p className="text-xs text-center text-[#64748B] leading-relaxed mb-6">
-              Are you sure you want to delete all <span className="font-semibold text-[#DC2626]">{totalSampleCount} sample records</span>? This will permanently remove only records marked with <code className="text-[#2563EB]">isSample: true</code>. Your verified information and custom records will NOT be touched.
+            <p className="text-xs text-center text-[#A27B6E] leading-relaxed mb-6">
+              Are you sure you want to delete all <span className="font-semibold text-[#DC2626]">{totalSampleCount} sample records</span>? This will permanently remove only records marked with <code className="text-[#D98C70]">isSample: true</code>. Your verified information and custom records will NOT be touched.
             </p>
 
             <div className="flex items-center justify-center gap-3">

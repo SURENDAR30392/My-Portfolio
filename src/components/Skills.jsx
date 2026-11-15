@@ -29,16 +29,16 @@ export const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-16 md:py-24 bg-[#F8FAFC] border-b border-[#E2E8F0]">
+    <section id="skills" className="py-16 md:py-24 bg-[#FFF8F3] border-b border-[#F0DED4]">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
         <div className="mb-12">
           <span className="section-badge mb-3">Skills</span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#172554] tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#613E35] tracking-tight">
             Skills & Technical Capabilities
           </h2>
-          <p className="text-base text-[#64748B] mt-2 max-w-2xl">
+          <p className="text-base text-[#A27B6E] mt-2 max-w-2xl">
             The core programming languages, distributed backend systems, and developer tools I leverage to build scalable software.
           </p>
         </div>
@@ -52,19 +52,19 @@ export const Skills = () => {
             return (
               <div 
                 key={idx}
-                className="bg-white border border-[#E2E8F0] rounded-2xl p-6 shadow-card hover:border-[#BFDBFE] hover:shadow-card-hover transition-all duration-200 flex flex-col justify-between"
+                className="bg-white border border-[#F0DED4] rounded-2xl p-6 shadow-card hover:border-[#F4C9B5] hover:shadow-card-hover transition-all duration-200 flex flex-col justify-between"
               >
                 <div>
                   {/* Category Header */}
-                  <div className="flex items-center gap-3 mb-4 pb-4 border-b border-[#E2E8F0]">
-                    <div className="w-10 h-10 rounded-xl bg-[#EFF6FF] border border-[#DBEAFE] text-[#2563EB] flex items-center justify-center shrink-0">
+                  <div className="flex items-center gap-3 mb-4 pb-4 border-b border-[#F0DED4]">
+                    <div className="w-10 h-10 rounded-xl bg-[#FCE9DF] border border-[#F4C9B5] text-[#D98C70] flex items-center justify-center shrink-0">
                       <CategoryIcon size={20} />
                     </div>
                     <div>
-                      <h3 className="text-base font-bold text-[#172554]">
+                      <h3 className="text-base font-bold text-[#613E35]">
                         {cat.title}
                       </h3>
-                      <p className="text-[11px] text-[#64748B] leading-snug mt-0.5">
+                      <p className="text-[11px] text-[#A27B6E] leading-snug mt-0.5">
                         {cat.description}
                       </p>
                     </div>
@@ -75,18 +75,18 @@ export const Skills = () => {
                     {categorySkills.map((skill) => (
                       <li key={skill.id} className="flex items-center justify-between text-sm">
                         <div className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" aria-hidden="true" />
-                          <span className="font-medium text-[#172554]">{skill.name}</span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#D98C70]" aria-hidden="true" />
+                          <span className="font-medium text-[#613E35]">{skill.name}</span>
                         </div>
                         {skill.proficiency && (
                           <div className="flex items-center gap-2.5">
-                            <div className="w-20 sm:w-24 h-1.5 bg-[#EFF6FF] border border-[#DBEAFE]/40 rounded-full overflow-hidden">
+                            <div className="w-20 sm:w-24 h-1.5 bg-[#FCE9DF] border border-[#F4C9B5]/40 rounded-full overflow-hidden">
                               <div 
-                                className="h-full bg-gradient-to-r from-[#2563EB] to-[#60A5FA] rounded-full transition-all duration-500 ease-out" 
+                                className="h-full bg-gradient-to-r from-[#D98C70] to-[#F4C9B5] rounded-full transition-all duration-500 ease-out" 
                                 style={{ width: `${skill.proficiency}%` }}
                               />
                             </div>
-                            <span className="text-xs font-semibold text-[#64748B] w-8 text-right">
+                            <span className="text-xs font-semibold text-[#A27B6E] w-8 text-right">
                               {skill.proficiency}%
                             </span>
                           </div>
@@ -97,9 +97,9 @@ export const Skills = () => {
                 </div>
 
                 {/* Footer Count */}
-                <div className="mt-6 pt-4 border-t border-[#E2E8F0] text-xs text-[#64748B] flex items-center justify-between font-medium">
+                <div className="mt-6 pt-4 border-t border-[#F0DED4] text-xs text-[#A27B6E] flex items-center justify-between font-medium">
                   <span>{categorySkills.length} competencies</span>
-                  <span className="text-[#2563EB] inline-flex items-center gap-1">
+                  <span className="text-[#D98C70] inline-flex items-center gap-1">
                     <CheckCircle size={13} />
                     <span>Verified</span>
                   </span>
@@ -111,8 +111,8 @@ export const Skills = () => {
 
         {/* Empty State */}
         {allSkills.length === 0 && (
-          <div className="bg-white border border-[#E2E8F0] rounded-xl p-12 text-center my-6">
-            <p className="text-sm text-[#64748B]">No published skills found.</p>
+          <div className="bg-white border border-[#F0DED4] rounded-xl p-12 text-center my-6">
+            <p className="text-sm text-[#A27B6E]">No published skills found.</p>
           </div>
         )}
 

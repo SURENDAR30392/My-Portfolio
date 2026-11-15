@@ -34,7 +34,7 @@ export const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F8FAFC]">
+    <div className="min-h-screen flex flex-col bg-[#FFF8F3]">
       <Navbar />
 
       <main className="flex-1">

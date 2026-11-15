@@ -7,33 +7,33 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#F8FAFC',
+        background: '#FFF8F3',
         'surface-white': '#FFFFFF',
-        'section-subtle': '#EFF6FF',
-        border: '#E2E8F0',
+        'section-subtle': '#FCE9DF',
+        border: '#F0DED4',
         primary: {
-          DEFAULT: '#2563EB',
-          hover: '#1D4ED8',
-          light: '#EFF6FF',
+          DEFAULT: '#D98C70',
+          hover: '#C5775B',
+          light: '#FCE9DF',
         },
         secondary: {
-          DEFAULT: '#60A5FA',
-          hover: '#3B82F6',
+          DEFAULT: '#F4C9B5',
+          hover: '#E8B69F',
         },
         text: {
-          main: '#172554',
-          body: '#334155',
-          secondary: '#64748B',
-          muted: '#94A3B8',
+          main: '#613E35',
+          body: '#613E35',
+          secondary: '#A27B6E',
+          muted: '#A27B6E',
         },
         accent: {
-          blue: '#2563EB',
-          sky: '#60A5FA',
-          ice: '#EFF6FF',
+          blue: '#D98C70',
+          sky: '#F4C9B5',
+          ice: '#FCE9DF',
         },
         status: {
           green: '#10B981',
-          blue: '#2563EB',
+          blue: '#D98C70',
         }
       },
       fontFamily: {
@@ -45,10 +45,10 @@ export default {
         hero: '20px',
       },
       boxShadow: {
-        subtle: '0 1px 3px 0 rgba(23, 37, 84, 0.04), 0 1px 2px -1px rgba(23, 37, 84, 0.04)',
-        card: '0 4px 6px -1px rgba(23, 37, 84, 0.04), 0 2px 4px -2px rgba(23, 37, 84, 0.04)',
-        'card-hover': '0 10px 25px -3px rgba(37, 99, 235, 0.08), 0 4px 6px -4px rgba(37, 99, 235, 0.04)',
-        glow: '0 0 20px -3px rgba(37, 99, 235, 0.25)',
+        subtle: '0 1px 3px 0 rgba(97, 62, 53, 0.04), 0 1px 2px -1px rgba(97, 62, 53, 0.04)',
+        card: '0 4px 6px -1px rgba(97, 62, 53, 0.04), 0 2px 4px -2px rgba(97, 62, 53, 0.04)',
+        'card-hover': '0 10px 25px -3px rgba(217, 140, 112, 0.12), 0 4px 6px -4px rgba(217, 140, 112, 0.06)',
+        glow: '0 0 20px -3px rgba(217, 140, 112, 0.25)',
       }
     },
   },

@@ -46,7 +46,7 @@ export const Hero = () => {
   return (
     <section 
       id="hero" 
-      className="bg-[#F8FAFC] w-full flex flex-col justify-center relative pt-12 pb-16 lg:py-16 animate-fade-in border-b border-[#E2E8F0]"
+      className="bg-[#FFF8F3] w-full flex flex-col justify-center relative pt-12 pb-16 lg:py-16 animate-fade-in border-b border-[#F0DED4]"
     >
       <div className="max-w-[1200px] w-full mx-auto px-4 sm:px-6">
         <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10 lg:gap-14">
@@ -55,28 +55,28 @@ export const Hero = () => {
           <div className="w-full lg:max-w-[620px] flex flex-col items-start justify-center">
             
             {/* Status Indicator Pill */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[#E2E8F0] shadow-xs mb-5">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[#F0DED4] shadow-xs mb-5">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10B981] opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10B981]" />
               </span>
-              <span className="text-xs text-[#334155] font-medium tracking-tight">
+              <span className="text-xs text-[#613E35] font-medium tracking-tight">
                 Available for internships & software engineering roles
               </span>
             </div>
 
             {/* Candidate Name */}
-            <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-bold text-[#172554] leading-[1.12] tracking-tight mb-3">
+            <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-bold text-[#613E35] leading-[1.12] tracking-tight mb-3">
               {profile.name || "Marthala Surendar Reddy"}
             </h1>
 
             {/* Professional Role & Affiliation */}
-            <p className="text-lg sm:text-xl font-medium text-[#2563EB] leading-snug mb-4">
+            <p className="text-lg sm:text-xl font-medium text-[#D98C70] leading-snug mb-4">
               {profile.title || "B.Tech Computer Science and Engineering Student"} · KL University
             </p>
 
             {/* Narrative Tagline / Summary */}
-            <p className="text-base sm:text-[17px] text-[#64748B] leading-relaxed max-w-[540px] mb-8">
+            <p className="text-base sm:text-[17px] text-[#A27B6E] leading-relaxed max-w-[540px] mb-8">
               {profile.intro || "B.Tech CSE student at KL University specializing in core Java backend systems, data structures & algorithms, and modern full-stack web platforms."}
             </p>
 
@@ -91,7 +91,7 @@ export const Hero = () => {
               </a>
               <a 
                 href="/resume" 
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-[#64748B] hover:text-[#2563EB] px-3 py-2 rounded-lg transition-colors"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-[#A27B6E] hover:text-[#D98C70] px-3 py-2 rounded-lg transition-colors"
               >
                 <Download size={15} />
                 <span>Download Resume</span>
@@ -100,7 +100,7 @@ export const Hero = () => {
 
             {/* Social & Coding Platform Links */}
             <div>
-              <div className="text-xs font-semibold uppercase tracking-wider text-[#94A3B8] mb-2.5">
+              <div className="text-xs font-semibold uppercase tracking-wider text-[#A27B6E] mb-2.5">
                 Connect & Verify
               </div>
               <div className="flex flex-wrap items-center gap-2">
@@ -114,13 +114,13 @@ export const Hero = () => {
                         target={isMail ? undefined : "_blank"}
                         rel={isMail ? undefined : "noopener noreferrer"}
                         aria-label={item.label}
-                        className="w-10 h-10 rounded-lg bg-white border border-[#E2E8F0] shadow-xs flex items-center justify-center text-[#64748B] hover:text-[#2563EB] hover:bg-[#EFF6FF] hover:border-[#BFDBFE] transition-all duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#2563EB]"
+                        className="w-10 h-10 rounded-lg bg-white border border-[#F0DED4] shadow-xs flex items-center justify-center text-[#A27B6E] hover:text-[#D98C70] hover:bg-[#FCE9DF] hover:border-[#F4C9B5] transition-all duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D98C70]"
                       >
                         <Icon size={18} />
                       </a>
                       <span 
                         role="tooltip" 
-                        className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded text-[11px] font-medium text-white bg-[#172554] opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-150 whitespace-nowrap shadow-sm z-20"
+                        className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded text-[11px] font-medium text-white bg-[#613E35] opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-150 whitespace-nowrap shadow-sm z-20"
                       >
                         {item.name}
                       </span>
@@ -134,11 +134,11 @@ export const Hero = () => {
 
           {/* Right Column: Hero Portrait Frame */}
           <div className="w-full lg:max-w-[480px] flex justify-center items-center">
-            <div className="w-full max-w-[440px] h-[360px] sm:h-[460px] lg:h-[520px] bg-gradient-to-b from-[#EFF6FF] to-white rounded-2xl overflow-hidden flex items-end justify-center select-none border border-[#E2E8F0] shadow-card relative group">
+            <div className="w-full max-w-[440px] h-[360px] sm:h-[460px] lg:h-[520px] bg-gradient-to-b from-[#FCE9DF] to-white rounded-2xl overflow-hidden flex items-end justify-center select-none border border-[#F0DED4] shadow-card relative group">
               
               {/* Subtle Blue Glow in frame background */}
               <div 
-                className="absolute inset-0 bg-radial from-[#DBEAFE]/40 via-transparent to-transparent pointer-events-none"
+                className="absolute inset-0 bg-radial from-[#F4C9B5]/40 via-transparent to-transparent pointer-events-none"
                 aria-hidden="true"
               />
 
@@ -155,8 +155,8 @@ export const Hero = () => {
               />
 
               {/* Verified Student Badge Overlay */}
-              <div className="absolute top-4 right-4 z-20 bg-white/95 backdrop-blur-xs border border-[#E2E8F0] rounded-lg px-2.5 py-1 text-[11px] font-semibold text-[#172554] shadow-xs flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
+              <div className="absolute top-4 right-4 z-20 bg-white/95 backdrop-blur-xs border border-[#F0DED4] rounded-lg px-2.5 py-1 text-[11px] font-semibold text-[#613E35] shadow-xs flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#D98C70]" />
                 <span>KL University · 2028</span>
               </div>
             </div>
