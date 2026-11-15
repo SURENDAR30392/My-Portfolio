@@ -29,7 +29,35 @@ export const AdminProfileView = () => {
     codechef: social.codechef || DEFAULT_SOCIAL_LINKS.codechef,
     githubUsername: social.githubUsername || DEFAULT_SOCIAL_LINKS.githubUsername,
     leetcodeUsername: social.leetcodeUsername || DEFAULT_SOCIAL_LINKS.leetcodeUsername,
-    codechefUsername: social.codechefUsername || DEFAULT_SOCIAL_LINKS.codechefUsername
+    codechefUsername: social.codechefUsername || DEFAULT_SOCIAL_LINKS.codechefUsername,
+
+    // Coding Profile Cards Content
+    codingSectionTitle: social.codingSectionTitle || DEFAULT_SOCIAL_LINKS.codingSectionTitle || "Coding Profiles & Contributions",
+    codingSectionSubtitle: social.codingSectionSubtitle || DEFAULT_SOCIAL_LINKS.codingSectionSubtitle || "Active technical platforms where I practice algorithmic problem solving, participate in competitive programming contests, and maintain open-source software repositories.",
+
+    githubDescription: social.githubDescription || DEFAULT_SOCIAL_LINKS.githubDescription,
+    githubStat1Value: social.githubStat1Value || DEFAULT_SOCIAL_LINKS.githubStat1Value,
+    githubStat1Label: social.githubStat1Label || DEFAULT_SOCIAL_LINKS.githubStat1Label,
+    githubStat2Value: social.githubStat2Value || DEFAULT_SOCIAL_LINKS.githubStat2Value,
+    githubStat2Label: social.githubStat2Label || DEFAULT_SOCIAL_LINKS.githubStat2Label,
+    githubStat3Value: social.githubStat3Value || DEFAULT_SOCIAL_LINKS.githubStat3Value,
+    githubStat3Label: social.githubStat3Label || DEFAULT_SOCIAL_LINKS.githubStat3Label,
+
+    leetcodeDescription: social.leetcodeDescription || DEFAULT_SOCIAL_LINKS.leetcodeDescription,
+    leetcodeStat1Value: social.leetcodeStat1Value || DEFAULT_SOCIAL_LINKS.leetcodeStat1Value,
+    leetcodeStat1Label: social.leetcodeStat1Label || DEFAULT_SOCIAL_LINKS.leetcodeStat1Label,
+    leetcodeStat2Value: social.leetcodeStat2Value || DEFAULT_SOCIAL_LINKS.leetcodeStat2Value,
+    leetcodeStat2Label: social.leetcodeStat2Label || DEFAULT_SOCIAL_LINKS.leetcodeStat2Label,
+    leetcodeStat3Value: social.leetcodeStat3Value || DEFAULT_SOCIAL_LINKS.leetcodeStat3Value,
+    leetcodeStat3Label: social.leetcodeStat3Label || DEFAULT_SOCIAL_LINKS.leetcodeStat3Label,
+
+    codechefDescription: social.codechefDescription || DEFAULT_SOCIAL_LINKS.codechefDescription,
+    codechefStat1Value: social.codechefStat1Value || DEFAULT_SOCIAL_LINKS.codechefStat1Value,
+    codechefStat1Label: social.codechefStat1Label || DEFAULT_SOCIAL_LINKS.codechefStat1Label,
+    codechefStat2Value: social.codechefStat2Value || DEFAULT_SOCIAL_LINKS.codechefStat2Value,
+    codechefStat2Label: social.codechefStat2Label || DEFAULT_SOCIAL_LINKS.codechefStat2Label,
+    codechefStat3Value: social.codechefStat3Value || DEFAULT_SOCIAL_LINKS.codechefStat3Value,
+    codechefStat3Label: social.codechefStat3Label || DEFAULT_SOCIAL_LINKS.codechefStat3Label
   });
 
   const handleSave = async (e) => {
@@ -55,7 +83,30 @@ export const AdminProfileView = () => {
       githubUsername: form.githubUsername,
       leetcodeUsername: form.leetcodeUsername,
       codechefUsername: form.codechefUsername,
-      email: form.email
+      email: form.email,
+      codingSectionTitle: form.codingSectionTitle,
+      codingSectionSubtitle: form.codingSectionSubtitle,
+      githubDescription: form.githubDescription,
+      githubStat1Value: form.githubStat1Value,
+      githubStat1Label: form.githubStat1Label,
+      githubStat2Value: form.githubStat2Value,
+      githubStat2Label: form.githubStat2Label,
+      githubStat3Value: form.githubStat3Value,
+      githubStat3Label: form.githubStat3Label,
+      leetcodeDescription: form.leetcodeDescription,
+      leetcodeStat1Value: form.leetcodeStat1Value,
+      leetcodeStat1Label: form.leetcodeStat1Label,
+      leetcodeStat2Value: form.leetcodeStat2Value,
+      leetcodeStat2Label: form.leetcodeStat2Label,
+      leetcodeStat3Value: form.leetcodeStat3Value,
+      leetcodeStat3Label: form.leetcodeStat3Label,
+      codechefDescription: form.codechefDescription,
+      codechefStat1Value: form.codechefStat1Value,
+      codechefStat1Label: form.codechefStat1Label,
+      codechefStat2Value: form.codechefStat2Value,
+      codechefStat2Label: form.codechefStat2Label,
+      codechefStat3Value: form.codechefStat3Value,
+      codechefStat3Label: form.codechefStat3Label
     });
   };
 
@@ -302,6 +353,229 @@ export const AdminProfileView = () => {
                 onChange={e => setForm({ ...form, email: e.target.value })}
                 className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E]"
               />
+            </div>
+          </div>
+        </div>
+
+        {/* Coding Profiles & Contributions Cards Section */}
+        <div className="bg-white border border-[#DDE7E5] rounded-xl p-6 shadow-sm space-y-6">
+          <div className="border-b border-[#DDE7E5] pb-3">
+            <h2 className="text-base font-semibold text-[#102A28] flex items-center gap-2">
+              <Code2 size={18} className="text-[#0F766E]" />
+              <span>Coding Profiles Cards Content (Descriptions & Stat Badges)</span>
+            </h2>
+            <p className="text-xs text-[#4B5F5C] mt-1">
+              Edit the card descriptions and the 3 metric tags displayed on GitHub, LeetCode, and CodeChef cards.
+            </p>
+          </div>
+
+          {/* GitHub Card Editor */}
+          <div className="p-4 bg-[#F7FAFA] border border-[#DDE7E5] rounded-lg space-y-3">
+            <div className="flex items-center gap-2 text-sm font-semibold text-[#102A28]">
+              <Github size={16} className="text-[#0F766E]" />
+              <span>GitHub Card</span>
+            </div>
+            <div>
+              <label className="block text-xs font-semibold text-[#102A28] mb-1">Card Narrative Description</label>
+              <textarea
+                rows={2}
+                value={form.githubDescription}
+                onChange={e => setForm({ ...form, githubDescription: e.target.value })}
+                className="w-full px-3 py-2 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E] resize-none"
+              />
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+              <div className="bg-white p-2.5 rounded border border-[#DDE7E5] space-y-1.5">
+                <span className="text-[10px] font-bold text-[#8A9B98] uppercase">Badge 1</span>
+                <input
+                  type="text"
+                  placeholder="Value (e.g. Java)"
+                  value={form.githubStat1Value}
+                  onChange={e => setForm({ ...form, githubStat1Value: e.target.value })}
+                  className="w-full px-2 py-1 text-xs border rounded focus:outline-none focus:border-[#0F766E]"
+                />
+                <input
+                  type="text"
+                  placeholder="Label (e.g. Primary Tech)"
+                  value={form.githubStat1Label}
+                  onChange={e => setForm({ ...form, githubStat1Label: e.target.value })}
+                  className="w-full px-2 py-1 text-xs border rounded text-[#8A9B98] focus:outline-none focus:border-[#0F766E]"
+                />
+              </div>
+              <div className="bg-white p-2.5 rounded border border-[#DDE7E5] space-y-1.5">
+                <span className="text-[10px] font-bold text-[#8A9B98] uppercase">Badge 2</span>
+                <input
+                  type="text"
+                  placeholder="Value (e.g. Public)"
+                  value={form.githubStat2Value}
+                  onChange={e => setForm({ ...form, githubStat2Value: e.target.value })}
+                  className="w-full px-2 py-1 text-xs border rounded focus:outline-none focus:border-[#0F766E]"
+                />
+                <input
+                  type="text"
+                  placeholder="Label (e.g. Repositories)"
+                  value={form.githubStat2Label}
+                  onChange={e => setForm({ ...form, githubStat2Label: e.target.value })}
+                  className="w-full px-2 py-1 text-xs border rounded text-[#8A9B98] focus:outline-none focus:border-[#0F766E]"
+                />
+              </div>
+              <div className="bg-white p-2.5 rounded border border-[#DDE7E5] space-y-1.5">
+                <span className="text-[10px] font-bold text-[#8A9B98] uppercase">Badge 3</span>
+                <input
+                  type="text"
+                  placeholder="Value (e.g. Active)"
+                  value={form.githubStat3Value}
+                  onChange={e => setForm({ ...form, githubStat3Value: e.target.value })}
+                  className="w-full px-2 py-1 text-xs border rounded text-[#0F766E] font-semibold focus:outline-none focus:border-[#0F766E]"
+                />
+                <input
+                  type="text"
+                  placeholder="Label (e.g. Commits)"
+                  value={form.githubStat3Label}
+                  onChange={e => setForm({ ...form, githubStat3Label: e.target.value })}
+                  className="w-full px-2 py-1 text-xs border rounded text-[#8A9B98] focus:outline-none focus:border-[#0F766E]"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* LeetCode Card Editor */}
+          <div className="p-4 bg-[#F7FAFA] border border-[#DDE7E5] rounded-lg space-y-3">
+            <div className="flex items-center gap-2 text-sm font-semibold text-[#102A28]">
+              <Code2 size={16} className="text-[#0F766E]" />
+              <span>LeetCode Card</span>
+            </div>
+            <div>
+              <label className="block text-xs font-semibold text-[#102A28] mb-1">Card Narrative Description</label>
+              <textarea
+                rows={2}
+                value={form.leetcodeDescription}
+                onChange={e => setForm({ ...form, leetcodeDescription: e.target.value })}
+                className="w-full px-3 py-2 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E] resize-none"
+              />
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+              <div className="bg-white p-2.5 rounded border border-[#DDE7E5] space-y-1.5">
+                <span className="text-[10px] font-bold text-[#8A9B98] uppercase">Badge 1</span>
+                <input
+                  type="text"
+                  placeholder="Value (e.g. 150+)"
+                  value={form.leetcodeStat1Value}
+                  onChange={e => setForm({ ...form, leetcodeStat1Value: e.target.value })}
+                  className="w-full px-2 py-1 text-xs border rounded text-[#15803D] font-semibold focus:outline-none focus:border-[#0F766E]"
+                />
+                <input
+                  type="text"
+                  placeholder="Label (e.g. Solved)"
+                  value={form.leetcodeStat1Label}
+                  onChange={e => setForm({ ...form, leetcodeStat1Label: e.target.value })}
+                  className="w-full px-2 py-1 text-xs border rounded text-[#8A9B98] focus:outline-none focus:border-[#0F766E]"
+                />
+              </div>
+              <div className="bg-white p-2.5 rounded border border-[#DDE7E5] space-y-1.5">
+                <span className="text-[10px] font-bold text-[#8A9B98] uppercase">Badge 2</span>
+                <input
+                  type="text"
+                  placeholder="Value (e.g. DSA)"
+                  value={form.leetcodeStat2Value}
+                  onChange={e => setForm({ ...form, leetcodeStat2Value: e.target.value })}
+                  className="w-full px-2 py-1 text-xs border rounded focus:outline-none focus:border-[#0F766E]"
+                />
+                <input
+                  type="text"
+                  placeholder="Label (e.g. Algorithms)"
+                  value={form.leetcodeStat2Label}
+                  onChange={e => setForm({ ...form, leetcodeStat2Label: e.target.value })}
+                  className="w-full px-2 py-1 text-xs border rounded text-[#8A9B98] focus:outline-none focus:border-[#0F766E]"
+                />
+              </div>
+              <div className="bg-white p-2.5 rounded border border-[#DDE7E5] space-y-1.5">
+                <span className="text-[10px] font-bold text-[#8A9B98] uppercase">Badge 3</span>
+                <input
+                  type="text"
+                  placeholder="Value (e.g. Java)"
+                  value={form.leetcodeStat3Value}
+                  onChange={e => setForm({ ...form, leetcodeStat3Value: e.target.value })}
+                  className="w-full px-2 py-1 text-xs border rounded text-[#0F766E] font-semibold focus:outline-none focus:border-[#0F766E]"
+                />
+                <input
+                  type="text"
+                  placeholder="Label (e.g. Language)"
+                  value={form.leetcodeStat3Label}
+                  onChange={e => setForm({ ...form, leetcodeStat3Label: e.target.value })}
+                  className="w-full px-2 py-1 text-xs border rounded text-[#8A9B98] focus:outline-none focus:border-[#0F766E]"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* CodeChef Card Editor */}
+          <div className="p-4 bg-[#F7FAFA] border border-[#DDE7E5] rounded-lg space-y-3">
+            <div className="flex items-center gap-2 text-sm font-semibold text-[#102A28]">
+              <CodeChefIcon size={16} className="text-[#0F766E]" />
+              <span>CodeChef Card</span>
+            </div>
+            <div>
+              <label className="block text-xs font-semibold text-[#102A28] mb-1">Card Narrative Description</label>
+              <textarea
+                rows={2}
+                value={form.codechefDescription}
+                onChange={e => setForm({ ...form, codechefDescription: e.target.value })}
+                className="w-full px-3 py-2 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E] resize-none"
+              />
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+              <div className="bg-white p-2.5 rounded border border-[#DDE7E5] space-y-1.5">
+                <span className="text-[10px] font-bold text-[#8A9B98] uppercase">Badge 1</span>
+                <input
+                  type="text"
+                  placeholder="Value (e.g. Div 4/3)"
+                  value={form.codechefStat1Value}
+                  onChange={e => setForm({ ...form, codechefStat1Value: e.target.value })}
+                  className="w-full px-2 py-1 text-xs border rounded focus:outline-none focus:border-[#0F766E]"
+                />
+                <input
+                  type="text"
+                  placeholder="Label (e.g. Division)"
+                  value={form.codechefStat1Label}
+                  onChange={e => setForm({ ...form, codechefStat1Label: e.target.value })}
+                  className="w-full px-2 py-1 text-xs border rounded text-[#8A9B98] focus:outline-none focus:border-[#0F766E]"
+                />
+              </div>
+              <div className="bg-white p-2.5 rounded border border-[#DDE7E5] space-y-1.5">
+                <span className="text-[10px] font-bold text-[#8A9B98] uppercase">Badge 2</span>
+                <input
+                  type="text"
+                  placeholder="Value (e.g. Contests)"
+                  value={form.codechefStat2Value}
+                  onChange={e => setForm({ ...form, codechefStat2Value: e.target.value })}
+                  className="w-full px-2 py-1 text-xs border rounded focus:outline-none focus:border-[#0F766E]"
+                />
+                <input
+                  type="text"
+                  placeholder="Label (e.g. Starters)"
+                  value={form.codechefStat2Label}
+                  onChange={e => setForm({ ...form, codechefStat2Label: e.target.value })}
+                  className="w-full px-2 py-1 text-xs border rounded text-[#8A9B98] focus:outline-none focus:border-[#0F766E]"
+                />
+              </div>
+              <div className="bg-white p-2.5 rounded border border-[#DDE7E5] space-y-1.5">
+                <span className="text-[10px] font-bold text-[#8A9B98] uppercase">Badge 3</span>
+                <input
+                  type="text"
+                  placeholder="Value (e.g. Active)"
+                  value={form.codechefStat3Value}
+                  onChange={e => setForm({ ...form, codechefStat3Value: e.target.value })}
+                  className="w-full px-2 py-1 text-xs border rounded text-[#0F766E] font-semibold focus:outline-none focus:border-[#0F766E]"
+                />
+                <input
+                  type="text"
+                  placeholder="Label (e.g. Rating)"
+                  value={form.codechefStat3Label}
+                  onChange={e => setForm({ ...form, codechefStat3Label: e.target.value })}
+                  className="w-full px-2 py-1 text-xs border rounded text-[#8A9B98] focus:outline-none focus:border-[#0F766E]"
+                />
+              </div>
             </div>
           </div>
         </div>

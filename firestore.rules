@@ -77,10 +77,15 @@ service cloud.firestore {
     }
 
     // =========================================================================
-    // 9. SOCIAL LINKS (Published Only)
+    // 9. SOCIAL LINKS & CODING PROFILES (Published Only)
     // Public can ONLY read published social links; Super Admin has full CRUD
     // =========================================================================
     match /socialLinks/{socialLinkId} {
+      allow read: if resource.data.published == true || isSuperAdmin();
+      allow write: if isSuperAdmin();
+    }
+
+    match /codingProfiles/{profileId} {
       allow read: if resource.data.published == true || isSuperAdmin();
       allow write: if isSuperAdmin();
     }

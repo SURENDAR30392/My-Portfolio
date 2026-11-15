@@ -23,10 +23,10 @@ export const CodingProfiles = () => {
         {/* Section Header */}
         <div className="mb-12">
           <h2 className="text-2xl md:text-3xl font-semibold text-[#102A28] mb-3">
-            Coding Profiles & Contributions
+            {social.codingSectionTitle || DEFAULT_SOCIAL_LINKS.codingSectionTitle || "Coding Profiles & Contributions"}
           </h2>
           <p className="text-base text-[#4B5F5C] max-w-[680px]">
-            Active technical platforms where I practice algorithmic problem solving, participate in competitive programming contests, and maintain open-source software repositories.
+            {social.codingSectionSubtitle || DEFAULT_SOCIAL_LINKS.codingSectionSubtitle || "Active technical platforms where I practice algorithmic problem solving, participate in competitive programming contests, and maintain open-source software repositories."}
           </p>
         </div>
 
@@ -60,22 +60,34 @@ export const CodingProfiles = () => {
               </div>
 
               <p className="text-sm text-[#4B5F5C] leading-relaxed mb-6">
-                Maintaining repositories in core Java, Object-Oriented design patterns, full-stack prototypes, and open-source project code.
+                {social.githubDescription || DEFAULT_SOCIAL_LINKS.githubDescription}
               </p>
 
               {/* Verified Metrics Grid */}
               <div className="grid grid-cols-3 gap-2.5 pt-4 border-t border-[#DDE7E5]">
                 <div className="bg-[#F7FAFA] border border-[#DDE7E5] rounded-lg p-2 text-center">
-                  <div className="text-sm font-semibold text-[#102A28]">Java</div>
-                  <div className="text-[10.5px] text-[#8A9B98]">Primary Tech</div>
+                  <div className="text-sm font-semibold text-[#102A28]">
+                    {social.githubStat1Value || DEFAULT_SOCIAL_LINKS.githubStat1Value}
+                  </div>
+                  <div className="text-[10.5px] text-[#8A9B98]">
+                    {social.githubStat1Label || DEFAULT_SOCIAL_LINKS.githubStat1Label}
+                  </div>
                 </div>
                 <div className="bg-[#F7FAFA] border border-[#DDE7E5] rounded-lg p-2 text-center">
-                  <div className="text-sm font-semibold text-[#102A28]">Public</div>
-                  <div className="text-[10.5px] text-[#8A9B98]">Repositories</div>
+                  <div className="text-sm font-semibold text-[#102A28]">
+                    {social.githubStat2Value || DEFAULT_SOCIAL_LINKS.githubStat2Value}
+                  </div>
+                  <div className="text-[10.5px] text-[#8A9B98]">
+                    {social.githubStat2Label || DEFAULT_SOCIAL_LINKS.githubStat2Label}
+                  </div>
                 </div>
                 <div className="bg-[#F7FAFA] border border-[#DDE7E5] rounded-lg p-2 text-center">
-                  <div className="text-sm font-semibold text-[#0F766E]">Active</div>
-                  <div className="text-[10.5px] text-[#8A9B98]">Commits</div>
+                  <div className="text-sm font-semibold text-[#0F766E]">
+                    {social.githubStat3Value || DEFAULT_SOCIAL_LINKS.githubStat3Value}
+                  </div>
+                  <div className="text-[10.5px] text-[#8A9B98]">
+                    {social.githubStat3Label || DEFAULT_SOCIAL_LINKS.githubStat3Label}
+                  </div>
                 </div>
               </div>
             </div>
@@ -116,22 +128,34 @@ export const CodingProfiles = () => {
               </div>
 
               <p className="text-sm text-[#4B5F5C] leading-relaxed mb-6">
-                Active problem solver practicing data structures, arrays, strings, binary trees, and algorithmic complexity optimizations in Java.
+                {social.leetcodeDescription || DEFAULT_SOCIAL_LINKS.leetcodeDescription}
               </p>
 
               {/* LeetCode Metrics Grid */}
               <div className="grid grid-cols-3 gap-2.5 pt-4 border-t border-[#DDE7E5]">
                 <div className="bg-[#F7FAFA] border border-[#DDE7E5] rounded-lg p-2 text-center">
-                  <div className="text-sm font-semibold text-[#15803D]">150+</div>
-                  <div className="text-[10.5px] text-[#8A9B98]">Solved</div>
+                  <div className="text-sm font-semibold text-[#15803D]">
+                    {social.leetcodeStat1Value || DEFAULT_SOCIAL_LINKS.leetcodeStat1Value}
+                  </div>
+                  <div className="text-[10.5px] text-[#8A9B98]">
+                    {social.leetcodeStat1Label || DEFAULT_SOCIAL_LINKS.leetcodeStat1Label}
+                  </div>
                 </div>
                 <div className="bg-[#F7FAFA] border border-[#DDE7E5] rounded-lg p-2 text-center">
-                  <div className="text-sm font-semibold text-[#102A28]">DSA</div>
-                  <div className="text-[10.5px] text-[#8A9B98]">Algorithms</div>
+                  <div className="text-sm font-semibold text-[#102A28]">
+                    {social.leetcodeStat2Value || DEFAULT_SOCIAL_LINKS.leetcodeStat2Value}
+                  </div>
+                  <div className="text-[10.5px] text-[#8A9B98]">
+                    {social.leetcodeStat2Label || DEFAULT_SOCIAL_LINKS.leetcodeStat2Label}
+                  </div>
                 </div>
                 <div className="bg-[#F7FAFA] border border-[#DDE7E5] rounded-lg p-2 text-center">
-                  <div className="text-sm font-semibold text-[#0F766E]">Java</div>
-                  <div className="text-[10.5px] text-[#8A9B98]">Language</div>
+                  <div className="text-sm font-semibold text-[#0F766E]">
+                    {social.leetcodeStat3Value || DEFAULT_SOCIAL_LINKS.leetcodeStat3Value}
+                  </div>
+                  <div className="text-[10.5px] text-[#8A9B98]">
+                    {social.leetcodeStat3Label || DEFAULT_SOCIAL_LINKS.leetcodeStat3Label}
+                  </div>
                 </div>
               </div>
             </div>
@@ -172,22 +196,34 @@ export const CodingProfiles = () => {
               </div>
 
               <p className="text-sm text-[#4B5F5C] leading-relaxed mb-6">
-                Competitive programming participant competing in timed division rounds, Starters contests, and algorithmic challenges.
+                {social.codechefDescription || DEFAULT_SOCIAL_LINKS.codechefDescription}
               </p>
 
               {/* CodeChef Metrics Grid */}
               <div className="grid grid-cols-3 gap-2.5 pt-4 border-t border-[#DDE7E5]">
                 <div className="bg-[#F7FAFA] border border-[#DDE7E5] rounded-lg p-2 text-center">
-                  <div className="text-sm font-semibold text-[#102A28]">Div 4/3</div>
-                  <div className="text-[10.5px] text-[#8A9B98]">Division</div>
+                  <div className="text-sm font-semibold text-[#102A28]">
+                    {social.codechefStat1Value || DEFAULT_SOCIAL_LINKS.codechefStat1Value}
+                  </div>
+                  <div className="text-[10.5px] text-[#8A9B98]">
+                    {social.codechefStat1Label || DEFAULT_SOCIAL_LINKS.codechefStat1Label}
+                  </div>
                 </div>
                 <div className="bg-[#F7FAFA] border border-[#DDE7E5] rounded-lg p-2 text-center">
-                  <div className="text-sm font-semibold text-[#102A28]">Contests</div>
-                  <div className="text-[10.5px] text-[#8A9B98]">Starters</div>
+                  <div className="text-sm font-semibold text-[#102A28]">
+                    {social.codechefStat2Value || DEFAULT_SOCIAL_LINKS.codechefStat2Value}
+                  </div>
+                  <div className="text-[10.5px] text-[#8A9B98]">
+                    {social.codechefStat2Label || DEFAULT_SOCIAL_LINKS.codechefStat2Label}
+                  </div>
                 </div>
                 <div className="bg-[#F7FAFA] border border-[#DDE7E5] rounded-lg p-2 text-center">
-                  <div className="text-sm font-semibold text-[#0F766E]">Active</div>
-                  <div className="text-[10.5px] text-[#8A9B98]">Rating</div>
+                  <div className="text-sm font-semibold text-[#0F766E]">
+                    {social.codechefStat3Value || DEFAULT_SOCIAL_LINKS.codechefStat3Value}
+                  </div>
+                  <div className="text-[10.5px] text-[#8A9B98]">
+                    {social.codechefStat3Label || DEFAULT_SOCIAL_LINKS.codechefStat3Label}
+                  </div>
                 </div>
               </div>
             </div>
