@@ -115,6 +115,18 @@ export const DataProvider = ({ children }) => {
           }
         }, err => console.warn("Settings listener:", err.message)));
 
+        // 3b. Resume Settings Listener (doc: settings/resume)
+        const resumeRef = doc(db, 'settings', 'resume');
+        unsubs.push(onSnapshot(resumeRef, (snap) => {
+          if (snap.exists()) {
+            setData(prev => ({
+              ...prev,
+              resume: { ...prev.resume, ...snap.data() }
+            }));
+            setIsFirebaseLive(true);
+          }
+        }, err => console.warn("Resume settings listener:", err.message)));
+
         // 4. Skills Listener (Collection: skills)
         // Public visitors query only published == true; Admin queries all
         const skillsQuery = isAdmin 
@@ -724,6 +736,7 @@ export const DataProvider = ({ children }) => {
     const updatedResume = { 
       ...data.resume, 
       ...resumeData, 
+      isPublic: true,
       lastUpdated: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) 
     };
     setData(prev => {
@@ -732,6 +745,13 @@ export const DataProvider = ({ children }) => {
       syncToFirestore(updated);
       return updated;
     });
+    if (isFirebaseConfigured && db) {
+      try {
+        await setDoc(doc(db, 'settings', 'resume'), updatedResume, { merge: true });
+      } catch (e) {
+        console.warn("Resume direct write notice:", e.message);
+      }
+    }
     showNotification("Resume details updated!");
     return true;
   };
