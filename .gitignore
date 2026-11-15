@@ -28,3 +28,7 @@ dist-ssr
 .env.*.local
 service-account.json
 
+# Firebase cache
+.firebase
+
+

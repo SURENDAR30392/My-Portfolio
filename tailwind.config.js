@@ -7,24 +7,33 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#F7FAFA',
-        'surface-alt': '#EEF4F3',
-        border: '#DDE7E5',
+        background: '#F8FAFC',
+        'surface-white': '#FFFFFF',
+        'section-subtle': '#EFF6FF',
+        border: '#E2E8F0',
         primary: {
-          DEFAULT: '#0F766E',
-          hover: '#0B5C56',
+          DEFAULT: '#2563EB',
+          hover: '#1D4ED8',
+          light: '#EFF6FF',
         },
-        accent: {
-          mint: '#7CC7BD',
-          ice: '#E6F4F2',
+        secondary: {
+          DEFAULT: '#60A5FA',
+          hover: '#3B82F6',
         },
         text: {
-          main: '#102A28',
-          body: '#4B5F5C',
-          muted: '#8A9B98',
+          main: '#172554',
+          body: '#334155',
+          secondary: '#64748B',
+          muted: '#94A3B8',
+        },
+        accent: {
+          blue: '#2563EB',
+          sky: '#60A5FA',
+          ice: '#EFF6FF',
         },
         status: {
-          green: '#15803D',
+          green: '#10B981',
+          blue: '#2563EB',
         }
       },
       fontFamily: {
@@ -32,15 +41,16 @@ export default {
       },
       borderRadius: {
         DEFAULT: '8px',
-        card: '12px',
+        card: '14px',
         hero: '20px',
       },
       boxShadow: {
-        subtle: '0 1px 3px rgba(16, 42, 40, 0.05)',
-        card: '0 4px 20px -2px rgba(16, 42, 40, 0.05)',
+        subtle: '0 1px 3px 0 rgba(23, 37, 84, 0.04), 0 1px 2px -1px rgba(23, 37, 84, 0.04)',
+        card: '0 4px 6px -1px rgba(23, 37, 84, 0.04), 0 2px 4px -2px rgba(23, 37, 84, 0.04)',
+        'card-hover': '0 10px 25px -3px rgba(37, 99, 235, 0.08), 0 4px 6px -4px rgba(37, 99, 235, 0.04)',
+        glow: '0 0 20px -3px rgba(37, 99, 235, 0.25)',
       }
     },
   },
   plugins: [],
 }
-

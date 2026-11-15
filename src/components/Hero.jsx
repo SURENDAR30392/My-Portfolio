@@ -1,27 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Linkedin, Github, Code2, Mail, ChevronDown } from 'lucide-react';
+import { Linkedin, Github, Code2, Mail, ArrowRight, Download } from 'lucide-react';
 import { CodeChefIcon } from './icons/CodeChefIcon';
 import { useData } from '../context/DataContext';
 import { DEFAULT_SOCIAL_LINKS } from '../data/socialLinks';
 
 export const Hero = () => {
   const { data } = useData();
-  const [showScrollArrow, setShowScrollArrow] = useState(true);
-
   const profile = data.profile || {};
   const social = data.social || {};
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 25) {
-        setShowScrollArrow(false);
-      }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Strict independent social links mapping - NO shared or fallback-to-GitHub links
+  // Strict independent social links mapping
   const socialLinks = [
     { 
       name: "LinkedIn", 
@@ -58,99 +46,123 @@ export const Hero = () => {
   return (
     <section 
       id="hero" 
-      className="bg-[#F7FAFA] w-full flex flex-col justify-center relative pt-12 pb-16 lg:py-0 lg:h-[min(calc(100vh-64px),760px)] lg:min-h-[640px] animate-fade-in"
+      className="bg-[#F8FAFC] w-full flex flex-col justify-center relative pt-12 pb-16 lg:py-16 animate-fade-in border-b border-[#E2E8F0]"
     >
-      <div className="max-w-[1100px] w-full mx-auto px-6">
-        <div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-8 lg:gap-[64px]">
+      <div className="max-w-[1200px] w-full mx-auto px-4 sm:px-6">
+        <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10 lg:gap-14">
           
-          {/* Left Column */}
-          <div className="w-full lg:max-w-[560px] flex flex-col items-start justify-center">
-            {/* Availability Indicator */}
-            <div className="inline-flex items-center gap-2 mb-[12px]">
-              <span className="w-2 h-2 rounded-full bg-[#15803D] animate-pulse" aria-hidden="true" />
-              <span className="text-[14px] text-[#4B5F5C] font-medium">Available for work & internships</span>
+          {/* Left Column: Identity & Actions */}
+          <div className="w-full lg:max-w-[620px] flex flex-col items-start justify-center">
+            
+            {/* Status Indicator Pill */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[#E2E8F0] shadow-xs mb-5">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10B981] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10B981]" />
+              </span>
+              <span className="text-xs text-[#334155] font-medium tracking-tight">
+                Available for internships & software engineering roles
+              </span>
             </div>
 
-            {/* Name */}
-            <h1 className="text-[32px] sm:text-[46px] lg:text-[56px] font-semibold text-[#102A28] leading-[1.1] tracking-[-0.02em] mb-[12px] break-words">
+            {/* Candidate Name */}
+            <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-bold text-[#172554] leading-[1.12] tracking-tight mb-3">
               {profile.name || "Marthala Surendar Reddy"}
             </h1>
 
-            {/* Title / Role */}
-            <p className="text-[18px] sm:text-[20px] font-normal text-[#0F766E] leading-[1.3] mb-[16px]">
-              {profile.title || "B.Tech Computer Science and Engineering Student"}
+            {/* Professional Role & Affiliation */}
+            <p className="text-lg sm:text-xl font-medium text-[#2563EB] leading-snug mb-4">
+              {profile.title || "B.Tech Computer Science and Engineering Student"} · KL University
             </p>
 
-            {/* University & Bio Summary */}
-            <p className="text-[16px] sm:text-[17px] text-[#4B5F5C] leading-[1.6] max-w-[480px] mb-[32px]">
-              {profile.intro || "Undergraduate student at KL University (Expected 2028). Specialized in Java backend architectures, data structures & algorithms, and full-stack web engineering."}
+            {/* Narrative Tagline / Summary */}
+            <p className="text-base sm:text-[17px] text-[#64748B] leading-relaxed max-w-[540px] mb-8">
+              {profile.intro || "B.Tech CSE student at KL University specializing in core Java backend systems, data structures & algorithms, and modern full-stack web platforms."}
             </p>
 
-            {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 mb-[24px]">
+            {/* Call-to-Action Buttons */}
+            <div className="flex flex-wrap items-center gap-3.5 mb-8">
               <a href="#work" className="btn-primary">
-                View my work
+                <span>View Projects</span>
+                <ArrowRight size={16} />
               </a>
               <a href="#contact" className="btn-secondary">
-                Contact me
+                <span>Get in Touch</span>
+              </a>
+              <a 
+                href="/resume" 
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-[#64748B] hover:text-[#2563EB] px-3 py-2 rounded-lg transition-colors"
+              >
+                <Download size={15} />
+                <span>Download Resume</span>
               </a>
             </div>
 
-            {/* Social Links with Tooltips */}
-            <div className="flex flex-wrap items-center gap-[8px]">
-              {socialLinks.map((item) => {
-                const Icon = item.icon;
-                const isMail = item.url.startsWith('mailto:');
-                return (
-                  <div key={item.name} className="relative group">
-                    <a
-                      href={item.url}
-                      target={isMail ? undefined : "_blank"}
-                      rel={isMail ? undefined : "noopener noreferrer"}
-                      aria-label={item.label}
-                      className="w-[40px] h-[40px] rounded-full flex items-center justify-center text-[#4B5F5C] hover:text-[#0F766E] hover:bg-[#E6F4F2] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#7CC7BD]"
-                    >
-                      <Icon size={20} />
-                    </a>
-                    <span 
-                      role="tooltip" 
-                      className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded text-[11px] font-medium text-white bg-[#102A28] opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-150 whitespace-nowrap shadow-sm z-20"
-                    >
-                      {item.name}
-                    </span>
-                  </div>
-                );
-              })}
+            {/* Social & Coding Platform Links */}
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-wider text-[#94A3B8] mb-2.5">
+                Connect & Verify
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                {socialLinks.map((item) => {
+                  const Icon = item.icon;
+                  const isMail = item.url.startsWith('mailto:');
+                  return (
+                    <div key={item.name} className="relative group">
+                      <a
+                        href={item.url}
+                        target={isMail ? undefined : "_blank"}
+                        rel={isMail ? undefined : "noopener noreferrer"}
+                        aria-label={item.label}
+                        className="w-10 h-10 rounded-lg bg-white border border-[#E2E8F0] shadow-xs flex items-center justify-center text-[#64748B] hover:text-[#2563EB] hover:bg-[#EFF6FF] hover:border-[#BFDBFE] transition-all duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#2563EB]"
+                      >
+                        <Icon size={18} />
+                      </a>
+                      <span 
+                        role="tooltip" 
+                        className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded text-[11px] font-medium text-white bg-[#172554] opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-150 whitespace-nowrap shadow-sm z-20"
+                      >
+                        {item.name}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
+
           </div>
 
           {/* Right Column: Hero Portrait Frame */}
-          <div className="w-full lg:max-w-[520px] flex justify-center lg:justify-end items-center">
-            <div className="w-full max-w-[520px] h-[360px] sm:h-[480px] lg:h-[600px] bg-[#E6F4F2] rounded-[20px] overflow-hidden flex items-end justify-center select-none border border-[#DDE7E5]/50 shadow-sm relative group">
+          <div className="w-full lg:max-w-[480px] flex justify-center items-center">
+            <div className="w-full max-w-[440px] h-[360px] sm:h-[460px] lg:h-[520px] bg-gradient-to-b from-[#EFF6FF] to-white rounded-2xl overflow-hidden flex items-end justify-center select-none border border-[#E2E8F0] shadow-card relative group">
+              
+              {/* Subtle Blue Glow in frame background */}
+              <div 
+                className="absolute inset-0 bg-radial from-[#DBEAFE]/40 via-transparent to-transparent pointer-events-none"
+                aria-hidden="true"
+              />
+
+              {/* Portrait Image */}
               <img 
                 src={profile.avatar || "/msr-portrait.svg"} 
                 alt={profile.name || "Marthala Surendar Reddy"}
-                className="w-full h-full object-contain object-bottom pointer-events-none transition-transform duration-300 group-hover:scale-[1.02]"
+                className="w-full h-full object-contain object-bottom pointer-events-none transition-transform duration-300 group-hover:scale-[1.02] relative z-10"
                 loading="eager"
                 onError={(e) => {
                   e.currentTarget.onerror = null;
                   e.currentTarget.src = "/msr-portrait.svg";
                 }}
               />
+
+              {/* Verified Student Badge Overlay */}
+              <div className="absolute top-4 right-4 z-20 bg-white/95 backdrop-blur-xs border border-[#E2E8F0] rounded-lg px-2.5 py-1 text-[11px] font-semibold text-[#172554] shadow-xs flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
+                <span>KL University · 2028</span>
+              </div>
             </div>
           </div>
 
         </div>
-      </div>
-
-      {/* Floating Scroll Down Arrow */}
-      <div 
-        className={`hidden lg:flex absolute bottom-3 left-1/2 -translate-x-1/2 flex-col items-center gap-1 transition-opacity duration-300 pointer-events-none ${
-          showScrollArrow ? 'opacity-100' : 'opacity-0'
-        }`}
-        aria-hidden="true"
-      >
-        <ChevronDown size={18} className="text-[#8A9B98] animate-bounce" />
       </div>
     </section>
   );

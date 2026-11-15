@@ -21,40 +21,40 @@ export const AdminLoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-[#F7FAFA] p-6 text-[#102A28]">
-      <div className="max-w-md w-full bg-white border border-[#DDE7E5] rounded-xl p-8 shadow-sm">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[#F8FAFC] p-6 text-[#172554]">
+      <div className="max-w-md w-full bg-white border border-[#E2E8F0] rounded-2xl p-8 shadow-card">
 
         {/* Shield Icon */}
-        <div className="w-14 h-14 bg-[#E6F4F2] text-[#0F766E] rounded-full flex items-center justify-center mx-auto mb-5 border border-[#7CC7BD]/40">
+        <div className="w-14 h-14 bg-[#EFF6FF] text-[#2563EB] rounded-2xl flex items-center justify-center mx-auto mb-5 border border-[#DBEAFE] shadow-xs">
           <ShieldCheck size={28} />
         </div>
 
-        <h1 className="text-2xl font-semibold text-center text-[#102A28] mb-1">
+        <h1 className="text-2xl font-bold text-center text-[#172554] mb-1">
           Super Admin Panel
         </h1>
-        <p className="text-sm text-center text-[#4B5F5C] mb-6">
+        <p className="text-sm text-center text-[#64748B] mb-6">
           Single-owner management system for Marthala Surendar Reddy (MSR).
         </p>
 
         {authError && (
-          <div className="mb-6 p-3.5 rounded-lg bg-[#FEF2F2] border border-[#FCA5A5] text-[#DC2626] text-xs leading-relaxed flex items-start gap-2">
+          <div className="mb-6 p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-600 text-xs leading-relaxed flex items-start gap-2 animate-fade-in">
             <AlertCircle size={16} className="shrink-0 mt-0.5" />
             <span>{authError}</span>
           </div>
         )}
 
-        <div className="bg-[#F7FAFA] border border-[#DDE7E5] rounded-lg p-4 mb-6 space-y-2 text-xs text-[#4B5F5C]">
-          <div className="font-semibold text-[#102A28] flex items-center gap-1.5">
-            <Lock size={13} className="text-[#0F766E]" />
+        <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl p-4 mb-6 space-y-2 text-xs text-[#64748B]">
+          <div className="font-semibold text-[#172554] flex items-center gap-1.5">
+            <Lock size={13} className="text-[#2563EB]" />
             <span>Sole Authorized Administrator</span>
           </div>
-          <div className="p-3 rounded-lg bg-white border border-[#DDE7E5] flex items-center justify-between">
-            <span className="font-semibold text-[#102A28] text-sm">Super Admin</span>
-            <span className="text-[10.5px] text-[#0F766E] font-medium bg-[#E6F4F2] px-2.5 py-1 rounded-full border border-[#7CC7BD]/40">
+          <div className="p-3 rounded-lg bg-white border border-[#E2E8F0] flex items-center justify-between">
+            <span className="font-bold text-[#172554] text-sm">Super Admin</span>
+            <span className="text-[10.5px] text-[#2563EB] font-semibold bg-[#EFF6FF] px-2.5 py-1 rounded-full border border-[#DBEAFE]">
               Authorized Account
             </span>
           </div>
-          <p className="text-[11px] text-[#8A9B98]">
+          <p className="text-[11px] text-[#94A3B8]">
             Restricted single-owner dashboard. Any unauthorized Google account will be automatically denied and signed out.
           </p>
         </div>
@@ -69,10 +69,10 @@ export const AdminLoginPage = () => {
           <span>Sign In with Google</span>
         </button>
 
-        <div className="pt-4 border-t border-[#DDE7E5] text-center">
+        <div className="pt-4 border-t border-[#E2E8F0] text-center">
           <Link
             to="/"
-            className="inline-flex items-center gap-1.5 text-xs text-[#8A9B98] hover:text-[#0F766E] transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs text-[#94A3B8] hover:text-[#2563EB] transition-colors"
           >
             <ArrowLeft size={13} />
             <span>Return to Public Portfolio</span>

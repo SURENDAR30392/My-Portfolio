@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Check, AlertCircle, Loader2, Linkedin, Github, Code2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Check, AlertCircle, Loader2, Linkedin, Github, Code2, Send } from 'lucide-react';
 import { CodeChefIcon } from './icons/CodeChefIcon';
 import { useData } from '../context/DataContext';
 import { DEFAULT_SOCIAL_LINKS } from '../data/socialLinks';
@@ -81,75 +81,92 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-[#F7FAFA] border-t border-[#DDE7E5]">
-      <div className="max-w-[1100px] mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-          
-          {/* Left Column: Direct Communication Channels */}
-          <div className="md:col-span-5">
-            <h2 className="text-2xl md:text-3xl font-semibold text-[#102A28] mb-3">
-              Contact
-            </h2>
-            <p className="text-base text-[#4B5F5C] leading-relaxed mb-8">
-              Feel free to reach out for software project discussions, technical inquiries, or internship opportunities. I typically respond within 24 hours.
-            </p>
+    <section id="contact" className="py-16 md:py-24 bg-white border-b border-[#E2E8F0]">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+        
+        {/* Section Header */}
+        <div className="mb-12">
+          <span className="section-badge mb-3">Contact</span>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#172554] tracking-tight">
+            Let's Discuss Software Opportunities
+          </h2>
+          <p className="text-base text-[#64748B] mt-2 max-w-2xl">
+            Whether for software engineering internships, technical collaborations, or general questions, I'm always open to connecting.
+          </p>
+        </div>
 
-            <div className="space-y-3.5 mb-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          
+          {/* Left Column: Direct Channels */}
+          <div className="lg:col-span-5 space-y-6">
+            <h3 className="text-lg font-bold text-[#172554]">
+              Direct Contact Information
+            </h3>
+
+            <div className="space-y-3.5">
               <a 
                 href={`mailto:${email}`}
-                className="flex items-center gap-3 p-3.5 rounded-lg border border-[#DDE7E5] bg-[#FFFFFF] hover:bg-[#E6F4F2] hover:border-[#7CC7BD] transition-all text-sm text-[#102A28] font-medium"
+                className="flex items-center gap-3.5 p-4 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] hover:bg-[#EFF6FF] hover:border-[#BFDBFE] transition-all duration-150 group"
               >
-                <div className="w-8 h-8 rounded-md bg-[#E6F4F2] text-[#0F766E] flex items-center justify-center shrink-0">
-                  <Mail size={16} />
+                <div className="w-10 h-10 rounded-xl bg-white border border-[#E2E8F0] text-[#2563EB] flex items-center justify-center shrink-0 shadow-xs group-hover:bg-[#2563EB] group-hover:text-white transition-colors">
+                  <Mail size={18} />
                 </div>
                 <div className="truncate">
-                  <div className="text-xs text-[#8A9B98]">Email</div>
-                  <div className="truncate">{email}</div>
+                  <div className="text-xs font-semibold text-[#94A3B8] uppercase">Email Address</div>
+                  <div className="text-sm font-semibold text-[#172554] group-hover:text-[#2563EB] transition-colors truncate">
+                    {email}
+                  </div>
                 </div>
               </a>
 
               <a 
                 href={`tel:${phone.replace(/\s+/g, '')}`}
-                className="flex items-center gap-3 p-3.5 rounded-lg border border-[#DDE7E5] bg-[#FFFFFF] hover:bg-[#E6F4F2] hover:border-[#7CC7BD] transition-all text-sm text-[#102A28] font-medium"
+                className="flex items-center gap-3.5 p-4 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] hover:bg-[#EFF6FF] hover:border-[#BFDBFE] transition-all duration-150 group"
               >
-                <div className="w-8 h-8 rounded-md bg-[#E6F4F2] text-[#0F766E] flex items-center justify-center shrink-0">
-                  <Phone size={16} />
+                <div className="w-10 h-10 rounded-xl bg-white border border-[#E2E8F0] text-[#2563EB] flex items-center justify-center shrink-0 shadow-xs group-hover:bg-[#2563EB] group-hover:text-white transition-colors">
+                  <Phone size={18} />
                 </div>
                 <div>
-                  <div className="text-xs text-[#8A9B98]">Phone</div>
-                  <div>{phone}</div>
+                  <div className="text-xs font-semibold text-[#94A3B8] uppercase">Phone / WhatsApp</div>
+                  <div className="text-sm font-semibold text-[#172554] group-hover:text-[#2563EB] transition-colors">
+                    {phone}
+                  </div>
                 </div>
               </a>
 
-              <div className="flex items-center gap-3 p-3.5 rounded-lg border border-[#DDE7E5] bg-[#FFFFFF] text-sm text-[#102A28]">
-                <div className="w-8 h-8 rounded-md bg-[#E6F4F2] text-[#0F766E] flex items-center justify-center shrink-0">
-                  <MapPin size={16} />
+              <div className="flex items-center gap-3.5 p-4 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC]">
+                <div className="w-10 h-10 rounded-xl bg-white border border-[#E2E8F0] text-[#2563EB] flex items-center justify-center shrink-0 shadow-xs">
+                  <MapPin size={18} />
                 </div>
                 <div>
-                  <div className="text-xs text-[#8A9B98]">Location</div>
-                  <div>{location}</div>
+                  <div className="text-xs font-semibold text-[#94A3B8] uppercase">Campus Location</div>
+                  <div className="text-sm font-semibold text-[#172554]">
+                    {location} (KL University)
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Direct Social & Coding Links */}
-            <div>
-              <div className="text-xs font-semibold text-[#8A9B98] uppercase tracking-wider mb-2.5">
-                Profiles
+            {/* Direct Social Grid */}
+            <div className="pt-2">
+              <div className="text-xs font-bold uppercase tracking-wider text-[#94A3B8] mb-3">
+                Technical Profiles
               </div>
-              <div className="grid grid-cols-2 gap-2">
-                {directLinks.map((p) => {
-                  const Icon = p.icon;
+              <div className="grid grid-cols-2 gap-2.5">
+                {directLinks.map((item) => {
+                  const Icon = item.icon;
                   return (
                     <a
-                      key={p.name}
-                      href={p.url}
+                      key={item.name}
+                      href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 p-2.5 rounded-lg border border-[#DDE7E5] bg-white text-xs font-medium text-[#4B5F5C] hover:text-[#0F766E] hover:bg-[#E6F4F2] hover:border-[#7CC7BD] transition-all"
+                      className="flex items-center gap-2.5 p-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] hover:bg-[#EFF6FF] hover:border-[#BFDBFE] transition-all duration-150 group"
                     >
-                      <Icon size={15} className="text-[#0F766E] shrink-0" />
-                      <span className="truncate">{p.name}</span>
+                      <Icon size={16} className="text-[#2563EB]" />
+                      <span className="text-xs font-semibold text-[#172554] group-hover:text-[#2563EB] transition-colors">
+                        {item.name}
+                      </span>
                     </a>
                   );
                 })}
@@ -157,129 +174,130 @@ export const Contact = () => {
             </div>
           </div>
 
-          {/* Right Column: Contact Form */}
-          <div className="md:col-span-7">
-            <div className="bg-[#FFFFFF] border border-[#DDE7E5] rounded-xl p-6 md:p-8 shadow-sm">
-              
-              {status === 'success' ? (
-                <div className="py-8 text-center animate-fade-in">
-                  <div className="w-12 h-12 rounded-full bg-[#E6F4F2] text-[#0F766E] flex items-center justify-center mx-auto mb-4 border border-[#7CC7BD]/40">
-                    <Check size={24} />
+          {/* Right Column: Interactive Contact Form */}
+          <div className="lg:col-span-7 bg-[#F8FAFC] border border-[#E2E8F0] rounded-2xl p-6 sm:p-8 shadow-card">
+            <h3 className="text-lg font-bold text-[#172554] mb-2">
+              Send a Direct Message
+            </h3>
+            <p className="text-xs text-[#64748B] mb-6">
+              Messages are routed securely to Cloud Firestore and accessible only to the authorized Super Admin.
+            </p>
+
+            {status === 'success' && (
+              <div className="mb-6 p-4 rounded-xl bg-[#EFF6FF] border border-[#BFDBFE] flex items-start gap-3 animate-fade-in">
+                <Check size={18} className="text-[#2563EB] shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-sm font-bold text-[#172554]">Message Sent Successfully</div>
+                  <div className="text-xs text-[#64748B] mt-0.5">
+                    Thank you for reaching out. I have received your message and will reply shortly.
                   </div>
-                  <h3 className="text-xl font-semibold text-[#102A28] mb-2">
-                    Message sent successfully!
-                  </h3>
-                  <p className="text-sm text-[#4B5F5C] max-w-sm mx-auto mb-6">
-                    Thank you for reaching out, Marthala Surendar Reddy will review your message and reply promptly.
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() => setStatus('idle')}
-                    className="btn-secondary"
-                  >
-                    Send another message
-                  </button>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  {/* Honeypot field for anti-spam bots */}
+              </div>
+            )}
+
+            {status === 'error' && (
+              <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 flex items-start gap-3 animate-fade-in">
+                <AlertCircle size={18} className="text-red-600 shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-sm font-bold text-red-900">Message Delivery Notice</div>
+                  <div className="text-xs text-red-700 mt-0.5">{errorMessage}</div>
+                </div>
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              
+              {/* Honeypot field (hidden from real users) */}
+              <input
+                type="text"
+                name="hp_check"
+                value={formData.hp_check}
+                onChange={e => setFormData({ ...formData, hp_check: e.target.value })}
+                className="hidden"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-[#172554] mb-1.5">
+                    Your Name *
+                  </label>
                   <input
                     type="text"
-                    name="hp_check"
-                    value={formData.hp_check}
-                    onChange={(e) => setFormData({ ...formData, hp_check: e.target.value })}
-                    className="hidden"
-                    tabIndex="-1"
-                    autoComplete="off"
+                    required
+                    value={formData.name}
+                    onChange={e => setFormData({ ...formData, name: e.target.value })}
+                    placeholder="e.g. Alex Johnson"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#E2E8F0] bg-white text-sm text-[#172554] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#EFF6FF] transition-all"
                   />
+                </div>
 
-                  {status === 'error' && (
-                    <div className="p-3 rounded-lg bg-[#FEF2F2] border border-[#FCA5A5] text-[#DC2626] text-sm flex items-center gap-2">
-                      <AlertCircle size={16} className="shrink-0" />
-                      <span>{errorMessage}</span>
-                    </div>
-                  )}
+                <div>
+                  <label className="block text-xs font-semibold text-[#172554] mb-1.5">
+                    Your Email *
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={e => setFormData({ ...formData, email: e.target.value })}
+                    placeholder="alex@company.com"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#E2E8F0] bg-white text-sm text-[#172554] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#EFF6FF] transition-all"
+                  />
+                </div>
+              </div>
 
-                  <div>
-                    <label htmlFor="contact-name" className="block text-sm font-medium text-[#102A28] mb-1.5">
-                      Full Name *
-                    </label>
-                    <input
-                      id="contact-name"
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="Your full name"
-                      className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm text-[#102A28] bg-white placeholder-[#8A9B98] focus:outline-none focus:border-[#0F766E] focus:ring-2 focus:ring-[#7CC7BD]/30 transition-all"
-                    />
-                  </div>
+              <div>
+                <label className="block text-xs font-semibold text-[#172554] mb-1.5">
+                  Subject
+                </label>
+                <input
+                  type="text"
+                  value={formData.subject}
+                  onChange={e => setFormData({ ...formData, subject: e.target.value })}
+                  placeholder="Internship opportunity / Technical question"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#E2E8F0] bg-white text-sm text-[#172554] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#EFF6FF] transition-all"
+                />
+              </div>
 
-                  <div>
-                    <label htmlFor="contact-email" className="block text-sm font-medium text-[#102A28] mb-1.5">
-                      Email Address *
-                    </label>
-                    <input
-                      id="contact-email"
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="your.email@example.com"
-                      className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm text-[#102A28] bg-white placeholder-[#8A9B98] focus:outline-none focus:border-[#0F766E] focus:ring-2 focus:ring-[#7CC7BD]/30 transition-all"
-                    />
-                  </div>
+              <div>
+                <label className="block text-xs font-semibold text-[#172554] mb-1.5">
+                  Your Message *
+                </label>
+                <textarea
+                  required
+                  rows={4}
+                  value={formData.message}
+                  onChange={e => setFormData({ ...formData, message: e.target.value })}
+                  placeholder="Hello Surendar, I'd like to discuss..."
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#E2E8F0] bg-white text-sm text-[#172554] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#EFF6FF] transition-all resize-none"
+                />
+              </div>
 
-                  <div>
-                    <label htmlFor="contact-subject" className="block text-sm font-medium text-[#102A28] mb-1.5">
-                      Subject (Optional)
-                    </label>
-                    <input
-                      id="contact-subject"
-                      type="text"
-                      value={formData.subject}
-                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      placeholder="Project inquiry, collaboration, etc."
-                      className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm text-[#102A28] bg-white placeholder-[#8A9B98] focus:outline-none focus:border-[#0F766E] focus:ring-2 focus:ring-[#7CC7BD]/30 transition-all"
-                    />
-                  </div>
+              <button
+                type="submit"
+                disabled={status === 'sending'}
+                className="btn-primary w-full sm:w-auto h-11 px-7 text-sm flex items-center justify-center gap-2"
+              >
+                {status === 'sending' ? (
+                  <>
+                    <Loader2 size={16} className="animate-spin" />
+                    <span>Sending Message...</span>
+                  </>
+                ) : (
+                  <>
+                    <Send size={15} />
+                    <span>Send Message</span>
+                  </>
+                )}
+              </button>
 
-                  <div>
-                    <label htmlFor="contact-message" className="block text-sm font-medium text-[#102A28] mb-1.5">
-                      Message *
-                    </label>
-                    <textarea
-                      id="contact-message"
-                      required
-                      rows={4}
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Write your message here..."
-                      className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm text-[#102A28] bg-white placeholder-[#8A9B98] focus:outline-none focus:border-[#0F766E] focus:ring-2 focus:ring-[#7CC7BD]/30 transition-all resize-none"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={status === 'sending'}
-                    className="btn-primary w-full justify-center disabled:opacity-70 disabled:cursor-not-allowed"
-                  >
-                    {status === 'sending' ? (
-                      <>
-                        <Loader2 size={16} className="animate-spin" />
-                        <span>Sending message...</span>
-                      </>
-                    ) : (
-                      <span>Send message</span>
-                    )}
-                  </button>
-                </form>
-              )}
-
-            </div>
+            </form>
           </div>
 
         </div>
+
       </div>
     </section>
   );

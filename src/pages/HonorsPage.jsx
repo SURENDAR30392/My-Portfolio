@@ -11,8 +11,8 @@ export const HonorsPage = () => {
   const [selectedCert, setSelectedCert] = useState(null);
   const [tab, setTab] = useState('all');
 
-  const certs = data.certifications || [];
-  const achievements = data.achievements || [];
+  const certs = (data.certifications || []).filter(c => c.published !== false);
+  const achievements = (data.achievements || []).filter(a => a.published !== false);
 
   const items = [
     ...certs.map(c => ({ ...c, type: 'certification' })),
@@ -24,31 +24,32 @@ export const HonorsPage = () => {
     : items.filter(i => i.type === tab);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F7FAFA]">
+    <div className="min-h-screen flex flex-col bg-[#F8FAFC]">
       <Navbar />
 
       <main className="flex-1 py-12 md:py-16">
-        <div className="max-w-[1100px] mx-auto px-6">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
           
-          <div className="mb-8">
+          <div className="mb-10">
             <Link 
               to="/" 
-              className="inline-flex items-center gap-2 text-sm text-[#4B5F5C] hover:text-[#0F766E] transition-colors mb-4"
+              className="inline-flex items-center gap-2 text-sm font-medium text-[#64748B] hover:text-[#2563EB] transition-colors mb-4"
             >
               <ArrowLeft size={16} />
               <span>Back to Portfolio</span>
             </Link>
 
-            <h1 className="text-3xl font-semibold text-[#102A28] mb-2">
+            <span className="section-badge mb-3 block w-fit">Archive</span>
+            <h1 className="text-3xl sm:text-4xl font-bold text-[#172554] mb-2 tracking-tight">
               Honors, Certifications & Achievements
             </h1>
-            <p className="text-base text-[#4B5F5C] max-w-xl">
+            <p className="text-base text-[#64748B] max-w-2xl">
               Complete archive of technical certifications, competitive programming recognitions, and academic milestones earned at KL University.
             </p>
           </div>
 
           {/* Filter Tabs */}
-          <div className="flex items-center gap-2 mb-8 border-b border-[#DDE7E5] pb-4">
+          <div className="flex items-center gap-2 mb-8 border-b border-[#E2E8F0] pb-4">
             {[
               { id: 'all', label: 'All Records' },
               { id: 'certification', label: 'Certifications' },
@@ -57,10 +58,10 @@ export const HonorsPage = () => {
               <button
                 key={t.id}
                 onClick={() => setTab(t.id)}
-                className={`px-3.5 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-150 ${
                   tab === t.id
-                    ? 'bg-[#0F766E] text-white'
-                    : 'bg-white text-[#4B5F5C] border border-[#DDE7E5] hover:bg-[#E6F4F2]'
+                    ? 'bg-[#2563EB] text-white shadow-xs'
+                    : 'bg-white text-[#64748B] border border-[#E2E8F0] hover:bg-[#EFF6FF] hover:border-[#BFDBFE] hover:text-[#2563EB]'
                 }`}
               >
                 {t.label}
@@ -69,45 +70,45 @@ export const HonorsPage = () => {
           </div>
 
           {/* Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map(item => (
               <div
                 key={item.id}
                 onClick={() => setSelectedCert(item)}
-                className="bg-white border border-[#DDE7E5] rounded-xl p-5 shadow-sm hover:border-[#7CC7BD] hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between cursor-pointer group"
+                className="bg-white border border-[#E2E8F0] rounded-2xl p-6 shadow-card hover:border-[#BFDBFE] hover:-translate-y-1 hover:shadow-card-hover transition-all duration-200 flex flex-col justify-between cursor-pointer group"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="w-9 h-9 rounded-lg bg-[#E6F4F2] text-[#0F766E] flex items-center justify-center">
-                      <Award size={18} />
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-10 h-10 rounded-xl bg-[#EFF6FF] border border-[#DBEAFE] text-[#2563EB] flex items-center justify-center">
+                      <Award size={20} />
                     </div>
                     {item.isSample && (
-                      <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-[#FDE68A] text-[#B45309] border border-[#FCD34D]">
+                      <span className="px-2.5 py-0.5 rounded text-[10px] font-medium bg-[#FEF3C7] text-[#92400E] border border-[#FDE68A]">
                         Sample
                       </span>
                     )}
                   </div>
 
-                  <h3 className="text-base font-semibold text-[#102A28] mb-1.5 line-clamp-2 group-hover:text-[#0F766E] transition-colors">
+                  <h3 className="text-base font-bold text-[#172554] mb-1.5 line-clamp-2 group-hover:text-[#2563EB] transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-[#4B5F5C] mb-3">
+                  <p className="text-sm font-medium text-[#64748B] mb-3">
                     {item.organization || item.issuer}
                   </p>
                   {item.description && (
-                    <p className="text-xs text-[#8A9B98] line-clamp-2 mb-4 leading-relaxed">
+                    <p className="text-xs text-[#64748B] line-clamp-2 mb-4 leading-relaxed">
                       {item.description}
                     </p>
                   )}
                 </div>
 
-                <div className="pt-3 border-t border-[#DDE7E5]/60 flex items-center justify-between text-xs text-[#8A9B98]">
-                  <span className="flex items-center gap-1.5">
-                    <Calendar size={13} />
-                    {item.date || "2025"}
+                <div className="pt-3.5 border-t border-[#E2E8F0] flex items-center justify-between text-xs text-[#94A3B8]">
+                  <span className="flex items-center gap-1.5 font-medium text-[#64748B]">
+                    <Calendar size={13} className="text-[#2563EB]" />
+                    <span>{item.date || "2025"}</span>
                   </span>
-                  <span className="text-[#0F766E] font-medium group-hover:underline">
-                    View Details
+                  <span className="text-[#2563EB] font-semibold group-hover:underline">
+                    View Details →
                   </span>
                 </div>
               </div>
@@ -128,4 +129,3 @@ export const HonorsPage = () => {
     </div>
   );
 };
-

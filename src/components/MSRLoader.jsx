@@ -12,21 +12,21 @@ export const MSRLoader = ({ onComplete }) => {
       setLetterStep(3);
       const timer = setTimeout(() => {
         setFadingOut(true);
-        setTimeout(onComplete, 250);
-      }, 600);
+        setTimeout(onComplete, 200);
+      }, 500);
       return () => clearTimeout(timer);
     }
 
-    // Staggered letter reveal: M -> S -> R
-    const t1 = setTimeout(() => setLetterStep(1), 120);
-    const t2 = setTimeout(() => setLetterStep(2), 280);
-    const t3 = setTimeout(() => setLetterStep(3), 440);
+    // Staggered reveal: M -> S -> R
+    const t1 = setTimeout(() => setLetterStep(1), 100);
+    const t2 = setTimeout(() => setLetterStep(2), 240);
+    const t3 = setTimeout(() => setLetterStep(3), 380);
 
-    // Total display time: approximately 1.25s
+    // Fade out and complete
     const exitTimer = setTimeout(() => {
       setFadingOut(true);
-      setTimeout(onComplete, 400);
-    }, 1300);
+      setTimeout(onComplete, 350);
+    }, 1150);
 
     return () => {
       clearTimeout(t1);
@@ -38,30 +38,26 @@ export const MSRLoader = ({ onComplete }) => {
 
   return (
     <div 
-      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#F7FAFA] transition-all duration-400 ease-out select-none ${
-        fadingOut ? 'opacity-0 scale-98 pointer-events-none' : 'opacity-100 scale-100'
+      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#F8FAFC] transition-opacity duration-300 ease-out select-none ${
+        fadingOut ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
       role="status"
       aria-label="Loading MSR Portfolio"
     >
       <div className="relative flex flex-col items-center justify-center">
         
-        {/* Subtle Ambient Radial Aura behind MSR */}
+        {/* Subtle Ambient Radial Glow */}
         <div 
-          className="absolute w-44 h-44 sm:w-56 sm:h-56 rounded-full bg-[#E6F4F2] opacity-70 blur-2xl pointer-events-none animate-pulse"
-          style={{ animationDuration: '2s' }}
+          className="absolute w-48 h-48 sm:w-60 sm:h-60 rounded-full bg-[#EFF6FF] opacity-80 blur-2xl pointer-events-none"
           aria-hidden="true"
         />
 
         {/* Central Initials Container */}
         <div className="relative z-10 flex items-center tracking-tight">
-          
           {/* Letter M */}
           <span 
-            className={`font-semibold text-5xl sm:text-6xl md:text-7xl text-[#102A28] inline-block transition-all duration-350 ease-out transform ${
-              letterStep >= 1 
-                ? 'opacity-100 translate-y-0 filter-none' 
-                : 'opacity-0 translate-y-3 blur-xs'
+            className={`font-semibold text-5xl sm:text-6xl md:text-7xl text-[#172554] inline-block transition-all duration-300 ease-out transform ${
+              letterStep >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
             }`}
           >
             M
@@ -69,42 +65,45 @@ export const MSRLoader = ({ onComplete }) => {
 
           {/* Letter S */}
           <span 
-            className={`font-semibold text-5xl sm:text-6xl md:text-7xl text-[#102A28] inline-block transition-all duration-350 ease-out transform ${
-              letterStep >= 2 
-                ? 'opacity-100 translate-y-0 filter-none' 
-                : 'opacity-0 translate-y-3 blur-xs'
+            className={`font-semibold text-5xl sm:text-6xl md:text-7xl text-[#172554] inline-block transition-all duration-300 ease-out transform ${
+              letterStep >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
             }`}
           >
             S
           </span>
 
-          {/* Letter R with Teal Accent Dot */}
+          {/* Letter R with Blue Accent Dot */}
           <span 
-            className={`font-semibold text-5xl sm:text-6xl md:text-7xl text-[#102A28] inline-block relative transition-all duration-350 ease-out transform ${
-              letterStep >= 3 
-                ? 'opacity-100 translate-y-0 filter-none' 
-                : 'opacity-0 translate-y-3 blur-xs'
+            className={`font-semibold text-5xl sm:text-6xl md:text-7xl text-[#172554] inline-block relative transition-all duration-300 ease-out transform ${
+              letterStep >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
             }`}
           >
             R
-            {/* Elegant Accent Dot */}
+            {/* Blue Accent Dot */}
             <span 
-              className={`absolute -right-3 bottom-2.5 w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#0F766E] transition-all duration-300 ${
+              className={`absolute -right-3 bottom-2.5 w-2.5 h-2.5 rounded-full bg-[#2563EB] transition-all duration-200 ${
                 letterStep >= 3 ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
               }`}
               aria-hidden="true"
             />
           </span>
-
         </div>
 
-        {/* Premium Animated Line & Indicator below MSR */}
-        <div className="relative mt-5 w-28 sm:w-36 h-[2.5px] bg-[#DDE7E5] rounded-full overflow-hidden">
+        {/* Subtitle */}
+        <div 
+          className={`mt-3 text-xs tracking-widest uppercase font-medium text-[#64748B] transition-opacity duration-300 ${
+            letterStep >= 3 ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          Marthala Surendar Reddy
+        </div>
+
+        {/* Micro Loading Progress Line */}
+        <div className="w-24 h-0.5 bg-[#E2E8F0] rounded-full overflow-hidden mt-4">
           <div 
-            className="h-full bg-[#0F766E] rounded-full transition-all duration-1000 ease-out"
-            style={{
-              width: letterStep === 0 ? '0%' : letterStep === 1 ? '35%' : letterStep === 2 ? '70%' : '100%'
-            }}
+            className={`h-full bg-[#2563EB] rounded-full transition-all duration-700 ease-out ${
+              letterStep >= 3 ? 'w-full' : letterStep >= 2 ? 'w-2/3' : letterStep >= 1 ? 'w-1/3' : 'w-0'
+            }`}
           />
         </div>
 

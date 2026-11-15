@@ -55,10 +55,10 @@ export const AdminSkillsView = () => {
     <div className="space-y-8 animate-fade-in">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold text-[#102A28]">
+          <h1 className="text-2xl font-semibold text-[#172554]">
             Skills Management
           </h1>
-          <p className="text-sm text-[#4B5F5C] mt-1">
+          <p className="text-sm text-[#64748B] mt-1">
             Configure technical proficiencies, programming languages, and engineering tools.
           </p>
         </div>
@@ -72,9 +72,9 @@ export const AdminSkillsView = () => {
         </button>
       </div>
 
-      <div className="bg-white border border-[#DDE7E5] rounded-xl overflow-hidden shadow-sm">
+      <div className="bg-white border border-[#E2E8F0] rounded-xl overflow-hidden shadow-sm">
         <table className="w-full text-left text-sm">
-          <thead className="bg-[#F7FAFA] border-b border-[#DDE7E5] text-xs font-semibold text-[#8A9B98] uppercase">
+          <thead className="bg-[#F8FAFC] border-b border-[#E2E8F0] text-xs font-semibold text-[#94A3B8] uppercase">
             <tr>
               <th className="px-6 py-4">Skill Name</th>
               <th className="px-6 py-4">Category</th>
@@ -83,23 +83,23 @@ export const AdminSkillsView = () => {
               <th className="px-6 py-4 text-right">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#DDE7E5]">
+          <tbody className="divide-y divide-[#E2E8F0]">
             {skills.map((s) => (
-              <tr key={s.id} className="hover:bg-[#F7FAFA]/60 transition-colors">
-                <td className="px-6 py-4 font-semibold text-[#102A28]">
+              <tr key={s.id} className="hover:bg-[#F8FAFC]/60 transition-colors">
+                <td className="px-6 py-4 font-semibold text-[#172554]">
                   {s.name}
                 </td>
                 <td className="px-6 py-4">
-                  <span className="text-xs px-2.5 py-1 rounded-md bg-[#E6F4F2] text-[#0F766E] font-medium border border-[#DDE7E5]">
+                  <span className="text-xs px-2.5 py-1 rounded-md bg-[#EFF6FF] text-[#2563EB] font-medium border border-[#E2E8F0]">
                     {s.category}
                   </span>
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-2">
-                    <div className="w-20 h-1.5 bg-[#EEF4F3] rounded-full overflow-hidden">
-                      <div className="h-full bg-[#0F766E]" style={{ width: `${s.proficiency || 80}%` }} />
+                    <div className="w-20 h-1.5 bg-[#EFF6FF] rounded-full overflow-hidden">
+                      <div className="h-full bg-[#2563EB]" style={{ width: `${s.proficiency || 80}%` }} />
                     </div>
-                    <span className="text-xs text-[#8A9B98]">{s.proficiency}%</span>
+                    <span className="text-xs text-[#94A3B8]">{s.proficiency}%</span>
                   </div>
                 </td>
                 <td className="px-6 py-4">
@@ -108,7 +108,7 @@ export const AdminSkillsView = () => {
                       Sample
                     </span>
                   ) : (
-                    <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-[#E6F4F2] text-[#0F766E]">
+                    <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-[#EFF6FF] text-[#2563EB]">
                       Verified
                     </span>
                   )}
@@ -117,13 +117,13 @@ export const AdminSkillsView = () => {
                   <div className="inline-flex items-center gap-1">
                     <button
                       onClick={() => openEditModal(s)}
-                      className="p-1.5 rounded-lg text-[#4B5F5C] hover:text-[#0F766E] hover:bg-[#E6F4F2]"
+                      className="p-1.5 rounded-lg text-[#64748B] hover:text-[#2563EB] hover:bg-[#EFF6FF]"
                     >
                       <Edit3 size={15} />
                     </button>
                     <button
                       onClick={() => handleDelete(s.id, s.name)}
-                      className="p-1.5 rounded-lg text-[#4B5F5C] hover:text-[#DC2626] hover:bg-[#FEF2F2]"
+                      className="p-1.5 rounded-lg text-[#64748B] hover:text-[#DC2626] hover:bg-[#FEF2F2]"
                     >
                       <Trash2 size={15} />
                     </button>
@@ -137,35 +137,35 @@ export const AdminSkillsView = () => {
 
       {isEditing && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs animate-fade-in">
-          <div className="bg-white border border-[#DDE7E5] rounded-xl max-w-md w-full shadow-2xl p-6">
-            <div className="flex items-center justify-between pb-4 border-b border-[#DDE7E5] mb-4">
-              <h2 className="text-base font-semibold text-[#102A28]">
+          <div className="bg-white border border-[#E2E8F0] rounded-xl max-w-md w-full shadow-2xl p-6">
+            <div className="flex items-center justify-between pb-4 border-b border-[#E2E8F0] mb-4">
+              <h2 className="text-base font-semibold text-[#172554]">
                 {currentId ? 'Edit Skill' : 'Add New Skill'}
               </h2>
-              <button onClick={() => setIsEditing(false)} className="text-[#8A9B98] hover:text-[#102A28]">
+              <button onClick={() => setIsEditing(false)} className="text-[#94A3B8] hover:text-[#172554]">
                 <X size={18} />
               </button>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-[#102A28] mb-1">Skill Name *</label>
+                <label className="block text-xs font-semibold text-[#172554] mb-1">Skill Name *</label>
                 <input
                   type="text"
                   required
                   value={form.name}
                   onChange={e => setForm({ ...form, name: e.target.value })}
                   placeholder="e.g. Java (OOP, Multithreading)"
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E]"
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-[#E2E8F0] text-sm focus:outline-none focus:border-[#2563EB]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#102A28] mb-1">Category</label>
+                <label className="block text-xs font-semibold text-[#172554] mb-1">Category</label>
                 <select
                   value={form.category}
                   onChange={e => setForm({ ...form, category: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E]"
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-[#E2E8F0] text-sm focus:outline-none focus:border-[#2563EB]"
                 >
                   <option value="Programming Languages">Programming Languages & Algorithms</option>
                   <option value="Backend & Cloud">Backend & Cloud Systems</option>
@@ -175,8 +175,8 @@ export const AdminSkillsView = () => {
 
               <div>
                 <div className="flex justify-between items-center mb-1">
-                  <label className="text-xs font-semibold text-[#102A28]">Proficiency Level</label>
-                  <span className="text-xs font-medium text-[#0F766E]">{form.proficiency}%</span>
+                  <label className="text-xs font-semibold text-[#172554]">Proficiency Level</label>
+                  <span className="text-xs font-medium text-[#2563EB]">{form.proficiency}%</span>
                 </div>
                 <input
                   type="range"
@@ -184,7 +184,7 @@ export const AdminSkillsView = () => {
                   max="100"
                   value={form.proficiency}
                   onChange={e => setForm({ ...form, proficiency: Number(e.target.value) })}
-                  className="w-full accent-[#0F766E]"
+                  className="w-full accent-[#2563EB]"
                 />
               </div>
 
@@ -200,7 +200,7 @@ export const AdminSkillsView = () => {
                 </label>
               </div>
 
-              <div className="pt-4 border-t border-[#DDE7E5] flex items-center justify-end gap-3">
+              <div className="pt-4 border-t border-[#E2E8F0] flex items-center justify-end gap-3">
                 <button
                   type="button"
                   onClick={() => setIsEditing(false)}

@@ -18,23 +18,23 @@ export const CertificateModal = ({ cert, onClose }) => {
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#102A28]/50 backdrop-blur-xs animate-fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#172554]/40 backdrop-blur-xs animate-fade-in"
       onClick={onClose}
     >
       <div 
-        className="bg-white border border-[#DDE7E5] rounded-xl max-w-lg w-full overflow-hidden shadow-xl"
+        className="bg-white border border-[#E2E8F0] rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative p-6 border-b border-[#DDE7E5] flex items-start justify-between bg-[#F7FAFA]">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-[#E6F4F2] text-[#0F766E] flex items-center justify-center shrink-0">
-              <Award size={20} />
+        <div className="relative p-6 border-b border-[#E2E8F0] flex items-start justify-between bg-[#F8FAFC]">
+          <div className="flex items-center gap-3.5">
+            <div className="w-11 h-11 rounded-xl bg-[#EFF6FF] border border-[#DBEAFE] text-[#2563EB] flex items-center justify-center shrink-0">
+              <Award size={22} />
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-[#102A28] leading-snug">
+              <h3 className="text-lg font-bold text-[#172554] leading-snug">
                 {cert.title}
               </h3>
-              <p className="text-xs text-[#8A9B98] mt-0.5">
+              <p className="text-xs font-medium text-[#64748B] mt-0.5">
                 {cert.organization || "Verified Credential"}
               </p>
             </div>
@@ -42,16 +42,16 @@ export const CertificateModal = ({ cert, onClose }) => {
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-[#8A9B98] hover:text-[#102A28] hover:bg-[#E6F4F2] transition-colors"
+            className="p-1.5 rounded-lg text-[#94A3B8] hover:text-[#172554] hover:bg-[#EFF6FF] transition-colors"
             aria-label="Close"
           >
             <X size={18} />
           </button>
         </div>
 
-        <div className="p-6 space-y-4">
+        <div className="p-6 space-y-5">
           {cert.imageUrl && (
-            <div className="rounded-lg overflow-hidden border border-[#DDE7E5] bg-[#E6F4F2] aspect-[16/10]">
+            <div className="rounded-xl overflow-hidden border border-[#E2E8F0] bg-[#EFF6FF] aspect-[16/10]">
               <img 
                 src={cert.imageUrl} 
                 alt={cert.title} 
@@ -65,22 +65,22 @@ export const CertificateModal = ({ cert, onClose }) => {
           )}
 
           {cert.description && (
-            <p className="text-sm text-[#4B5F5C] leading-relaxed">
+            <p className="text-sm text-[#334155] leading-relaxed">
               {cert.description}
             </p>
           )}
 
-          <div className="flex items-center gap-2 text-xs text-[#8A9B98]">
-            <Calendar size={14} className="text-[#0F766E]" />
+          <div className="flex items-center gap-2 text-xs text-[#64748B]">
+            <Calendar size={14} className="text-[#2563EB]" />
             <span>Issued: {cert.date || cert.issueDate || "2025"}</span>
             {cert.isSample && (
-              <span className="ml-2 px-2 py-0.5 rounded text-[10px] font-medium bg-[#FDE68A] text-[#B45309] border border-[#FCD34D]">
+              <span className="ml-2 px-2 py-0.5 rounded text-[10px] font-medium bg-[#FEF3C7] text-[#92400E] border border-[#FDE68A]">
                 Sample Record
               </span>
             )}
           </div>
 
-          <div className="pt-4 border-t border-[#DDE7E5] flex items-center justify-between">
+          <div className="pt-4 border-t border-[#E2E8F0] flex items-center justify-between">
             {cert.credentialUrl ? (
               <a
                 href={cert.credentialUrl}
@@ -92,13 +92,13 @@ export const CertificateModal = ({ cert, onClose }) => {
                 <ExternalLink size={15} />
               </a>
             ) : (
-              <span className="text-xs text-[#8A9B98]">Verified by institution</span>
+              <span className="text-xs text-[#94A3B8]">Verified academic milestone</span>
             )}
 
             <button
               type="button"
               onClick={onClose}
-              className="btn-secondary text-sm h-10 px-4"
+              className="text-xs font-medium text-[#64748B] hover:text-[#172554] px-3 py-2"
             >
               Close
             </button>
@@ -108,4 +108,3 @@ export const CertificateModal = ({ cert, onClose }) => {
     </div>
   );
 };
-

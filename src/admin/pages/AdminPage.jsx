@@ -22,10 +22,10 @@ export const AdminPage = () => {
 
   if (authLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#F7FAFA] text-[#102A28]">
+      <div className="min-h-screen flex items-center justify-center bg-[#F8FAFC] text-[#172554]">
         <div className="flex flex-col items-center gap-3">
-          <span className="font-semibold text-2xl text-[#0F766E] animate-pulse">MSR Admin</span>
-          <span className="text-xs text-[#8A9B98]">Verifying Security Access...</span>
+          <span className="font-semibold text-2xl text-[#2563EB] animate-pulse">MSR Admin</span>
+          <span className="text-xs text-[#94A3B8]">Verifying Security Access...</span>
         </div>
       </div>
     );

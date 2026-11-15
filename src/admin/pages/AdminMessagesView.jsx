@@ -36,10 +36,10 @@ export const AdminMessagesView = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold text-[#102A28]">
+          <h1 className="text-2xl font-semibold text-[#172554]">
             Contact Messages ({messages.length})
           </h1>
-          <p className="text-sm text-[#4B5F5C] mt-1">
+          <p className="text-sm text-[#64748B] mt-1">
             Review incoming inquiries submitted through the public Contact Us form.
           </p>
         </div>
@@ -49,8 +49,8 @@ export const AdminMessagesView = () => {
             onClick={() => setFilter('all')}
             className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
               filter === 'all'
-                ? 'bg-[#0F766E] text-white'
-                : 'bg-white text-[#4B5F5C] border border-[#DDE7E5]'
+                ? 'bg-[#2563EB] text-white'
+                : 'bg-white text-[#64748B] border border-[#E2E8F0]'
             }`}
           >
             All Messages ({messages.length})
@@ -59,8 +59,8 @@ export const AdminMessagesView = () => {
             onClick={() => setFilter('unread')}
             className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
               filter === 'unread'
-                ? 'bg-[#0F766E] text-white'
-                : 'bg-white text-[#4B5F5C] border border-[#DDE7E5]'
+                ? 'bg-[#2563EB] text-white'
+                : 'bg-white text-[#64748B] border border-[#E2E8F0]'
             }`}
           >
             Unread ({messages.filter(m => !m.read).length})
@@ -70,53 +70,53 @@ export const AdminMessagesView = () => {
 
       {/* Messages List */}
       {filtered.length === 0 ? (
-        <div className="bg-white border border-[#DDE7E5] rounded-xl p-12 text-center shadow-sm">
-          <Mail size={36} className="text-[#8A9B98] mx-auto mb-3" />
-          <h3 className="text-base font-semibold text-[#102A28] mb-1">
+        <div className="bg-white border border-[#E2E8F0] rounded-xl p-12 text-center shadow-sm">
+          <Mail size={36} className="text-[#94A3B8] mx-auto mb-3" />
+          <h3 className="text-base font-semibold text-[#172554] mb-1">
             No Messages Found
           </h3>
-          <p className="text-xs text-[#8A9B98]">
+          <p className="text-xs text-[#94A3B8]">
             {filter === 'unread' ? "All messages have been marked as read." : "Your inbox is currently empty."}
           </p>
         </div>
       ) : (
-        <div className="bg-white border border-[#DDE7E5] rounded-xl overflow-hidden shadow-sm divide-y divide-[#DDE7E5]">
+        <div className="bg-white border border-[#E2E8F0] rounded-xl overflow-hidden shadow-sm divide-y divide-[#E2E8F0]">
           {filtered.map((msg) => (
             <div
               key={msg.id}
               onClick={() => handleOpenMessage(msg)}
-              className={`p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[#F7FAFA] transition-colors cursor-pointer ${
-                !msg.read ? 'bg-[#E6F4F2]/30 font-medium' : ''
+              className={`p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[#F8FAFC] transition-colors cursor-pointer ${
+                !msg.read ? 'bg-[#EFF6FF]/30 font-medium' : ''
               }`}
             >
               <div className="flex items-start gap-3.5">
                 <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 mt-0.5 ${
                   !msg.read 
-                    ? 'bg-[#0F766E] text-white' 
-                    : 'bg-[#EEF4F3] text-[#8A9B98]'
+                    ? 'bg-[#2563EB] text-white' 
+                    : 'bg-[#EFF6FF] text-[#94A3B8]'
                 }`}>
                   {!msg.read ? <Mail size={16} /> : <MailOpen size={16} />}
                 </div>
 
                 <div>
                   <div className="flex items-center gap-2.5">
-                    <span className="text-sm font-semibold text-[#102A28]">{msg.name}</span>
-                    <span className="text-xs text-[#8A9B98]">{msg.email}</span>
+                    <span className="text-sm font-semibold text-[#172554]">{msg.name}</span>
+                    <span className="text-xs text-[#94A3B8]">{msg.email}</span>
                   </div>
 
                   {msg.subject && (
-                    <div className="text-xs font-medium text-[#0F766E] mt-0.5">
+                    <div className="text-xs font-medium text-[#2563EB] mt-0.5">
                       Subject: {msg.subject}
                     </div>
                   )}
 
-                  <p className="text-xs text-[#4B5F5C] mt-1 line-clamp-1 max-w-xl">
+                  <p className="text-xs text-[#64748B] mt-1 line-clamp-1 max-w-xl">
                     {msg.message}
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 self-end sm:self-center text-xs text-[#8A9B98]">
+              <div className="flex items-center gap-3 self-end sm:self-center text-xs text-[#94A3B8]">
                 <span>
                   {new Date(msg.timestamp || msg.createdAt || Date.now()).toLocaleDateString('en-US', {
                     month: 'short',
@@ -132,7 +132,7 @@ export const AdminMessagesView = () => {
                     e.stopPropagation();
                     markMessageRead(msg.id, !msg.read);
                   }}
-                  className="p-1.5 rounded-lg text-[#4B5F5C] hover:text-[#0F766E] hover:bg-[#E6F4F2]"
+                  className="p-1.5 rounded-lg text-[#64748B] hover:text-[#2563EB] hover:bg-[#EFF6FF]"
                   title={msg.read ? "Mark unread" : "Mark read"}
                 >
                   <Check size={15} />
@@ -141,7 +141,7 @@ export const AdminMessagesView = () => {
                 <button
                   type="button"
                   onClick={(e) => handleDelete(msg.id, msg.name, e)}
-                  className="p-1.5 rounded-lg text-[#4B5F5C] hover:text-[#DC2626] hover:bg-[#FEF2F2]"
+                  className="p-1.5 rounded-lg text-[#64748B] hover:text-[#DC2626] hover:bg-[#FEF2F2]"
                   title="Delete message"
                 >
                   <Trash2 size={15} />
@@ -155,30 +155,30 @@ export const AdminMessagesView = () => {
       {/* Message Reader Modal */}
       {selectedMessage && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs animate-fade-in">
-          <div className="bg-white border border-[#DDE7E5] rounded-xl max-w-lg w-full p-6 shadow-2xl">
-            <div className="flex items-start justify-between pb-4 border-b border-[#DDE7E5] mb-4">
+          <div className="bg-white border border-[#E2E8F0] rounded-xl max-w-lg w-full p-6 shadow-2xl">
+            <div className="flex items-start justify-between pb-4 border-b border-[#E2E8F0] mb-4">
               <div>
-                <h2 className="text-lg font-semibold text-[#102A28]">
+                <h2 className="text-lg font-semibold text-[#172554]">
                   {selectedMessage.subject || "Contact Inquiry"}
                 </h2>
-                <div className="text-xs text-[#8A9B98] mt-1">
-                  From: <span className="font-medium text-[#102A28]">{selectedMessage.name}</span> ({selectedMessage.email})
+                <div className="text-xs text-[#94A3B8] mt-1">
+                  From: <span className="font-medium text-[#172554]">{selectedMessage.name}</span> ({selectedMessage.email})
                 </div>
               </div>
               <button 
                 onClick={() => setSelectedMessage(null)}
-                className="text-[#8A9B98] hover:text-[#102A28]"
+                className="text-[#94A3B8] hover:text-[#172554]"
               >
                 <X size={18} />
               </button>
             </div>
 
             <div className="space-y-4">
-              <div className="bg-[#F7FAFA] border border-[#DDE7E5] rounded-lg p-4 text-sm text-[#102A28] leading-relaxed whitespace-pre-wrap max-h-60 overflow-y-auto">
+              <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg p-4 text-sm text-[#172554] leading-relaxed whitespace-pre-wrap max-h-60 overflow-y-auto">
                 {selectedMessage.message}
               </div>
 
-              <div className="text-xs text-[#8A9B98] flex items-center justify-between">
+              <div className="text-xs text-[#94A3B8] flex items-center justify-between">
                 <span>Received: {new Date(selectedMessage.timestamp || selectedMessage.createdAt || Date.now()).toLocaleString()}</span>
                 <a
                   href={`mailto:${selectedMessage.email}?subject=Re: ${encodeURIComponent(selectedMessage.subject || 'Portfolio Inquiry')}`}

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { X, ExternalLink, Github, CheckCircle2 } from 'lucide-react';
+import { X, ExternalLink, Github, Sparkles } from 'lucide-react';
 
 export const ProjectModal = ({ project, onClose }) => {
   useEffect(() => {
@@ -24,15 +24,15 @@ export const ProjectModal = ({ project, onClose }) => {
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#102A28]/50 backdrop-blur-xs animate-fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#172554]/40 backdrop-blur-xs animate-fade-in"
       onClick={onClose}
     >
       <div 
-        className="bg-white border border-[#DDE7E5] rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-xl"
+        className="bg-white border border-[#E2E8F0] rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Modal Header Image */}
-        <div className="relative aspect-[16/9] bg-[#E6F4F2] border-b border-[#DDE7E5] overflow-hidden">
+        {/* Modal Image Header */}
+        <div className="relative aspect-[16/9] bg-[#EFF6FF] border-b border-[#E2E8F0] overflow-hidden">
           <img
             src={project.image || "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"}
             alt={project.title}
@@ -44,55 +44,56 @@ export const ProjectModal = ({ project, onClose }) => {
           />
           <button
             onClick={onClose}
-            className="absolute top-3 right-3 p-2 rounded-full bg-white/90 text-[#102A28] hover:bg-white transition-colors shadow-sm focus:outline-none"
+            className="absolute top-3 right-3 p-2 rounded-full bg-white/95 text-[#172554] hover:bg-white transition-colors shadow-sm focus:outline-none"
             aria-label="Close modal"
           >
             <X size={18} />
           </button>
 
           {project.level && (
-            <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-md text-[11px] font-semibold uppercase tracking-wider bg-white/95 text-[#102A28] border border-[#DDE7E5] shadow-xs">
+            <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-md text-[11px] font-semibold uppercase tracking-wider bg-white/95 text-[#172554] border border-[#E2E8F0] shadow-xs">
               {project.level}
             </div>
           )}
         </div>
 
-        {/* Modal Body */}
+        {/* Modal Body Content */}
         <div className="p-6 md:p-8 space-y-6">
           <div>
-            <div className="flex items-center gap-2 mb-1">
-              <h3 className="text-2xl font-semibold text-[#102A28]">
+            <div className="flex items-center gap-2 mb-1.5">
+              <h3 className="text-2xl font-bold text-[#172554]">
                 {project.title}
               </h3>
               {project.isSample && (
-                <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-[#FDE68A] text-[#B45309] border border-[#FCD34D]">
-                  Sample Project
+                <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-[#FEF3C7] text-[#92400E] border border-[#FDE68A]">
+                  Sample
                 </span>
               )}
             </div>
-            <p className="text-base text-[#4B5F5C] leading-relaxed mt-2">
+            <p className="text-base text-[#334155] leading-relaxed mt-2">
               {project.description}
             </p>
           </div>
 
-          {/* Problem & Solution */}
+          {/* Problem / Challenge Block */}
           {project.problem && (
-            <div className="bg-[#F7FAFA] border border-[#DDE7E5] rounded-lg p-4 space-y-2">
-              <div className="text-xs font-semibold uppercase tracking-wider text-[#0F766E]">
-                The Challenge
+            <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl p-4.5 space-y-1.5">
+              <div className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
+                The Engineering Challenge
               </div>
-              <p className="text-sm text-[#4B5F5C] leading-relaxed">
+              <p className="text-sm text-[#334155] leading-relaxed">
                 {project.problem}
               </p>
             </div>
           )}
 
+          {/* Solution / Approach Block */}
           {project.solution && (
-            <div className="bg-[#E6F4F2]/50 border border-[#DDE7E5] rounded-lg p-4 space-y-2">
-              <div className="text-xs font-semibold uppercase tracking-wider text-[#0F766E]">
-                The Solution & Engineering Approach
+            <div className="bg-[#EFF6FF] border border-[#DBEAFE] rounded-xl p-4.5 space-y-1.5">
+              <div className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
+                Architectural Solution
               </div>
-              <p className="text-sm text-[#4B5F5C] leading-relaxed">
+              <p className="text-sm text-[#334155] leading-relaxed">
                 {project.solution}
               </p>
             </div>
@@ -100,14 +101,14 @@ export const ProjectModal = ({ project, onClose }) => {
 
           {/* Tech Stack */}
           <div>
-            <div className="text-sm font-semibold text-[#102A28] mb-2.5">
+            <div className="text-sm font-semibold text-[#172554] mb-2.5">
               Technologies & Tools
             </div>
             <div className="flex flex-wrap gap-1.5">
               {techList.map((tech, idx) => (
                 <span
                   key={idx}
-                  className="px-2.5 py-1 rounded-md text-xs font-medium bg-[#E6F4F2] text-[#0F766E] border border-[#DDE7E5]"
+                  className="px-2.5 py-1 rounded-md text-xs font-medium bg-[#EFF6FF] text-[#2563EB] border border-[#DBEAFE]"
                 >
                   {tech}
                 </span>
@@ -116,7 +117,7 @@ export const ProjectModal = ({ project, onClose }) => {
           </div>
 
           {/* Actions */}
-          <div className="pt-4 border-t border-[#DDE7E5] flex flex-wrap items-center justify-between gap-3">
+          <div className="pt-4 border-t border-[#E2E8F0] flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               {project.githubUrl && (
                 <a
@@ -145,7 +146,7 @@ export const ProjectModal = ({ project, onClose }) => {
             <button
               type="button"
               onClick={onClose}
-              className="text-sm text-[#8A9B98] hover:text-[#102A28] px-3 py-1.5"
+              className="text-xs font-medium text-[#64748B] hover:text-[#172554] px-3 py-2"
             >
               Close
             </button>
@@ -155,4 +156,3 @@ export const ProjectModal = ({ project, onClose }) => {
     </div>
   );
 };
-

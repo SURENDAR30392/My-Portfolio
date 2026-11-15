@@ -8,7 +8,8 @@ import {
   ExternalLink, 
   Database,
   CheckCircle2,
-  AlertTriangle
+  AlertTriangle,
+  GitBranch
 } from 'lucide-react';
 import { useData } from '../../context/DataContext';
 import { useAuth } from '../../context/AuthContext';
@@ -34,12 +35,12 @@ export const AdminDashboardView = ({ setActiveTab }) => {
     <div className="space-y-8 animate-fade-in">
       
       {/* Welcome Banner */}
-      <div className="bg-white border border-[#DDE7E5] rounded-xl p-6 md:p-8 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6 md:p-8 shadow-card flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
-          <h1 className="text-2xl font-semibold text-[#102A28]">
+          <h1 className="text-2xl font-bold text-[#172554]">
             Welcome, Marthala Surendar Reddy
           </h1>
-          <p className="text-sm text-[#4B5F5C] mt-1">
+          <p className="text-sm text-[#64748B] mt-1">
             Manage your personal portfolio content, review incoming inquiries, and update technical projects.
           </p>
         </div>
@@ -54,13 +55,21 @@ export const AdminDashboardView = ({ setActiveTab }) => {
           </button>
 
           <button
+            onClick={() => setActiveTab('codingProfiles')}
+            className="btn-secondary text-sm h-10 px-4"
+          >
+            <GitBranch size={16} />
+            <span>Coding Profiles</span>
+          </button>
+
+          <button
             onClick={() => setActiveTab('messages')}
             className="btn-secondary text-sm h-10 px-4 relative"
           >
             <Mail size={16} />
             <span>View Inbox</span>
             {unreadMessages > 0 && (
-              <span className="w-2 h-2 rounded-full bg-[#0F766E] absolute top-2 right-2" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#2563EB] absolute -top-1 -right-1" />
             )}
           </button>
         </div>
@@ -68,15 +77,15 @@ export const AdminDashboardView = ({ setActiveTab }) => {
 
       {/* Sample Data Alert Notice */}
       {sampleCount > 0 && (
-        <div className="bg-[#FFFBEB] border border-[#FDE68A] rounded-xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="bg-[#FFFBEB] border border-[#FDE68A] rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-start gap-3">
             <AlertTriangle size={20} className="text-[#B45309] shrink-0 mt-0.5" />
             <div>
-              <div className="text-sm font-semibold text-[#B45309]">
+              <div className="text-sm font-bold text-[#B45309]">
                 {sampleCount} Sample Records Detected
               </div>
               <p className="text-xs text-[#92400E] mt-0.5">
-                The portfolio is currently seeded with sample skills, projects, and certifications. You can review or clear them in the Sample Data tab.
+                The portfolio has sample records. You can review or clear them in the Sample Data tab.
               </p>
             </div>
           </div>
@@ -94,64 +103,64 @@ export const AdminDashboardView = ({ setActiveTab }) => {
         
         <div 
           onClick={() => setActiveTab('projects')}
-          className="bg-white border border-[#DDE7E5] rounded-xl p-5 shadow-sm hover:border-[#7CC7BD] transition-all cursor-pointer"
+          className="bg-white border border-[#E2E8F0] rounded-2xl p-5 shadow-card hover:border-[#BFDBFE] hover:shadow-card-hover transition-all cursor-pointer"
         >
-          <div className="flex items-center justify-between text-[#8A9B98] mb-3">
-            <span className="text-xs font-semibold uppercase tracking-wider">Total Projects</span>
-            <div className="w-8 h-8 rounded-lg bg-[#E6F4F2] text-[#0F766E] flex items-center justify-center">
+          <div className="flex items-center justify-between text-[#94A3B8] mb-3">
+            <span className="text-xs font-bold uppercase tracking-wider">Total Projects</span>
+            <div className="w-9 h-9 rounded-xl bg-[#EFF6FF] border border-[#DBEAFE] text-[#2563EB] flex items-center justify-center">
               <Briefcase size={16} />
             </div>
           </div>
-          <div className="text-3xl font-semibold text-[#102A28]">{totalProjects}</div>
-          <div className="text-xs text-[#4B5F5C] mt-1">
+          <div className="text-3xl font-bold text-[#172554]">{totalProjects}</div>
+          <div className="text-xs text-[#64748B] mt-1 font-medium">
             {(data.projects || []).filter(p => p.featured).length} featured projects
           </div>
         </div>
 
         <div 
           onClick={() => setActiveTab('skills')}
-          className="bg-white border border-[#DDE7E5] rounded-xl p-5 shadow-sm hover:border-[#7CC7BD] transition-all cursor-pointer"
+          className="bg-white border border-[#E2E8F0] rounded-2xl p-5 shadow-card hover:border-[#BFDBFE] hover:shadow-card-hover transition-all cursor-pointer"
         >
-          <div className="flex items-center justify-between text-[#8A9B98] mb-3">
-            <span className="text-xs font-semibold uppercase tracking-wider">Total Skills</span>
-            <div className="w-8 h-8 rounded-lg bg-[#E6F4F2] text-[#0F766E] flex items-center justify-center">
+          <div className="flex items-center justify-between text-[#94A3B8] mb-3">
+            <span className="text-xs font-bold uppercase tracking-wider">Total Skills</span>
+            <div className="w-9 h-9 rounded-xl bg-[#EFF6FF] border border-[#DBEAFE] text-[#2563EB] flex items-center justify-center">
               <Code2 size={16} />
             </div>
           </div>
-          <div className="text-3xl font-semibold text-[#102A28]">{totalSkills}</div>
-          <div className="text-xs text-[#4B5F5C] mt-1">
+          <div className="text-3xl font-bold text-[#172554]">{totalSkills}</div>
+          <div className="text-xs text-[#64748B] mt-1 font-medium">
             Across 3 core categories
           </div>
         </div>
 
         <div 
           onClick={() => setActiveTab('certifications')}
-          className="bg-white border border-[#DDE7E5] rounded-xl p-5 shadow-sm hover:border-[#7CC7BD] transition-all cursor-pointer"
+          className="bg-white border border-[#E2E8F0] rounded-2xl p-5 shadow-card hover:border-[#BFDBFE] hover:shadow-card-hover transition-all cursor-pointer"
         >
-          <div className="flex items-center justify-between text-[#8A9B98] mb-3">
-            <span className="text-xs font-semibold uppercase tracking-wider">Certifications</span>
-            <div className="w-8 h-8 rounded-lg bg-[#E6F4F2] text-[#0F766E] flex items-center justify-center">
+          <div className="flex items-center justify-between text-[#94A3B8] mb-3">
+            <span className="text-xs font-bold uppercase tracking-wider">Certifications</span>
+            <div className="w-9 h-9 rounded-xl bg-[#EFF6FF] border border-[#DBEAFE] text-[#2563EB] flex items-center justify-center">
               <Award size={16} />
             </div>
           </div>
-          <div className="text-3xl font-semibold text-[#102A28]">{totalCerts}</div>
-          <div className="text-xs text-[#4B5F5C] mt-1">
+          <div className="text-3xl font-bold text-[#172554]">{totalCerts}</div>
+          <div className="text-xs text-[#64748B] mt-1 font-medium">
             Honors & verified credentials
           </div>
         </div>
 
         <div 
           onClick={() => setActiveTab('messages')}
-          className="bg-white border border-[#DDE7E5] rounded-xl p-5 shadow-sm hover:border-[#7CC7BD] transition-all cursor-pointer"
+          className="bg-white border border-[#E2E8F0] rounded-2xl p-5 shadow-card hover:border-[#BFDBFE] hover:shadow-card-hover transition-all cursor-pointer"
         >
-          <div className="flex items-center justify-between text-[#8A9B98] mb-3">
-            <span className="text-xs font-semibold uppercase tracking-wider">Messages</span>
-            <div className="w-8 h-8 rounded-lg bg-[#E6F4F2] text-[#0F766E] flex items-center justify-center">
+          <div className="flex items-center justify-between text-[#94A3B8] mb-3">
+            <span className="text-xs font-bold uppercase tracking-wider">Messages</span>
+            <div className="w-9 h-9 rounded-xl bg-[#EFF6FF] border border-[#DBEAFE] text-[#2563EB] flex items-center justify-center">
               <Mail size={16} />
             </div>
           </div>
-          <div className="text-3xl font-semibold text-[#102A28]">{totalMessages}</div>
-          <div className="text-xs text-[#0F766E] font-medium mt-1">
+          <div className="text-3xl font-bold text-[#172554]">{totalMessages}</div>
+          <div className="text-xs text-[#2563EB] font-bold mt-1">
             {unreadMessages} unread inquiries
           </div>
         </div>
@@ -162,21 +171,21 @@ export const AdminDashboardView = ({ setActiveTab }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         
         {/* Recent Messages */}
-        <div className="bg-white border border-[#DDE7E5] rounded-xl p-6 shadow-sm">
+        <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6 shadow-card">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-base font-semibold text-[#102A28]">
+            <h3 className="text-base font-bold text-[#172554]">
               Recent Contact Inquiries
             </h3>
             <button
               onClick={() => setActiveTab('messages')}
-              className="text-xs text-[#0F766E] hover:underline font-medium"
+              className="text-xs text-[#2563EB] hover:underline font-semibold"
             >
               View all ({totalMessages})
             </button>
           </div>
 
           {(data.messages || []).length === 0 ? (
-            <p className="text-sm text-[#8A9B98] py-8 text-center">
+            <p className="text-sm text-[#94A3B8] py-8 text-center">
               No messages received yet. Submissions through the Contact form will appear here.
             </p>
           ) : (
@@ -185,19 +194,19 @@ export const AdminDashboardView = ({ setActiveTab }) => {
                 <div 
                   key={msg.id}
                   onClick={() => setActiveTab('messages')}
-                  className={`p-3.5 rounded-lg border transition-all cursor-pointer ${
+                  className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
                     !msg.read 
-                      ? 'bg-[#E6F4F2]/50 border-[#7CC7BD]' 
-                      : 'bg-[#F7FAFA] border-[#DDE7E5]'
+                      ? 'bg-[#EFF6FF]/60 border-[#BFDBFE]' 
+                      : 'bg-[#F8FAFC] border-[#E2E8F0]'
                   }`}
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-semibold text-[#102A28]">{msg.name}</span>
-                    <span className="text-xs text-[#8A9B98]">
+                    <span className="text-sm font-bold text-[#172554]">{msg.name}</span>
+                    <span className="text-xs text-[#94A3B8]">
                       {new Date(msg.timestamp || msg.createdAt || Date.now()).toLocaleDateString()}
                     </span>
                   </div>
-                  <p className="text-xs text-[#4B5F5C] mt-1 line-clamp-1">{msg.message}</p>
+                  <p className="text-xs text-[#64748B] mt-1 line-clamp-1">{msg.message}</p>
                 </div>
               ))}
             </div>
@@ -205,48 +214,48 @@ export const AdminDashboardView = ({ setActiveTab }) => {
         </div>
 
         {/* Database & Sync Status */}
-        <div className="bg-white border border-[#DDE7E5] rounded-xl p-6 shadow-sm flex flex-col justify-between">
+        <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6 shadow-card flex flex-col justify-between">
           <div>
-            <h3 className="text-base font-semibold text-[#102A28] mb-4">
+            <h3 className="text-base font-bold text-[#172554] mb-4">
               System Architecture & Health
             </h3>
 
             <div className="space-y-3">
-              <div className="flex items-center justify-between p-3 rounded-lg bg-[#F7FAFA] border border-[#DDE7E5] text-xs">
-                <span className="text-[#4B5F5C]">Database Engine</span>
-                <span className="font-semibold text-[#102A28]">
+              <div className="flex items-center justify-between p-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-xs">
+                <span className="text-[#64748B]">Database Engine</span>
+                <span className="font-bold text-[#172554]">
                   {isFirebaseLive ? 'Cloud Firestore (Live)' : 'Local Storage Cache'}
                 </span>
               </div>
 
-              <div className="flex items-center justify-between p-3 rounded-lg bg-[#F7FAFA] border border-[#DDE7E5] text-xs">
-                <span className="text-[#4B5F5C]">Admin Identity</span>
+              <div className="flex items-center justify-between p-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-xs">
+                <span className="text-[#64748B]">Admin Identity</span>
                 <div className="text-right">
-                  <span className="font-semibold text-[#102A28] block">Super Admin</span>
-                  <span className="text-[10.5px] text-[#0F766E] font-medium block">Authorized Account</span>
+                  <span className="font-bold text-[#172554] block">Super Admin</span>
+                  <span className="text-[10.5px] text-[#2563EB] font-semibold block">Authorized Account</span>
                 </div>
               </div>
 
-              <div className="flex items-center justify-between p-3 rounded-lg bg-[#E6F4F2] border border-[#7CC7BD]/50 text-xs">
+              <div className="flex items-center justify-between p-3 rounded-xl bg-[#EFF6FF] border border-[#BFDBFE] text-xs">
                 <div>
-                  <span className="text-[#0F766E] font-medium block">Firebase Auth UID</span>
-                  <span className="text-[10px] text-[#8A9B98]">Verified Authorization Key</span>
+                  <span className="text-[#2563EB] font-bold block">Firebase Auth UID</span>
+                  <span className="text-[10px] text-[#64748B]">Verified Authorization Key</span>
                 </div>
-                <span className="font-mono font-semibold text-[#102A28] bg-white px-2 py-1 rounded border border-[#DDE7E5] select-all">
+                <span className="font-mono font-bold text-[#172554] bg-white px-2 py-1 rounded-md border border-[#E2E8F0] select-all">
                   {currentUser?.uid || "HOHTgjkAZlTPOO7bH98ukkw2vip1"}
                 </span>
               </div>
 
-              <div className="flex items-center justify-between p-3 rounded-lg bg-[#F7FAFA] border border-[#DDE7E5] text-xs">
-                <span className="text-[#4B5F5C]">Image Pipeline</span>
-                <span className="font-semibold text-[#102A28]">Spark Plan (Image URLs)</span>
+              <div className="flex items-center justify-between p-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-xs">
+                <span className="text-[#64748B]">Image Pipeline</span>
+                <span className="font-bold text-[#172554]">Spark Plan (Image URLs)</span>
               </div>
             </div>
           </div>
 
-          <div className="pt-4 border-t border-[#DDE7E5] flex items-center justify-between text-xs text-[#8A9B98]">
-            <span>Portfolio Version: 1.0.0</span>
-            <span className="text-[#0F766E] font-medium">KL University 2028</span>
+          <div className="pt-4 border-t border-[#E2E8F0] flex items-center justify-between text-xs text-[#94A3B8]">
+            <span>Portfolio Version: 2.0.0 Light</span>
+            <span className="text-[#2563EB] font-semibold">KL University · 2028</span>
           </div>
         </div>
 
@@ -255,4 +264,3 @@ export const AdminDashboardView = ({ setActiveTab }) => {
     </div>
   );
 };
-

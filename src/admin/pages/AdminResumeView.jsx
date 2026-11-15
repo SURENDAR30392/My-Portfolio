@@ -53,46 +53,46 @@ export const AdminResumeView = () => {
       
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-semibold text-[#102A28] flex items-center gap-2.5">
-          <FileText size={24} className="text-[#0F766E]" />
+        <h1 className="text-2xl font-semibold text-[#172554] flex items-center gap-2.5">
+          <FileText size={24} className="text-[#2563EB]" />
           <span>Resume Management & Dummy Resume Preview</span>
         </h1>
-        <p className="text-sm text-[#4B5F5C] mt-1">
+        <p className="text-sm text-[#64748B] mt-1">
           Review, preview, and configure the official resume PDF served to recruiters and visitors on your portfolio.
         </p>
       </div>
 
       {/* Spark Free Plan Zero-Cost Architecture Notice */}
-      <div className="bg-[#E6F4F2] border border-[#7CC7BD]/60 rounded-xl p-5 flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+      <div className="bg-[#EFF6FF] border border-[#60A5FA]/60 rounded-xl p-5 flex flex-col sm:flex-row sm:items-start justify-between gap-4">
         <div className="flex items-start gap-3">
-          <div className="w-9 h-9 rounded-lg bg-white text-[#0F766E] flex items-center justify-center shrink-0 shadow-xs border border-[#DDE7E5]">
+          <div className="w-9 h-9 rounded-lg bg-white text-[#2563EB] flex items-center justify-center shrink-0 shadow-xs border border-[#E2E8F0]">
             <Globe size={18} />
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-[#102A28]">
+            <h3 className="text-sm font-semibold text-[#172554]">
               Zero-Cost Resume Pipeline (Firebase Spark Free Plan)
             </h3>
-            <p className="text-xs text-[#4B5F5C] mt-1 leading-relaxed">
-              Your portfolio includes a pre-compiled, valid <strong>Dummy Resume PDF</strong> (<code className="font-mono bg-white px-1.5 py-0.5 rounded border border-[#DDE7E5] text-[#0F766E]">/resume.pdf</code>) containing all your personal academic details for KL University. You can use this built-in resume or link any external PDF (Google Drive, GitHub raw, Dropbox) without paid storage.
+            <p className="text-xs text-[#64748B] mt-1 leading-relaxed">
+              Your portfolio includes a pre-compiled, valid <strong>Dummy Resume PDF</strong> (<code className="font-mono bg-white px-1.5 py-0.5 rounded border border-[#E2E8F0] text-[#2563EB]">/resume.pdf</code>) containing all your personal academic details for KL University. You can use this built-in resume or link any external PDF (Google Drive, GitHub raw, Dropbox) without paid storage.
             </p>
           </div>
         </div>
       </div>
 
       {/* Built-in Dummy Resume Card */}
-      <div className="bg-white border border-[#DDE7E5] rounded-xl p-6 shadow-sm space-y-5">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#DDE7E5] pb-4">
+      <div className="bg-white border border-[#E2E8F0] rounded-xl p-6 shadow-sm space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E2E8F0] pb-4">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-[#E6F4F2] text-[#0F766E] flex items-center justify-center shrink-0 border border-[#7CC7BD]/30">
+            <div className="w-12 h-12 rounded-xl bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center shrink-0 border border-[#60A5FA]/30">
               <FileText size={26} />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="text-base font-semibold text-[#102A28]">
+                <h2 className="text-base font-semibold text-[#172554]">
                   {filename}
                 </h2>
                 {isBuiltInDummy ? (
-                  <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#E6F4F2] text-[#0F766E] border border-[#7CC7BD]/40">
+                  <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#EFF6FF] text-[#2563EB] border border-[#60A5FA]/40">
                     Built-in Dummy Resume
                   </span>
                 ) : (
@@ -101,8 +101,8 @@ export const AdminResumeView = () => {
                   </span>
                 )}
               </div>
-              <p className="text-xs text-[#8A9B98] mt-0.5">
-                Path: <span className="font-mono text-[#102A28]">{url || defaultUrl}</span> · Last updated: {resume.lastUpdated || "November 2026"}
+              <p className="text-xs text-[#94A3B8] mt-0.5">
+                Path: <span className="font-mono text-[#172554]">{url || defaultUrl}</span> · Last updated: {resume.lastUpdated || "November 2026"}
               </p>
             </div>
           </div>
@@ -142,7 +142,7 @@ export const AdminResumeView = () => {
               <button
                 type="button"
                 onClick={handleSetBuiltInDummy}
-                className="p-2 rounded-lg border border-[#DDE7E5] text-[#4B5F5C] hover:text-[#0F766E] hover:bg-[#E6F4F2] transition-colors"
+                className="p-2 rounded-lg border border-[#E2E8F0] text-[#64748B] hover:text-[#2563EB] hover:bg-[#EFF6FF] transition-colors"
                 title="Reset to Built-in Dummy Resume"
               >
                 <RefreshCw size={14} />
@@ -153,48 +153,48 @@ export const AdminResumeView = () => {
 
         {/* Quick Details of the Dummy Resume */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-          <div className="p-3.5 rounded-lg bg-[#F7FAFA] border border-[#DDE7E5]">
-            <span className="text-[#8A9B98] block">Candidate Identity</span>
-            <span className="font-semibold text-[#102A28] text-sm mt-0.5 block">
+          <div className="p-3.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0]">
+            <span className="text-[#94A3B8] block">Candidate Identity</span>
+            <span className="font-semibold text-[#172554] text-sm mt-0.5 block">
               Marthala Surendar Reddy
             </span>
-            <span className="text-[#4B5F5C] text-[11px]">B.Tech CSE · KL University (2024–2028)</span>
+            <span className="text-[#64748B] text-[11px]">B.Tech CSE · KL University (2024–2028)</span>
           </div>
 
-          <div className="p-3.5 rounded-lg bg-[#F7FAFA] border border-[#DDE7E5]">
-            <span className="text-[#8A9B98] block">Competitive Coding</span>
-            <span className="font-semibold text-[#0F766E] text-sm mt-0.5 block">
+          <div className="p-3.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0]">
+            <span className="text-[#94A3B8] block">Competitive Coding</span>
+            <span className="font-semibold text-[#2563EB] text-sm mt-0.5 block">
               200+ Solved Problems
             </span>
-            <span className="text-[#4B5F5C] text-[11px]">LeetCode & CodeChef Division Active</span>
+            <span className="text-[#64748B] text-[11px]">LeetCode & CodeChef Division Active</span>
           </div>
 
-          <div className="p-3.5 rounded-lg bg-[#F7FAFA] border border-[#DDE7E5]">
-            <span className="text-[#8A9B98] block">Core Tech Stack</span>
-            <span className="font-semibold text-[#102A28] text-sm mt-0.5 block">
+          <div className="p-3.5 rounded-lg bg-[#F8FAFC] border border-[#E2E8F0]">
+            <span className="text-[#94A3B8] block">Core Tech Stack</span>
+            <span className="font-semibold text-[#172554] text-sm mt-0.5 block">
               Java, Spring Boot, React
             </span>
-            <span className="text-[#4B5F5C] text-[11px]">PostgreSQL, MySQL, Firebase, Docker</span>
+            <span className="text-[#64748B] text-[11px]">PostgreSQL, MySQL, Firebase, Docker</span>
           </div>
         </div>
       </div>
 
       {/* Resume Configuration Form */}
-      <div className="bg-white border border-[#DDE7E5] rounded-xl p-6 shadow-sm space-y-5">
-        <h2 className="text-base font-semibold text-[#102A28] border-b border-[#DDE7E5] pb-3">
+      <div className="bg-white border border-[#E2E8F0] rounded-xl p-6 shadow-sm space-y-5">
+        <h2 className="text-base font-semibold text-[#172554] border-b border-[#E2E8F0] pb-3">
           Resume Settings & Hosting URL
         </h2>
 
         <form onSubmit={handleSave} className="space-y-4">
           <div>
             <div className="flex items-center justify-between mb-1.5">
-              <label className="block text-xs font-semibold text-[#102A28]">
+              <label className="block text-xs font-semibold text-[#172554]">
                 Resume File URL *
               </label>
               <button
                 type="button"
                 onClick={() => setUrl(defaultUrl)}
-                className="text-[11px] text-[#0F766E] hover:underline flex items-center gap-1 font-medium"
+                className="text-[11px] text-[#2563EB] hover:underline flex items-center gap-1 font-medium"
               >
                 <Sparkles size={11} />
                 <span>Use Built-in Dummy PDF (/resume.pdf)</span>
@@ -206,15 +206,15 @@ export const AdminResumeView = () => {
               value={url}
               onChange={e => setUrl(e.target.value)}
               placeholder="e.g. /resume.pdf or https://drive.google.com/..."
-              className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm text-[#102A28] focus:outline-none focus:border-[#0F766E] font-mono text-xs"
+              className="w-full px-3.5 py-2.5 rounded-lg border border-[#E2E8F0] text-sm text-[#172554] focus:outline-none focus:border-[#2563EB] font-mono text-xs"
             />
-            <p className="text-[11px] text-[#8A9B98] mt-1">
-              Enter <code className="text-[#0F766E] font-mono">/resume.pdf</code> to use the bundled PDF, or paste an external direct PDF link.
+            <p className="text-[11px] text-[#94A3B8] mt-1">
+              Enter <code className="text-[#2563EB] font-mono">/resume.pdf</code> to use the bundled PDF, or paste an external direct PDF link.
             </p>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#102A28] mb-1.5">
+            <label className="block text-xs font-semibold text-[#172554] mb-1.5">
               Download Filename
             </label>
             <input
@@ -223,23 +223,23 @@ export const AdminResumeView = () => {
               value={filename}
               onChange={e => setFilename(e.target.value)}
               placeholder="Marthala_Surendar_Reddy_Resume.pdf"
-              className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E]"
+              className="w-full px-3.5 py-2.5 rounded-lg border border-[#E2E8F0] text-sm focus:outline-none focus:border-[#2563EB]"
             />
           </div>
 
           <div className="pt-2">
-            <label className="inline-flex items-center gap-2.5 cursor-pointer text-xs font-medium text-[#102A28]">
+            <label className="inline-flex items-center gap-2.5 cursor-pointer text-xs font-medium text-[#172554]">
               <input
                 type="checkbox"
                 checked={enabled}
                 onChange={e => setEnabled(e.target.checked)}
-                className="w-4 h-4 rounded text-[#0F766E] focus:ring-[#7CC7BD]"
+                className="w-4 h-4 rounded text-[#2563EB] focus:ring-[#60A5FA]"
               />
               <span>Display "Resume" button in the public Navbar and Hero section</span>
             </label>
           </div>
 
-          <div className="pt-4 border-t border-[#DDE7E5] flex items-center justify-between">
+          <div className="pt-4 border-t border-[#E2E8F0] flex items-center justify-between">
             <button
               type="button"
               onClick={handleSetBuiltInDummy}
@@ -261,18 +261,18 @@ export const AdminResumeView = () => {
       </div>
 
       {/* Live Embedded Resume Viewer Section */}
-      <div className="bg-white border border-[#DDE7E5] rounded-xl p-6 shadow-sm space-y-4">
-        <div className="flex items-center justify-between border-b border-[#DDE7E5] pb-3">
+      <div className="bg-white border border-[#E2E8F0] rounded-xl p-6 shadow-sm space-y-4">
+        <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
           <div className="flex items-center gap-2">
-            <FileText size={18} className="text-[#0F766E]" />
-            <h2 className="text-base font-semibold text-[#102A28]">
+            <FileText size={18} className="text-[#2563EB]" />
+            <h2 className="text-base font-semibold text-[#172554]">
               Live Dummy Resume Document Preview
             </h2>
           </div>
           <button
             type="button"
             onClick={() => setShowEmbeddedPdf(!showEmbeddedPdf)}
-            className="text-xs text-[#0F766E] hover:underline font-medium"
+            className="text-xs text-[#2563EB] hover:underline font-medium"
           >
             {showEmbeddedPdf ? "Hide Viewer" : "Show Viewer"}
           </button>
@@ -281,20 +281,20 @@ export const AdminResumeView = () => {
         {showEmbeddedPdf && (
           <div className="space-y-4 animate-fade-in">
             {/* Embedded Iframe Preview */}
-            <div className="border border-[#DDE7E5] rounded-xl overflow-hidden bg-[#F7FAFA] shadow-inner h-[600px] w-full">
+            <div className="border border-[#E2E8F0] rounded-xl overflow-hidden bg-[#F8FAFC] shadow-inner h-[600px] w-full">
               <iframe
                 src="/resume.pdf#toolbar=0&navpanes=0"
                 title="MSR Dummy Resume PDF Preview"
                 className="w-full h-full border-0"
               />
             </div>
-            <div className="flex items-center justify-between text-xs text-[#8A9B98] px-1">
+            <div className="flex items-center justify-between text-xs text-[#94A3B8] px-1">
               <span>Standard A4 PDF Document · 1 Page · Marthala Surendar Reddy</span>
               <a 
                 href="/resume.pdf" 
                 target="_blank" 
                 rel="noreferrer" 
-                className="text-[#0F766E] hover:underline flex items-center gap-1 font-medium"
+                className="text-[#2563EB] hover:underline flex items-center gap-1 font-medium"
               >
                 <span>Open in fullscreen</span>
                 <ExternalLink size={12} />

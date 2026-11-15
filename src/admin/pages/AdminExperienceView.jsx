@@ -59,10 +59,10 @@ export const AdminExperienceView = () => {
     <div className="space-y-8 animate-fade-in">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold text-[#102A28]">
+          <h1 className="text-2xl font-semibold text-[#172554]">
             Experience Management
           </h1>
-          <p className="text-sm text-[#4B5F5C] mt-1">
+          <p className="text-sm text-[#64748B] mt-1">
             Manage internships, software engineering roles, and student laboratory contributions.
           </p>
         </div>
@@ -78,23 +78,23 @@ export const AdminExperienceView = () => {
 
       <div className="space-y-4">
         {experience.map((exp) => (
-          <div key={exp.id} className="bg-white border border-[#DDE7E5] rounded-xl p-6 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div key={exp.id} className="bg-white border border-[#E2E8F0] rounded-xl p-6 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-lg bg-[#E6F4F2] text-[#0F766E] flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 rounded-lg bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center shrink-0">
                 <History size={24} />
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="text-base font-semibold text-[#102A28]">{exp.role}</h3>
+                  <h3 className="text-base font-semibold text-[#172554]">{exp.role}</h3>
                   {exp.isSample && (
                     <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-[#FDE68A] text-[#B45309]">
                       Sample
                     </span>
                   )}
                 </div>
-                <div className="text-sm text-[#0F766E] font-medium mt-0.5">{exp.organization}</div>
-                <div className="text-xs text-[#8A9B98] mt-1">{exp.dates} · {exp.location}</div>
-                <p className="text-xs text-[#4B5F5C] mt-2 leading-relaxed max-w-xl">{exp.description}</p>
+                <div className="text-sm text-[#2563EB] font-medium mt-0.5">{exp.organization}</div>
+                <div className="text-xs text-[#94A3B8] mt-1">{exp.dates} · {exp.location}</div>
+                <p className="text-xs text-[#64748B] mt-2 leading-relaxed max-w-xl">{exp.description}</p>
               </div>
             </div>
 
@@ -119,70 +119,70 @@ export const AdminExperienceView = () => {
 
       {isEditing && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs animate-fade-in">
-          <div className="bg-white border border-[#DDE7E5] rounded-xl max-w-lg w-full p-6 shadow-2xl">
-            <div className="flex items-center justify-between pb-4 border-b border-[#DDE7E5] mb-4">
-              <h2 className="text-base font-semibold text-[#102A28]">
+          <div className="bg-white border border-[#E2E8F0] rounded-xl max-w-lg w-full p-6 shadow-2xl">
+            <div className="flex items-center justify-between pb-4 border-b border-[#E2E8F0] mb-4">
+              <h2 className="text-base font-semibold text-[#172554]">
                 {currentId ? 'Edit Experience' : 'Add Experience'}
               </h2>
-              <button onClick={() => setIsEditing(false)} className="text-[#8A9B98] hover:text-[#102A28]">
+              <button onClick={() => setIsEditing(false)} className="text-[#94A3B8] hover:text-[#172554]">
                 <X size={18} />
               </button>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-[#102A28] mb-1">Role / Title *</label>
+                <label className="block text-xs font-semibold text-[#172554] mb-1">Role / Title *</label>
                 <input
                   type="text"
                   required
                   value={form.role}
                   onChange={e => setForm({ ...form, role: e.target.value })}
                   placeholder="e.g. Backend Engineering Intern"
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E]"
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-[#E2E8F0] text-sm focus:outline-none focus:border-[#2563EB]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#102A28] mb-1">Company / Organization *</label>
+                <label className="block text-xs font-semibold text-[#172554] mb-1">Company / Organization *</label>
                 <input
                   type="text"
                   required
                   value={form.organization}
                   onChange={e => setForm({ ...form, organization: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-[#DDE7E5] text-sm focus:outline-none focus:border-[#0F766E]"
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-[#E2E8F0] text-sm focus:outline-none focus:border-[#2563EB]"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-[#102A28] mb-1">Dates</label>
+                  <label className="block text-xs font-semibold text-[#172554] mb-1">Dates</label>
                   <input
                     type="text"
                     value={form.dates}
                     onChange={e => setForm({ ...form, dates: e.target.value })}
                     placeholder="2025 – Present"
-                    className="w-full px-3.5 py-2 rounded-lg border border-[#DDE7E5] text-xs focus:outline-none focus:border-[#0F766E]"
+                    className="w-full px-3.5 py-2 rounded-lg border border-[#E2E8F0] text-xs focus:outline-none focus:border-[#2563EB]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[#102A28] mb-1">Location</label>
+                  <label className="block text-xs font-semibold text-[#172554] mb-1">Location</label>
                   <input
                     type="text"
                     value={form.location}
                     onChange={e => setForm({ ...form, location: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-lg border border-[#DDE7E5] text-xs focus:outline-none focus:border-[#0F766E]"
+                    className="w-full px-3.5 py-2 rounded-lg border border-[#E2E8F0] text-xs focus:outline-none focus:border-[#2563EB]"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#102A28] mb-1">Description</label>
+                <label className="block text-xs font-semibold text-[#172554] mb-1">Description</label>
                 <textarea
                   rows={3}
                   value={form.description}
                   onChange={e => setForm({ ...form, description: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-lg border border-[#DDE7E5] text-xs focus:outline-none focus:border-[#0F766E] resize-none"
+                  className="w-full px-3.5 py-2 rounded-lg border border-[#E2E8F0] text-xs focus:outline-none focus:border-[#2563EB] resize-none"
                 />
               </div>
 
@@ -198,7 +198,7 @@ export const AdminExperienceView = () => {
                 </label>
               </div>
 
-              <div className="pt-4 border-t border-[#DDE7E5] flex items-center justify-end gap-3">
+              <div className="pt-4 border-t border-[#E2E8F0] flex items-center justify-end gap-3">
                 <button
                   type="button"
                   onClick={() => setIsEditing(false)}

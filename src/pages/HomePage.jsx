@@ -4,6 +4,8 @@ import { Hero } from '../components/Hero';
 import { Projects } from '../components/Projects';
 import { About } from '../components/About';
 import { Skills } from '../components/Skills';
+import { Experience } from '../components/Experience';
+import { Education } from '../components/Education';
 import { CodingProfiles } from '../components/CodingProfiles';
 import { Honors } from '../components/Honors';
 import { Testimonials } from '../components/Testimonials';
@@ -23,6 +25,8 @@ export const HomePage = () => {
     work: true,
     about: true,
     skills: true,
+    experience: true,
+    education: true,
     codingProfiles: true,
     honors: true,
     testimonials: true,
@@ -30,7 +34,7 @@ export const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F7FAFA]">
+    <div className="min-h-screen flex flex-col bg-[#F8FAFC]">
       <Navbar />
 
       <main className="flex-1">
@@ -38,6 +42,8 @@ export const HomePage = () => {
         {sections.work !== false && <Projects onSelectProject={setSelectedProject} />}
         {sections.about !== false && <About />}
         {sections.skills !== false && <Skills />}
+        {sections.experience !== false && <Experience />}
+        {sections.education !== false && <Education />}
         {sections.codingProfiles !== false && <CodingProfiles />}
         {sections.honors !== false && <Honors onSelectCert={setSelectedCert} />}
         {sections.testimonials !== false && <Testimonials />}
@@ -63,4 +69,3 @@ export const HomePage = () => {
     </div>
   );
 };
-
